@@ -9,12 +9,9 @@ on:
       - "*"
 
 jobs:
-  test_job:
+  release:
     runs-on: ubuntu-latest
-    name: Example of compiling pdf
     steps:
-      # make pdf
-      # LATEX_FILE_NAME -> main.pdf generated
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Compile Tex File
@@ -44,5 +41,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./calc1t.pdf
-          asset_name: calc1t.pdf
+          asset_name: calc1t-${{github.ref}}.pdf
           asset_content_type: application/pdf
