@@ -1,0 +1,361 @@
+
+\chapter{種々の関数１}
+
+\section{べき関数}
+
+実数$x$と自然数$n = 0, 1, 2, 3, \cdots$に累乗$x^n$を対応させる関数を\emph{自然数べき関数}あるいは\emph{べき関数}という。
+例\ref{t_ex_conti}と命題\ref{t_conti_arith}から、べき関数$f(x) = x^n$は$\mathbb{R}$上の連続関数である。
+
+$0$でない実数$x$と$0$でない自然数$n = 1, 2, 3, \cdots$に対して累乗$x^n$は$0$でないことに注意する。
+そこで、関数
+$$
+x^{-n} = (x^n)^{-1}
+$$
+を定義し、\emph{負の整数べき関数}あるいは\emph{負べき関数}という。
+また、これにより整数$n$に対して\emph{整数べき関数}$x^n$を定義する。
+$x^{-0} = x^0 = 1$に注意する。
+整数べき関数$f(x) = x^n$は常に$\mathbb{R}\setminus\lrset{0}$上の連続関数である。
+もちろん$n$が自然数の時は自然数べき関数なので$\mathbb{R}$上の連続関数でもある。
+
+\section{多項式関数}
+
+$a_0, a_1, a_2, a_3, \cdots, a_n$を$n+1$個の実数定数として得られる\emph{多項式関数}
+$$
+f(x) = a_0+a_1 x+a_2 x^2+a_3 x^3+\cdots+a_n x^n
+$$
+は$\mathbb{R}$上の連続関数である。
+もし$a_n \ne 0$ならば上の多項式関数$f$の\emph{次数}は$n$とし、$f(x) = 0$は特別に次数は$-\infty$とする。
+
+多項式関数の$x \to \pm\infty$での極限では最高次の項$a_n x^n$が支配的になる。
+
+\begin{proposition}[多項式関数の無限大での極限]
+$f$を$n$次の多項式関数$f(x) = a_0+a_1 x+a_2 x^2+a_3 x^3+\cdots+a_n x^n$で、$n \ge 1$とする。
+\begin{itemize}
+\item
+$a_n > 0$の時、$\lim_{x \to +\infty}f(x) = +\infty$であり、$n$が偶数ならば$\lim_{x \to -\infty}f(x) = +\infty$、$n$が奇数ならば$\lim_{x \to -\infty}f(x) = -\infty$である。
+\item
+$a_n < 0$の時、$\lim_{x \to +\infty}f(x) = -\infty$であり、$n$が偶数ならば$\lim_{x \to -\infty}f(x) = -\infty$、$n$が奇数ならば$\lim_{x \to -\infty}f(x) = +\infty$である。
+\end{itemize}
+\end{proposition}
+
+\begin{remark}
+$n$が奇数の時は$\lim_{x \to +\infty}f(x)$と$\lim_{x \to -\infty}f(x)$で符号が異なるので、中間値の定理から$f(x) = 0$の実数解が少なくとも$1$つ存在することがわかる。
+$n$が偶数の時は実数解が存在しない場合がある。
+\end{remark}
+
+\section{累乗根関数}
+
+非負の実数$x$と$n = 1, 2, 3, \cdots$に対して累乗根を累乗関数$f(y) = y^n$の逆関数から定義したい。
+$0 \le a < b$に対して$a^n < b^n$より関数$f$は狭義単調増加な連続関数で$f(0) = 0$, $\lim_{x \to +\infty}f(x) = +\infty$より、
+逆関数の定理から非負の実数$x$に対して定義された$f$の逆関数$g(x)$が存在し、$g$も狭義単調増加な連続関数で$g(0) = 0$, $\lim_{y \to +\infty}g(y) = +\infty$が成り立つ。
+この逆関数を\emph{累乗根関数}といい$g(x) = \sqrt[n]{x}$と表す。
+また、その値$\sqrt[n]{a}$を非負の実数$a$の\emph{$n$乗根}という。
+$n$乗根$b = \sqrt[n]{a}$は$y$についての方程式$y^n = a$の一意な非負実数解である。
+
+$n = 1$の時は$\sqrt[n]{a} = a$に他ならない、$n = 2$の時特別に\emph{平方根}、\emph{平方根関数}といい$\sqrt{a} = \sqrt[2]{a}$, $\sqrt{x} = \sqrt[2]{x}$と書く。
+
+\section{指数関数}
+
+$a$を正の実数とする。
+ここでは実数$x$に対して指数関数$a^x$を定義する。
+
+まず、$x$が整数$n$の時は整数べき関数の値$a^n$として定義される。
+有理数$x = m/n$に対しては累乗根
+$$
+a^x = \sqrt[n]{a^m}
+$$
+この値は有理数$x$の表現によらないことに注意する。
+
+実数$x$を考えるにあたって、有理数$x$に対して定義された関数$f(x) = a^x$は$a \ge 1$のとき単調増加で$a \le 1$のとき単調減少であることに注意する。
+実数$x$に対して、
+$$
+a^x =
+\begin{cases}
+\sup\{ a^y \mid y \in \mathbb{Q}, y \le x \} & (a \ge 1), \\
+\inf\{ a^y \mid y \in \mathbb{Q}, y \le x \} & (a \le 1) \\
+\end{cases}
+$$
+と定義する。
+$a = 1$の時は$a^x = 1$であることに注意する。
+
+以上によって定義された実数$x$に対する関数$\exp_a(x) = a^x$を$a$を底とする\emph{指数関数}という。
+指数関数には以下の性質が成り立つ。
+\begin{itemize}
+\item
+$\exp_a$は$\mathbb{R}$上の連続関数である。
+\item
+常に$a^x > 0$が満たされる。
+\item
+$a > 1$のとき$\exp_a$は狭義単調増加で$\lim_{x \to -\infty}a^x = 0$, $\lim_{x \to +\infty}a^x = +\infty$を満たし、
+$0 < a < 1$のとき$\exp_a$は狭義単調減少で$\lim_{x \to -\infty}a^x = +\infty$, $\lim_{x \to +\infty}a^x = 0$を満たす。
+\item
+任意の実数$x$, $y$に対して、\emph{指数法則}
+$$
+a^{x+y} = a^x a^y, \quad a^0 = 1
+$$
+と
+$$
+a^{x y} = (a^x)^y
+$$
+が成り立つ。
+\end{itemize}
+
+指数法則は和の指数関数は指数関数を取ったものに積を取るものになることを言っている。
+
+今後の理論の展開において重要な極限として次がある。
+
+\begin{theorem}
+実数列$\qty(\qty(1+\frac{1}{n})^n)_{n = 1}^\infty$は収束する。
+\end{theorem}
+
+この時の極限を$e$とおき\emph{ネイピア数}という。
+$$
+e = \lim_{n \to \infty}\qty(1+\frac{1}{n})^n = 2.7182818284\cdots
+$$
+である。
+ネイピア数は指数関数・対数関数の微分積分において重要な役割を果たす定数である。
+
+\begin{proof}
+二項定理より
+$$
+\qty(1+\frac{1}{n})^n
+= \sum_{k = 0}^n \binom{n}{k}\frac{1}{n^k}
+= \sum_{k = 0}^n \frac{1}{k!}\frac{n(n-1)\cdots(n-k+1)}{n^k}
+= \sum_{k = 0}^n \frac{1}{k!}\qty(1-\frac{1}{n})\cdots\qty(1-\frac{k-1}{n})
+$$
+である。
+ここで$i = 1, \cdots, k-1$に対して$\qty(1-\frac{i}{n}) < \qty(1-\frac{i}{n+1})$より、
+$$
+\qty(1+\frac{1}{n})^n
+< \sum_{k = 0}^n \frac{1}{k!}\qty(1-\frac{1}{n+1})\cdots\qty(1-\frac{k-1}{n+1})
+< \sum_{k = 0}^{n+1} \frac{1}{k!}\qty(1-\frac{1}{n+1})\cdots\qty(1-\frac{k-1}{n+1})
+= \qty(1+\frac{1}{n+1})^{n+1}.
+$$
+つまり数列$\qty(\qty(1+\frac{1}{n})^n)_{n = 1}^\infty$は単調増加である。
+また、
+$$
+\qty(1+\frac{1}{n})^n < \sum_{k = 0}^n \frac{1}{k!} < 1+\sum_{k = 1}^n \frac{1}{2^{k-1}} = 1+\frac{1-\frac{1}{2^n}}{1-\frac{1}{2}} < 3.
+$$
+つまり上に有界も示された。
+よって、単調収束定理（定理\ref{t_mono_conv}）より数列$\qty(\qty(1+\frac{1}{n})^n)_{n = 1}^\infty$は収束する。
+\end{proof}
+
+\begin{remark}
+この証明と$n = 1$のときを考えると、$2 < e \le 3$がわかり、だいたいの値として覚えるとよい。
+また、$e \le \sum_{k = 0}^\infty \frac{1}{k!}$もわかるが、実は等号が成り立つ。
+このことについては微分の章のテイラーの定理や級数の章のべき級数を参照すること。
+\end{remark}
+
+ネイピア数$e$を底とする指数関数$\exp_e x = e^x$を単に$\exp$で表す。
+
+\begin{proposition}
+\label{t_limit_napier}
+$$
+\lim_{x \to +\infty}\qty(1+\frac{1}{x})^x = \lim_{x \to -\infty}\qty(1+\frac{1}{x})^x = \lim_{x \to 0}\qty(1+x)^\frac{1}{x} = e.
+$$
+\end{proposition}
+
+\begin{proof}
+まず実数$x$に対して$n = \floor{x}$とおくことで$n \le x < n+1$なので、
+$$
+\qty(1+\frac{1}{n+1})^n \le \qty(1+\frac{1}{x})^x \le \qty(1+\frac{1}{n})^{n+1}.
+$$
+よって、$x \to \infty$で$n \to \infty$となり、ネイピア数の定義より最左辺と最右辺がともに$e$に収束することから$\lim_{x \to +\infty}\qty(1+\frac{1}{x})^x = e$である。
+次に
+$$
+\qty(1-\frac{1}{x})^{-x} = \qty(\frac{x}{x-1})^x = \qty(1+\frac{1}{x-1})^x = \qty(1+\frac{1}{x-1})^{x-1}\qty(1+\frac{1}{x-1})
+$$
+なので、やはり$\lim_{x \to +\infty}\qty(1-\frac{1}{x})^{-x} = e$であり、$x$を$-x$に置き換えることで、$\lim_{x \to -\infty}\qty(1+\frac{1}{x})^x = e$が得られる。
+さらに$x$を$\frac{1}{x}$で置き換えることで、
+$$
+\lim_{x \to 0+}\qty(1+x)^\frac{1}{x} = \lim_{x \to 0-}\qty(1+x)^\frac{1}{x} = e
+$$
+がわかり、右極限と左極限が一致しているので$\lim_{x \to 0}\qty(1+x)^\frac{1}{x} = e$である。
+\end{proof}
+
+\section{対数関数}
+
+$a$を$a > 0$, $a \ne 1$を満たす実数とする。
+この時、前節の内容から指数関数$\exp_a$に逆関数が存在し$a$を底とする\emph{対数関数}といい$\log_a$で表す。
+正の実数$x$に対して対数関数の値$\log_a x$を$a$を底とする真数$x$の\emph{対数}という。
+
+\begin{itemize}
+\item
+$\log_a$は$(0, +\infty)$上の連続関数である。
+\item
+任意の正の実数$x$に対して$\exp_a(\log_a x) = x$で、
+任意の実数$y$に対して$\log_a(\exp_a y) = y$が成り立つ。
+\item
+$a > 1$のとき$\log_a$は狭義単調増加で$\lim_{x \to 0}\log_a x = -\infty$, $\lim_{x \to +\infty}\log_a x = +\infty$を満たし、
+$0 < a < 1$のとき$\log_a$は狭義単調減少で$\lim_{x \to 0}\log_a x = +\infty$, $\lim_{x \to +\infty}\log_a x = -\infty$を満たす。
+\item
+任意の正の実数$x$, $y$に対して、
+$$
+\log_a x y = \log_a x+\log_a y, \quad \log_a 1 = 0
+$$
+が成り立つ。
+\end{itemize}
+
+対数関数の一番最後の性質は積の対数は対数の和になることを言っている。
+
+ネイピア数$e$を底とする対数を\emph{自然対数}といい、関数$\log_e x$を単に$\log$で表す。
+
+\begin{proposition}
+$$
+\lim_{x \to 0}\frac{\log(1+x)}{x} = 1,
+\quad \lim_{x \to 0}\frac{e^x-1}{x} = 1.
+$$
+\end{proposition}
+
+\begin{proof}
+一つ目の式は命題\ref{t_limit_napier}の三つ目の極限で自然対数を取れば直ちに得られる。
+二つ目の式は$t = e^x-1$と置き換えることで、$x \to 0$で$t \to 0$となることと$x = \log(1+t)$より、
+$$
+\lim_{x \to 0}\frac{e^x-1}{x} = \lim_{t \to 0}\frac{t}{\log(1+t)} = 1
+$$
+である。
+ここですでに得られた一つ目の式を使った。
+\end{proof}
+
+\section{三角関数}
+
+直角三角形の辺の長さの比から定まる三角比をもとにした\emph{正弦関数}$\sin x$, \emph{余弦関数}$\cos x$, \emph{正接関数}$\tan x$は次を満たす関数であり、まとめて\emph{三角関数}という。
+\begin{itemize}
+\item
+$\sin x$, $\cos x$はともに$\mathbb{R}$上の実数値連続関数であり、任意の実数$x$に対して
+$$
+\cos^2 x+\sin^2 x = 1
+$$
+が成り立つ。
+\item
+$\sin x$, $\cos x$はともに周期$2\pi$, $\pi = 3.1415926535\cdots$を持つ、つまり任意の実数$x$に対して
+$$
+\sin(x+2\pi) = \sin x, \quad \cos(x+2\pi) = \cos x
+$$
+が成り立つ。
+\item
+$\sin 0 = 0$, $\sin \frac{\pi}{6} = \frac{1}{2}$, $\sin \frac{\pi}{4} = \frac{1}{\sqrt{2}}$, $\sin \frac{\pi}{3} = \frac{\sqrt{3}}{2}$, $\sin \frac{\pi}{2} = 1$で、実数$x$に対して
+$$
+\sin\left(\frac{\pi}{2}-x\right) = \cos x, \quad \sin(\pi-x) = \sin x, \quad \sin(-x) = -\sin x
+$$
+が成り立つ。
+\item
+$\sin x$は$[-\frac{\pi}{2}, \frac{\pi}{2}]$で狭義単調増加で、$\cos x$は$[0, \pi]$で狭義単調減少である。
+\item
+加法定理、つまり任意の実数$x$, $y$に対して、
+$$
+\sin(x+y) = \sin x\cos y+\cos x\sin y,
+\quad \cos(x+y) = \cos x\cos y-\sin x\sin y
+$$
+が成り立つ。
+\item
+極限の式
+$$
+\lim_{x \to 0}\frac{\sin x}{x} = 1
+$$
+が成り立つ。
+\item
+$\tan x = \frac{\sin x}{\cos x}$であり、$x \in \mathbb{R}\setminus\{ \frac{\pi}{2}+n\pi \mid n \in \mathbb{Z}\}$に対して定義される。
+\end{itemize}
+ただし、途中に出てくる定数$\pi$を\emph{円周率}という。
+$(\sin x)^n$などはしばしば$\sin^n x$と記述される。
+
+このテキストではこれらの三角関数は存在するものとして話を進める。
+三角関数の定義つまりこれらの性質を満たす関数の構成は、指数関数の複素数への拡張による方法やべき級数による方法、微分方程式の解として特徴づける方法などがあるが、現段階の知識ではうまく定義できない。
+ただし最初の方法についてあらましを述べると、指数関数を複素数$z$に拡張して$\exp z = e^z$を構成すると\emph{オイラーの関係式}$e^{i x} = \cos x+i\sin x$によって三角関数$\cos x$と$\sin x$を得る。
+複素数に拡張しても複素数$z$, $w$に対して指数法則$e^{z+w} = e^z e^w$と極限$\frac{e^z-1}{z} = 1$ ($z \to 0$)が成り立つので、三角関数の加法定理と極限の式が導かれる。
+加法定理より指数法則の方が単純で覚えやすいので、加法定理を忘れたとしても指数法則とオイラーの関係式から導くことができる。
+
+\section{逆三角関数}
+
+正弦関数$\sin y$は$[-\frac{\pi}{2}, +\frac{\pi}{2}]$上で狭義単調増加な連続関数で$\sin(-\frac{\pi}{2}) = -1$, $\sin(+\frac{\pi}{2}) = +1$より、$\sin y$の逆関数として\emph{逆正弦関数}$\arcsin x$が$[-1, +1]$上の$[-\frac{\pi}{2}, +\frac{\pi}{2}]$値の狭義単調増加な連続関数として得られる。
+余弦関数$\cos y$は$[0, \pi]$上で狭義単調減少な連続関数で$\cos 0 = +1$, $\cos \pi = -1$より、$\cos y$の逆関数として\emph{逆余弦関数}$\arccos x$が$[-1, +1]$上の$[0, \pi]$値の狭義単調減少な連続関数として得られる。
+正接関数$\tan y$は$(-\frac{\pi}{2}, +\frac{\pi}{2})$上で狭義単調増加な連続関数で$\lim_{y \to -\frac{\pi}{2}}\tan y = -\infty$, $\lim_{y \to +\frac{\pi}{2}}\tan y = +\infty$より、$\tan y$の逆関数として\emph{逆正接関数}$\arctan x$が$\mathbb{R}$上の$(-\frac{\pi}{2}, +\frac{\pi}{2})$値の狭義単調増加な連続関数として得られる。
+これらの関数をまとめて\emph{逆三角関数}という。
+
+\begin{example}
+逆三角関数は三角比を角度に変換し、三角関数と合成させることで三角比や角度を別の三角比や角度に変換できる。
+例えば、$x \in [-1, +1]$に対して、$\arcsin x \in [-\frac{\pi}{2}, +\frac{\pi}{2}]$より、
+$$
+\cos(\arcsin x) = \sqrt{1-\sin^2(\arcsin x)} = \sqrt{1-x^2}
+$$
+である。
+\end{example}
+
+\section{双曲線関数}
+
+実数$x$に対して次で定まる$\mathbb{R}$上の関数として\emph{双曲線正弦関数}$\sinh x$、\emph{双曲線余弦関数}$\cosh x$、\emph{双曲線正接関数}$\tanh x$を導入する。
+$$
+\sinh x = \frac{e^x-e^{-x}}{2}, \quad \cosh x = \frac{e^x+e^{-x}}{2}, \quad \tanh x = \frac{\sinh x}{\cosh x}.
+$$
+これらの関数をまとめて\emph{双曲線関数}という。
+
+この定義からすぐに以下の性質がわかる。
+\begin{itemize}
+\item
+$\sinh x$, $\cosh x$はともに$\mathbb{R}$上の実数値連続関数であり、任意の実数$x$に対して
+$$
+\cosh^2 x-\sinh^2 x = 1
+$$
+が成り立つ。
+\item
+$\sinh x$は$\mathbb{R}$で狭義単調増加で、$\cosh x$は$(-\infty, -0]$で狭義単調減少、$[+0, +\infty)$で狭義単調増加である。
+\item
+$\sinh 0 = 0$, $\lim_{x \to +\infty}\sinh x = +\infty$, $\cosh 0 = 1$, $\lim_{x \to +\infty}\cosh x = +\infty$で、実数$x$に対して
+$$
+\sinh(-x) = -\sinh x, \quad \cosh(-x) = \cosh x
+$$
+が成り立つ。
+\item
+加法定理、つまり任意の実数$x$, $y$に対して、
+$$
+\sinh(x+y) = \sinh x\cosh y+\cosh x\sinh y,
+\quad \cosh(x+y) = \cosh x\cosh y+\sinh x\sinh y
+$$
+が成り立つ。
+\item
+極限の式
+$$
+\lim_{x \to 0}\frac{\sinh x}{x} = 1
+$$
+が成り立つ。
+\item
+$\tanh x$は$\mathbb{R}$上の連続関数である。
+\end{itemize}
+最初の等式は平面上の点$(\cosh x, \sinh x)$が双曲線$x^2-y^2 = 1$上の点であることを表しそこから双曲線関数と呼ばれる。
+$(\sinh x)^n$などはしばしば$\sinh^n x$と記述される。
+
+\section{逆双曲線関数}
+
+双曲線正弦関数$\sinh y$は$\mathbb{R}$上で狭義単調増加な連続関数で$\lim_{y \to -\infty}\sinh y = -\infty$, $\lim_{y \to +\infty}\sinh y = +\infty$より、$\sinh y$の逆関数として\emph{逆双曲線正弦関数}$\arsinh x$が$\mathbb{R}$上の$\mathbb{R}$値の狭義単調増加な連続関数として得られる。
+双曲線余弦関数$\cosh y$は$[0, +\infty)$上で狭義単調増加な連続関数で$\cosh 0 = 1$, $\lim_{y \to +\infty}\cosh y = +\infty$より、$\cos y$の逆関数として\emph{逆双曲線余弦関数}$\arcosh x$が$[1, +\infty)$上の$[0, +\infty)$値の狭義単調増加な連続関数として得られる。
+双曲線正接関数$\tanh y$は$\mathbb{R}$上で狭義単調増加な連続関数で$\lim_{y \to -\infty}\tan y = -1$, $\lim_{y \to +\infty}\tanh y = +1$より、$\tanh y$の逆関数として\emph{逆双曲線正接関数}$\arctan x$が$(-1, +1)$上の$\mathbb{R}$値の狭義単調増加な連続関数として得られる。
+これらの関数をまとめて\emph{逆双曲線関数}という。
+
+上では逆双曲線関数を抽象的に定義したが、双曲線関数の表示にもとづいて$\sinh y = \frac{e^y-e^{-y}}{2} = x$を$x$について解くことで、次の表示を得られる。
+$$
+\arsinh x = \log\left(x+\sqrt{x^2+1}\right),
+\quad \arcosh x = \log\left(x+\sqrt{x^2-1}\right) \quad (x \ge 1),
+\quad \artanh x = \frac{1}{2}\log\frac{1+x}{1-x} \quad (-1 < x < +1).
+$$
+
+\section{その他の関数}
+
+実数$x$に対して絶対値$|x|$を対応させる関数を\emph{絶対値関数}といい$\opabs$や$|x|$と表す。
+絶対値関数は$\mathbb{R}$上の連続関数である。
+
+実数$x$に対して次の符号$\sgn(x)$を対応させる関数を\emph{符号関数}といい$\sgn$と表す。
+$$
+\sgn(x) =
+\begin{cases}
++1 & \text{($x > 0$),} \\
+0 & \text{($x = 0$),} \\
+-1 & \text{($x < 0$).} \\
+\end{cases}
+$$
+符号関数は$\mathbb{R}\setminus\{ 0 \}$で連続関数であるが$0$で連続でない。
+
+実数$x$に対して床$\lfloor x \rfloor$を対応させる関数を\emph{床関数}といい$\floor$や$\lfloor x \rfloor$と表す。
+実数$x$に対して天井$\lceil x \rceil$を対応させる関数を\emph{天井関数}といい$\ceil$や$\lceil x \rceil$と表す。
+床関数と天井関数は$\mathbb{R}\setminus\mathbb{Z}$で連続関数であるが整数の点で連続でない。
+しかしながら、右連続・左連続を考えると、床関数は整数の点でも右連続で、天井関数は整数の点でも左連続である。

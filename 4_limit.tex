@@ -1,0 +1,1368 @@
+
+\chapter{極限}
+
+\section{$\epsilon$論法}
+
+ある実数が正でないつまり$0$以下であることを直接示すのが難しい時でも、条件を緩和していくらでも小さくできる正の数$\varepsilon$よりも小さいことが言えたらその数は正でないと結論付けられる。
+次の定理はそのような論法の正当性を保証する。
+
+\begin{theorem}
+\label{t_ep_real}
+$a$, $b$を実数とするとき次が成立する。
+\begin{itemize}
+\item
+任意の正の数$\varepsilon$に対して$a \le b+\varepsilon$ならば$a \le b$である。
+\item
+任意の正の数$\varepsilon$に対して$a \ge b-\varepsilon$ならば$a \ge b$である。
+\end{itemize}
+\end{theorem}
+
+\begin{remark}
+この定理は$a < b+\varepsilon$の時でも使えるが結論は$a \le b$であって、その場合でも$a < b$は得られない。
+例えば$a = b = 0$の時、$0 < 0+\varepsilon$だが$0 < 0$ではない。
+あくまでも等号付き不等号が示される。
+\end{remark}
+
+\begin{proof}
+最初の内容のみ証明する。
+背理法でもし$a-b > 0$とすると$\varepsilon = \frac{a-b}{2} > 0$と取ることができ、
+$$
+a-b \le \varepsilon = \frac{a-b}{2}
+$$
+よって、$a-b > 0$で両辺を割ることで$2 \le 1$を得て、これは$1 < 2$であることに矛盾する。
+したがって$a-b \le 0$つまり$a \le b$である。
+
+二つ目は$a$, $b$を入れ替えて同じ議論をすればよい。
+最後は仮定が$b-\varepsilon \le a \le b+\varepsilon$なので、上二つの内容が使えて$a \le b$かつ$a \ge b$つまり$a = b$である。
+\end{proof}
+
+特に次のバリエーションがある。
+
+\begin{theorem}
+\label{t_ep_number}
+$a$, $b$を数とするとき次が成立する。
+任意の正の数$\varepsilon$に対して$|a-b| \le \varepsilon$ならば$a = b$である。
+\end{theorem}
+
+\begin{proof}
+$|a-b|$は非負の実数なので定理\ref{t_ep_real}より$|a-b| \le 0$で、$|a-b| = 0$がわかりこれは$a = b$である。
+\end{proof}
+
+\section{数列の極限}
+
+数列とは数の並びのこと全般をいうが、ここでは順序を持ち無限に続くものをいう。
+そのため順序を表現するため添え字として自然数を用いる。
+つまり\emph{\index{すうれつ@数列}}とは各自然数$n \in \mathbb{N}$に対して一つの数$a_n$を対応させたものであり$(a_n)_{n \in \mathbb{N}}$や一部省略して$(a_n)_n$あるいは$(a_n)$と表す。
+また、最初の自然数（または整数）を明示したり変更したい場合は$(a_n)_{n = 1}^\infty$などと表す。
+数列の中でも数が入るクラスに応じて、各$a_n$が実数ならば$(a_n)$は実数列、有理数ならば有理数列、整数ならば整数列、自然数ならば自然数列、複素数ならば複素数列という。
+このテキストでは特に指定がなければ数列といったら実数列である。
+
+\begin{example}
+$(2 n)_{n = 0}^\infty$, $(5^n)_{n = 0}^\infty$, $(3)_{n = 0}^\infty$, $(\frac{1}{n})_{n = 1}^\infty$などは（実）数列である（最初の3つは自然数列でもある）。
+\end{example}
+
+数列の極限はいわゆる$\varepsilon$論法によって次のように定義される。
+
+\begin{definition}[数列の極限]
+数列$(a_n)_{n \in \mathbb{N}}$が$n \to \infty$で数$a$に\emph{収束する}あるいは$a$が$(a_n)_{n \in \mathbb{N}}$の$n \to \infty$での\emph{極限である}とは
+\begin{quote}
+任意の$\varepsilon > 0$に対して、ある自然数$N$が存在して、$N$以上のすべての自然数$n$に対して$|a_n-a| < \varepsilon$が成り立つ
+\end{quote}
+ことを言う。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \in \mathbb{N}, n \ge N \implies |a_n-a| < \varepsilon.
+$$
+また、この時$a_n \to a$ ($n \to \infty$)や$\lim_{n \to \infty}a_n = a$と書くが、``$\to \infty$''の部分や``$n \to \infty$''はしばしば省略される。
+
+数列$(a_n)_{n \in \mathbb{N}}$が何らかの数に収束する時この数列は\emph{収束する}といい、そうでない時\emph{発散する}という。
+\end{definition}
+
+\begin{example}
+$a$を定数として定数列$(a)_{n \in \mathbb{N}}$の極限は$a$である。
+\end{example}
+
+この定義の中で「ある自然数$N$が存在して、$N$以上のすべての自然数$n$に対して」の部分はしばしば「\emph{十分大きな}すべての自然数$n$に対して」と略し、論理記号では$\forall n \gg 1$と表す。
+つまり、$a_n \to a$は
+$$
+\forall \varepsilon > 0, \forall n \gg 1, |a_n-a| < \varepsilon.
+$$
+とも表される。
+このテキストでは記号$\gg$は極限に関係する上記の意味でのみ使い、$\forall$を伴う。
+$a \gg b$のようには用いないので注意する。
+また、$\forall \varepsilon$と$\forall n \gg 1$は一般には交換できないので注意する。
+
+なお、$|a_n-a| = ||a_n-a|-0|$であることから数列$(a_n)$が$a$に収束することは実数列$(|a_n-a|)_n$が$0$に収束することと同値である。
+
+それはさておき、極限は存在したら一意である。
+
+\begin{proposition}
+数列$(a_n)$が収束したらその極限は一つしかない、つまり$(a_n)$が$a$に収束し$b$にも収束したとすると$a = b$である。
+\end{proposition}
+
+\begin{proof}
+$\varepsilon > 0$を任意の正の数として、$|a-b| < \varepsilon$を示す。
+ここで、$(a_n)$が$a$に収束することからある自然数$N_a$が存在して$N_a$以上の任意の自然数$n$に対して$|a_n-a| < \frac{\varepsilon}{2}$であり、
+$(a_n)$が$b$に収束することからある自然数$N_b$が存在して$N_b$以上の任意の自然数$n$に対して$|a_n-b| < \frac{\varepsilon}{2}$である。
+よって$N = \max\lrset{ N_a, N_b }$とおくと、三角不等式より
+$$
+|a-b| = |a-a_N+a_N-b| \le |a-a_N|+|a_N-b| < \varepsilon.
+$$
+ここで定理\ref{t_ep_number}より$a = b$と結論付けられる。
+\end{proof}
+
+発散の中でも次の二つは後でわかるように収束に近い性質を持っている。
+
+\begin{definition}[数列の発散]
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+$(a_n)_{n \in \mathbb{N}}$が$n \to \infty$で\emph{$+\infty$に発散する}とは
+\begin{quote}
+任意の$M > 0$に対して、十分大きいすべての自然数$n$に対して$a_n > +M$が成り立つ
+\end{quote}
+ことを言う。
+この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \forall n \gg 1, a_n > +M.
+$$
+また、この時$a_n \to +\infty$ ($n \to \infty$)や$\lim_{n \to \infty}a_n = +\infty$と書く。
+\item
+$(a_n)_{n \in \mathbb{N}}$が$n \to \infty$で\emph{$-\infty$に発散する}とは
+\begin{quote}
+任意の$M > 0$に対して、十分大きいすべての自然数$n$に対して$a_n < -M$が成り立つ
+\end{quote}
+ことを言う。
+この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \forall n \gg 1, a_n < -M.
+$$
+また、この時$a_n \to -\infty$ ($n \to \infty$)や$\lim_{n \to \infty}a_n = -\infty$と書く。
+\item
+$(a_n)_{n \in \mathbb{N}}$が$n \to \infty$で収束せず$+\infty$にも$-\infty$にも発散しない時、$(a_n)$は\emph{振動する}という。
+
+\end{itemize}
+\end{definition}
+
+極限の具体的な計算において基礎となるのは次の事実である。
+
+\begin{proposition}
+\label{t_limid}
+数列$(n)_{n \in \mathbb{N}}$は$n \to \infty$で$+\infty$に発散する。
+\end{proposition}
+
+このことは自明のように思えるが、数列の添え字の$n$は自然数なのに対して数列の項は実数であり、自然数と実数の差を埋める必要がある。
+
+\begin{proof}[命題\ref{t_limid}の証明]
+$M > 0$とする。
+天井を使って整数$N = \lceil M \rceil+1$とおくことで、$N$は$N > M > 0$を満たす自然数である。
+この時$N$以上のすべての自然数$n$に対して$n \ge N > M$より、数列$(n)_{n \in \mathbb{N}}$は$n \to \infty$で$+\infty$に発散することがわかる。
+\end{proof}
+
+以下に述べる収束する数列の性質は今後の議論をするうえで非常に重要である。
+
+\begin{proposition}
+\label{t_convbdd}
+収束する数列は有界である。
+\end{proposition}
+
+\begin{proof}
+数列$(a_n)_{n \in \mathbb{N}}$が実数$a$に収束するとする。
+この時、収束することの定義で$\varepsilon = 1$とすることで、ある自然数$N$が存在して$N$以上のすべての自然数$n$に対して$|a_n-a| < 1$であるので、三角不等式から
+$$
+|a_n| = |a_n-a+a| \le |a_n-a|+|a| \le |a|+1
+$$
+が成り立つ。
+$N$未満の自然数は$n = 0, 1, 2, 3, \cdots, N-1$の有限個なので、
+$$
+M = \max\{ |a_0|, |a_1|, |a_2|, |a_3|, \cdots, |a_{N-1}|, |a|+1 \}
+$$
+とおくと$M$は実数で、任意の自然数$n$に対して$|a_n| \le M$である。
+つまり$(a_n)$は有界であることが示された。
+\end{proof}
+
+\begin{proposition}[極限と大小関係]
+\label{t_limord}
+$(a_n)$, $(b_n)$を実数列とし、それぞれ実数$a$, $b$に収束するとする。
+ここでもし各$n$に対して$a_n \le b_n$が成り立つならば$a \le b$である。
+\end{proposition}
+
+\begin{remark}
+この命題は$a_n < b_n$の時でも適用できるが結論は$a \le b$であって、その場合でも$a < b$は得られない。
+\end{remark}
+
+\begin{proof}
+$\varepsilon > 0$を任意の正の数として、$a < b+\varepsilon$を示す。
+ここで、$(a_n)$が$a$に収束することからある自然数$N_a$が存在して$N_a$以上の任意の自然数$n$に対して$|a_n-a| < \frac{\varepsilon}{2}$であり、
+$(a_n)$が$b$に収束することからある自然数$N_b$が存在して$N_b$以上の任意の自然数$n$に対して$|a_n-b| < \frac{\varepsilon}{2}$である。
+ここで$N = \max\{ N_a, N_b \}$とおくと、仮定$a_n \le b_n$より
+$$
+a \le a-a_N+a_N < a_N+\frac{\varepsilon}{2} \le b_N+\frac{\varepsilon}{2} \le b_N-b+b+\frac{\varepsilon}{2} < b+\varepsilon.
+$$
+よって定理\ref{t_ep_real}より$a \le b$と結論付けられる。
+\end{proof}
+
+\begin{proposition}[はさみうちの原理]
+\label{t_squeeze}
+$(a_n)$, $(b_n)$を実数列とし、それぞれ実数$a$, $b$に収束するとする。
+さらに$(c_n)$を実数列として各$n$に対して$a_n \le c_n \le b_n$が成り立ち$a = b$の時、$(c_n)$は$a = b$に収束する。
+\end{proposition}
+
+この命題をもちいれば極限値の決定に加えて収束すること自体いえて便利である。
+
+\begin{proof}
+$\varepsilon > 0$を任意の正の数とする。
+ここで、$(a_n)$が$a$に収束することから十分大きなすべての自然数$n$に対して$|a_n-a| < \varepsilon$であり、
+$(b_n)$が$b$に収束することから十分大きなすべての自然数$n$に対して$|b_n-b| < \varepsilon$である。
+ここで十分大きなすべての自然数$n$に対して、仮定から
+$$
+c_n-a \ge a_n-a > -\varepsilon, \quad c_n-b \le b_n-b < \varepsilon
+$$
+でまとめると
+$$
+|c_n-a| = |c_n-b| < \varepsilon
+$$
+なので、$c_n$は$a = b$に収束する。
+\end{proof}
+
+\begin{corollary}
+\label{t_squeeze2}
+$(a_n)$を数列で$a$を数、$(b_n)$を$0$に収束する実数列とする。
+ここでもし各$n$に対して$|a_n-a| \le b_n$が成り立つならば、$(a_n)$は$a$に収束する。
+\end{corollary}
+
+\begin{proof}
+$0 \le |a_n-a| \le b_n$であり、$(0)$, $(b_n)$は$0$に収束することから、はさみうちの原理（命題\ref{t_squeeze}）より、実数列$(|a_n-a|)_n$は$0$に収束する。
+したがって$(a_n)$は$a$に収束することが示された。
+\end{proof}
+
+\begin{proposition}[極限と四則演算]
+$(a_n)$, $(b_n)$をそれぞれ数$a$, $b$に収束する数列とする。
+$c$を定数とする。
+\begin{enumerate}
+\item
+$a_n+b_n \to a+b$.
+\item
+$c a_n \to c a$.
+\item
+$a_n-b_n \to a-b$.
+\item
+$a_n b_n \to a b$.
+\item
+$b \ne 0$の時、$\frac{a_n}{b_n} \to \frac{a}{b}$.
+\item
+$|a_n| \to |a|$.
+\item
+$\max\lrset{ a_n, b_n } \to \max\lrset{ a, b }$.
+\item
+$\min\lrset{ a_n, b_n } \to \min\lrset{ a, b }$.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+証明でも触れるが、最後の商の極限について$b_n \to b \ne 0$だと十分大きいすべての$n$について$b_n \ne 0$であり、そのような$n$に対して$\frac{a_n}{b_n}$を考えることに注意する。
+\end{remark}
+
+これらのうち極限の定義に立ち返って証明されるのは最初の二つで、他ははさみうちの原理を使うことで見通しよく証明できる。
+また、二つ目は四つ目の特殊な場合($b_n = c$)であるが、先に二つ目を示すことでその内容を使って四つ目を示す。
+
+\begin{proof}
+\begin{enumerate}
+\item
+$\varepsilon > 0$を固定する。
+$a_n \to a$より極限の定義で$\varepsilon$として$\frac{\varepsilon}{2} > 0$として取れば、十分大きな自然数$n$に対して$|a_n-a| < \frac{\varepsilon}{2}$である。
+$b_n \to b$より同様にして、十分大きな自然数$n$に対して$|b_n-b| < \frac{\varepsilon}{2}$である。
+したがって、三角不等式より十分大きな自然数$n$に対して、
+$$
+|(a_n+b_n)-(a+b)| = |a_n-a+b_n-b| \le |a_n-a|+|b_n-b| < \frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon.
+$$
+よって$a_n+b_n \to a+b$である。
+\item
+$c = 0$の時、$c a_n = 0$, $c a = 0$なので$c a_n \to c a$であるため、$c \ne 0$の場合を考えればよい。
+$a_n \to a$より極限の定義で$\varepsilon$として$\frac{\varepsilon}{|c|} > 0$として取れば、十分大きな自然数$n$に対して$|a_n-a| < \frac{\varepsilon}{|c|}$である。
+よって、十分大きな自然数$n$に対して、
+$$
+|c a_n-c a| = |c(a_n-a)| \le |c||a_n-a| < |c|\frac{\varepsilon}{|c|} = \varepsilon.
+$$
+よって、$c a_n \to c a$である。
+\item
+二つ目で$a_n$として$b_n$、$c$として$-1$として適用すれば$-b_n \to -b$である。
+よって、一つ目より
+$$
+a_n-b_n = a_n+(-b_n) \to a+(-b) = a-b
+$$
+である。
+\item
+計算すると
+$$
+|a_n b_n-a b| = |a_n(b_n-b)+(a_n-a)b| \le |a_n||b_n-b|+|b||a_n-a|.
+$$
+ここで、$(a_n)$は収束するので命題\ref{t_convbdd}より有界であるからある実数$M$が存在してすべての自然数$n$に対して$|a_n-a| \le M$とできることから、
+$$
+|a_n b_n-a b| \le M|b_n-b|+|b||a_n-a|.
+$$
+したがって一つ目と二つ目を使うことで右辺は$0$に収束することがわかる。
+よって、系\ref{t_squeeze2}より$a_n b_n \to a b$が結論付けられる。
+\item
+まず、$b_n \to b \ne 0$より極限の定義で$\varepsilon$として$\frac{|b|}{2} > 0$として取れば、十分大きな自然数$n$に対して$|b_n-b| < \frac{|b|}{2}$である。
+したがって三角不等式より、
+$$
+|b_n| = |(b_n-b)+b| \ge ||b|-|b_n-b|| \ge |b|-|b_n-b| > |b|-\frac{|b|}{2} = \frac{|b|}{2} > 0.
+$$
+よって特に$b_n \ne 0$である。
+また、計算すると
+$$
+\lrabs{\frac{a_n}{b_n}-\frac{a}{b}} = \frac{|a_n b-a b_n|}{|b||b_n|} = \frac{|(a_n-a)b-a(b_n-b)|}{|b||b_n|} \le \frac{|b||a_n-a|+|a||b_n-b|}{|b||b_n|} \le 2\frac{|b||a_n-a|+|a||b_n-b|}{|b|^2}.
+$$
+ここで一つ目と二つ目を使うことで右辺は$0$に収束することがわかる。
+よって、系\ref{t_squeeze2}より$\frac{a_n}{b_n} \to \frac{a}{b}$が結論付けられる。
+\item
+三角不等式より、
+$$
+||a_n|-|a|| \le |a_n-a|
+$$
+なので、系\ref{t_squeeze2}より$|a_n| \to |a|$がわかる。
+\item
+一般に実数$x$, $y$に対して
+$$
+\max\lrset{ x, y } = \frac{x+y}{2}+\frac{|y-x|}{2}
+$$
+が成り立つことに注意する。
+よって
+$$
+\max\lrset{ a_n, b_n } = \frac{a_n+b_n}{2}+\frac{|b_n-a_n|}{2} \to \frac{a+b}{2}+\frac{|b-a|}{2} = \max\lrset{ a, b }
+$$
+である。
+\item
+一般に実数$x$, $y$に対して
+$$
+\min\lrset{ x, y } = \frac{x+y}{2}-\frac{|y-x|}{2}
+$$
+が成り立つことに注意する。
+よって
+$$
+\min\lrset{ a_n, b_n } = \frac{a_n+b_n}{2}-\frac{|b_n-a_n|}{2} \to \frac{a+b}{2}-\frac{|b-a|}{2} = \min\lrset{ a, b }
+$$
+である。
+\end{enumerate}
+\end{proof}
+
+これらの計算は$\pm \infty$に発散する場合でもある程度拡張できる。
+以下では特に重要な場合を示す。
+
+\begin{proposition}
+$(a_n)$を実数列とする。
+\begin{enumerate}
+\item
+$a_n \to +\infty$ならば$a_n^{-1} \to 0$。
+\item
+$a_n \to -\infty$ならば$a_n^{-1} \to 0$。
+\item
+十分大きい任意の自然数$n$に対して$a_n > 0$かつ$a_n \to 0$ならば$a_n^{-1} \to +\infty$。
+\item
+十分大きい任意の自然数$n$に対して$a_n < 0$かつ$a_n \to 0$ならば$a_n^{-1} \to -\infty$。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+一つ目を示す。
+まず、$a_n \to +\infty$の定義で$M = 1$とすることで十分大きい自然数$n$に対して$a_n > 1 > 0$であることに注意する。
+$\varepsilon > 0$を固定する。
+この時、$a_n \to +\infty$の定義で$M = \varepsilon^{-1} > 0$とすることで十分大きい自然数$n$に対して$a_n > M$である。
+よって、十分大きい自然数$n$に対して
+$$
+|a_n^{-1}-0| = a_n^{-1} \le M^{-1} = \varepsilon.
+$$
+よって、$a_n^{-1} \to 0$である。
+二つ目は同様にして証明できる。
+
+三つ目を示す。
+$M > 0$を固定する。
+この時、$a_n \to 0$の定義で$\varepsilon = M^{-1} > 0$とすることで十分大きい自然数$n$に対して$|a_n| < \varepsilon$である。
+ここでもう一つの仮定より十分大きい自然数$n$に対して$|a_n| = a_n < \varepsilon$であるから、
+$$
+a_n^{-1} > \varepsilon^{-1} = M.
+$$
+よって、$a_n^{-1} \to +\infty$である。
+四つ目も同様にして証明できる。
+\end{proof}
+
+$\infty-\infty$, $0\times\infty$, $\frac{\infty}{\infty}$, $\frac{0}{0}$の形を\emph{不定形}といい、不定形以外の極限は$\pm \infty$を含んでいても基本的に正当化される。
+
+以上を用いると様々な数列の極限を求めることができる。
+
+\begin{example}
+\begin{itemize}
+\item
+$\frac{1}{n} \to 0$.
+\item
+$\frac{n+2}{3 n+4} = \frac{1+2 n^{-1}}{3+4 n^{-1}} \to \frac{1+2\cdot 0}{3+4\cdot 0} = \frac{1}{3}$.
+\end{itemize}
+\end{example}
+
+同じ$+\infty$に発散する数列でも発散の速度は
+$$
+n, \quad n^2, \quad n^3, \quad 2^n, \quad 3^n, \quad n!, \quad n^n
+$$
+の順に早くなる。
+つまり、左にあるものをそれより右にあるもので割って得られる数列は$0$に収束する。
+
+\begin{proposition}[等比数列の極限]
+\label{t_limgeomseq}
+$c$を実数とする。
+\begin{enumerate}
+\item
+$c > 1$の時、$c^n \to +\infty$ ($n \to \infty$)。
+\item
+$c = 1$の時、$c^n \to 1$ ($n \to \infty$)。
+\item
+$-1 < c < 1$の時、$c^n \to 0$ ($n \to \infty$)。
+\item
+$c \le -1$の時、$(c^n)$は$n \to \infty$で発散する（$\pm \infty$に発散もしない）。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+\item
+$c > 1$の時、$c = 1+a$とする$a > 0$が取れ、二項定理より$n \ge 1$において
+$$
+c^n = (1+a)^n = 1+n a+\binom{n}{2}a^2+\cdots+\binom{n}{n}a^n \ge n a.
+$$
+ここで最右辺は$n \to \infty$で$+\infty$に発散するので、$c^n \to \infty$である。
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+数列$(a_n)$に対して、実数列$(|\frac{a_{n+1}}{a_n}|)$がある$1$より小さい実数$c$に収束したとする。
+この時、$a_n \to 0$である。
+\end{proposition}
+
+\begin{proof}
+$0 \le c < 1$より$d = \frac{1+c}{2}$とおくと$0 \le d < 1$で$d$を公比とする等比数列に帰着させたい。
+そこで$\varepsilon = d-c = \frac{1-c}{2} > 0$とおくと、十分大きいすべての自然数$n$に対して
+$$
+\lrabs{\frac{a_{n+1}}{a_n}} \le c+\varepsilon = d
+$$
+つまり、$|a_{n+1}| \le d|a_n|$である。
+したがってこれを繰り返し用いることで、
+$$
+|a_n| \le d|a_{n-1}| \le d^2|a_{n-2}| \le \cdots \le d^n|a_0|.
+$$
+よって、$0 \le d < 1$より命題\ref{t_limgeomseq}から最右辺は$0$に収束するので、はさみうちの原理から$a_n \to 0$である。
+\end{proof}
+
+\section{単調数列の極限}
+
+一般に数列は収束するとは限らないがそれを保証する単調収束定理がある。
+その中で重要になる概念が次の単調性と有界性である。
+
+\begin{definition}[数列の単調性]
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+任意の自然数$n$に対して$a_n \le a_{n+1}$が成り立つ、つまり
+$$
+a_0 \le a_1 \le a_2 \le a_3 \le \cdots
+$$
+のとき、$(a_n)$は\emph{単調増加}という。
+\item
+任意の自然数$n$に対して$a_n \ge a_{n+1}$が成り立つ、つまり
+$$
+a_0 \ge a_1 \ge a_2 \ge a_3 \ge \cdots
+$$
+のとき、$(a_n)$は\emph{単調減少}という。
+\end{itemize}
+\end{definition}
+
+\begin{example}
+$(n)_{n = 0}^\infty$は単調増加であり、$(\frac{1}{n})_{n = 1}^\infty$は単調減少である。
+\end{example}
+
+\begin{definition}[数列の有界性]
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+集合$\{ a_n \mid n \in \mathbb{N} \}$が上に有界の時、すなわちある実数$M$が存在して任意の$n \in \mathbb{N}$に対して$a_n \le M$の時、$(a_n)$は上に有界という。
+\item
+集合$\{ a_n \mid n \in \mathbb{N} \}$が下に有界の時、すなわちある実数$M$が存在して任意の$n \in \mathbb{N}$に対して$a_n \ge M$の時、$(a_n)$は下に有界という。
+\item
+上に有界かつ下に有界の時、$(a_n)$は有界であるという。
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+実数列$(a_n)_{n \in \mathbb{N}}$が有界であることとある実数$M$が存在して任意の$n \in \mathbb{N}$に対して$|a_n| \le M$が成り立つことは同値である。
+\end{remark}
+
+\begin{theorem}[単調収束定理]
+\label{t_mono_conv}
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+$(a_n)$が単調増加かつ上に有界のとき、$(a_n)$は収束する。
+\item
+$(a_n)$が単調減少かつ下に有界のとき、$(a_n)$は収束する。
+\end{itemize}
+\end{theorem}
+
+\begin{remark}
+証明を見ればわかるが実は極限は、$(a_n)$が単調増加かつ上に有界のとき上限$\sup_n a_n$で、$(a_n)$が単調減少かつ下に有界のとき上限$\inf_n a_n$である。
+また、有界性の仮定は極限を実数の範囲に収めるためで、$(a_n)$が単調増加かつ上に有界でないときは$+\infty$に発散し、$(a_n)$が単調減少かつ下に有界でないときは$-\infty$に発散することがわかる。
+そのため$\pm \infty$を考慮に入れれば、$(a_n)$が単調増加のとき$a_n \to \sup_n a_n$で、$(a_n)$が単調減少のとき$a_n \to \inf_n a_n$とまとめて書くことができる。
+\end{remark}
+
+\begin{proof}
+$(a_n)$が単調増加かつ上に有界の場合のみ証明する。
+まず、$(a_n)$が上に有界であることから集合$\{ a_n \mid n \in \mathbb{N} \}$には上限$\sup_n a_n \in \mathbb{R}$が存在する。
+$\varepsilon > 0$を固定すると、上限の同値な条件から$a_N > \sup_n a_n-\varepsilon$を満たす自然数$N$が存在する。
+ここで、$(a_n)$が単調増加であることから$N$以上の自然数$n$に対して$a_n \ge a_N > \sup_n a_n-\varepsilon$、また$a_n \le \sup_n a_n$であるから、$|a_n-\sup_n a_n| < \varepsilon$である。
+したがって、$a_n \to \sup_n a_n$が得られ、特に$(a_n)$は収束する。
+\end{proof}
+
+有理数からなる集合でも上限・下限が無理数になりうるように、有理数列でも無理数に収束することがありうる。
+そのため有理数は極限操作について閉じていないが、実数だとある程度閉じていることになる。
+実は自然数列の極限は存在したら自然数であり、整数列では整数である。
+極限操作について閉じることは自然数や整数では成り立っていたものが有理数で崩れてしまい、実数になってまた成り立つようになっている。
+
+このような数列の収束を保証する定理を用いると、次のような手法で数列の極限を求めることができる。
+
+つまり、関数$F$が与えられたときに\emph{漸化式}
+\begin{equation}
+\label{e_rec}
+a_{n+1} = F(a_n)
+\end{equation}
+を考える。
+これは\emph{初期値}$a_0$が与えられたら、$n = 0, 1, 2, 3, \cdots$に対して$a_{n+1} = f(a_n)$で$a_0, a_1, a_2, a_3, \cdots$が（数学的帰納法から）求まり、数列$(a_n)_{n = 0}^\infty$が定まりその極限を考える。
+ここでもし$(a_n)$が何らかの数$a$に収束したとする。
+後で示す命題から$(a_{n+1})$も$a$に収束することと、さらにもし$(F(a_n))$が$F(a)$に収束したとする（これを保証するのが関数の連続性である）と
+\begin{equation}
+\label{e_limiteq}
+a = F(a)
+\end{equation}
+が成り立つ。
+式\eqref{e_limiteq}は$a$についての方程式とみなすと漸化式\eqref{e_rec}の\emph{極限方程式}と呼ばれ、これに解がただ一つ存在する場合は極限$a$はその解以外にあり得ないので極限が求まる。
+
+つまり、単調収束定理などで収束を保証して極限方程式の解の一意存在をいえば極限が求まる。
+これによって、一般項を求めることが難しい問題でも極限を計算することができる。
+
+\begin{example}
+$c \ge 0$として、漸化式
+$$
+a_{n+1} = \frac{1}{2}\lrparen*{a_n+\frac{c}{a_n}}
+$$
+を考える。
+これは$x^2-c$の根つまり$\sqrt{c}$をニュートン法によって求める際に現れる漸化式である。
+
+$a_0 \ge \sqrt{c}$とするとき、算術平均・幾何平均の不等式から$n = 0, 1, 2, 3, \cdots$に対して
+$$
+a_{n+1} = \frac{1}{2}\lrparen*{a_n+\frac{c}{a_n}} \ge \sqrt{a_n\cdot\frac{c}{a_n}} = \sqrt{c}
+$$
+で特に$(a_n)$は下に有界である。
+さらに
+$$
+a_{n+1}-a_n = \frac{1}{2}\lrparen*{\frac{c}{a_n}-a_n} = \frac{c-a_n^2}{2 a_n} \le 0
+$$
+より、$(a_n)$は単調減少である。
+よって単調収束定理より$(a_n)$は何らかの実数$a$に収束するが極限方程式
+$$
+a = \frac{1}{2}\lrparen*{a+\frac{c}{a}}
+$$
+を満たしこれを解くと$a = \pm\sqrt{c}$である。
+ここで$a_n \ge \sqrt{c}$なので命題\ref{t_limord}より$a \ge \sqrt{c}$から$a = \sqrt{c}$のみ適。
+よって、$a_n \to \sqrt{c}$ ($n \to \infty$)が結論付けられる。
+
+この問題は極限方程式の解が$a = \sqrt{c}$であることから$a_n \to \sqrt{c}$を示すために、
+$$
+|a_{n+1}-\sqrt{c}| = \frac{(a_n-\sqrt{c})^2}{2|a_n|} \le \frac{1}{2}|a_n-\sqrt{c}|
+$$
+と計算することで
+$$
+|a_n-\sqrt{c}| \le \frac{1}{2^n}|a_0-\sqrt{c}| \to 0
+$$
+より同じ結論を得ることができる。
+後者の解法の方が収束の速さまでわかる一方、前者の方が計算が楽といえる。
+\end{example}
+
+\begin{example}
+漸化式
+$$
+a_{n+1} = \sqrt{2+a_n}
+$$
+を考える。
+これは$\sqrt{2+\sqrt{2+\sqrt{2+\sqrt{2}}}}$のような面白い項からなる数列を作る。
+
+$0 \le a_n \le 2$ならば$a_{n+1} = \sqrt{2+a_n} \ge \sqrt{2} > 0$かつ$a_{n+1} = \sqrt{2+a_n} \le \sqrt{2+2} = 2$なので、$0 \le a_0 \le 2$とすると任意の$n = 0, 1, 2, 3, \cdots$に対して$0 \le a_n \le 2$で特に$(a_n)$は上に有界である。
+さらに
+$$
+a_{n+1}^2-a_n^2 = 2+a_n-a_n^2 = -(a_n+1)(a_n-2) \ge 0
+$$
+より$a_n \ge 0$に注意して、$(a_n)$は単調増加である。
+よって単調収束定理より$(a_n)$は何らかの実数$a$に収束するが極限方程式
+$$
+a = \sqrt{2+a}
+$$
+を満たしこれを解くと$a = 2$である。
+よって、$a_n \to 2$ ($n \to \infty$)が結論付けられる。
+
+この問題も前回の問題同様に、極限方程式の解が$a = 2$であることから$a_n \to 2$を示すために、
+$$
+|a_{n+1}-2| = |\sqrt{2+a_n}-2| = \frac{|2+a_n-4|}{\sqrt{2+a_n}+2} \le \frac{1}{2}|a_n-2|
+$$
+と計算することで
+$$
+|a_n-2| \le \frac{1}{2^n}|a_0-2| \to 0
+$$
+より同じ結論を得ることができる。
+\end{example}
+
+\section{部分列の極限}
+
+$\pm 1$を交互に取る数列$((-1)^n)_{n = 0}^\infty$はそれ自身は極限の定義に照らし合わせるとどのような数にも収束しない（発散する）が、
+奇数番目の項や偶数番目の項に制限すれば$\pm 1$に収束するので、それらを極限のようなものとして扱いたい場合がある。
+そのような場合に重要になる概念が部分列である。
+
+\begin{definition}[部分列]
+$(a_n)_{n \in \mathbb{N}}$を数列とする。
+ここで、$(n_k)_{k \in \mathbb{N}}$を自然数列であって、各$k$に対して$n_k < n_{k+1}$が成り立つ、つまり
+$$
+n_0 < n_1 < n_2 < n_3 < \cdots
+$$
+のとき、$(a_n)$のうち項を$n = n_k$に制限して得られる数列$(a_{n_k})_{k \in \mathbb{N}}$を$(a_n)$の\emph{部分列}という。
+
+部分列$(a_{n_k})_{k \in \mathbb{N}}$が何らかの数$a$に収束する時、もとの数列$(a_n)$は$a$に\emph{部分列収束}するあるいは$a$が$(a_n)$の\emph{部分列極限}であるという。
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+\item
+$n_k = k$として取ると$(a_{n_k})_k = (a_k)_k$なので、$(a_n)$自身は$(a_n)$の部分列であり、特に部分列は常に存在する。
+\item
+部分列極限は部分列の取り方によって変わるので一意とは限らない。
+また、部分列は収束するとは限らないので存在とも限らない。
+\end{itemize}
+\end{remark}
+
+\begin{example}
+\begin{itemize}
+\item
+数列$((-1)^n)_{n = 0}^\infty$に対して$n$が偶数に制限すると$((-1)^{2 k})_{k = 0}^\infty = (+1)_{k = 0}^\infty$で$+1$に部分列収束し、$n$が奇数に制限すると$((-1)^{2 k+1})_{k = 0}^\infty = (-1)_{k = 0}^\infty$で$-1$に部分列収束することがわかる。
+\item
+実は数列$(\sin n)_{n = 0}^\infty$の部分列極限全体からなる集合は閉区間$[-1, 1]$になる（三角関数の周期$2\pi$が無理数であることに注意する）。
+\end{itemize}
+\end{example}
+
+もとの数列が収束するならば部分列は同じ極限に収束する。
+
+\begin{proposition}
+数列$(a_n)_{n \in \mathbb{N}}$が数$a$に収束するとすると、任意の部分列$(a_{n_k})_{k \in \mathbb{N}}$も$a$に収束する。
+% 特に部分列極限は一意に存在する。
+\end{proposition}
+
+\begin{proof}
+定義から$n_k \ge k$がわかることに注意する（特に$n_k \to \infty$ ($k \to \infty$)である）。
+$\varepsilon > 0$に対して、$a_n \to a$より任意の$N$以上の自然数$n$に対して$|a_n-a| < \varepsilon$となるような自然数$N$が存在する。
+ここで$K = N$とおくと任意の$K$以上の自然数$k$に対して、$n_k \ge k \ge N$なので、$|a_{n_k}-a| < \varepsilon$である。
+よって、$a_{n_k} \to \infty$である。
+\end{proof}
+
+これを用いれば$a_n \to a$のとき$a_{n+1} \to a$などがいえる。
+
+部分列極限の中でも最大のものと最小のものはそれぞれ上極限、下極限と呼ばれる。
+
+\begin{definition}[上極限・下極限]
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+上限・下限を使って定義される次の数を$(a_n)$の$n \to \infty$での\emph{上極限}という。
+$$
+\limsup_{n \to \infty}a_n = \inf_{k \in \mathbb{N}}\sup\{ a_n \mid n \in \mathbb{N}, n \ge k \}.
+$$
+\item
+上限・下限を使って定義される次の数を$(a_n)$の$n \to \infty$での\emph{下極限}という。
+$$
+\liminf_{n \to \infty}a_n = \sup_{k \in \mathbb{N}}\inf\{ a_n \mid n \in \mathbb{N}, n \ge k \}.
+$$
+\end{itemize}
+\end{definition}
+
+上極限・下極限は上限・下限で定義されるので（$\pm \infty$を認めれば）必ず存在するという利点がある。
+
+\begin{remark}
+自然数$n$に対して$n$以上の自然数の集合は$n$が増えると小さくなるので$\sup\{ a_k \mid k \in \mathbb{N}, k \ge n \}$は単調減少である。
+したがって上極限の定義の中の下限は極限にかえることができる。
+下極限も同様で、つまり
+$$
+\limsup_{n \to \infty}a_n = \lim_{k \to \infty}\sup\{ a_n \mid n \in \mathbb{N}, n \ge k \},
+\quad \liminf_{n \to \infty}a_n = \lim_{k \to \infty}\inf\{ a_n \mid n \in \mathbb{N}, n \ge k \}
+$$
+が成立する。
+\end{remark}
+
+また、定義から$\liminf a_n \le \limsup a_n$である。
+この等号が成立するための条件が極限が存在することになる。
+
+\begin{proposition}
+$(a_n)_{n \in \mathbb{N}}$を数列とする。
+\begin{itemize}
+\item
+$(a_n)$が収束するならば、$\liminf a_n = \limsup a_n = \lim a_n$である。
+\item
+$\liminf a_n = \limsup a_n$ならば$(a_n)$はその値に収束する。
+\end{itemize}
+\end{proposition}
+
+\begin{remark}
+この定理は$a_n \to \pm \infty$の場合も同様のものが成立する。
+\end{remark}
+
+\begin{proof}
+前半はすぐわかるので証明を省略する。
+後半について任意の自然数$k$に対して
+$$
+\inf\{ a_n \mid n \in \mathbb{N}, n \ge k \} \le a_k \le \sup\{ a_n \mid n \in \mathbb{N}, n \ge k \}
+$$
+であり最左辺と最右辺がともに$\liminf a_n = \limsup a_n$に収束するので、
+はさみうちの原理より$a_n \to \liminf a_n = \limsup a_n$である。
+\end{proof}
+
+\begin{proposition}
+\label{t_ord_slim}
+$(a_n)_{n \in \mathbb{N}}$, $(b_n)_{n \in \mathbb{N}}$を十分大きい任意の自然数$n$に対して$a_n \le b_n$を満たす実数列とする。
+\begin{itemize}
+\item
+$\limsup a_n \le \limsup b_n$.
+\item
+$\liminf a_n \le \liminf b_n$.
+\end{itemize}
+\end{proposition}
+
+この命題は命題\ref{t_limord}を一般化したものになっている。
+
+\begin{remark}
+この命題は上極限・下極限が$\pm \infty$の場合でも成立する。
+\end{remark}
+
+\begin{proof}
+上極限・下極限の定義から容易に証明できるので詳細は省略する。
+\end{proof}
+
+\begin{proposition}
+\label{t_max_ulim}
+$(a_n)_{n \in \mathbb{N}}$を実数列とする。
+\begin{itemize}
+\item
+$a_{n_k} \to \limsup a_n$となる部分列$(a_{n_k})$が存在する。
+\item
+$a_{n_k} \to \liminf a_n$となる部分列$(a_{n_k})$が存在する。
+\end{itemize}
+\end{proposition}
+
+\begin{remark}
+この命題は上極限・下極限が$\pm \infty$の場合でも成立する。
+\end{remark}
+
+\begin{proof}
+上極限のみ示す。
+$\limsup_{n \to \infty}a_n$が$+\infty$でないつまり実数の場合を証明する。
+各$k \in \mathbb{N}$に対して実数$b_k = \limsup a_n-\frac{1}{k+1}$を定めると$b_k \to \limsup a_n$であり、$b_k < \sup\{ a_n \mid n \in \mathbb{N}, n \ge k \}$であることに注意する。
+よって$b_k < a_n$となる自然数$n \ge k$が存在するので、自然数列$n_k$を
+$$
+n_{k+1} = \min\{ n \in \mathbb{N} \mid b_{k+1} < a_n, n \ge n_k+1 > n_k \},
+\quad n_0 = \min\{ n \in \mathbb{N} \mid b_0 < a_n \}
+$$
+で定義すると、$(a_{n_k})$は$(a_n)$の部分列であり、
+$$
+b_k < a_{n_k} \le \sup\{ a_n \mid n \in \mathbb{N}, n \ge k \}
+$$
+を満たす。
+最左辺も再右辺も$\limsup_{n \to \infty}a_n$に収束するので、はさみうちの原理より部分列$(a_{n_k})$も$\limsup_{n \to \infty}a_n$に収束する。
+
+$\limsup_{n \to \infty}a_n = +\infty$の場合は$b_k = k$として同じようなことをすればよい。
+下極限については同様に証明できる（詳細省略）。
+\end{proof}
+
+特に次が従う。
+
+\begin{theorem}[ボルツァーノ・ワイエルシュトラスの定理]
+有界な実数列は収束する部分列を持つ。
+\end{theorem}
+
+\begin{proof}
+実数列$(a_n)$の上極限$\limsup a_n$はその定義から$(a_n)$が有界だと$\pm \infty$でないことがわかる。
+よって、命題\ref{t_max_ulim}を用いれば$(a_n)$は実数$\limsup a_n$に収束する部分列が存在することがわかるので、定理が示された。
+\end{proof}
+
+\begin{theorem}
+$(a_n)_{n \in \mathbb{N}}$を数列、$a$を数とする。
+もし$(a_n)$の任意の部分列$(a_{n_k})$が$a$に部分列収束する、つまり$a$に収束する部分列$(a_{n_{k_l}})$が存在するとき、$(a_n)$は$a$に収束する。
+\end{theorem}
+
+\begin{proof}
+実数列$(|a_n-a|)_n$を考えると命題\ref{t_max_ulim}より上極限$\limsup_n|a_n-a|$に収束する部分列$(|a_{n_k}-a|)_k$が取れる。
+仮定より$(a_{n_k})_k$は$a$に部分列収束するので$|a_{n_{k_l}}-a| \to 0$となる$(|a_{n_k}-a|)_k$の部分列$(|a_{n_{k_l}}-a|)_l$が存在する。
+$(|a_{n_{k_l}}-a|)_l$は$\limsup_n|a_n-a|$にも収束すると言え、極限の一意性から$\limsup_n|a_n-a| = 0$である。
+したがって、$0 \le \liminf_n|a_n-a| \le \limsup_n|a_n-a| = 0$より、$(|a_n-a|)_n$は$0$に収束し、つまり$(a_n)$は$a$に収束する。
+\end{proof}
+
+以上の内容をもとに漸化式で定まる数列の極限について一般論を述べる。
+
+\begin{theorem}
+$I$を実数の集合、$F = F(a, n)$, $G = G(a)$を関数とする。
+\begin{itemize}
+\item
+$I$, $F$, $G$が
+\begin{enumerate}
+\item
+任意の$a \in I$と$n \in \mathbb{N}$に対して$F(a, n) \in I$、つまり$F(I, \mathbb{N}) \subset I$。
+\item
+$I$は上に有界である。
+\item
+任意の$a \in I$と$n \in \mathbb{N}$に対して$a \ge F(a, n)$。
+\item
+任意の$(a_n)_{n \in \mathbb{N}}$ ($a_n \in I$)と$a \in I$に対して$a_n \to a \implies F(a_n, n) \to G(a)$。
+\item
+$a = G(a)$を満たす$a \in I$は一意である。
+\end{enumerate}
+を満たす時、漸化式$a_{n+1} = F(a_n, n)$によって任意の$a_0 \in I$に対して数列$(a_n)_{n \in \mathbb{N}}$ ($a_n \in I$)が定義でき、$(a_n)$は上に有界かつ単調増加より収束し極限を$a$とおくと、$a$は極限方程式$a = G(a)$の一意解であり$a = \max I$である。
+\item
+$I$, $F$, $G$が
+\begin{enumerate}
+\item
+任意の$a \in I$と$n \in \mathbb{N}$に対して$F(a, n) \in I$、つまり$F(I, \mathbb{N}) \subset I$。
+\item
+$I$は下に有界である。
+\item
+任意の$a \in I$と$n \in \mathbb{N}$に対して$a \le F(a, n)$。
+\item
+任意の$(a_n)_{n \in \mathbb{N}}$ ($a_n \in I$)と$a \in I$に対して$a_n \to a \implies F(a_n, n) \to G(a)$。
+\item
+$a = G(a)$を満たす$a \in I$は一意である。
+\end{enumerate}
+を満たす時、漸化式$a_{n+1} = F(a_n, n)$によって任意の$a_0 \in I$に対して数列$(a_n)_{n \in \mathbb{N}}$ ($a_n \in I$)が定義でき、$(a_n)$は下に有界かつ単調減少より収束し極限を$a$とおくと、$a$は極限方程式$a = G(a)$の一意解であり$a = \min I$である。
+\end{itemize}
+\end{theorem}
+
+\begin{remark}
+三つ目の仮定は一般には外せない。
+例えば$I = [-1, 1]$, $F(a, n) = G(a) = -a$とおくと、三番目以外の仮定を満たすが、
+$a_n = (-1)^n a_0$となり$a_0 \ne 0$のとき$(a_n)$は発散する。
+\end{remark}
+
+数列の極限の最後に次のような極限に関する定理を紹介する。
+
+\begin{theorem}
+数列$(a_n)_{n = 1}^\infty$が$a$に収束するとする。
+この時、
+$$
+\frac{a_1+\cdots+a_n}{n} \to a \quad (n \to \infty)
+$$
+が成り立つ。
+\end{theorem}
+
+\begin{remark}
+$(a_n)_{n = 1}^\infty$が$\pm \infty$に発散する時でも同様の結果が成り立つ。
+\end{remark}
+
+この定理の証明にはある程度極限の定義に立ち戻る必要がある。
+
+\begin{proof}
+三角不等式より$n = 1, 2, 3, \cdots$に対して
+$$
+\lrabs{\frac{a_1+\cdots+a_n}{n}-a} = \frac{|(a_1-a)+\cdots+(a_n-a)|}{n} \le \frac{|a_1-a|+\cdots+|a_n-a|}{n}
+$$
+であることに注意する。
+$\varepsilon > 0$に対して、$a_n \to a$であることから、$N$以上のすべての自然数$n$に対して$|a_n-a| < \varepsilon$となるような$N = 1, 2, 3, \cdots$が存在するので、$N$以上の自然数$n$に対して、
+$$
+\lrabs{\frac{a_1+\cdots+a_n}{n}-a}
+< \frac{|a_1-a|+\cdots+|a_N-a|+(n-N)\varepsilon}{n}
+= \varepsilon+\frac{|a_1-a|+\cdots+|a_N-a|-N\varepsilon}{n}
+$$
+である。
+ここで$n \to \infty$とすると最右辺は$\varepsilon$に収束するので、
+$$
+\limsup_{n \to \infty}\lrabs{\frac{a_1+\cdots+a_n}{n}-a} \le \varepsilon
+$$
+で、$\varepsilon$は任意の正の数なので、ほしかった極限の式が得られる。
+\end{proof}
+
+\section{関数の極限}
+
+この節では実数の集合$X$上で定義された実数値関数$f: X \to \mathbb{R}$を考える。
+この時、$\varepsilon$論法により$f$の極限を定義する。
+$f$の極限を定義するにあたって、実数$a$は任意の正の数$\delta$に対して、$0 < |x-a| < \delta$を満たす$x \in X$の存在を暗に仮定している。
+このような$a$を$X$の\emph{極限点}という。
+$X$として閉区間から有限個の点を取り除いて得られる集合を想定していてその場合は$a$はもとの閉区間の点なら何でもよいが、
+$\{ \frac{1}{n} \mid n = 1, 2, 3, \cdots \}$のような集合の場合は極限点は$0$のみでありそれ以外の点では極限を考えられないことに注意する。
+
+\begin{definition}[関数の極限]
+$f$を実数の集合$X$上で定義された実数値関数、$a$を$X$の極限点、$l$を実数とする。
+
+関数$f(x)$が$x \to a$で実数$l$に\emph{収束する}あるいは$l$が$f(x)$の$x \to a$での\emph{極限である}とは
+\begin{quote}
+任意の$\varepsilon > 0$に対して、ある$\delta > 0$が存在して、$0 < |x-a| < \delta$を満たす任意の$x \in X$に対して$|f(x)-l| < \varepsilon$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall \varepsilon > 0, \exists \delta > 0, \forall x \in X, 0 < |x-a| < \delta \implies |f(x)-l| < \varepsilon.
+$$
+この時、$f(x) \to l$ ($x \to a$)や$\lim_{x \to a}f(x) = l$と書く。
+
+関数$f(x)$が$x \to a$で\emph{正の無限大に発散する}とは
+\begin{quote}
+任意の$M > 0$に対して、ある$\delta > 0$が存在して、$0 < |x-a| < \delta$を満たす任意の$x \in X$に対して$f(x) > +M$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \exists \delta > 0, \forall x \in X, 0 < |x-a| < \delta \implies f(x) > +M.
+$$
+この時、$f(x) \to +\infty$ ($x \to a$)や$\lim_{x \to a}f(x) = +\infty$と書く。
+
+関数$f(x)$が$x \to a$で\emph{負の無限大に発散する}とは
+\begin{quote}
+任意の$M > 0$に対して、ある$\delta > 0$が存在して、$0 < |x-a| < \delta$を満たす任意の$x \in X$に対して$f(x) < -M$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \exists \delta > 0, \forall x \in X, 0 < |x-a| < \delta \implies f(x) < -M.
+$$
+この時、$f(x) \to -\infty$ ($x \to a$)や$\lim_{x \to a}f(x) = -\infty$と書く。
+\end{definition}
+
+ここで「ある$\delta > 0$が存在して、$0 < |x-a| < \delta$を満たす任意の$x \in X$に対して」の部分はしばしば「$a$でなく\emph{十分$a$に近い}任意の$x \in X$に対して」と略し、論理記号では$\forall x \in X, 0 < |x-a| \ll 1$と表す。
+
+$f(x) \to l$は$|f(x)-l| \to 0$と同値である。
+
+\begin{definition}[関数の無限大での極限]
+$f$を実数の集合$X$上で定義された実数値関数、$l$を実数とする。
+
+関数$f(x)$が$x \to +\infty$で実数$l$に収束するあるいは$l$が$f(x)$の$x \to +\infty$での極限であるとは
+\begin{quote}
+任意の$\varepsilon > 0$に対して、ある$N > 0$が存在して、$x > +N$を満たす任意の$x \in X$に対して$|f(x)-l| < \varepsilon$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall \varepsilon > 0, \exists N > 0, \forall x \in X, x > +N \implies |f(x)-l| < \varepsilon.
+$$
+この時、$f(x) \to l$ ($x \to +\infty$)や$\lim_{x \to +\infty}f(x) = l$と書く。
+
+関数$f(x)$が$x \to +\infty$で正の無限大に発散するとは
+\begin{quote}
+任意の$M > 0$に対して、ある$N > 0$が存在して、$x > +N$を満たす任意の$x \in X$に対して$f(x) > +M$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \exists N > 0, \forall x \in X, x > +N \implies f(x) > +M.
+$$
+この時、$f(x) \to +\infty$ ($x \to +\infty$)や$\lim_{x \to +\infty}f(x) = +\infty$と書く。
+
+関数$f(x)$が$x \to +\infty$で負の無限大に発散するとは
+\begin{quote}
+任意の$M > 0$に対して、ある$N > 0$が存在して、$x > +N$を満たす任意の$x \in X$に対して$f(x) < -M$が成り立つ
+\end{quote}
+ことをいう。
+なお、この条件を論理記号で書くと以下になる。
+$$
+\forall M > 0, \exists N > 0, \forall x \in X, x > +N \implies f(x) < -M.
+$$
+この時、$f(x) \to -\infty$ ($x \to +\infty$)や$\lim_{x \to +\infty}f(x) = -\infty$と書く。
+
+$x \to -\infty$での極限は同様にして定義される（詳細省略）。
+\end{definition}
+
+ここで「ある$N > 0$が存在して、$x > +N$を満たす任意の$x \in X$に対して」の部分はしばしば「\emph{十分大きい}任意の$x \in X$に対して」と略し、論理記号では$\forall x \in X, x \gg +0$と表す。
+省略してしまったが「ある$N > 0$が存在して、$x < -N$を満たす任意の$x \in X$に対して」の部分はしばしば「\emph{十分小さい}任意の$x \in X$に対して」と略し、論理記号では$\forall x \in X, x \ll -0$と表す。
+
+関数$f(x)$が$x \to a$で（$a = \pm \infty$も含む）何らかの実数に収束する時$f(x)$は$x \to a$で\emph{収束する}といい、そうでない時は\emph{発散する}という。
+収束せず正の無限大にも負の無限大にも発散しない時、$f(x)$は$x \to a$で\emph{振動する}という。
+
+数列同様、極限は一意であることに注意する。
+
+また、数列の時同様以下が成立する。
+
+\begin{proposition}[はさみうちの原理]
+関数$f$, $g$, $h$が、$a$でなく十分$a$に近い任意の$x \in X$に対して
+$$
+f(x) \le h(x) \le g(x)
+$$
+と$\lim_{x \to a}f(x) = \lim_{x \to a}g(x) = l$が成り立つとき$h(x) \to l$ ($x \to a$)である。
+
+系として関数$f$に対して、$a$でなく十分$a$に近い任意の$x \in X$に対して
+$$
+|f(x)-l| \le g(x)
+$$
+で$x \to a$で$g(x) \to 0$となる実数値関数$g$が存在する時、$f(x) \to l$ ($x \to a$)である。
+\end{proposition}
+
+\begin{proposition}[極限と演算]
+関数$f$, $g$が$x \to a$で（$a = \pm \infty$も含む）$f(x) \to l$, $g(x) \to m$を満たしているとする。
+\begin{enumerate}
+\item
+$f(x)+g(x) \to l+m$.
+\item
+$f(x)-g(x) \to l-m$.
+\item
+$f(x)g(x) \to l m$.
+\item
+$m \ne 0$の時$\frac{f(x)}{g(x)} \to \frac{l}{m}$.
+\item
+$|f(x)| \to |l|$.
+\item
+$\max\lrset{ f(x), g(x) } \to \max\lrset{ l, m }$.
+\item
+$\min\lrset{ f(x), g(x) } \to \min\lrset{ l, m }$.
+\end{enumerate}
+なお、これらは不定形以外なら$l, m = \pm \infty$でもよい。
+\end{proposition}
+
+\begin{definition}[片側極限]
+\end{definition}
+
+\begin{proposition}
+\end{proposition}
+
+\section{連続関数}
+
+関数に対してそのグラフがつながっているという連続性は極限を使って定義される。
+
+\begin{definition}[連続性]
+$f$を実数の集合$X$上で定義された実数値関数として、$a$を$X$の極限点であり$X$は$a$を元として含むとする。
+ここで$f(x)$が$x \to a$で$f(a)$に収束する、つまり
+$$
+\lim_{x \to a}f(x) = f(a)
+$$
+の時、関数$f(x)$は点$x = a$であるいは関数$f$は点$a$で\emph{連続}であるという。
+
+同様に、$f$を実数の集合$X$上で定義された実数値関数として、$a$を$X$の右極限点であり$X$は$a$を元として含むとする。
+ここで$f(x)$が$x \to a+$で$f(a)$に収束する、つまり
+$$
+\lim_{x \to a+}f(x) = f(a)
+$$
+の時、関数$f(x)$は点$x = a$であるいは関数$f$は点$a$で\emph{右連続}であるという。
+
+$f$を実数の集合$X$上で定義された実数値関数として、$a$を$X$の左極限点であり$X$は$a$を元として含むとする。
+ここで$f(x)$が$x \to a-$で$f(a)$に収束する、つまり
+$$
+\lim_{x \to a-}f(x) = f(a)
+$$
+の時、関数$f(x)$は点$x = a$であるいは関数$f$は点$a$で\emph{左連続}であるという。
+\end{definition}
+
+\begin{remark}
+集合$X$上の関数$f(x)$が点$x = a$で連続であることをまとめなおすと
+\begin{quote}
+任意の$\varepsilon > 0$に対して、ある$\delta > 0$が存在して、$|x-a| < \delta$を満たす任意の$x \in X$に対して（十分$a$に近い任意の$x \in X$に対して）$|f(x)-f(x)| < \varepsilon$が成り立つ
+\end{quote}
+となる。
+\end{remark}
+
+関数の極限の性質を引き継いで連続性について以下が成立する。
+
+\begin{proposition}[連続と演算]
+関数$f(x)$, $g(x)$が点$x = a$で連続とする。
+この時点$x$に対して以下の値を対応させる関数も点$x = a$で連続である。
+\begin{enumerate}
+\item
+$f(x)+g(x)$.
+\item
+$f(x)-g(x)$.
+\item
+$f(x)g(x)$.
+\item
+$g(a) \ne 0$の時、$\frac{f(x)}{g(x)}$.
+\item
+$|f(x)|$.
+\item
+$\max\lrset{ f(x), g(x) }$.
+\item
+$\min\lrset{ f(x), g(x) }$.
+\end{enumerate}
+右連続・左連続についても同様のことが成り立つ。
+\end{proposition}
+
+\begin{proposition}
+関数$f(x)$が両側極限点$x = a$で連続であるための必要十分条件は関数$f(x)$が点$x = a$で右連続かつ左連続であることである。
+\end{proposition}
+
+\begin{proposition}[連続と合成関数]
+関数$f(x)$が点$x = a$で連続で関数$g(y)$が点$y = f(a)$で連続である時、
+合成関数$g(f(x))$は点$x = a$で連続である。
+\end{proposition}
+
+次の命題は連続性が点の列を表す数列（点列）を使った表現で特徴づけられることを主張する。
+
+\begin{proposition}[点列連続性]
+関数$f(x)$が点$x = a$で連続であることは
+\begin{quote}
+$a$に収束する任意の点列$(a_n)$に対して$f(a_n) \to f(a)$が成り立つ
+\end{quote}
+ことと同値である。
+\end{proposition}
+
+\begin{proof}
+$f(x)$が$x = a$で連続として、$a$に収束する点列$(a_n)$を考える。
+$\varepsilon > 0$に対して、連続性からある$\delta > 0$が存在して$|x-a| < \delta$を満たす任意の点$x$に対して$|f(x)-f(a)| < \varepsilon$である。
+さらにこの$\delta > 0$に対して、数列の収束から自然数$N$が存在して$n \ge N$を満たす任意の自然数$n$に対して$|a_n-a| < \delta$である。
+よって、$x$として$a_n$を考えることで、十分大きいすべての$n$に対して$|f(a_n)-f(a)| < \varepsilon$、つまり$f(a_n) \to f(a)$を得る。
+
+逆に$a$に収束する任意の点列$(a_n)$に対して$f(a_n) \to f(a)$のとき、$f$の連続性を示すが、背理法で連続でなかったとする。
+この時、ある$\varepsilon > 0$が存在して、任意の$\delta > 0$に対して$|x-a| < \delta$かつ$|f(x)-f(a)| \ge \varepsilon$となる点$x$が存在する。
+ここで$n = 1, 2, 3, \cdots$ごとに$\delta = \frac{1}{n}$を考えて上記の条件を満たす$x$が存在することからそのうち一つを$a_n$とおく。
+そうして点列$(a_n)_{n = 0}^\infty$を定めるとき、$|a_n-a| < \frac{1}{n}$なので$(a_n)$は$a$に収束する。
+一方で$|f(a_n)-f(a)| \ge \varepsilon$より$(f(a_n))$は$f(a)$に収束しないので仮定に矛盾する、よって$f(x)$は$x = a$で連続である。
+\end{proof}
+
+この命題の前半部分は特に重要で以降の議論で頻繁に用いられる。
+後半部分はこのテキストではあまり用いられないが、連続性を証明するときに便利である。
+
+集合上のすべての点で連続な関数を連続関数という。
+
+\begin{definition}[連続関数]
+$f$を実数の集合$X$上で定義された実数値関数として、$X$の点はすべて$X$の極限点であるとする。
+ここで、すべての点$a \in X$で$f$が連続である時、関数$f$は集合$X$上の\emph{連続関数}であるという。
+\end{definition}
+
+\begin{remark}
+「$X$の点はすべて$X$の極限点である」を満たす集合$X$として区間やいくつかの区間の和集合が挙げられる。
+\end{remark}
+
+\begin{example}
+\label{t_ex_conti}
+$c$を実数定数として、定数関数$f(x) = c$と恒等関数$f(x) = x$はともに$\mathbb{R}$上の連続関数である。
+\end{example}
+
+直ちに以下が成立する。
+
+\begin{proposition}[連続関数と演算]
+\label{t_conti_arith}
+関数$f$, $g$を集合$X$上の連続関数とする。
+この時$x \in X$に対して以下の値を対応させる関数も集合$X$で連続である。
+\begin{enumerate}
+\item
+$f(x)+g(x)$.
+\item
+$f(x)-g(x)$.
+\item
+$f(x)g(x)$.
+\item
+すべての$x \in X$で$g(x) \ne 0$の時$\frac{f(x)}{g(x)}$.
+\item
+$|f(x)|$.
+\item
+$\max\lrset{ f(x), g(x) }$.
+\item
+$\min\lrset{ f(x), g(x) }$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[連続関数の合成]
+関数$f(x)$が集合$X$で連続で関数$g(y)$が集合$Y \supset f(X)$で連続である時、
+合成関数$g(f(x))$は集合$X$で連続である。
+\end{proposition}
+
+\section{中間値の定理、最大値最小値定理、逆関数の定理}
+
+ここでは有界閉区間上の連続関数特有の定理として中間値の定理と最大値最小値定理を示す。
+
+\begin{theorem}[中間値の定理]
+関数$f$を有界閉区間$[a, b]$上の連続関数とする。
+この時、任意の$\min\{ f(a), f(b) \} \le y \le \max\{ f(a), f(b) \}$に対して
+$$
+f(x) = y, \quad a \le x \le b
+$$
+となる点$x$が存在する。
+
+また、$\min\{ f(a), f(b) \} < y < \max\{ f(a), f(b) \}$の時は$a < x < b$と取れる。
+\end{theorem}
+
+\begin{corollary}[不動点型の中間値の定理]
+関数$f$を有界閉区間$[a, b]$からそこへの連続関数とする$f([a, b]) \subset [a, b]$。
+この時、$x = f(x)$を満たす不動点$x \in [a, b]$が存在する。
+\end{corollary}
+
+\begin{theorem}[最大値最小値定理]
+関数$f$を有界閉区間$[a, b]$上の連続関数とする。
+この時、関数$f$は$[a, b]$上で最大と最小を持つ。
+\end{theorem}
+
+この二つの定理はともに区間を左と右に二等分し（中間値の定理ならば$x$、最大値最小値定理ならば最大点・最小点）が入る区間を選ぶという操作を繰り返し行い$1$点に縮小させるという論法で証明される。
+次の補題はその議論を支えるものである。
+
+\begin{lemma}[区間縮小法]
+実数列$(a_n)$と$(b_n)$が各自然数$n$に対して$a_n \le a_{n+1} \le b_{n+1} \le b_n$と$|b_n-a_n| \to 0$を満たすとする。
+この時$a_n \to x$, $b_n \to x$となる実数$x$が存在する。
+
+特に$(a_n)$, $(b_n)$を、各自然数$n$に対して$c_n = \frac{a_n+b_n}{2}$として$a_{n+1} = a_n$, $b_{n+1} = c_n$または$a_{n+1} = c_n$, $b_{n+1} = b_n$が成立するように定義する時、$a_n \to x$, $b_n \to x$となる実数$x$が存在する。
+\end{lemma}
+
+\begin{proof}
+仮定から$(a_n)$は単調増加かつ上に有界なので極限$a$が存在し、$(b_n)$は単調減少かつ下に有界なので極限$b$が存在する。
+ここで$|b_n-a_n| \to |b-a|$であるが、もう一つの仮定より$a = b$であり、これを$x$とおけばよい。
+
+後半部分は$(a_n)$, $(b_n)$の定義から$a_n \le a_{n+1} \le b_{n+1} \le b_n$と$|b_n-a_n| = \frac{1}{2^n}|b-a| \to 0$が言えるので$x$が存在することが示される。
+\end{proof}
+
+\begin{proof}[中間値の定理の証明]
+$f(a) \le f(b)$の場合を示す。
+$f(a) \le y \le f(b)$とする。
+ここで$(a_n)_{n = 0}^\infty$, $(b_n)_{n = 0}^\infty$を次のように定める。
+まず、$a_0 = a$, $b_0 = b$とする。
+$n = 0, 1, 2, 3, \cdots$に対して$a_n$, $b_n$が定義できた時$c_n = \frac{a_n+b_n}{2}$として、
+\begin{itemize}
+\item
+$f(c_n) \ge y$の時、$a_{n+1} = a_n$, $b_{n+1} = b_n$とおき、
+\item
+$f(c_n) < y$の時、$a_{n+1} = c_n$, $b_{n+1} = a_n$とおく。
+\end{itemize}
+この時、常に$f(a_n) \le y \le f(b_n)$であり、補題より$(a_n)$, $(b_n)$はともにある$a \le x \le b$に収束する。
+よって$f$が連続関数であることから$f(x) \le y \le f(x)$より、ほしかった式$f(x) = y$を得る。
+
+$f(a) \ge f(b)$の場合も同様に示される。
+$\min\{ f(a), f(b) \} < y < \max\{ f(a), f(b) \}$の時は$x \ne a, b$なので$a < x < b$と取れる。
+\end{proof}
+
+\begin{remark}
+この証明は方程式$f(x) = y$の解の構成の計算可能なアルゴリズムにもなっており、\emph{二分法}と呼ばれる。
+\end{remark}
+
+\begin{proof}[最大値最小値定理の証明]
+最大を持つことを示す。
+ここで$(a_n)_{n = 0}^\infty$, $(b_n)_{n = 0}^\infty$を次のように定める。
+まず、$a_0 = a$, $b_0 = b$とする。
+$n = 0, 1, 2, 3, \cdots$に対して$a_n$, $b_n$が定義できた時$c_n = \frac{a_n+b_n}{2}$として、
+\begin{itemize}
+\item
+$\sup_{[a_n, c_n]}f \ge \sup_{[c_n, b_n]}f$の時、$a_{n+1} = a_n$, $b_{n+1} = c_n$とおき、
+\item
+$\sup_{[a_n, c_n]}f < \sup_{[c_n, b_n]}f$の時、$a_{n+1} = c_n$, $b_{n+1} = b_n$とおく。
+\end{itemize}
+この時、常に$\sup_{[a_n, b_n]}f = \sup_{[a, b]}f$であり、補題より$(a_n)$, $(b_n)$はともにある$a \le x \le b$に収束する。
+
+ここで$f$が連続関数であることから任意の$\varepsilon > 0$に対して十分$x$に近い任意の$x' \in [a, b]$に対して$|f(x')-f(x)| < \varepsilon$より、
+ある$n = 0, 1, 2, 3, \cdots$が存在して、任意の$x' \in [a_n, b_n]$に対して$f(x') < f(x)+\varepsilon$である。
+よって$\sup_{[a, b]}f \le f(x)+\varepsilon$で$\varepsilon$は任意より$\sup_{[a, b]}f \le f(x)$で関数$f$は点$x$で最大になることが示された。
+
+最大を持つことも同様に示される。
+\end{proof}
+
+\begin{example}
+$x$についての方程式$x^3+x-1 = 0$を考える。
+$f(x) = x^3+x-1$とおくとこれは連続関数で、$f(0) = -1 < 0$, $f(1) = 1 > 0$より中間値の定理から$f(x) = 0$は少なくとも$0$と$1$の間に実数解をもつ。
+\end{example}
+
+% 今後様々な計算をするにあたって、ある関数の値が与えられたときに元のが一意に存在すると便利なことが多い。
+
+実数に対して実数値を対応させる関数が逆関数をもつことを保証するのが以下に定義する（狭義）単調性である。
+
+\begin{definition}[関数の単調性]
+$f$を区間$I$上の実数値関数とする。
+\begin{itemize}
+\item
+任意の$a < b$を満たす$a, b \in I$に対して$f(a) < f(b)$が成立するとき$f$は$I$上で\emph{狭義単調増加}するという。
+\item
+任意の$a < b$を満たす$a, b \in I$に対して$f(a) \le f(b)$が成立するとき$f$は$I$上で\emph{広義単調増加}するという。
+\item
+任意の$a < b$を満たす$a, b \in I$に対して$f(a) > f(b)$が成立するとき$f$は$I$上で\emph{狭義単調減少}するという。
+\item
+任意の$a < b$を満たす$a, b \in I$に対して$f(a) \ge f(b)$が成立するとき$f$は$I$上で\emph{広義単調減少}するという。
+\end{itemize}
+\end{definition}
+
+広義単調増加・広義単調減少の「広義」は省略される。
+
+\begin{theorem}[単調関数の逆関数]
+$f$を有界閉区間$[a, b]$上の連続関数とする。
+\begin{itemize}
+\item
+$f$が$[a, b]$上で狭義単調増加するとき、逆関数$f^{-1}$が有界閉区間$[f(a), f(b)]$上の狭義単調増加する連続関数として存在する。
+\item
+$f$が$[a, b]$上で狭義単調減少するとき、逆関数$f^{-1}$が有界閉区間$[f(b), f(a)]$上の狭義単調減少する連続関数として存在する。
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+$f$が狭義単調増加するとき示す。
+$f(a) \le y \le f(b)$を満たす点$y$に対して中間値の定理より$f(x) = y$となる$a \le x \le b$が存在する。
+次にこのような$x$は一意であることを示す。
+もし$f(x) = f(x') = y$となる2点$x, x' \in [a, b]$が存在して$x \ne x'$だったとする。
+ここで$f$が狭義単調増加することから$x < x'$の場合は$f(x) < f(x')$となり矛盾、$x > x'$の場合は$f(x) > f(x')$となりやはり矛盾である。
+よって$x = x'$なので、$f(x) = y$を満たす$x$は一意に存在し$f^{-1}(y)$とおいて$[f(a), f(b)]$上の関数$f^{-1}$を得る。
+$f^{-1}$が狭義単調増加であることは同様の議論をすることで証明できる。
+つまり、$y < y' \in [f(a), f(b)]$として$f^{-1}(y) \ge f^{-1}(y')$だったとすると、$f$の単調増加性より$y = f(f^{-1}(y)) \le f(f^{-1}(y')) = y'$で矛盾するので、$f^{-1}(y) < f^{-1}(y')$である。
+\end{proof}
+
+\section{一様連続性}
+
+証明のためにハイネ・カントールの定理などと呼ばれる次の補題を用意する。
+
+\begin{theorem}[有界閉区間上の連続関数]
+\label{t_unif_conti}
+有界閉区間$[a, b]$上の連続関数$f$は$[a, b]$上一様連続である。
+\end{theorem}
+
+\begin{proof}
+$f$が一様連続でないと仮定すると、ある$\varepsilon > 0$が存在して任意の$\delta > 0$に対して$x, y \in [a, b]$, $|x-y| < \delta$が存在して$|f(x)-f(y)| \ge \varepsilon$である。
+ここで$n = 1, 2, 3, \cdots$に対して$\delta = n^{-1}$として取れば、$x_n, y_n \in [a, b]$が存在して$|x_n-y_n| < n^{-1}$, $|f(x_n)-f(y_n)| \ge \varepsilon$が成り立つ。
+$[a, b]$は有界なのでボルツァーノ・ワイエルシュトラスの定理より部分列を取れば数列$(x_n)$, $(y_n)$は収束し極限をそれぞれ$\bar{x}$, $\bar{y}$とおくと、$|x_n-y_n| < n^{-1} \to 0$より$\bar{x} = \bar{y}$である。
+また、$[a, b]$は閉区間より$\bar{x} = \bar{y} \in [a, b]$もわかる。
+ここで$f$は$\bar{x} = \bar{y}$で連続より、ある$\delta > 0$が存在して任意の$x \in [a, b]$に対して$|x-\bar{x}| < \delta$ならば$|f(x)-f(\bar{x})| < \frac{\varepsilon}{2}$が成り立つことに注意する。
+$n$が大きいと$|x_n-\bar{x}|, |y_n-\bar{y}| < \delta$となるので、そのような$n$に対して三角不等式より
+$$
+\varepsilon \le |f(x_n)-f(y_n)| \le |f(x_n)-f(\bar{x})|+|f(\var{x})-f(\bar{y})|+|f(\bar{y})-f(y_n)| < \varepsilon
+$$
+となり矛盾が導かれた。
+よって関数$f$は$[a, b]$上一様連続である。
+\end{proof}
+
+\section{連続性の度合い}
+
+実数の集合$X$上の関数$f(x)$と点$a \in X$に対して
+$$
+\omega(r) = \sup\lrset{ |f(x)-f(a)| \mid x \in X, |x-a| \le r }
+$$
+で定義される関数$\omega(r)$を考える。
+この関数は$[0, \infty)$上定義された非負値関数であり$\omega = 0$で$r$が大きくなると上限を取る$x$の範囲が広くなるので広義単調増加し、
+定義から任意の$x \in X$に対して
+$$
+|f(x)-f(a)| \le \omega(|x-a|)
+$$
+が成立することわかる。
+
+この式で連続性の特徴づけをするのが連続性の度合いである。
+
+\begin{definition}[連続性の度合い]
+条件
+$$
+\omega(r) \to 0 \quad (r \to 0+)
+$$
+を満たす$[0, \infty)$上定義された非負値の広義単調増加関数$\omega$を\emph{連続性の度合い}という。
+\end{definition}
+
+\begin{proposition}
+$f(x)$を実数の集合$X$上の関数とする。
+\begin{itemize}
+\item
+関数$f(x)$が点$x = a \in X$で連続であることは連続性の度合い$\omega$が存在して任意の$x \in X$に対して
+$$
+|f(x)-f(a)| \le \omega(|x-a|)
+$$
+が成立することと同値である。
+\item
+関数$f(x)$が連続関数であることは各$a \in X$に対して連続性の度合い$\omega_a$が存在して任意の$x \in X$に対して
+$$
+|f(x)-f(a)| \le \omega_a(|x-a|)
+$$
+が成立することと同値である。
+\item
+関数$f(x)$が一様連続関数であることは連続性の度合い$\omega$が存在して任意の$x, y \in X$に対して
+$$
+|f(x)-f(y)| \le \omega(|x-y|)
+$$
+が成立することと同値である。
+\end{itemize}
+\end{proposition}
