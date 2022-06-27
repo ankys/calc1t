@@ -619,6 +619,39 @@ $$
 よって$f(x)$は$x = 1$で最大となることが結論付けられる。
 \end{example}
 
+次の不等式は一般に成り立つ。
+
+\begin{theorem}[ヤングの不等式]
+\label{t_young_ineq}
+$a$, $b$を非負の実数、$p$, $q$を
+\begin{equation}
+\label{e_holder_conj}
+\frac{1}{p}+\frac{1}{q} = 1, \quad p, q > 1
+\end{equation}
+を満たす実数とする。
+このとき不等式
+$$
+a b \le \frac{a^p}{p}+\frac{b^q}{q}
+$$
+が成り立つ。
+\end{theorem}
+
+\begin{proof}
+$x \in [0, \infty)$に対して
+$$
+f(x) = \frac{a^p}{p}+\frac{x^q}{q}-a x
+$$
+とおくと、$x \in (0, \infty)$に対して
+$$
+f'(x) = x^{q-1}-a.
+$$
+よって$f(x)$は$x = a^{\frac{1}{q-1}}$で最小となるので、
+$$
+f(b) \ge \frac{a^p}{p}+\frac{a^{\frac{q}{q-1}}}{q}-a^{1+\frac{1}{q-1}} = a^p\qty(\frac{1}{p}+\frac{1}{q}-1) = 0.
+$$
+したがってほしかった不等式が得られた。
+\end{proof}
+
 最大値原理は極大・極小の必要条件を与えるが、次の定理は十分条件の一つを片側極限を使って与える。
 
 \begin{theorem}

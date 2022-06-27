@@ -298,6 +298,7 @@ $$
 代わりに後に述べる部分積分を用いて積分を計算することになる。
 
 \begin{proposition}[積分の大小関係]
+\label{t_int_order}
 区間$[a, b]$上で積分可能な関数$f$, $g$が各$x \in [a, b]$に対して$f(x) \le g(x)$を満たすとき、
 $$
 \int_a^b f(x)\dd{x} \le \int_a^b g(x)\dd{x}
@@ -721,7 +722,20 @@ $$
 
 \section{積分の不等式}
 
-この節では積分を含んだいくつかの不等式を紹介し、応用として積分が計算できない問題に対して評価を与える。
+この節では積分を含んだいくつかの有名な不等式を紹介し、応用として（本来の応用先ではないが）積分が計算できない問題に対して評価を与える。
+
+\begin{proposition}[連続関数に対する積分の大小関係]
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数とする。
+各$x \in [a, b]$に対して$f(x) \le g(x)$を満たすとき、
+$$
+\int_a^b f(x)\dd{x} \le \int_a^b g(x)\dd{x}
+$$
+が成り立つ。
+等号成立条件は任意の$x \in [a, b]$に対して$f(x) = g(x)$が成り立つことである。
+\end{proposition}
+
+\begin{proof}
+\end{proof}
 
 \begin{theorem}[コーシー・シュワルツの不等式]
 $f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数とする。
@@ -730,7 +744,6 @@ $$
 \qty(\int_a^b f(x)g(x)\dd{x})^2 \le \qty(\int_a^b f(x)^2\dd{x})\qty(\int_a^b g(x)^2\dd{x})
 $$
 が成り立つ。
-% 等号成立条件は任意の$x \in [a, b]$に対して$f(x) = g(x)$が成り立つことである。
 \end{theorem}
 
 \begin{proof}
@@ -749,6 +762,86 @@ $$
 $$
 を得る。
 \end{example}
+
+\begin{theorem}[ヘルダーの不等式]
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$, $q$を\eqref{e_holder_conj}を満たす実数とする。
+このとき不等式
+$$
+\int_a^b |f(x)g(x)|\dd{x} \le \qty(\int_a^b |f(x)|^p\dd{x})^{\frac{1}{p}}\qty(\int_a^b |g(x)|^q\dd{x})^{\frac{1}{q}}
+$$
+が成り立つ。
+\end{theorem}
+
+\begin{proof}
+$$
+A = \qty(\int_a^b |f(x)|^p\dd{x})^{\frac{1}{p}},
+\quad B = \qty(\int_a^b |g(x)|^q\dd{x})^{\frac{1}{q}}
+$$
+とおく。
+$A = 0$のときは$f(x) = 0$、$B = 0$のときは$g(x) = 0$となり不等式は成立するので、$A > 0$かつ$B > 0$の場合を考える。
+各$x \in [a, b]$に対してヤングの不等式（命題\ref{t_young_ineq}）より
+$$
+\abs{\frac{f(x)}{A}\cdot\frac{g(x)}{B}} \le \frac{1}{p}\frac{\abs{f(x)}^p}{A^p}+\frac{1}{q}\frac{\abs{g(x)}^q}{B^q}
+$$
+なので、積分して
+$$
+\int_a^b \abs{\frac{f(x)}{A}\cdot\frac{g(x)}{B}}\dd{x} \le \frac{1}{p}+\frac{1}{q} = 1.
+$$
+よってほしかった不等式が得られる。
+\end{proof}
+
+\begin{remark}
+$p = 2$, $q = 2$のヘルダーの不等式はコーシー・シュワルツの不等式に他ならない。
+\end{remark}
+
+\begin{remark}
+$p = 1$に対応する場合は$q = \infty$となり、そのままでは考えられないが、
+$$
+\int_a^b |f(x)g(x)|\dd{x} \le \qty(\int_a^b |f(x)|\dd{x})\max_{x \in [a, b]}|g(x)|
+$$
+が対応する不等式と考えることができる。
+\end{remark}
+
+\begin{theorem}[ミンコフスキーの不等式]
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$を$1$以上の実数とする。
+このとき不等式
+$$
+\qty(\int_a^b |f(x)+g(x)|^p\dd{x})^{\frac{1}{p}} \le \qty(\int_a^b |f(x)|^p\dd{x})^{\frac{1}{p}}+\qty(\int_a^b |g(x)|^p\dd{x})^{\frac{1}{p}}
+$$
+が成り立つ。
+\end{theorem}
+
+\begin{proof}
+途中で三角不等式を一回使うことで
+$$
+\begin{aligned}
+\int_a^b |f(x)+g(x)|^p\dd{x}
+&= \int_a^b |f(x)+g(x)||f(x)+g(x)|^{p-1}\dd{x} \\
+% \le \int_a^b (|f(x)|+|g(x)|)|f(x)+g(x)|^{p-1}\dd{x}
+&\le \int_a^b |f(x)||f(x)+g(x)|^{p-1}\dd{x}+\int_a^b |g(x)||f(x)+g(x)|^{p-1}\dd{x}
+\end{aligned}
+$$
+を得る。
+$p = 1$のときはすでに結論を得ていることに注意して、以降では$p > 1$の場合を考える。
+ここで、
+$$
+A = \qty(\int_a^b |f(x)|^p\dd{x})^{\frac{1}{p}},
+\quad B = \qty(\int_a^b |g(x)|^p\dd{x})^{\frac{1}{p}}
+$$
+とおき、
+$q$を\eqref{e_holder_conj}を満たす実数つまり$q = \frac{p}{p-1}$として取ると、ヘルダーの不等式から
+$$
+\begin{aligned}
+\int_a^b |f(x)+g(x)|^p\dd{x}
+&\le A\qty(\int_a^b |f(x)+g(x)|^{(p-1)q}\dd{x})^{\frac{1}{q}}+B\qty(\int_a^b |f(x)+g(x)|^{(p-1)q}\dd{x})^{\frac{1}{q}} \\
+&= (A+B)\qty(\int_a^b |f(x)+g(x)|^p\dd{x})^{\frac{p-1}{p}}
+\end{aligned}
+$$
+よってほしかった不等式が得られる。
+\end{proof}
+
+\begin{theorem}[イェンセンの不等式]
+\end{theorem}
 
 \section{積分型の平均値の定理}
 
