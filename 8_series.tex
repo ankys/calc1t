@@ -1,2 +1,75 @@
 
 \chapter{級数}
+
+\section{級数の収束}
+
+数列$(a_n)_{n = 0}^\infty$の項$a_0, a_1, a_2, a_3, \cdots$の和について考える。
+このような和のことを級数と呼び、形式的には
+$$
+\sum_{n = 0}^\infty a_n = a_0+a_1+a_2+a_3+\cdots
+$$
+と表すが、無限個の項の和なのでしっかり定義する必要がある。
+
+\begin{definition}[級数]
+数列$(a_n)_n$と$N = 0, 1, 2, 3, \cdots$に対して、初項から項$a_N$までの\emph{部分和}
+$$
+S_N = \sum_{n = 0}^N a_n = a_0+a_1+a_2+a_3+\cdots+a_N
+$$
+を定義する。
+ここで部分和を並べて得られる数列$(S_N)_N$がある数$S$に収束する時、
+\emph{級数}$\sum_n a_n$は収束するといい、この時の極限$S$を数列$(a_n)_n$の級数の値または\emph{和}と呼び$\sum_n a_n$で表す。
+また、部分和の数列$(S_N)_N$が発散するとき、級数$\sum_n a_n$は発散するという。
+級数の表記は
+$$
+\sum_{n = 0}^\infty a_n, \quad \sum_{n = 1}^\infty a_n, \quad \sum_{n \in \mathbb{N}}a_n, \quad \sum_n a_n, \quad \sum a_n
+$$
+などがある。
+\end{definition}
+
+\begin{example}
+$c$を実数として等比数列$(c^n)_{n = 0}^\infty$を考える。
+対応する級数を等比級数という。
+$c \ne 1$の時、部分和は
+$$
+\sum_{n = 0}^N c^n = \frac{c^{N+1}-1}{c-1} = \frac{1-c^{N+1}}{1-c}
+$$
+であり、$-1 < c < 1$のとき収束し級数の値は
+$$
+\sum_{n = 0}^\infty c^n = \frac{1}{1-c}
+$$
+である。
+それ以外の$c$の場合は発散する。
+$c = 1$の場合も$\sum_{n = 0}^N c^n = N$より発散する。
+\end{example}
+
+次の命題は級数が収束する必要条件を与える。
+
+\begin{proposition}
+数列$(a_n)$に対して、級数$\sum a_n$が収束するならば数列$(a_n)$は$0$に収束する。
+\end{proposition}
+
+\begin{proof}
+各$n$に対して、
+$$
+a_{n+1} = S_{n+1}-S_n
+$$
+が成り立つ。
+級数$\sum a_n$が収束するため、$(S_n)$と$(S_{n+1})$はともに和$S$に収束することから、数列$(a_{n+1})$ひいては$(a_n)$は$S-S = 0$に収束する。
+\end{proof}
+
+\begin{remark}
+この命題の逆は成立しない。
+例えば$n = 1, 2, 3, \cdots$に対して$a_n = n^{-1}$とおくと、
+$$
+S_{2^2} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4} = 1+\frac{1}{2}+\frac{1}{2},
+$$
+$$
+S_{2^3} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}+\frac{1}{8} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8} = 1+\frac{1}{2}+\frac{1}{2}+\frac{1}{2}
+$$
+で、
+続けると
+$$
+S_{2^k} > 1+\frac{k}{2}
+$$
+がわかり、これは収束しない。
+\end{remark}
