@@ -442,6 +442,31 @@ $c \ne 1$の時、$\sum_{n = M}^N c^n = \frac{c^{N+1}-c^M}{c-1}$。
 \end{itemize}
 \end{proposition}
 
+また、後で使う次の式もここで紹介する。
+
+\begin{proposition}[部分和分]
+\label{t_sum_part}
+数$a_M, \cdots a_{N+1}$が$b_M, \cdots, b_{N+1}$に対して
+$$
+\sum_{n = M}^N a_n(b_{n+1}-b_n) = a_{N+1}b_{N+1}-a_M b_M-\sum_{n = M}^N (a_{n+1}-a_n)b_{n+1}
+$$
+が成り立つ。
+\end{proposition}
+
+この式は定積分でいうところの部分積分に相当するものである。
+
+\begin{proof}
+和の中身を計算すると
+$$
+a_n(b_{n+1}-b_n)+(a_{n+1}-a_n)b_{n+1} = a_{n+1}b_{n+1}-a_n b_n
+$$
+なので、
+$$
+\sum_{n = M}^N a_n(b_{n+1}-b_n)+\sum_{n = M}^N (a_{n+1}-a_n)b_{n+1} = \sum_{n = M}^N (a_{n+1}b_{n+1}-a_n b_n) = a_{N+1}b_{N+1}-a_M b_M.
+$$
+よって、ほしい式が得られる。
+\end{proof}
+
 $M$, $N$を$M \le N$を満たす自然数として$N-M+1$個の数$a_M, \cdots, a_N$の積について考える。
 $1$に$a_M, \cdots, a_N$を順番にかけて得られる数を$a_M, \cdots, a_N$の\emph{総乗}といい、$\prod_{n = M}^N a_n$と表す。
 つまり、
