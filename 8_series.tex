@@ -13,12 +13,12 @@ $$
 \begin{definition}[級数]
 数列$(a_n)_n$と$N = 0, 1, 2, 3, \cdots$に対して、初項から項$a_N$までの\emph{部分和}
 $$
-S_N = \sum_{n = 0}^N a_n = a_0+a_1+a_2+a_3+\cdots+a_N
+A_N = \sum_{n = 0}^N a_n = a_0+a_1+a_2+a_3+\cdots+a_N
 $$
 を定義する。
-ここで部分和を並べて得られる数列$(S_N)_N$がある数$S$に収束する時、
+ここで部分和を並べて得られる数列$(A_N)_N$がある数$S$に収束する時、
 \emph{級数}$\sum_n a_n$は収束するといい、この時の極限$S$を数列$(a_n)_n$の級数の値または\emph{和}と呼び$\sum_n a_n$で表す。
-また、部分和の数列$(S_N)_N$が発散するとき、級数$\sum_n a_n$は発散するという。
+また、部分和の数列$(A_N)_N$が発散するとき、級数$\sum_n a_n$は発散するという。
 級数の表記は
 $$
 \sum_{n = 0}^\infty a_n, \quad \sum_{n = 1}^\infty a_n, \quad \sum_{n \in \mathbb{N}}a_n, \quad \sum_n a_n, \quad \sum a_n
@@ -51,25 +51,25 @@ $c = 1$の場合も$\sum_{n = 0}^N c^n = N$より発散する。
 \begin{proof}
 各$n$に対して、
 $$
-a_{n+1} = S_{n+1}-S_n
+a_{n+1} = A_{n+1}-A_n
 $$
 が成り立つ。
-級数$\sum a_n$が収束するため、$(S_n)$と$(S_{n+1})$はともに和$S$に収束することから、数列$(a_{n+1})$ひいては$(a_n)$は$S-S = 0$に収束する。
+級数$\sum a_n$が収束するため、$(A_n)$と$(A_{n+1})$はともに和$S$に収束することから、数列$(a_{n+1})$ひいては$(a_n)$は$S-S = 0$に収束する。
 \end{proof}
 
 \begin{remark}
 この命題の逆は成立しない。
 例えば$n = 1, 2, 3, \cdots$に対して$a_n = n^{-1}$とおくと、
 $$
-S_{2^2} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4} = 1+\frac{1}{2}+\frac{1}{2},
+A_{2^2} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4} = 1+\frac{1}{2}+\frac{1}{2},
 $$
 $$
-S_{2^3} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}+\frac{1}{8} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8} = 1+\frac{1}{2}+\frac{1}{2}+\frac{1}{2}
+A_{2^3} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}+\frac{1}{8} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8}+\frac{1}{8} = 1+\frac{1}{2}+\frac{1}{2}+\frac{1}{2}
 $$
 で、
 続けると
 $$
-S_{2^k} > 1+\frac{k}{2}
+A_{2^k} > 1+\frac{k}{2}
 $$
 がわかり、これは収束しない。
 \end{remark}
@@ -81,16 +81,16 @@ $$
 \end{definition}
 
 \begin{proposition}
-正項級数$\sum a_n$が収束するための必要十分条件は部分和の数列$(S_N)$が上に有界であることである。
+正項級数$\sum a_n$が収束するための必要十分条件は部分和の数列$(A_N)$が上に有界であることである。
 \end{proposition}
 
 \begin{proof}
 $\sum a_n$が正項級数であることから、各自然数$N$に対して
 $$
-S_{N+1}-S_N = a_{N+1} \ge 0
+A_{N+1}-A_N = a_{N+1} \ge 0
 $$
-より、数列$(S_N)$は単調増加である。
-したがって$(S_N)$が上に有界ならば、単調収束定理（定理\ref{t_mono_conv}）より、収束する。
+より、数列$(A_N)$は単調増加である。
+したがって$(A_N)$が上に有界ならば、単調収束定理（定理\ref{t_mono_conv}）より、収束する。
 逆は命題\ref{t_conv_bdd}より従う。
 \end{proof}
 
@@ -242,3 +242,63 @@ $$
 \end{cases}
 $$
 \end{proposition}
+
+\section{交代級数と条件収束}
+
+各項の符号が常に正（非負）なのが正項級数であったが、項の符号が順番に入れ替わっていく級数を考える。
+
+\begin{definition}[交代級数]
+数列$(a_n)$が各自然数$n$に対して
+$$
+a_n a_{n+1} \le 0
+$$
+を満たすとき、級数$\sum a_n$を\emph{交代級数}という。
+\end{definition}
+
+絶対収束しない場合でも交代級数であれば収束することがある。
+次の定理はある種の交代級数の収束性を保証する。
+
+\begin{theorem}[ライプニッツの判定法]
+数列$(a_n)_{n = 0}^\infty$が単調減少し$n \to \infty$で$0$に収束するとする。
+このとき、交代級数$\sum_{n = 0}^\infty (-1)^n a_n$は収束し、各$N = 0, 1, 2, 3, \cdots$に対して
+$$
+\abs{\sum_{n = 0}^N (-1)^n a_n-\sum_{n = 0}^\infty (-1)^n a_n} \le a_{N+1}
+$$
+を満たす。
+\end{theorem}
+
+\begin{proof}
+$N = 0, 1, 2, 3, \cdots$に対して部分和を$A_N = \sum_{n = 0}^N (-1)^n a_n$とおく。
+このとき、$K = 0, 1, 2, 3, \cdots$に対して
+$$
+A_{2(K+1)} = A_{2 K}-a_{2 K+1}+a_{2 K+2} \le A_{2 K},
+$$
+$$
+A_{2(K+1)+1} = A_{2 K+1}+a_{2 K+2}-a_{2 K+3} \le A_{2 K+1}
+$$
+より
+$$
+A_1 \le A_3 \le A_5 \le A_7 \le \cdots \le A_6 \le A_4 \le A_2 \le A_0
+$$
+がわかる。
+したがって単調収束定理より$(A_{2 K})_K$と$(A_{2 K+1})_K$は収束し極限をそれぞれ$\overline{L}$と$\underline{L}$とおくと$\underline{L} \le \overline{L}$である。
+また、ここで
+$$
+A_{2 K}-A{2 K+1} = a_{2 K} \to 0
+$$
+より$\overline{L}-\underline{L} \le 0$つまり$\overline{L} = \underline{L} = L$である。
+あとは$|A_N-L| \le a_{N+1}$を示す。
+\begin{itemize}
+\item
+$N = 2 K$の場合、
+$$
+|A_N-L| = A_{2 K}-L \le A_{2 K}-A_{2 K+1} = a_{2 K+1} = a_{N+1}.
+$$
+\item
+$N = 2 K+1$の場合、
+$$
+|A_N-L| = L-A_{2 K+1} \le A_{2 K+2}-A_{2 K+1} = a_{2 K+2} = a_{N+1}.
+$$
+\end{itemize}
+以上より示すべき不等式が示されて、直ちに$A_N \to L$つまり交代級数が収束することが示される。
+\end{proof}
