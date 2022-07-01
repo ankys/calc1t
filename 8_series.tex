@@ -192,3 +192,53 @@ $$
 $$
 ではこれらの判定法はともに$c = 1$となってしまい、級数が収束するか発散するか判定できない。
 \end{example}
+
+このような級数に対しては次の定理で広義積分の判定に帰着させるとよい。
+
+\begin{theorem}[級数と広義積分の比較]
+$f$を$[0, +\infty)$上定義された単調減少する非負値の関数とする。
+このとき級数
+$$
+\sum_{n = 0}^\infty f(n)
+$$
+が（絶対）収束することと広義積分
+$$
+\int_0^\infty f(x)\dd{x}
+$$
+が（絶対）収束することは同値である。
+\end{theorem}
+
+\begin{proof}
+$[0, +\infty)$上の関数$\overline{g}(x)$と$\underline{g}(x)$を
+$$
+\overline{g}(x) = f(\lrfloor{x}),
+\quad \underline{g}(x) = f(\lrceil{x})
+$$
+で定義すると、$f$は単調減少することから$\overline{g}(x)$と$\underline{g}(x)$は
+$$
+\underline{g}(x) \le f(x) \le \overline{g}(x)
+$$
+を満たす単調減少関数である。
+またここで、
+$$
+\sum_{n = 0}^\infty f(n) = \int_0^\infty \overline{g}(x)\dd{x}
+$$
+もわかるので、
+$$
+\sum_{n = 1}^\infty f(n) \le \int_0^\infty f(x)\dd{x} \le \sum_{n = 0}^\infty f(n)
+$$
+が従い、級数と広義積分の比較判定ができる。
+\end{proof}
+
+例えば次のことがわかる。
+
+\begin{proposition}
+$a$を実数とするとき、
+$$
+\sum_{n = 0}^\infty n^a
+\begin{cases}
+= \infty & (a \ge -1), \\
+< \infty & (a < -1).
+\end{cases}
+$$
+\end{proposition}
