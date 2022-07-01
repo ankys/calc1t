@@ -961,35 +961,39 @@ $$
 広義積分が絶対収束するならばそれは収束している。
 \end{remark}
 
-\begin{proposition}[広義積分の比較判定法１]
+\begin{proposition}[広義積分の比較判定法]
 $f$を区間$I$上の連続関数とする。
+\begin{itemize}
+\item
 二つの条件
 $$
 |f(x)| \le g(x) \quad \forall x \in I,
 \quad \int_I g(x) < \infty
 $$
 を満たす$I$上の非負値連続関数$g$が存在するならば、
-$f$の$I$上での広義積分は絶対収束する。
-\end{proposition}
-
-\begin{remark}
-この時の関数$g$を$f$の\emph{優関数}という。
-\end{remark}
-
-\begin{proposition}[広義積分の比較判定法２]
-$f$を区間$I$上の連続関数とする。
+$f$の$I$上での広義積分は絶対収束し、
+$$
+\abs{\int_I f(x)\dd{x}} \le \int_I \abs{f(x)}\dd{x} \le \int_I g(x)\dd{x}
+$$
+が成り立つ。
+\item
 二つの条件
 $$
-f(x) \ge g(x) \quad \forall x \in I,
+|f(x)| \ge g(x) \quad \forall x \in I,
 \quad \int_I g(x) = \infty
 $$
 を満たす$I$上の非負値連続関数$g$が存在するならば、
 $f$の$I$上での広義積分は絶対収束せず、
 $$
-\int_I f(x)\dd{x} = \infty
+\int_I \abs{f(x)}\dd{x} = \infty
 $$
 である。
+\end{itemize}
 \end{proposition}
+
+\begin{remark}
+この時の非負値関数$g$を$f$の\emph{優関数}という。
+\end{remark}
 
 \begin{example}
 広義積分

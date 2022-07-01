@@ -109,19 +109,86 @@ $$
 絶対収束しないが収束するとき、級数は\emph{条件収束}するという。
 \end{definition}
 
+\begin{remark}
+級数が絶対収束するならばそれは収束している。
+\end{remark}
+
 ここまでくると級数の理論は広義積分の理論と似ていることに気が付く。
 つまり、級数の収束は部分和の極限で定義していることは広義積分の積分区間を有界閉区間で近似していたことに対応するし、
 級数でも広義積分でも絶対収束が登場する。
 実際次の命題は級数版の比較判定法である。
 
 \begin{proposition}[級数の比較判定法]
-$(a_n)_{n \in \mathbb{N}}$を数列とする。
+$(a_n)$を数列とする。
+\begin{itemize}
+\item
 二つの条件
 $$
-|a_n| \le b_n \quad \forall n \in \mathbb{N},
+|a_n| \le b_n \quad \forall n,
 \quad \sum b_n < \infty
 $$
-を満たす数列$(b_n)_{n \in \mathbb{N}}$が存在するならば（$\sum b_n$は正項級数である）、
-級数$\sum a_n$は絶対収束する。
+を満たす正項級数$\sum b_n$が存在するならば、
+級数$\sum a_n$は絶対収束し、
+$$
+\abs{\sum a_n} \le \sum \abs{a_n} \le \sum b_n
+$$
+が成り立つ。
+\item
+二つの条件
+$$
+|a_n| \ge b_n \quad \forall n,
+\quad \sum b_n = \infty
+$$
+を満たす正項級数$\sum b_n$が存在するならば、
+級数$\sum a_n$は絶対収束せず、
+$$
+\sum \abs{a_n} = \infty
+$$
+である。
+\end{itemize}
 \end{proposition}
 
+級数を等比級数と比較することで収束性をある程度判定することができる。
+
+\begin{theorem}[ダランベールの判定法]
+$(a_n)$をどの項も$0$でない数列とする。
+極限
+$$
+\lim_{n \to \infty}\abs{\frac{a_{n+1}}{a_n}} = c
+$$
+が存在し、$c < 1$ならば級数$\sum a_n$は絶対収束し、$c > 1$ならば級数$\sum a_n$は発散する。
+\end{theorem}
+
+\begin{theorem}[コーシーの判定法]
+$(a_n)$を数列とする。
+上極限
+$$
+\limsup_{n \to \infty}\sqrt[n]{\abs{a_n}} = c
+$$
+について、$c < 1$ならば級数$\sum a_n$は絶対収束し、$c > 1$ならば級数$\sum a_n$は発散する。
+\end{theorem}
+
+\begin{remark}
+どちらの判定法も$c = 1$の場合は級数が収束するか発散するかわからない。
+\end{remark}
+
+\begin{example}
+級数
+$$
+\sum_{n = 0}^\infty n\frac{1}{2^n}
+$$
+は（絶対）収束する。
+実際、$a_n = n\frac{1}{2^n}$とおくと、$n \to \infty$で
+$$
+\abs{\frac{a_{n+1}}{a_n}} = \frac{n+1}{n}\frac{2^n}{2^{n+1}} = \frac{n+1}{n}\frac{1}{2} \to \frac{1}{2} < 1
+$$
+より、ダランベールの判定法が使える。
+\end{example}
+
+\begin{example}
+級数
+$$
+\sum_{n = 0}^\infty \frac{1}{n^2}
+$$
+ではこれらの判定法はともに$c = 1$となってしまい、級数が収束するか発散するか判定できない。
+\end{example}
