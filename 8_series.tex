@@ -28,7 +28,11 @@ $$
 
 \begin{example}
 $c$を実数として等比数列$(c^n)_{n = 0}^\infty$を考える。
-対応する級数$\sum_{n = 0}^\infty c^n$を等比級数という。
+対応する級数
+$$
+\sum_{n = 0}^\infty c^n = 1+c+c^2+c^3+\cdots
+$$
+を等比級数という。
 $c \ne 1$の時、部分和は
 $$
 \sum_{n = 0}^N c^n = \frac{c^{N+1}-1}{c-1} = \frac{1-c^{N+1}}{1-c}
@@ -58,8 +62,14 @@ $$
 \end{proof}
 
 \begin{remark}
+\label{t_harm_ser}
 この命題の逆は成立しない。
-例えば$n = 1, 2, 3, \cdots$に対して$a_n = n^{-1}$とおくと、
+例えば$n = 1, 2, 3, \cdots$に対して$a_n = \frac{1}{n}$とおいた級数
+$$
+\sum_{n = 1}^\infty \frac{1}{n} = \frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\cdots
+$$
+は収束しない。
+実際、
 $$
 A_{2^2} = 1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4} > 1+\frac{1}{2}+\frac{1}{4}+\frac{1}{4} = 1+\frac{1}{2}+\frac{1}{2},
 $$
@@ -175,22 +185,23 @@ $$
 \begin{example}
 級数
 $$
-\sum_{n = 0}^\infty n\frac{1}{2^n}
+\sum_{n = 0}^\infty \frac{n}{2^n} = \frac{0}{1}+\frac{1}{2}+\frac{2}{2^2}+\frac{3}{2^3}+\cdots
 $$
 は（絶対）収束する。
-実際、$a_n = n\frac{1}{2^n}$とおくと、$n \to \infty$で
+実際、$a_n = \frac{n}{2^n}$とおくと、$n \to \infty$で
 $$
 \abs{\frac{a_{n+1}}{a_n}} = \frac{n+1}{n}\frac{2^n}{2^{n+1}} = \frac{n+1}{n}\frac{1}{2} \to \frac{1}{2} < 1
 $$
-より、ダランベールの判定法が使える。
+より、ダランベールの判定法が使えて、収束する。
 \end{example}
 
 \begin{example}
 級数
 $$
-\sum_{n = 0}^\infty \frac{1}{n^2}
+\sum_{n = 1}^\infty \frac{1}{n^2} = \frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2}+\cdots
 $$
-ではこれらの判定法はともに$c = 1$となってしまい、級数が収束するか発散するか判定できない。
+ではダランベールの判定法とコーシーの判定法はともに$c = 1$となってしまい、級数が収束するか発散するか判定できない。
+なお、実際にはすぐ次でわかる通り収束する。
 \end{example}
 
 このような級数に対しては次の定理で広義積分の判定に帰着させるとよい。
@@ -303,6 +314,17 @@ $$
 以上より示すべき不等式が示されて、直ちに$A_N \to L$つまり交代級数が収束することが示される。
 \end{proof}
 
+\begin{example}
+\label{t_alt_harm_ser}
+交代級数
+$$
+\sum_{n = 1}^\infty \frac{(-1)^{n-1}}{n} = \frac{1}{1}-\frac{1}{2}+\frac{1}{3}-\cdots
+$$
+は対応する正項級数$\sum_{n = 1}^\infty \frac{1}{n}$が収束しないので絶対収束しない（注意\ref{t_harm_ser}参照）。
+一方で$a_n = \frac{1}{n}$はライプニッツの判定法の仮定を満たすので、収束することがわかる。
+つまり、条件収束する。
+\end{example}
+
 交代級数に対するこの収束の判定法を一般化して次の収束の条件が知られている。
 
 \begin{theorem}[ディリクレの判定法]
@@ -324,7 +346,21 @@ $$
 $$
 で
 $$
-\sum_{n = 0}^N (a_n-a_{n+1})M = (a_0-a_{N+1})M \to a_0 M < \infty
+\sum_{n = 0}^N (a_n-a_{n+1})M = (a_0-a_{N+1})M \le a_0 M < \infty
 $$
 なので比較判定法から$\sum_{n = 0}^\infty (a_n-a_{n+1})B_n$も収束し、$(S_N)$の収束も示された。
 \end{proof}
+
+\begin{example}
+交代級数の例\ref{t_alt_harm_ser}の類似として級数
+$$
+\sum_{n = 1}^\infty \frac{\sin\frac{2\pi}{3}n}{n} = \frac{\frac{\sqrt{3}}{2}}{1}-\frac{\frac{\sqrt{3}}{2}}{2}+\frac{0}{3}+\cdots
+$$
+を考える。
+$a_n = \frac{1}{n}$, $b_n = \sin\frac{2\pi}{3}n$とするとディリクレの判定法の仮定を満たすので、条件収束することがわかる。
+一般に和$\sum_{n = M}^N \sin n\theta$は計算できる（後の章を参照）ことから、級数
+$$
+\sum_{n = 1}^\infty \frac{\sin n}{n} = \frac{\sin 1}{1}+\frac{\sin 2}{2}+\frac{\sin 3}{3}+\cdots
+$$
+などはやはり条件収束することがわかる。
+\end{example}
