@@ -49,6 +49,7 @@ $c = 1$の場合も$\sum_{n = 0}^N c^n = N$より発散する。
 次の命題は級数が収束する必要条件を与える。
 
 \begin{proposition}
+\label{t_ser_conv}
 数列$(a_n)$に対して、級数$\sum a_n$が収束するならば数列$(a_n)$は$0$に収束する。
 \end{proposition}
 
@@ -363,4 +364,97 @@ $$
 \sum_{n = 1}^\infty \frac{\sin n}{n} = \frac{\sin 1}{1}+\frac{\sin 2}{2}+\frac{\sin 3}{3}+\cdots
 $$
 などはやはり条件収束することがわかる。
+\end{example}
+
+\section{べき級数}
+
+\begin{definition}[べき級数]
+数列$(a_n)_{n = 0}^\infty$と数$a$と$x$に対して定まる次の形の級数
+$$
+\sum_{n = 0}^\infty a_n(x-a)^n = a_0+a_1(x-a)+a_2(x-a)^2+a_3(x-a)^3+\cdots
+$$
+を\emph{べき級数}または\emph{整級数}という。
+\end{definition}
+
+べき級数は単一の$x$のみ考えるなら特殊な形の級数であるが、重要な点は$x$を変数、べき級数を関数と見て議論を展開する点にある。
+以降では簡単のため$a = 0$の場合のみ考える。
+
+\begin{remark}
+べき級数$\sum_{n = 0}^\infty a_n x^n$は$x = 0$のとき$a_0$に必ず収束する。
+\end{remark}
+
+\begin{proposition}[べき級数の収束性]
+べき級数$\sum_{n = 0}^\infty a_n x^n$が点$x = b \ne 0$で収束するならば、$|x| < |b|$を満たすすべての点$x$でこのべき級数は絶対収束する。
+\end{proposition}
+
+\begin{proof}
+級数$\sum_{n = 0}^\infty a_n b^n$が収束するので、命題\ref{t_ser_conv}より数列$(a_n b^n)_{n = 0}^\infty$は$0$に収束し、特に有界である。
+そこである実数$M$が存在し、任意の$n = 0, 1, 2, 3, \cdots$に対して$|a_n b^n| \le M$である。
+ここで
+$$
+|a_n x^n| = |a_n b^n|\abs{\frac{x}{b}}^n \le M\abs{\frac{x}{b}}^n
+$$
+であり、$|x| < |b|$であることから右辺から定まる正項級数は収束するので、
+級数$\sum_{n = 0}^\infty a_n x^n$は絶対収束する。
+\end{proof}
+
+この命題をもとに各べき級数には固有な次の値が定義できる。
+
+\begin{definition}[収束半径]
+べき級数$\sum_{n = 0}^\infty a_n x^n$に対して
+$$
+\sup\lrset{|b| \mid \text{級数$\sum_{n = 0}^\infty a_n b^n$が収束する}}
+$$
+は非負の実数または正の無限大で、べき級数$\sum_{n = 0}^\infty a_n x^n$の\emph{収束半径}という。
+\end{definition}
+
+\begin{remark}
+$r$を収束半径とするとき、$|x| > r$に対してはべき級数は必ず発散し、$|x| < r$に対しては先の命題よりべき級数は必ず絶対収束する。
+$r = \infty$の場合では任意の$x$でべき級数は絶対収束する。
+\end{remark}
+
+\begin{remark}
+収束半径という用語に「半径」という単語が入っているのはべき級数の理論を$a_n$や$x$が複素数に拡張したときに絶対収束が言える$x$の範囲$|x| < r$が複素平面での円板になっていることによる。
+実際、この章の内容は複素数の範囲に拡張でき、後の複素指数関数の部分で使われる。
+\end{remark}
+
+級数の収束に関するダランベールの判定法やコーシーの判定法から収束半径について次の公式が知られている。
+
+\begin{theorem}[ダランベールの判定法]
+\end{theorem}
+
+\begin{theorem}[コーシーの判定法]
+べき級数$\sum_{n = 0}^\infty a_n x^n$を考える。
+\begin{itemize}
+\item
+さらに$(a_n)$はどの項も$0$でない数列として、極限
+$$
+\lim_{n \to \infty}\abs{\frac{a_{n+1}}{a_n}} = c
+$$
+が存在したとするとき、べき級数の収束半径は逆数$c^{-1}$となる。
+\item
+上極限
+$$
+\limsup_{n \to \infty}\sqrt[n]{\abs{a_n}} = c
+$$
+について、べき級数の収束半径は逆数$c^{-1}$となる。
+\end{itemize}
+\end{theorem}
+
+\begin{example}
+数$c$に対してべき級数
+$$
+\sum_{n = 0}^\infty c^n x^n = 1+c x+c^2 x^2+c^3 x^3+\cdots
+$$
+を考える。
+$\lim_{n \to \infty}\abs{\frac{c^{n+1}}{c^n}} = |c|$よりこのべき級数の収束半径は$|c|^{-1}$である。
+\end{example}
+
+\begin{example}
+数$c$に対してべき級数
+$$
+\sum_{n = 0}^\infty c^n x^{2 n} = 1+c x^2+c^2 x^4+c^3 x^6+\cdots
+$$
+を考える。
+$\lim_{n \to \infty}\sqrt[2 n]{\abs{c^n}} = \sqrt{|c|}$よりこのべき級数の収束半径は$\sqrt{|c|}^{-1}$である。
 \end{example}
