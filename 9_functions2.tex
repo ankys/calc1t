@@ -43,6 +43,47 @@ $$
 
 \section{シンク関数}
 
+今まで例などで度々登場していた関数$\frac{\sin x}{x}$はシンク関数と呼ばれる。
+正確には実数全体で定義された関数
+$$
+\sinc x =
+\begin{cases}
+\frac{\sin x}{x} & (x \ne 0), \\
+1 & (x = 0) \\
+\end{cases}
+$$
+を\emph{シンク関数}という。
+
+シンク関数は極限の式から$\mathbb{R}$上の連続関数であることがわかるが、
+べき級数での表示
+$$
+\sinc x = \sum_{k = 0}^\infty \frac{(-1)^k}{(2 k+1)!}x^{2 k} = 1-\frac{1}{6}x^2+\frac{1}{5!}x^4-\cdots
+$$
+が成り立つので、無限回微分可能な関数である。
+
+シンク関数が登場した場面を思い出すと広義積分と級数の条件収束の例として登場した。
+
+ここでは広義積分$\int_0^\infty \sinc x\dd{x}$が収束するが、絶対収束しないことを示そう。
+まず$\int_0^1 \sinc x$は普通の定積分であることに注意する。
+$t > 1$に対して部分積分より
+$$
+\int_1^t \sinc x\dd{x} = \int_1^t \frac{(-\cos x)'}{x}\dd{x} = \lreval{\frac{(-\cos x)'}{x}}_1^t-\int_1^t \frac{\cos x}{x^2}\dd{x}
+$$
+となる。
+ここで、
+$$
+\abs{\frac{\cos x}{x^2}} \le \frac{1}{x^2},
+\quad \int_1^\infty \frac{1}{x^2}\dd{x} < \infty
+$$
+なので、広義積分$\int_1^\infty \frac{\cos x}{x^2}\dd{x}$は収束し、広義積分$\int_0^\infty \sinc x\dd{x}$も収束が言える。
+一方で自然数$N = 0, 1, 2, 3, \cdots$に対して
+$$
+\int_0^{2\pi N} |\sinc x|\dd{x} = \sum_{n = 1}^N \int_{2\pi(n-1)}^{2\pi n} \frac{|\sin x|}{x}\dd{x} \ge \sum_{n = 1}^N \int_{2\pi(n-1)}^{2\pi n} \frac{|\sin x|}{2\pi n}\dd{x} = \sum_{n = 1}^N \frac{2}{\pi n}
+$$
+であり、$N \to \infty$とすると右辺は正の無限大に発散するので、広義積分$\int_0^\infty \sinc x\dd{x}$は絶対収束しない。
+
+ちなみに広義積分$\int_0^\infty \sinc x\dd{x}$の値は$\frac{\pi}{2}$であることが知られていて\emph{ディリクレ積分}と呼ばれるが、証明には複素解析学の知識が必要であり本テキストの範囲を逸脱する。
+
 \section{ガンマ関数}
 
 \section{ベータ関数}
