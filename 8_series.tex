@@ -541,3 +541,77 @@ $$
 \begin{remark}
 べき級数を微分して収束半径が変わらないべき級数になるので、微分することを何回も繰り返すことができ、べき級数は無限回微分可能であることわかる。
 \end{remark}
+
+\section{種々のべき級数}
+
+この節ではこれまでに登場した関数とべき級数を結びつける。
+自明なこととして多項式関数はそのままべき級数と見ることができる。
+
+一般の（滑らかな）関数とべき級数を結びつけるのが次の定理でテイラーの定理から直ちに従う。
+
+\begin{theorem}
+$f(x)$を無限回微分可能な関数、$r$を非負の実数または正の無限大とする。
+ここで、$|x| < r$なる実数$x$に対して
+$$
+\lim_{n \to \infty}\sup_{\theta \in [0, 1]}\frac{f^{(n)}(a+\theta(x-a))}{n!}(x-a)^n = 0
+$$
+が成り立つならば、
+\begin{equation}
+\label{e_taylor_exp}
+f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n = 1+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2+\frac{f^{(3)}(a)}{3!}(x-a)^3+\cdots \quad (|x| < r)
+\end{equation}
+が成り立つ。
+\end{theorem}
+
+このときの\eqref{e_taylor_exp}のことを関数$f(x)$の点$x = a$での\emph{テーラー展開}という。
+また、$a = 0$のときのテーラー展開のことを\emph{マクローリン展開}という。
+
+次の一覧は各種関数のテーラー展開（マクローリン展開）をまとめたものである。
+
+\begin{proposition}[種々の関数のテーラー展開]
+$x$を実数として以下が成立する。
+\begin{equation}
+\label{e_geom_power}
+\frac{1}{1-x} = \sum_{n = 0}^\infty x^n = 1+x+x^2+x^3+\cdots \quad (|x| < 1).
+\end{equation}
+\begin{equation}
+\label{e_exp_power}
+\exp(x) = e^x = \sum_{n = 0}^\infty \frac{1}{n!}x^n = 1+x+\frac{1}{2}x^2+\frac{1}{3!}x^3+\cdots.
+\end{equation}
+\begin{equation}
+\label{e_log_power}
+\log(1+x) = \sum_{n = 1}^\infty \frac{(-1)^{n-1}}{n}x^n = x-\frac{1}{2}x^2+\frac{1}{3}x^3-\cdots \quad (|x| < 1).
+\end{equation}
+$$
+\sin x = \sum_{k = 0}^\infty \frac{(-1)^k}{(2 k+1)!}x^{2 k+1} = x-\frac{1}{6}x^3+\frac{1}{5!}x^5-\cdots,
+$$
+$$
+\cos x = \sum_{k = 0}^\infty \frac{(-1)^k}{(2 k)!}x^{2 k} = 1-\frac{1}{2}x^2+\frac{1}{4!}x^4-\cdots.
+$$
+$$
+\sinh x = \sum_{k = 0}^\infty \frac{1}{(2 k+1)!}x^{2 k+1} = x+\frac{1}{6}x^3+\frac{1}{5!}x^5+\cdots,
+$$
+$$
+\cosh x = \sum_{k = 0}^\infty \frac{1}{(2 k)!}x^{2 k} = 1+\frac{1}{2}x^2+\frac{1}{4!}x^4+\cdots.
+$$
+\end{proposition}
+
+一般にテーラーの定理の剰余項が$0$に収束することを示すのは大変なので、既知のべき級数の項別微分、項別積分を利用して様々なテーラー展開を求めるとよい。
+
+\begin{remark}
+\eqref{e_geom_power}は等比級数からも導出することができる。
+さらにそれを項別積分すると、
+$$
+\int_0^x \frac{1}{1-x}\dd{x} = -\log(1-x) = \sum_{n = 1}^\infty \frac{1}{n}x^n = x+\frac{1}{2}x^2+\frac{1}{3}x^3+\cdots \quad (|x| < 1).
+$$
+よって、$\log(1+x)$の式\eqref{e_log_power}を得ることができる。
+\end{remark}
+
+\begin{example}
+関数$e^{x^2}$のテーラー展開は\eqref{e_exp_power}の$x$に$x^2$を代入することで
+$$
+e^{x^2} = \sum_{n = 0}^\infty \frac{1}{n!}x^{2 n} = 1+x^2+\frac{1}{2}x^4+\frac{1}{3!}x^6+\cdots
+$$
+と求めることができる。
+なお、このべき級数の収束半径は$\infty$である。
+\end{example}
