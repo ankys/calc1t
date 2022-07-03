@@ -377,54 +377,50 @@ $$
 \end{definition}
 
 べき級数は単一の$x$のみ考えるなら特殊な形の級数であるが、重要な点は$x$を変数、べき級数を関数と見て議論を展開する点にある。
-以降では簡単のため$a = 0$の場合のみ考える。
 
 \begin{remark}
-べき級数$\sum_{n = 0}^\infty a_n x^n$は$x = 0$のとき$a_0$に必ず収束する。
+べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$は$x = a$のとき$a_0$に必ず収束する。
 \end{remark}
 
 \begin{proposition}[べき級数の収束性]
-べき級数$\sum_{n = 0}^\infty a_n x^n$が点$x = b \ne 0$で収束するならば、$|x| < |b|$を満たすすべての点$x$でこのべき級数は絶対収束する。
+べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$が点$x = b \ne a$で収束するならば、$|x-a| < |b-a|$を満たすすべての点$x$でこのべき級数は絶対収束する。
 \end{proposition}
 
 \begin{proof}
-級数$\sum_{n = 0}^\infty a_n b^n$が収束するので、命題\ref{t_ser_conv}より数列$(a_n b^n)_{n = 0}^\infty$は$0$に収束し、特に有界である。
-そこである実数$M$が存在し、任意の$n = 0, 1, 2, 3, \cdots$に対して$|a_n b^n| \le M$である。
+級数$\sum_{n = 0}^\infty a_n b^n$が収束するので、命題\ref{t_ser_conv}より数列$(a_n(b-a)^n)_{n = 0}^\infty$は$0$に収束し、特に有界である。
+そこである実数$M$が存在し、任意の$n = 0, 1, 2, 3, \cdots$に対して$|a_n(b-a)^n| \le M$である。
 ここで
 $$
-|a_n x^n| = |a_n b^n|\abs{\frac{x}{b}}^n \le M\abs{\frac{x}{b}}^n
+|a_n(x-a)^n| = |a_n(b-a)^n|\abs{\frac{x-a}{b-a}}^n \le M\abs{\frac{x-a}{b-a}}^n
 $$
-であり、$|x| < |b|$であることから右辺から定まる正項級数は収束するので、
-級数$\sum_{n = 0}^\infty a_n x^n$は絶対収束する。
+であり、$|x-a| < |b-a|$であることから右辺から定まる正項級数は収束するので、
+級数$\sum_{n = 0}^\infty a_n(x-a)^n$は絶対収束する。
 \end{proof}
 
 この命題をもとに各べき級数には固有な次の値が定義できる。
 
 \begin{definition}[収束半径]
-べき級数$\sum_{n = 0}^\infty a_n x^n$に対して
+べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$に対して
 $$
-\sup\lrset{|b| \mid \text{級数$\sum_{n = 0}^\infty a_n b^n$が収束する}}
+\sup\lrset{|b-a| \mid \text{級数$\sum_{n = 0}^\infty a_n(b-a)^n$が収束する}}
 $$
-は非負の実数または正の無限大で、べき級数$\sum_{n = 0}^\infty a_n x^n$の\emph{収束半径}という。
+は非負の実数または正の無限大で、べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$の\emph{収束半径}という。
 \end{definition}
 
 \begin{remark}
-$r$を収束半径とするとき、$|x| > r$に対してはべき級数は必ず発散し、$|x| < r$に対しては先の命題よりべき級数は必ず絶対収束する。
+$r$を収束半径とするとき、$|x-a| > r$に対してはべき級数は必ず発散し、$|x-a| < r$に対しては先の命題よりべき級数は必ず絶対収束する。
 $r = \infty$の場合では任意の$x$でべき級数は絶対収束する。
 \end{remark}
 
 \begin{remark}
-収束半径という用語に「半径」という単語が入っているのはべき級数の理論を$a_n$や$x$が複素数に拡張したときに絶対収束が言える$x$の範囲$|x| < r$が複素平面での円板になっていることによる。
+収束半径という用語に「半径」という単語が入っているのはべき級数の理論を$a_n$や$x$が複素数の場合に拡張したときに絶対収束が言える$x$の範囲$|x-a| < r$が複素平面での円板になっていることによる。
 実際、この章の内容は複素数の範囲に拡張でき、後の複素指数関数の部分で使われる。
 \end{remark}
 
 級数の収束に関するダランベールの判定法やコーシーの判定法から収束半径について次の公式が知られている。
 
-\begin{theorem}[ダランベールの判定法]
-\end{theorem}
-
-\begin{theorem}[コーシーの判定法]
-べき級数$\sum_{n = 0}^\infty a_n x^n$を考える。
+\begin{theorem}
+べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$を考える。
 \begin{itemize}
 \item
 さらに$(a_n)$はどの項も$0$でない数列として、極限
@@ -458,3 +454,90 @@ $$
 を考える。
 $\lim_{n \to \infty}\sqrt[2 n]{\abs{c^n}} = \sqrt{|c|}$よりこのべき級数の収束半径は$\sqrt{|c|}^{-1}$である。
 \end{example}
+
+ここからはいよいよ関数としてのべき級数を考えよう。
+まず、べき級数$\sum_{n = 0}^\infty a_n(x-a)^n$の収束半径を$r$とするとき、関数
+$$
+f(x) = \sum_{n = 0}^\infty a_n(x-a)^n
+$$
+が$|x-a| < r$を満たす数$x$に対して定義されることに注意する。
+また、$N = 0, 1, 2, 3, \cdots$に対して部分和を
+$$
+f_N(x) = \sum_{n = 0}^N a_n(x-a)^n
+$$
+とおく。
+この部分和は$N$次以下の多項式である。
+
+\begin{theorem}[べき級数の連続性]
+収束半径が$r$であるべき級数$f(x) = \sum_{n = 0}^\infty a_n(x-a)^n$は$|x-a| < r$で連続である。
+\end{theorem}
+
+\begin{proof}
+$|c-a| < r$を満たす数$c$と$\varepsilon > 0$を考える。
+$\delta_1 = \frac{r-|c-a|}{2}$とおき、$b = a+|c-a|+\delta_1 = a+\frac{r+|c-a|}{2}$とおくと$|b-a| < r$なので、
+$(f_N(b))_N$は$f(b)$に絶対収束することから、
+$$
+\sum_{n = N+1}^\infty |a_n||b-a|^n < \varepsilon
+$$
+となる自然数$N = 0, 1, 2, 3, \cdots$が存在する。
+次に$f_N(x)$は多項式関数より、特に連続関数なので、ある$\delta_2 > 0$が存在し、任意の$|x-c| < \delta_2$を満たす$x$に対して$|f_N(x)-f_N(c)| < \varepsilon$である。
+ここで$\delta = \min\lrset{ \delta_1, \delta_2 } > 0$とおくと$|x-c| < \delta$なる数$x$に対して、$|x-a| < |b-a| < r$より
+$$
+|f(x)-f_N(x)| = \abs{\sum_{n = N+1}^\infty a_n(x-a)^n} \le \sum_{n = N+1}^\infty |a_n||x-a|^n \le \sum_{n = N+1}^\infty |a_n||b-a|^n < \varepsilon
+$$
+である。
+したがって以上より
+$$
+|f(x)-f(c)| \le |f(x)-f_N(x)|+|f_N(x)-f_N(c)|+|f_N(c)-f(c)|
+\le \varepsilon+\varepsilon+\varepsilon = 3\varepsilon
+$$
+なので、$f(x)$は点$x = c$で連続であることがわかる。
+\end{proof}
+
+\begin{theorem}[べき級数の項別積分]
+収束半径が$r$であるべき級数$f(x) = \sum_{n = 0}^\infty a_n(x-a)^n$に対して
+$$
+\int_a^b f(x)\dd{x} = \sum_{n = 0}^\infty \frac{a_n}{n+1}(b-a)^{n+1} = a_0(b-a)+\frac{a_1}{2}(b-a)^2+\frac{a_2}{3}(b-a)^3+\frac{a_3}{4}(b-a)^4+\cdots
+$$
+が任意の$|b-a| < r$を満たす実数$b$に対して成り立つ。
+\end{theorem}
+
+\begin{proof}
+べき級数$\sum_{n = 0}^\infty \frac{a_n}{n+1}(b-a)^{n+1}$の収束半径が$r$であることに注意する。
+$N = 0, 1, 2, 3, \cdots$に対して、
+$$
+\begin{aligned}
+\abs{\int_a^b f(x)\dd{x}-\int_a^b f_N(x)\dd{x}}
+&\le \abs{\int_a^b |f(x)-f_N(x)|\dd{x}}
+\le \abs{\int_a^b \sum_{n = N+1}^\infty |a_n||x-a|^n\dd{x}} \\
+&\le \abs{\int_a^b \sum_{n = N+1}^\infty |a_n||b-a|^n\dd{x}}
+\le \sum_{n = N+1}^\infty |a_n||b-a|^{n+1}.
+\end{aligned}
+$$
+よって$N \to \infty$で、$\int_a^b f_N(x)\dd{x} \to \int_a^b f(x)\dd{x}$であり、
+$$
+\int_a^b f_N(x)\dd{x} = \sum_{n = 0}^N \frac{a_n}{n+1}(b-a)^{n+1}
+$$
+であることから定理の結論が得られる。
+\end{proof}
+
+\begin{theorem}[べき級数の項別積分]
+収束半径が$r$であるべき級数$f(x) = \sum_{n = 0}^\infty a_n(x-a)^n$は微分可能で
+$$
+f'(x) = \sum_{n = 1}^\infty n a_n(x-a)^{n-1} = \sum_{n = 0}^\infty (n+1) a_{n+1}(x-a)^n = a_1+2 a_2(x-a)+3 a_3(x-a)^2+\cdots
+$$
+が任意の$|x-a| < r$を満たす実数$x$に対して成り立つ。
+\end{theorem}
+
+\begin{proof}
+べき級数$g(x) = \sum_{n = 1}^\infty n a_n(x-a)^{n-1}$の収束半径が$r$であることに注意する。
+そこで前の定理より$g(x)$を項別積分すると
+$$
+\int_a^x g(t)\dd{t} = \sum_{n = 1}^\infty a_n(x-a)^n = f(x)-a_0
+$$
+よって、$f$は$g$の原始関数なので、$f$を微分すると$g$を得る。
+\end{proof}
+
+\begin{remark}
+べき級数を微分して収束半径が変わらないべき級数になるので、微分することを何回も繰り返すことができ、べき級数は無限回微分可能であることわかる。
+\end{remark}
