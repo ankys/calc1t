@@ -720,6 +720,85 @@ $$
 \begin{example}
 \end{example}
 
+\section{積分の漸化式}
+
+この節では被積分関数に自然数定数$n$があるような積分を考える。
+もちろん$\int x^n\dd{x} = \frac{1}{n+1}x^{n+1}+C$のような簡単な例もあるが、一般項が簡単には求まらないことが普通である。
+そこで部分積分や置換積分を使って漸化式を立てて目的の積分を計算するという技法が取られる。
+
+\begin{example}[ウォリス積分]
+$n = 0, 1, 2, 3, \cdots$に対して積分
+$$
+\int \sin^n x\dd{x}
+$$
+を考える。
+この積分は部分積分を使うことにより$n \ge 2$に対して、
+$$
+\int \sin^n x\dd{x}
+= \int (-\cos x)'\sin^{n-1} x\dd{x}
+= -\cos x\sin^{n-1} x+\int (n-1)\cos x\sin^{n-2} x\cos x\dd{x}
+= -\cos x\sin^{n-1} x+(n-1)\int \sin^{n-2} x\dd{x}-(n-1)\int \sin^n x\dd{x}
+$$
+となるので、積分の漸化式
+$$
+\int \sin^n x\dd{x} = -\frac{1}{n}\cos x\sin^{n-1} x+\frac{n-1}{n}\int \sin^{n-2} x\dd{x}
+$$
+を得る。
+最初の$n = 0, 1$の場合だけ積分を計算したらこの漸化式から
+\begin{align*}
+&\int \sin^0 x\dd{x} = x+C, \\
+&\int \sin^1 x\dd{x} = -\cos x+C, \\
+&\int \sin^2 x\dd{x} = -\frac{1}{2}\cos x\sin x+\frac{1}{2}x+C, \\
+&\int \sin^3 x\dd{x} = -\frac{1}{3}\cos x\sin^2 x-\frac{2}{3}\cos x+C
+\end{align*}
+などと順に計算することができる。
+
+また、定積分
+\begin{equation}
+\label{e_wallis_int}
+I_n = \int_0^{\frac{\pi}{2}} \sin^n x\dd{x}
+\end{equation}
+の場合を考えよう。
+この積分を\emph{ウォリス積分}という。
+不定積分が得られているので定積分に対する漸化式は
+$$
+I_n = \frac{n-1}{n}I_{n-2} \quad (n \ge 2),
+\quad I_0 = \frac{\pi}{2},
+\quad I_1 = 1
+$$
+となる。
+\end{example}
+
+\begin{proposition}[ウォリスの公式]
+ウォリス積分\eqref{e_wallis_int}で定まる数列$(I_n)_{n = 0}^\infty$は
+$$
+\lim_{n \to \infty}\sqrt{n}I_n = \sqrt{\frac{\pi}{2}}
+$$
+\end{proposition}
+
+\begin{proof}
+ウォリス積分の漸化式より
+$$
+(n+1)I_{n+1}I_n = n I_n I_{n-1}
+$$
+なので、数列$(n I_n I_{n-1})_n$は定数列であり、
+$$
+n I_n I_{n-1} = I_1 I_0 = \frac{\pi}{2}
+$$
+がわかる。
+
+ここで、$0 \le x \le \frac{\pi}{2}$で$\sin^{n+1} x \le \sin^n x \le \sin^{n-1} x$より
+$$
+I_{n+1} \le I_n \le I_{n-1}
+$$
+であり、$n I_n \ge 0$をかけて
+$$
+n I_{n+1}I_n = \frac{n}{n+1}\frac{\pi}{2} \le n I_n^2 \le n I_n I_{n-1} = \frac{\pi}{2}
+$$
+を得る。
+したがってはさみうちの原理より結論の式を得る。
+\end{proof}
+
 \section{積分の不等式}
 
 この節では積分を含んだいくつかの有名な不等式を紹介し、応用として（本来の応用先ではないが）積分が計算できない問題に対して評価を与える。
