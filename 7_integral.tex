@@ -756,10 +756,11 @@ $$
 また、定積分
 \begin{equation}
 \label{e_wallis_int}
-I_n = \int_0^{\frac{\pi}{2}} \sin^n x\dd{x}
+I_n = \int_0^{\frac{\pi}{2}} \sin^n x\dd{x} = \int_0^{\frac{\pi}{2}} \cos^n x\dd{x}
 \end{equation}
 の場合を考えよう。
-この積分を\emph{ウォリス積分}という。
+なお、$\sin$の定積分と$\cos$の定積分が等しいことは$x$を$\frac{\pi}{2}-x$と置換すればわかる。
+この積分$I_n$を\emph{ウォリス積分}という。
 不定積分が得られているので定積分に対する漸化式は
 $$
 I_n = \frac{n-1}{n}I_{n-2} \quad (n \ge 2),
@@ -769,12 +770,13 @@ $$
 となる。
 \end{example}
 
-\begin{proposition}[ウォリスの公式]
+\begin{theorem}[ウォリスの公式]
+\label{t_wallis_limit}
 ウォリス積分\eqref{e_wallis_int}で定まる数列$(I_n)_{n = 0}^\infty$は
 $$
 \lim_{n \to \infty}\sqrt{n}I_n = \sqrt{\frac{\pi}{2}}
 $$
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
 ウォリス積分の漸化式より

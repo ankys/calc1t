@@ -107,13 +107,45 @@ $$
 一方で原始関数はこれまでに登場した関数で表すことができないことが知られている（ガウスの誤差関数と呼ばれる）。
 しかしながら広義積分
 $$
-\int_{-\infty}^{+\infty}\exp(-x^2)\dd{x}
+\int_{-\infty}^{+\infty}\exp(-x^2)\dd{x} = \int_{-\infty}^{+\infty} e^{-x^2}\dd{x}
 $$
 の値は計算できる。
 これを\emph{ガウス積分}という。
+
 ガウス積分の標準的かつ簡便な計算方法は重積分の極座標変換を用いるものだが、本テキストの範囲外なので、ここでは煩雑ではあるが範囲内の知識で説明できる方法を紹介する。
-
-
+そのためにまず不等式
+$$
+1-x^2 \le e^{-x^2} \le \frac{1}{1+x^2}
+$$
+を用意する。
+これは微分法により任意の実数$y$に対して$e^y \ge 1+y$であることから、$y = \pm x^2$を当てはめて整理すれば得られる。
+この不等式を$n = 1, 2, 3, \cdots$乗して積分すると次が得れれる。
+$$
+\int_0^1 (1-x^2)^n\dd{x} \le \int_0^1 e^{-n x^2}\dd{x} \le \int_0^1 \frac{1}{(1+x^2)^n}\dd{x}.
+$$
+ここで、左辺は$x = \sin\theta$と置換することにより
+$$
+\int_0^1 (1-x^2)^n\dd{x} = \int_0^{\frac{\pi}{2}} \cos^{2 n+1}\theta\dd{\theta},
+$$
+真ん中の式は$\sqrt{n}x$を$x$と置換することにより
+$$
+\int_0^1 e^{-n x^2}\dd{x} = \frac{1}{\sqrt{n}} e^{-x^2}\dd{x},
+$$
+右辺は$x = \tan\theta$と置換することにより
+$$
+\int_0^1 \frac{1}{(1+x^2)^n}\dd{x} = \int_0^{\frac{\pi}{4}} \cos^{2 n-2}\theta\dd{\theta} \le \int_0^{\frac{\pi}{2}} \cos^{2 n-2}\theta\dd{\theta}
+$$
+なので、ウォリス積分$I_n = \int_0^{\frac{\pi}{2}} \cos^{2 n+1}\theta\dd{\theta}$を用いて、
+$$
+\sqrt{n}I_{2 n+1} \le \int_0^{\sqrt{n}} e^{-x^2}\dd{x} \le \sqrt{n}I_{2 n-2}
+$$
+である。
+したがって、$n \to \infty$とするとウォリスの公式（定理\ref{t_wallis_limit}）よりガウス積分の値が
+$$
+\int_0^\infty \exp(-x^2)\dd{x} = \int_0^\infty e^{-x^2}\dd{x} = \frac{1}{\sqrt{2}}\cdot\sqrt{\frac{\pi}{2}} = \frac{\sqrt{\pi}}{2},
+\quad \int_{-\infty}^{+\infty} \exp(-x^2)\dd{x} = \int_{-\infty}^{+\infty} e^{-x^2}\dd{x} = \sqrt{\pi}
+$$
+であることがわかる。
 
 \section{ガンマ関数}
 
