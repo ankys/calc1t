@@ -35,11 +35,27 @@ $$
 e^{z+w} = e^z e^w
 $$
 が複素数$z, x$に対して成り立つことを認めれば、三角関数の加法定理が導かれる。
-また、$\sin x$のべき級数から極限
+また、$\sin x$のべき級数表示から極限
 $$
 \lim_{x \to 0}\frac{\sin x}{x} = 1
 $$
 がわかる。
+
+指数法則を使えば指数関数や三角関数の和について以下がわかる。
+
+\begin{proposition}
+複素数$x$に対して
+$$
+\sum_{n = M}^N e^{n x} =
+\begin{cases}
+\frac{e^{(N+1)x}-e^{M x}}{e^x-1} & (e^x \ne 1), \\
+N-M+1 & (e^x = 1). \\
+\end{cases}
+$$
+$$
+\sum_{n = M}^N \sin n x =
+$$
+\end{proposition}
 
 \section{シンク関数}
 
