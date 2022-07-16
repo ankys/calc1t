@@ -120,6 +120,27 @@ $$
 絶対収束しないが収束するとき、級数は\emph{条件収束}するという。
 \end{definition}
 
+\begin{proposition}
+級数$\sum a_n$が絶対収束するならばそれは収束している。
+\end{proposition}
+
+\begin{proof}
+$N \in \mathbb{N}$に対して、
+$$
+S_N = \sum_{n \le N} a_n,
+\quad \bar{S}_N = \sum_{n \le N} \abs{a_n}
+$$
+とおくと、
+$$
+\abs{S_N-S_M} = \abs{\sum_{n = M+1}^N a_n} \le \abs{\sum_{n = M+1}^N \abs{a_n}} = \abs{\bar{S}_N-\bar{S}_M}.
+$$
+よって、$N$について上極限を$M$について下極限をそれぞれ取ると$\bar{S}_N$, $\bar{S}_M$は仮定より収束することに注意して、
+$$
+\limsup_{N \to \infty}S_N-\liminf_{N \to \infty}S_N \le \lim_{N \to \infty}\bar{S}_N-\lim_{N \to \infty}\bar{S}_N = 0.
+$$
+したがって上極限と下極限が一致したので$S_N$さらには級数は収束する。
+\end{proof}
+
 \begin{remark}
 級数が絶対収束するならばそれは収束している。
 \end{remark}

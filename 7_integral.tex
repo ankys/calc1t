@@ -1038,9 +1038,28 @@ $$
 と表す。
 \end{remark}
 
-\begin{remark}
-広義積分が絶対収束するならばそれは収束している。
-\end{remark}
+\begin{proposition}
+$f$を区間$I$上の連続関数あるいは単調関数とする。
+$f$の$I$上の広義積分が絶対収束するならばそれは収束している。
+\end{proposition}
+
+\begin{proof}
+$I = [a, b)$の場合のみ示す。
+$t \in I$に対して、
+$$
+F(t) = \int_a^t f(x)\dd{x},
+\quad \bar{F}(t) = \int_a^t \abs{f(x)}\dd{x}
+$$
+とおくと、
+$$
+\abs{F(t_+)-F(t_-)} = \abs{\int_{t_-}^{t_+} f(x)\dd{x}} \le \abs{\int_{t_-}^{t_+} \abs{f(x)}\dd{x}} = \abs{\bar{F}(t_+)-\bar{F}(t_-)}.
+$$
+よって、$t_+$について上極限を$t_-$について下極限をそれぞれ取ると$\bar{F}(t_+)$, $\bar{F}(t_-)$は仮定より収束することに注意して、
+$$
+\limsup_{t \to b-}F(t)-\liminf_{t \to b-}F(t) \le \lim_{t \to b-}\bar{F}(t)-\lim_{t \to b-}\bar{F}(t) = 0.
+$$
+したがって上極限と下極限が一致したので$F(t)$さらには広義積分は収束する。
+\end{proof}
 
 \begin{proposition}[広義積分の比較判定法]
 $f$を区間$I$上の連続関数あるいは単調関数とする。
