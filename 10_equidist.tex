@@ -11,7 +11,7 @@
 \begin{definition}[一様分布列]
 各$n$に対して$x_n \in [0, 1)$を満たす数列$(x_n)_{n = 1}^\infty$が$[0, 1)$で\emph{一様分布}するとは任意の$0 \le a < b \le 1$に対して
 $$
-\lim_{N \to \infty}\#\lrset{ n = 1, \cdots, N \mid a \le x_n < b } = b-a
+\lim_{N \to \infty}\frac{1}{N}\#\lrset{ n = 1, \cdots, N \mid a \le x_n < b } = b-a
 $$
 が成り立つことである。
 ただし、有限集合$A$に対して、自然数として定まる元の個数を$\# A$と書く。
@@ -38,3 +38,88 @@ $[0, 1)$の$0$と$1$と引っ付けてわっかのように見なすと、$(\lrf
 
 この定理において$\theta$が無理数であることが非常に重要で、例えば$\theta$が有理数$\frac{1}{p}$の場合は$n$が$p$増えるともとの位置に戻るため、$\lrfrac{n\theta}$の取りうる値は$\lrset{ \frac{0}{p}, \cdots \frac{p-1}{p} }$となり一様分布にはならない。
 無理数の場合は表現が正確ではないが分母$p$が無限大のような状況になっていて、$(\lrfrac{n\theta})_n$は$[0, 1)$上均等にまんべんなく分布するということを定理は主張している。
+
+一様分布定理と関連の深い話題として次のクロネッカーの稠密定理がある。
+
+\begin{theorem}[クロネッカーの稠密定理]
+$\theta$を無理数とするとき、数列$(\lrfrac{n\theta})_{n = 1}^\infty$は稠密である、つまり任意の$0 \le a < b \le 1$に対して$a \le \lrfrac{k\theta} < b$を満たす$k = 1, \cdots$が存在する。
+\end{theorem}
+
+一様分布するならば自動的に稠密であるので、クロネッカーの稠密定理は一様分布定理より弱い内容を主張する定理である。
+しかしながら、今回の一様分布定理の証明ではクロネッカーの稠密定理を利用するので証明を与える。
+
+\begin{proof}[クロネッカーの稠密定理の証明]
+まず、$N = \lrceil{\frac{2}{b-a}}$とするとある$l = 0, \cdots, N-1$が存在して$a \le \frac{l}{N} < \frac{l+1}{N} \le b$とできることに注意する。
+この$N = 1, 2, 3, \cdots$に対して次の議論をする。
+つまり区間$[0, 1)$を$N$等分すると$(\lrfrac{n\theta})_{n = 1}^{N+1}$のうち$2$つは同じ小区間の中に入り$i < j$とおく。
+このとき$\theta$が無理数であることから、$0 < |\lrfrac{i\theta}-\lrfrac{j\theta}| < \frac{1}{N}$である。
+よって、$k$を$j-i$とすると$0 < \lrfrac{k\theta} < \frac{1}{N}$または$1-\frac{1}{N} < \lrfrac{k\theta} < 1$であり、
+これを何倍かすると$a \le \frac{l}{N} \le \lrfrac{nk\theta} < \frac{l+1}{N} \le b$となる$n$が存在するので稠密性が示された。
+\end{proof}
+
+一様分布定理の証明はワイルの証明が知られているがここでは別の証明を与える。
+まず、次の補題を準備する。
+
+\begin{lemma}
+$(x_n)_{n = 1}^\infty$を実数列とする。
+数列$(\lrfrac{x_n})$が一様分布することと任意の実数$a$に対して
+$$
+\lim_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{x_n}-\frac{1}{N}\sum_{n \le N}\lrfrac{x_n+a}) = 0
+$$
+が成り立つことは同値である。
+\end{lemma}
+
+\begin{proof}
+まず一様分布であることの定義より、$(\lrfrac{x_n})$が一様分布することは任意の$0 \le b \le 1$に対して
+$$
+\lim_{N \to \infty}\frac{1}{N}\#\lrset{ n \le N \mid x_n < b } = b
+$$
+が成り立つことと同値であることに注意する。
+実数$b$に対して、
+$$
+\begin{aligned}
+\frac{1}{N}\sum_{n \le N}\lrfrac{x_n-b}
+&= \frac{1}{N}\sum_{\lrfrac{x_n} \ge \lrfrac{b}}(\lrfrac{x_n}-\lrfrac{b})+\frac{1}{N}\sum_{\lrfrac{x_n} < \lrfrac{b}}(\lrfrac{x_n}-\lrfrac{b}+1) \\
+&= \frac{1}{N}\sum_{n \le N}\lrfrac{x_n}+\frac{1}{N}\#\lrset{ n \le N \mid \lrfrac{x_n} < \lrfrac{b} }-\lrfrac{b}.
+\end{aligned}
+$$
+ここから補題が成立することがわかる。
+\end{proof}
+
+\begin{proof}[一様分布定理の証明]
+$0 \le a < 1$と$\varepsilon > 0$を固定する。
+$(\lrfrac{n\theta})_{n = 1}^\infty$の稠密性は示されているので、
+$$
+a \le \lrfrac{k\theta} < a+\varepsilon
+$$
+となる$k = 1, 2, 3, \cdots$が存在する。
+ここで任意の整数$n$に対して
+$$
+\lrfrac{n\theta} < \lrfrac{(n-k)\theta+a}+\varepsilon
+$$
+を示す。
+実際、
+$$
+\lrfrac{(n-k)\theta+a} = \lrfrac{n\theta-(k\theta-a)} \ge \lrfrac{n\theta}-\lrfrac{k\theta-a}
+$$
+で、$a \le \lrfrac{k\theta} < a+\varepsilon$より、
+$$
+\lrfrac{(n-k)\theta+a} \ge \lrfrac{n\theta}-\lrfrac{k\theta}-a > \lrfrac{n\theta}-\varepsilon
+$$
+である。
+したがって、
+$$
+\sum_{n \le N}\lrfrac{n\theta}-\sum_{n \le N}\lrfrac{n\theta+a}
+= \sum_{n \le k}\lrfrac{n\theta}+\sum_{k < n \le N}\lrfrac{n\theta}-\sum_{n \ge N-k}\lrfrac{n\theta+a}-\sum_{N-k < n \le N}\lrfrac{n\theta+a}
+\le k+(N-k)\varepsilon.
+$$
+よって、
+$$
+\limsup_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta}-\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta+a}) \le \varepsilon.
+$$
+また、$a-\varepsilon < \lrfrac{k\theta} \le a$として$k$を取り同様のことをすれば
+$$
+\liminf_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta}-\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta+a}) \ge -\varepsilon.
+$$
+よって$\varepsilon$は任意であることと補題より一様分布定理が証明された。
+\end{proof}
