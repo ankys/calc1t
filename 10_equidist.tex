@@ -10,9 +10,10 @@
 
 \begin{definition}[一様分布列]
 各$n$に対して$x_n \in [0, 1)$を満たす数列$(x_n)_{n = 1}^\infty$が$[0, 1)$で\emph{一様分布}するとは任意の$0 \le a < b \le 1$に対して
-$$
+\begin{equation}
+\label{e_unifdist}
 \lim_{N \to \infty}\frac{1}{N}\#\lrset{ n = 1, \cdots, N \mid a \le x_n < b } = b-a
-$$
+\end{equation}
 が成り立つことである。
 ただし、有限集合$A$に対して、自然数として定まる元の個数を$\# A$と書く。
 \end{definition}
@@ -31,18 +32,18 @@ $[0, 1)$という区間は実数$x$の床（整数部分）$\lrfloor{x}$を引�
 以上の準備の下で一様分布定理は次のように表現される。
 
 \begin{theorem}[一様分布定理]
-$\theta$を無理数とするとき、数列$(\lrfrac{n\theta})_{n = 1}^\infty$は一様分布する。
+$\alpha$を無理数で$\beta$を実数とするとき、数列$(\lrfrac{\alpha n+\beta})_{n = 1}^\infty$は一様分布する。
 \end{theorem}
 
-$[0, 1)$の$0$と$1$と引っ付けてわっかのように見なすと、$(\lrfrac{n\theta})_n$というのはわっかをぐるぐるまわる感じになっており回転と呼ばれ$\theta$は角度のような役割を果たす。
+$[0, 1)$の$0$と$1$と引っ付けてわっかのように見なすと、$(\lrfrac{\alpha n+\beta})_n$というのはわっかをぐるぐるまわる感じになっており回転と呼ばれ$\alpha$は角度のような役割を果たす。
 
-この定理において$\theta$が無理数であることが非常に重要で、例えば$\theta$が有理数$\frac{1}{p}$の場合は$n$が$p$増えるともとの位置に戻るため、$\lrfrac{n\theta}$の取りうる値は$\lrset{ \frac{0}{p}, \cdots \frac{p-1}{p} }$となり一様分布にはならない。
-無理数の場合は表現が正確ではないが分母$p$が無限大のような状況になっていて、$(\lrfrac{n\theta})_n$は$[0, 1)$上均等にまんべんなく分布するということを定理は主張している。
+この定理において$\alpha$が無理数であることが非常に重要で、例えば$\alpha$が有理数$\frac{1}{p}$、$\beta = 0$の場合は$n$が$p$増えるともとの位置に戻るため、$\lrfrac{\alpha n+\beta}$の取りうる値は$\lrset{ \frac{0}{p}, \cdots \frac{p-1}{p} }$となり一様分布にはならない。
+無理数の場合は表現が正確ではないが分母$p$が無限大のような状況になっていて、$(\lrfrac{\alpha n+\beta})_n$は$[0, 1)$上均等にまんべんなく分布するということを定理は主張している。
 
 一様分布定理と関連の深い話題として次のクロネッカーの稠密定理がある。
 
 \begin{theorem}[クロネッカーの稠密定理]
-$\theta$を無理数とするとき、数列$(\lrfrac{n\theta})_{n = 1}^\infty$は稠密である、つまり任意の$0 \le a < b \le 1$に対して$a \le \lrfrac{k\theta} < b$を満たす$k = 1, \cdots$が存在する。
+$\alpha$を無理数で$\beta$を実数とするとき、数列$(\lrfrac{\alpha n+\beta})_{n = 1}^\infty$は稠密である、つまり任意の$0 \le a < b \le 1$に対して$a \le \lrfrac{\alpha n+\beta} < b$を満たす$n = 1, \cdots$が存在する。
 \end{theorem}
 
 一様分布するならば自動的に稠密であるので、クロネッカーの稠密定理は一様分布定理より弱い内容を主張する定理である。
@@ -51,10 +52,10 @@ $\theta$を無理数とするとき、数列$(\lrfrac{n\theta})_{n = 1}^\infty$�
 \begin{proof}[クロネッカーの稠密定理の証明]
 まず、$N = \lrceil{\frac{2}{b-a}}$とするとある$l = 0, \cdots, N-1$が存在して$a \le \frac{l}{N} < \frac{l+1}{N} \le b$とできることに注意する。
 この$N = 1, 2, 3, \cdots$に対して次の議論をする。
-つまり区間$[0, 1)$を$N$等分すると$(\lrfrac{n\theta})_{n = 1}^{N+1}$のうち$2$つは同じ小区間の中に入り$i < j$とおく。
-このとき$\theta$が無理数であることから、$0 < |\lrfrac{i\theta}-\lrfrac{j\theta}| < \frac{1}{N}$である。
-よって、$k$を$j-i$とすると$0 < \lrfrac{k\theta} < \frac{1}{N}$または$1-\frac{1}{N} < \lrfrac{k\theta} < 1$であり、
-これを何倍かすると$a \le \frac{l}{N} \le \lrfrac{nk\theta} < \frac{l+1}{N} \le b$となる$n$が存在するので稠密性が示された。
+つまり区間$[0, 1)$を$N$等分すると$(\lrfrac{\alpha n})_{n = 1}^{N+1}$のうち$2$つは同じ小区間の中に入り$i < j$とおく。
+このとき$\alpha$が無理数であることから、$0 < |\lrfrac{\alpha j}-\lrfrac{\alpha i}| < \frac{1}{N}$である。
+よって、$k$を$j-i$とすると$0 < \lrfrac{\alpha k} < \frac{1}{N}$または$1-\frac{1}{N} < \lrfrac{\alpha k} < 1$であり、
+これを何倍かすると$a \le \frac{l}{N} \le \lrfrac{n\alpha k+\beta} < \frac{l+1}{N} \le b$となる$n$が存在するので稠密性が示された。
 \end{proof}
 
 一様分布定理の証明はワイルの証明が知られているがここでは別の証明を与える。
@@ -88,38 +89,85 @@ $$
 
 \begin{proof}[一様分布定理の証明]
 $0 \le a < 1$と$\varepsilon > 0$を固定する。
-$(\lrfrac{n\theta})_{n = 1}^\infty$の稠密性は示されているので、
+$(\lrfrac{\alpha n+\beta})_{n = 1}^\infty$の稠密性は示されているので、
 $$
-a \le \lrfrac{k\theta} < a+\varepsilon
+a \le \lrfrac{\alpha k+\beta} < a+\varepsilon
 $$
 となる$k = 1, 2, 3, \cdots$が存在する。
 ここで任意の整数$n$に対して
 $$
-\lrfrac{n\theta} < \lrfrac{(n-k)\theta+a}+\varepsilon
+\lrfrac{\alpha n+\beta} < \lrfrac{\alpha(n-k)+\beta+a}+\varepsilon
 $$
 を示す。
 実際、
 $$
-\lrfrac{(n-k)\theta+a} = \lrfrac{n\theta-(k\theta-a)} \ge \lrfrac{n\theta}-\lrfrac{k\theta-a}
+\lrfrac{\alpha(n-k)+\beta+a} = \lrfrac{(\alpha n+\beta)-(\alpha k-a)} \ge \lrfrac{\alpha n+\beta}-\lrfrac{\alpha k-a}
 $$
-で、$a \le \lrfrac{k\theta} < a+\varepsilon$より、
+で、$a \le \lrfrac{\alpha k+\beta} < a+\varepsilon$より、
 $$
-\lrfrac{(n-k)\theta+a} \ge \lrfrac{n\theta}-\lrfrac{k\theta}-a > \lrfrac{n\theta}-\varepsilon
+\lrfrac{\alpha(n-k)+\beta+a} \ge \lrfrac{\alpha n+\beta}-\lrfrac{\alpha k}+a > \lrfrac{\alpha n+\beta}-\varepsilon
 $$
 である。
 したがって、
 $$
-\sum_{n \le N}\lrfrac{n\theta}-\sum_{n \le N}\lrfrac{n\theta+a}
-= \sum_{n \le k}\lrfrac{n\theta}+\sum_{k < n \le N}\lrfrac{n\theta}-\sum_{n \ge N-k}\lrfrac{n\theta+a}-\sum_{N-k < n \le N}\lrfrac{n\theta+a}
-\le k+(N-k)\varepsilon.
+\begin{aligned}
+\sum_{n \le N}\lrfrac{\alpha n+\beta}-\sum_{n \le N}\lrfrac{\alpha n+\beta+a}
+&= \sum_{n \le k}\lrfrac{\alpha n+\beta}+\sum_{k < n \le N}\lrfrac{\alpha n+\beta}-\sum_{n \le N-k}\lrfrac{\alpha n+\beta+a}-\sum_{N-k < n \le N}\lrfrac{\alpha n+\beta+a} \\
+&\le k+(N-k)\varepsilon.
+\end{aligned}
 $$
 よって、
 $$
-\limsup_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta}-\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta+a}) \le \varepsilon.
+\limsup_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta}-\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta+a}) \le \varepsilon.
 $$
-また、$a-\varepsilon < \lrfrac{k\theta} \le a$として$k$を取り同様のことをすれば
+また、$a-\varepsilon < \lrfrac{\alpha k+\beta} \le a$として$k$を取り同様のことをすれば
 $$
-\liminf_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta}-\frac{1}{N}\sum_{n \le N}\lrfrac{n\theta+a}) \ge -\varepsilon.
+\liminf_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta}-\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta+a}) \ge -\varepsilon.
 $$
 よって$\varepsilon$は任意であることと補題より一様分布定理が証明された。
 \end{proof}
+
+一様分布の内容から次の拡張が得られる。
+
+\begin{proposition}
+$f$を$[0, 1)$上の有界な実数値関数で$f(1) = f(0)$と拡張したときに$f$は$[0, 1]$上リーマン積分可能とする。
+このとき$[0, 1)$上の一様分布する数列$(x_n)_{n = 1}^\infty$に対して
+\begin{equation}
+\label{e_unifdist2}
+\lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) = \int_0^1 f(x)\dd{x}
+\end{equation}
+が成り立つ。
+\end{proposition}
+
+\begin{remark}
+一様分布することの定義は$f$が次の\emph{区間指示関数}
+$$
+f(x) = \chi_{[a, b)}(x) =
+\begin{cases}
+1 & (x \in [a, b)) \\
+0 & (x \notin [a, b)) \\
+\end{cases}
+$$
+の場合に\eqref{e_unifdist2}が成り立つということである。
+\end{remark}
+
+\begin{proof}
+$\varepsilon > 0$を固定する。
+リーマン積分可能であることから$f$に対して、いくつかの区間指示関数の定数倍の和であって
+$$
+f_-(x) \le f(x) \le f_+(x) \quad \forall x \in [0, 1], \quad \int_0^1 (f_+(x)-f_-(x))\dd{x} < \varepsilon
+$$
+を満たす関数$f_-$, $f_+$が存在する。
+$(x_n)$は一様分布するので区間指示関数の定数倍の和$f_-$, $f_+$に対して\eqref{e_unifdist2}が成り立つことに注意して、
+\begin{align*}
+&\liminf_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) \ge \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f_-(x_n) = \int_0^1 f_-(x)\dd{x} \ge \int_0^1 f(x)\dd{x}-\varepsilon, \\
+&\limsup_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) \le \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f_+(x_n) = \int_0^1 f_+(x)\dd{x} \le \int_0^1 f(x)\dd{x}+\varepsilon.
+\end{align*}
+ここで$\varepsilon$は任意なので、一般の$f$に対しても\eqref{e_unifdist2}が成り立つことがわかった。
+\end{proof}
+
+\begin{remark}
+今回の一様分布定理の証明では直接\eqref{e_unifdist}をつまり区間指示関数$f$に対して\eqref{e_unifdist2}を証明したが、
+ワイルの方法は最初に和の計算ができる$f(x) = \exp(2\pi i k x)$（$k$は$0$でない整数）に対して証明して、連続関数に拡張して区間指示関数と進めていく。
+この証明法は複素数値の関数の積分やフーリエ解析の知識が必要になるため本テキストではこれ以上触れないが、様々な発展性があり重要である。
+\end{remark}
