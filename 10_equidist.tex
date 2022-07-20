@@ -89,9 +89,9 @@ $$
 
 \begin{proof}[一様分布定理の証明]
 $0 \le a < 1$と$\varepsilon > 0$を固定する。
-$(\lrfrac{\alpha n+\beta})_{n = 1}^\infty$の稠密性は示されているので、
+$(\lrfrac{\alpha n})_{n = 1}^\infty$の稠密性は示されているので、
 $$
-a \le \lrfrac{\alpha k+\beta} < a+\varepsilon
+a \le \lrfrac{\alpha k} < a+\varepsilon
 $$
 となる$k = 1, 2, 3, \cdots$が存在する。
 ここで任意の整数$n$に対して
@@ -103,12 +103,12 @@ $$
 $$
 \lrfrac{\alpha(n-k)+\beta+a} = \lrfrac{(\alpha n+\beta)-(\alpha k-a)} \ge \lrfrac{\alpha n+\beta}-\lrfrac{\alpha k-a}
 $$
-で、$a \le \lrfrac{\alpha k+\beta} < a+\varepsilon$より、
+で、$a \le \lrfrac{\alpha k} < a+\varepsilon$より、
 $$
-\lrfrac{\alpha(n-k)+\beta+a} \ge \lrfrac{\alpha n+\beta}-\lrfrac{\alpha k}+a > \lrfrac{\alpha n+\beta}-\varepsilon
+\lrfrac{\alpha k-a} = \lrfrac{\alpha k}-a < \varepsilon
 $$
-である。
-したがって、
+から従う。
+よって、
 $$
 \begin{aligned}
 \sum_{n \le N}\lrfrac{\alpha n+\beta}-\sum_{n \le N}\lrfrac{\alpha n+\beta+a}
@@ -116,7 +116,7 @@ $$
 &\le k+(N-k)\varepsilon.
 \end{aligned}
 $$
-よって、
+したがって、
 $$
 \limsup_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta}-\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta+a}) \le \varepsilon.
 $$
@@ -125,6 +125,42 @@ $$
 \liminf_{N \to \infty}\qty(\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta}-\frac{1}{N}\sum_{n \le N}\lrfrac{\alpha n+\beta+a}) \ge -\varepsilon.
 $$
 よって$\varepsilon$は任意であることと補題より一様分布定理が証明された。
+\end{proof}
+
+次の命題は一様分布する数列に小さな修正を加えても一様分布であることを主張する。
+
+\begin{proposition}
+$(x_n)$, $(y_n)$, $(c_n)$を実数列として各$n$に対して$|x_n-y_n| \le c_n$が成り立つとする。
+ここで$(y_n)$が一様分布して$n \to \infty$で$c_n \to 0$であるならば、$(x_n)$も一様分布する。
+\end{proposition}
+
+\begin{proof}
+任意の実数$a$と各$n$に対して、もし$\lrfrac{y_n+a}-c_n \ge 0$ならば
+$$
+\lrfrac{x_n+a} \le \lrfrac{y_n+a}+c_n
+$$
+が成り立つことに注意する。
+実際、$0 \le |x_n-y_n| \le c_n \le \lrfrac{y_n+a} < 1$であり、$\lrfrac{x_n+a} > \lrfrac{y_n+a}+c_n$だとすると$c_n < 1-\lrfrac{y_n+a}$である。
+ここで仮定から$y_n+a-c_n \le x_n+a \le y_n+a+c_n$で最左辺と最右辺の整数部分が等しくないとならないので、
+$$
+\lrfrac{x_n+a} = \lrfrac{y_n+a+c_n} \lrfrac{y_n+a}+c_n
+$$
+である。
+同様にして、もし$\lrfrac{y_n+a}+c_n \le 1$ならば
+$$
+\lrfrac{x_n+a} \ge \lrfrac{y_n+a}-c_n
+$$
+が成り立つ。
+以上のことから、
+$$
+\begin{aligned}
+&\abs{\sum_{n \le N}\lrfrac{x_n+a}-\sum_{n \le N}\lrfrac{y_n+a}} \\
+&\le \sum_{n \le N}c_n+\sum_{\lrfrac{y_n+a} < c_n \lor \lrfrac{y_n+a} \ge 1-c_n}|\lrfrac{x_n+a}-\lrfrac{y_n+a}| \\
+&\le \sum_{n \le N}c_n+\#\lrset{ n \le N \mid \lrfrac{y_n+a} < c_n }+\#\lrset{ n \le N \mid \lrfrac{y_n+a} \ge 1-c_n }
+\end{aligned}
+$$
+となり、$N$で割って$N \to \infty$とすると、$\lim_{n \to \infty}c_n = 0$より$\lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}c_n = 0$であること（定理\ref{t_average_conv}）と$(y_n+a)$が一様分布することから右辺は$0$に収束する。
+ここから$(x_n)$は$(y_n)$と同様に一様分布することがわかる。
 \end{proof}
 
 一様分布の内容から次の拡張が得られる。
