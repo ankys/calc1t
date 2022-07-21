@@ -9,9 +9,9 @@
 その一様分布定理を述べるために次の用語を定義する。
 
 \begin{definition}[一様分布列]
-各$n$に対して$x_n \in [0, 1)$を満たす数列$(x_n)_{n = 1}^\infty$が$[0, 1)$で\emph{一様分布}するとは任意の$0 \le a < b \le 1$に対して
+各$n$に対して$x_n \in [0, 1)$を満たす数列$(x_n)_{n = 1}^\infty$が$[0, 1)$で\emph{一様分布}するとは任意の$0 \le a \le b \le 1$に対して
 \begin{equation}
-\label{e_unifdist}
+\label{e_equidist}
 \lim_{N \to \infty}\frac{1}{N}\#\lrset{ n = 1, \cdots, N \mid a \le x_n < b } = b-a
 \end{equation}
 が成り立つことである。
@@ -20,6 +20,23 @@
 
 この条件は区間$[a, b)$に入る$x_n$の割合が$b-a$であるとみなせる。
 以降では$n = 1, \cdots, N$をしばしば$n \le N$と表現する。
+
+\begin{remark}
+$[0, 1)$上の数列$(x_n)_{n = 1}^\infty$が一様分布することは、
+各$n$に対して$0 \le a_n \le b_n \le 1$である数列$(a_n)$, $(b_n)$であって$n \to \infty$で$a_n \to a$, $b_n \to b$となるものについて
+$$
+\lim_{N \to \infty}\frac{1}{N}\#\lrset{ n \le N \mid a_n \le x_n < b_n } = b-a
+$$
+が成り立つことと同値である。
+実際、こちらの方が強い条件になっていて、逆については任意の$\varepsilon > 0$に対して、ある$k = 1, 2, 3, \cdots$が存在して任意の自然数$n \ge k$に対して$|a_n-a| < \varepsilon$, $|b_n-b| < \varepsilon$が成り立つことから、$N = 1, 2, 3, \cdots$に対して
+$$
+\abs{\#\lrset{ n \le N \mid a_n \le x_n < b_n }-\#\lrset{ n \le N \mid a \le x_n < b }}
+\le k+\#lrset{ k < n \le N \mid a-\varepsilon \le x_n < a+\varepsilon \lor b-\varepsilon \le x_n < b+\varepsilon }
+\le k+\#lrset{ n \le N \mid a-\varepsilon \le x_n < a+\varepsilon }+\#lrset{ n \le N \mid b-\varepsilon \le x_n < b+\varepsilon }.
+$$
+よって、$N$で割って$N \to \infty$とすると右辺は$4\varepsilon$に収束する。
+$\varepsilon$は任意なので、逆がいえた。
+\end{remark}
 
 $[0, 1)$という区間は実数$x$の床（整数部分）$\lrfloor{x}$を引いた小数部分$\lrfrac{x}$の属する集合として現れた。
 そこで一般の実数列$(x_n)$に対しても小数部分の列$(\lrfrac{x})$が一様分布するかどうかで一様分布列の概念を導入する。
@@ -130,6 +147,7 @@ $$
 次の命題は一様分布する数列に小さな修正を加えても一様分布であることを主張する。
 
 \begin{proposition}
+\label{t_equidist_perturb}
 $(x_n)$, $(y_n)$, $(c_n)$を実数列として各$n$に対して$|x_n-y_n| \le c_n$が成り立つとする。
 ここで$(y_n)$が一様分布して$n \to \infty$で$c_n \to 0$であるならば、$(x_n)$も一様分布する。
 \end{proposition}
@@ -163,13 +181,13 @@ $$
 ここから$(x_n)$は$(y_n)$と同様に一様分布することがわかる。
 \end{proof}
 
-一様分布の内容から次の拡張が得られる。
+また、一様分布の内容から次の拡張が得られる。
 
 \begin{proposition}
 $f$を$[0, 1)$上の有界な実数値関数で$f(1) = f(0)$と拡張したときに$f$は$[0, 1]$上リーマン積分可能とする。
 このとき$[0, 1)$上の一様分布する数列$(x_n)_{n = 1}^\infty$に対して
 \begin{equation}
-\label{e_unifdist2}
+\label{e_equidist2}
 \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) = \int_0^1 f(x)\dd{x}
 \end{equation}
 が成り立つ。
@@ -184,7 +202,7 @@ f(x) = \chi_{[a, b)}(x) =
 0 & (x \notin [a, b)) \\
 \end{cases}
 $$
-の場合に\eqref{e_unifdist2}が成り立つということである。
+の場合に\eqref{e_equidist2}が成り立つということである。
 \end{remark}
 
 \begin{proof}
@@ -194,16 +212,16 @@ $$
 f_-(x) \le f(x) \le f_+(x) \quad \forall x \in [0, 1], \quad \int_0^1 (f_+(x)-f_-(x))\dd{x} < \varepsilon
 $$
 を満たす関数$f_-$, $f_+$が存在する。
-$(x_n)$は一様分布するので区間指示関数の定数倍の和$f_-$, $f_+$に対して\eqref{e_unifdist2}が成り立つことに注意して、
+$(x_n)$は一様分布するので区間指示関数の定数倍の和$f_-$, $f_+$に対して\eqref{e_equidist2}が成り立つことに注意して、
 \begin{align*}
 &\liminf_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) \ge \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f_-(x_n) = \int_0^1 f_-(x)\dd{x} \ge \int_0^1 f(x)\dd{x}-\varepsilon, \\
 &\limsup_{N \to \infty}\frac{1}{N}\sum_{n \le N}f(x_n) \le \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}f_+(x_n) = \int_0^1 f_+(x)\dd{x} \le \int_0^1 f(x)\dd{x}+\varepsilon.
 \end{align*}
-ここで$\varepsilon$は任意なので、一般の$f$に対しても\eqref{e_unifdist2}が成り立つことがわかった。
+ここで$\varepsilon$は任意なので、一般の$f$に対しても\eqref{e_equidist2}が成り立つことがわかった。
 \end{proof}
 
 \begin{remark}
-今回の一様分布定理の証明では直接\eqref{e_unifdist}をつまり区間指示関数$f$に対して\eqref{e_unifdist2}を証明したが、
+今回の一様分布定理の証明では直接\eqref{e_equidist}をつまり区間指示関数$f$に対して\eqref{e_equidist2}を証明したが、
 ワイルの方法は最初に和の計算ができる$f(x) = \exp(2\pi i k x)$（$k$は$0$でない整数）に対して証明して、連続関数に拡張して区間指示関数と進めていく。
 この証明法は複素数値の関数の積分やフーリエ解析の知識が必要になるため本テキストではこれ以上触れないが、様々な発展性があり重要である。
 \end{remark}
