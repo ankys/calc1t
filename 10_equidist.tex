@@ -30,9 +30,11 @@ $$
 が成り立つことと同値である。
 実際、こちらの方が強い条件になっていて、逆については任意の$\varepsilon > 0$に対して、ある$k = 1, 2, 3, \cdots$が存在して任意の自然数$n \ge k$に対して$|a_n-a| < \varepsilon$, $|b_n-b| < \varepsilon$が成り立つことから、$N = 1, 2, 3, \cdots$に対して
 $$
-\abs{\#\lrset{ n \le N \mid a_n \le x_n < b_n }-\#\lrset{ n \le N \mid a \le x_n < b }}
-\le k+\#lrset{ k < n \le N \mid a-\varepsilon \le x_n < a+\varepsilon \lor b-\varepsilon \le x_n < b+\varepsilon }
-\le k+\#lrset{ n \le N \mid a-\varepsilon \le x_n < a+\varepsilon }+\#lrset{ n \le N \mid b-\varepsilon \le x_n < b+\varepsilon }.
+\begin{aligned}
+&\abs{\#\lrset{ n \le N \mid a_n \le x_n < b_n }-\#\lrset{ n \le N \mid a \le x_n < b }} \\
+&\quad \le k+\#\lrset{ k < n \le N \mid a-\varepsilon \le x_n < a+\varepsilon \lor b-\varepsilon \le x_n < b+\varepsilon } \\
+&\quad \le k+\#\lrset{ n \le N \mid a-\varepsilon \le x_n < a+\varepsilon }+\#\lrset{ n \le N \mid b-\varepsilon \le x_n < b+\varepsilon }.
+\end{aligned}
 $$
 よって、$N$で割って$N \to \infty$とすると右辺は$4\varepsilon$に収束する。
 $\varepsilon$は任意なので、逆がいえた。
@@ -225,3 +227,91 @@ $(x_n)$は一様分布するので区間指示関数の定数倍の和$f_-$, $f_
 ワイルの方法は最初に和の計算ができる$f(x) = \exp(2\pi i k x)$（$k$は$0$でない整数）に対して証明して、連続関数に拡張して区間指示関数と進めていく。
 この証明法は複素数値の関数の積分やフーリエ解析の知識が必要になるため本テキストではこれ以上触れないが、様々な発展性があり重要である。
 \end{remark}
+
+\section{一様分布定理の応用：先頭の位の数}
+
+一様分布定理の「小数部分」が登場する話題が先頭の位の数である。
+例えば$n = 1, 2, 3, \cdots$に対して$2^n$の先頭の位の数$a_n$を考えてみよう。
+$2^n$を並べて書き出すと
+\begin{quote}
+$2$, $4$, $8$, $16$, $32$, $64$, $128$, $256$, $512$, $1024$, $2048$, $4096$, $8192$, $16384$, $32768$, $65536$, $131072$, $262144$, $524288$, $1048576$, $\cdots$
+\end{quote}
+なのでその先頭の位の数$a_n$は
+\begin{quote}
+$2$, $4$, $8$, $1$, $3$, $6$, $1$, $2$, $5$, $1$, $2$, $4$, $8$, $1$, $3$, $6$, $1$, $2$, $5$, $1$, $\cdots$
+\end{quote}
+となる。
+この数列の中で数字$d = 1, 2, 3, 4, 5, 6, 7, 8, 9$が現れる頻度を計算するときに活躍するのが一様分布定理である。
+なお、上に列挙した範囲では$a_n$は$2, 4, 8, 1, 3, 6, 1, 2, 5, 1$の繰り返しに見えるが実際には$2^{46} = 70368744177664$なので$a_n$は$7$や$9$の値を取りうることに注意する。
+
+一般に正の整数（または正の実数）$y$について桁数を$l \in \mathbb{Z}$、先頭の位の数を$d = 1, \cdots, 9$とすると
+$$
+d\times 10^{l-1} \le y < (d+1)\times 10^{l-1}
+$$
+なので、$10$を底とする対数（常用対数）をとると
+$$
+\log_{10}d \le \log_{10}y-(l-1) < \log_{10}(d+1)
+$$
+となる。
+ここから$y$の最上位の数$a$が$d$となる条件は
+$$
+\log_{10}d \le \lrfrac{\log_{10}y} < \log_{10}(d+1)
+$$
+となることであり、$x \in [0, 1)$に対して関数$D$の値を$\log_{10}d \le x < \log_{10}(d+1)$の場合に$D(x) = d$として定義すると
+$a = D(\lrfrac{\log_{10}y})$となる。
+
+$2^n$の問題に戻ると
+$$
+a_n = D(\lrfrac{n\log_{10}2})
+$$
+である。
+ここで$\log_{10}2$は無理数なので、$\lrfrac{n\log_{10}2}$は$[0, 1)$上一様分布する。
+$a_n$のうち$d = 1, \cdots, 9$の割合を
+$$
+\lim_{N \to \infty}\frac{1}{N}\#\lrset{ n \le N \mid a_n = d }
+$$
+として考えると、この値は一様分布定理より
+$$
+\lim_{N \to \infty}\frac{1}{N}\#\lrset{ n \le N \mid a_n = d }
+= \lim_{N \to \infty}\frac{1}{N}\#\lrset{ n \le N \mid \log_{10}d \le \lrfrac{n\log_{10}2} < \log_{10}(d+1) }
+= \log_{10}(d+1)-\log_{10}d
+$$
+となることがわかる。
+また、$a_n$の期待値に相当する
+$$
+\lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}a_n
+$$
+は
+$$
+\lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}a_n
+= \lim_{N \to \infty}\frac{1}{N}\sum_{n \le N}D(\lrfrac{n\log_{10}2})
+= \int_0^1 D(x)\dd{x}
+= 9-\log_{10}9!
+$$
+である。
+
+この話題の興味深いところは一様分布すれば底$2$は別の数（$3$や$4$など常用対数が無理数になる数）でも同じ値になることである。
+さらには$2^n$の代わりにフィボナッチ数の列$F_n$でも割合や期待値は同じ値になる。
+なお、フィボナッチ数は
+\begin{quote}
+$1$, $1$, $2$, $3$, $5$, $8$, $13$, $21$, $34$, $55$, $89$, $144$, $233$, $377$, $610$, $987$, $1597$, $2584$, $4181$, $6765$, $10946$, $17711$, $\cdots$
+\end{quote}
+でその最上位の位の数は
+\begin{quote}
+$1$, $1$, $2$, $3$, $5$, $8$, $1$, $2$, $3$, $5$, $8$, $1$, $2$, $3$, $6$, $9$, $1$, $2$, $4$, $6$, $1$, $1$, $\cdots$
+\end{quote}
+である。
+
+これはフィボナッチ数の一般項が
+$$
+F_n = \frac{1}{\sqrt{5}}\qty(\qty(\frac{1+\sqrt{5}}{2})^n-\qty(\frac{1-\sqrt{5}}{2})^n)
+$$
+のように計算され、主要な部分の底$\frac{1+\sqrt{5}}{2}$の常用対数が無理数であることによる。
+より詳しくは$\alpha = \frac{1+\sqrt{5}}{2}$, $\beta = \frac{1-\sqrt{5}}{2}$とすると、
+$$
+|\log F_n-(n\log_{10}\alpha-\log_{10}\sqrt{5})| \le \log_{10}\qty(1+\abs{\frac{\beta}{\alpha}}^n) \le \abs{\frac{\beta}{\alpha}}^n\log(10)
+$$
+で、$n\log_{10}\alpha-\log_{10}\sqrt{5}$は一様分布し、$\lim_{n \to \infty}\abs{\frac{\beta}{\alpha}}^n\log(10) = 0$なので、$\log_{10}F_n$は一様分布することがわかる。
+
+このように様々な数列の最上位の位の数はある特定の分布に従う。
+このことはより複雑な機構によって決まると考えられる現実世界の様々な数にもみられてベンフォードの法則と呼ばれている。
