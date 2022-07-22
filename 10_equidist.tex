@@ -289,6 +289,30 @@ $$
 = 9-\log_{10}9!
 $$
 である。
+以上の値を計算しまとめたのが次の表\ref{f_benford_law}である。
+
+\begin{table}[h]
+\caption{先頭の位の数の分布}
+\label{f_benford_law}
+\centering
+\begin{tabular}{cc}
+\hline
+$d$ & 割合 \\
+\hline
+$1$ & $0.30102999566398114\cdots$ \\
+$2$ & $0.1760912590556813\cdots$ \\
+$3$ & $0.12493873660829985\cdots$ \\
+$4$ & $0.09691001300805646\cdots$ \\
+$5$ & $0.07918124604762478\cdots$ \\
+$6$ & $0.06694678963061318\cdots$ \\
+$7$ & $0.057991946977686726\cdots$ \\
+$8$ & $0.05115252244738144\cdots$ \\
+$9$ & $0.04575749056067513\cdots$ \\
+\hline
+期待値 & $3.440236967123207\cdots$ \\
+\hline
+\end{tabular}
+\end{table}
 
 この話題の興味深いところは一様分布すれば底$2$は別の数（$3$や$4$など常用対数が無理数になる数）でも同じ値になることである。
 さらには$2^n$の代わりにフィボナッチ数の列$F_n$でも割合や期待値は同じ値になる。
@@ -307,11 +331,11 @@ $$
 F_n = \frac{1}{\sqrt{5}}\qty(\qty(\frac{1+\sqrt{5}}{2})^n-\qty(\frac{1-\sqrt{5}}{2})^n)
 $$
 のように計算され、主要な部分の底$\frac{1+\sqrt{5}}{2}$の常用対数が無理数であることによる。
-より詳しくは$\alpha = \frac{1+\sqrt{5}}{2}$, $\beta = \frac{1-\sqrt{5}}{2}$とすると、
+より詳しくは$\alpha = \frac{1+\sqrt{5}}{2}$, $\beta = \frac{1-\sqrt{5}}{2}$とすると、任意の$x > -1$に対して不等式$\log(1+x) \le x$が成り立つことに注意して、
 $$
-|\log F_n-(n\log_{10}\alpha-\log_{10}\sqrt{5})| \le \log_{10}\qty(1+\abs{\frac{\beta}{\alpha}}^n) \le \abs{\frac{\beta}{\alpha}}^n\log(10)
+|\log F_n-(n\log_{10}\alpha-\log_{10}\sqrt{5})| \le \log_{10}\qty(1+\abs{\frac{\beta}{\alpha}}^n) \le \frac{1}{\log(10)}\abs{\frac{\beta}{\alpha}}^n
 $$
-で、$n\log_{10}\alpha-\log_{10}\sqrt{5}$は一様分布し、$\lim_{n \to \infty}\abs{\frac{\beta}{\alpha}}^n\log(10) = 0$なので、$\log_{10}F_n$は一様分布することがわかる。
+で、$(n\log_{10}\alpha-\log_{10}\sqrt{5})_n$は一様分布し、$\lim_{n \to \infty}\frac{1}{\log(10)}\abs{\frac{\beta}{\alpha}}^n = 0$なので、$(\log_{10}F_n)_n$も一様分布することがわかる。
 
-このように様々な数列の最上位の位の数はある特定の分布に従う。
+このように様々な数列の最上位の位の数は表\ref{f_benford_law}で示されたある特定の分布に従う。
 このことはより複雑な機構によって決まると考えられる現実世界の様々な数にもみられてベンフォードの法則と呼ばれている。
