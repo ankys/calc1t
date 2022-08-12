@@ -208,7 +208,7 @@ $$
 \item
 （単位元）$1$は単位元である。つまり任意の有理数$a$に対して$a\cdot 1 = 1\cdot a = a$が成り立つ。
 \item
-（逆数）任意の有理数$a$に対して$a\cdot x = x\cdot a = 1$が成り立つような有理数$x = a^{-1}$がただ一つ存在する。
+（逆数）任意の有理数$a \ne 0$に対して$a\cdot x = x\cdot a = 1$が成り立つような有理数$x = a^{-1}$がただ一つ存在する。
 \end{enumerate}
 
 有理数$a = n/m$（$m$は正の整数）の符号は$n$の符号と同じになるように定義する。
@@ -282,7 +282,6 @@ $\overline{A}$を$a$が有理数のとき$A\cup\lrset{ a }$、そうでないと
 この$x$に対して$a < x < b$を示せばよい（詳細省略）。
 \end{proof}
 
-\begin{definition}[区間]
 $a$, $b$を$a \le b$を満たす実数として、以下の集合を定義し、まとめて\emph{区間}という。
 $$
 [a, b] = \lrset{ x \in \mathbb{R} \mid a \le x \le b },
@@ -303,7 +302,6 @@ $$
 $(a, b), (a, +\infty), (-\infty, b), (-\infty, +\infty)$を\emph{開区間}という。
 また、$[a, b], [a, b), (a, b], (a, b)$を\emph{有界区間}という。
 特に区間$[a, b]$は\emph{有界閉区間}と呼ばれる。
-\end{definition}
 
 実数にも有理数同様、四則演算つまり加法、減法、乗法、除法と反数、逆数が定義できるがその説明をするには上限の概念が必要になる。
 ここではそれらが定義できたとしてその性質を紹介する。
@@ -325,7 +323,7 @@ $(a, b), (a, +\infty), (-\infty, b), (-\infty, +\infty)$を\emph{開区間}と�
 \item
 （単位元）$1$は単位元である。つまり任意の実数$a$に対して$a\cdot 1 = 1\cdot a = a$が成り立つ。
 \item
-（逆数）任意の実数$a$に対して$a\cdot x = x\cdot a = 1$が成り立つような実数$x = a^{-1}$がただ一つ存在する。
+（逆数）任意の実数$a \ne 0$に対して$a\cdot x = x\cdot a = 1$が成り立つような実数$x = a^{-1}$がただ一つ存在する。
 \item
 （大小関係の加法との両立）任意の実数$a, b, c$に対して$a \le b$ならば$a+c \le b+c$。
 \item
@@ -333,6 +331,75 @@ $(a, b), (a, +\infty), (-\infty, b), (-\infty, +\infty)$を\emph{開区間}と�
 \end{enumerate}
 
 \section{拡大実数}
+
+実数に\emph{正の無限大}$+\infty$と\emph{負の無限大}$-\infty$を入れた数を\emph{拡大実数}という。
+有理数の切断で説明するならば、負の無限大は空集合$\emptyset$が正の無限大は全体集合$\mathbb{Q}$がそれぞれ対応する。
+\emph{拡大実数全体の集合}を$\bar{\mathbb{R}}$で表す。
+つまり、
+$$
+\bar{\mathbb{R}} = \mathbb{R}\cup\lrset{ \pm\infty }
+$$
+である。
+
+拡大実数を導入する利点は、正と負の無限大を数として考えることで後で登場する上限下限や極限を一貫した数体系で記述できるほか、大小関係や区間が自然に拡張できる。
+一方で四則演算に一部欠落があるのでそこには注意する。
+
+つまり、拡大実数の大小関係を有理数の切断の包含関係で考えると、任意の拡大実数$a$に対して
+$$
+-\infty \le a \le +\infty
+$$
+が成り立ち、以下の性質が成り立つ。
+\begin{enumerate}
+\item
+（全順序）任意の拡大実数$a, b$に対して$a \le b$または$a \ge b$のどちらかが成立し、両方が成立する場合は$a = b$に他ならない。
+\item
+（推移性）任意の拡大実数$a, b, c$に対して$a \le b$かつ$b \le c$ならば$a \le c$。
+\end{enumerate}
+
+$a$, $b$を$a \le b$を満た拡大実数として、区間は次の4種類に集約される。
+$$
+[a, b] = \lrset{ x \in \bar{\mathbb{R}} \mid a \le x \le b },
+\quad [a, b) = \lrset{ x \in \bar{\mathbb{R}} \mid a \le x < b },
+$$
+$$
+(a, b] = \lrset{ x \in \bar{\mathbb{R}} \mid a < x \le b },
+\quad (a, b) = \lrset{ x \in \bar{\mathbb{R}} \mid a < x < b },
+$$
+特に$\bar{\mathbb{R}} = [-\infty, +\infty]$で$\mathbb{R} = (-\infty, +\infty)$である。
+
+拡大実数の四則演算は実数のものに以下を付け加える。
+つまり$a$を実数として、
+$$
+(+\infty)+a = a+(+\infty) = +\infty,
+\quad (+\infty)+(+\infty) = +\infty,
+$$
+$$
+(-\infty)+a = a+(-\infty) = -\infty,
+\quad (-\infty)+(-\infty) = -\infty.
+$$
+拡張実数の反数は$-(+\infty) = -\infty$, $-(-\infty) = +\infty$とすればよい。
+$a$を正の実数として、
+$$
+(+\infty)\cdot a = a\cdot (+\infty) = +\infty,
+\quad (+\infty)\cdot (-a) = (-a)\cdot (+\infty) = -\infty,
+\quad (+\infty)\cdot (+\infty) = +\infty,
+\quad (+\infty)\cdot (-\infty) = -\infty,
+$$
+$$
+(-\infty)\cdot a = a\cdot (-\infty) = -\infty,
+\quad (-\infty)\cdot (-a) = (-a)\cdot (-\infty) = +\infty,
+\quad (-\infty)\cdot (+\infty) = -\infty,
+\quad (-\infty)\cdot (-\infty) = +\infty,
+$$
+拡張実数の逆数は$(+\infty)^{-1} = (-\infty)^{-1} = 0$とするが$0$の逆数は定義されないことに注意する。
+
+以上の四則演算は定義される範囲においては直感的であるが、
+$$
+\infty-\infty,
+\quad 0\cdot \infty,
+\quad \infty\divs \infty
+$$
+に相当する計算の結果は定義されず、\emph{不定形}と呼ばれる。
 
 \section{複素数}
 
