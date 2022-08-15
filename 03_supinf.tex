@@ -339,6 +339,25 @@ $f(a) = \min f$となる$a \in X$のことを$f$の\emph{最小点}といい、$
 \end{itemize}
 \end{definition}
 
+この上限・下限の性質として次が重要である。
+
+\begin{proposition}[和と上限・下限]
+$f$, $g$を集合$X$上の実数値関数とする。
+このとき、
+$$
+\sup_{x \in X}(f(x)+g(x)) \le \sup_{x \in X}f(x)+\sup_{x \in X}g(x),
+\quad \inf_{x \in X}(f(x)+g(x)) \le \inf_{x \in X}f(x)+\inf_{x \in X}g(x)
+$$
+が成り立つ。
+\end{proposition}
+
+\begin{proof}
+上限についてのみ示す。
+任意の$x \in X$に対して、$f(x) \le \sup f$, $g(x) \le \sup g$なので、足して$f(x)+g(x) \le \sup f+\sup g$。
+よって、$x$についての上限を取ることでほしい不等式を得る。
+下限についても同様なので証明は省略する。
+\end{proof}
+
 \section{絶対値}
 
 実数$a$に対して$a$と$-a$のうち大きい方の値を実数$a$の\emph{絶対値}といい$|a|$で表す。
