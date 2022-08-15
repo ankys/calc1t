@@ -101,6 +101,25 @@ $a_{n+1} \le a$の場合は$a$が$A$の最大元である。
 これら以外の区間には最大元、最小元は存在しない。
 \end{example}
 
+包含関係があると最大・最小に大小関係が従う。
+
+\begin{proposition}[包含関係と最大・最小]
+\label{t_inc_max}
+$A$, $B$を実数の集合とする。
+\begin{itemize}
+\item
+$A$, $B$に最大元が存在して、$A \subset B$ならば、$\max A \le \max B$が成り立つ。
+\item
+$A$, $B$に最小元が存在して、$A \subset B$ならば、$\min A \ge \min B$が成り立つ。
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+最大についてのみ示す。
+最大元の定義から、$\max A \in A \subset B$より$\max A \le \max B$である。
+最小についても同様なので証明は省略する。
+\end{proof}
+
 \section{上限・下限}
 
 実数の集合$A$に対して最大元や最小元は存在しないがそれに準じる数がある場合がある。
@@ -225,6 +244,28 @@ $m$を$A$の上界とするとき、$a \in A$を考えると$a \le m$である�
 すなわち$a$は$A$の上界の集合の最小元なので下限に他ならない。
 
 最小元については同様なので証明は省略する。
+\end{proof}
+
+\begin{proposition}[包含関係と上限・下限]
+$A$, $B$を実数の集合とする。
+ここで、$A \subset B$が成り立つならば、
+$$
+\sup A \le \sup B, \quad \inf A \ge \inf B
+$$
+が成り立つ。
+\end{proposition}
+
+\begin{proof}
+上限についてのみ示す。
+まず、$B$が空のとき$A \subset B$も空で$\sup A = \sup B = -\infty$である。
+$B$が上に有界でないとき、$\sup B = +\infty$より不等号は成立する。
+$A$が空のとき$\sup A = -\infty$であるので不等号は成立する。
+$A$が上に有界でない場合、$B \supset A$も上に有界でない。
+
+それら以外の場合、$m$を$B$の上界とすると、任意の$x \in A \subset B$に対して$x \le m$より、$m$は$A$の上界である。
+つまり、$B$の上界からなる集合は$A$の上界からなる集合の部分集合なので、命題\ref{t_inc_max}より$\sup A \le \sup B$である。
+
+下限についても同様なので証明は省略する。
 \end{proof}
 
 最後に実数の連続性に関連して整数や自然数の集合では上限・下限どころか最大元・最小元が存在することを示す。
