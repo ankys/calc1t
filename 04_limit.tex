@@ -33,7 +33,6 @@ $$
 したがって$a-b \le 0$つまり$a \le b$である。
 
 二つ目は$a$, $b$を入れ替えて同じ議論をすればよい。
-最後は仮定が$b-\varepsilon \le a \le b+\varepsilon$なので、上二つの内容が使えて$a \le b$かつ$a \ge b$つまり$a = b$である。
 \end{proof}
 
 特に次のバリエーションがある。
@@ -52,7 +51,7 @@ $|a-b|$は非負の実数なので定理\ref{t_ep_real}より$|a-b| \le 0$で、
 
 数列とは数の並びのこと全般をいうが、ここでは順序を持ち無限に続くものをいう。
 そのため順序を表現するため添え字として自然数を用いる。
-つまり\emph{\index{すうれつ@数列}}とは各自然数$n \in \mathbb{N}$に対して一つの数$a_n$を対応させたものであり$(a_n)_{n \in \mathbb{N}}$や一部省略して$(a_n)_n$あるいは$(a_n)$と表す。
+つまり\emph{数列}\index{すうれつ@数列}とは各自然数$n \in \mathbb{N}$に対して一つの数$a_n$を対応させたものであり$(a_n)_{n \in \mathbb{N}}$や一部省略して$(a_n)_n$あるいは$(a_n)$と表す。
 また、最初の自然数（または整数）を明示したり変更したい場合は$(a_n)_{n = 1}^\infty$などと表す。
 数列の中でも数が入るクラスに応じて、各$a_n$が実数ならば$(a_n)$は実数列、有理数ならば有理数列、整数ならば整数列、自然数ならば自然数列、複素数ならば複素数列という。
 このテキストでは特に指定がなければ数列といったら実数列である。
@@ -73,7 +72,7 @@ $(2 n)_{n = 0}^\infty$, $(5^n)_{n = 0}^\infty$, $(3)_{n = 0}^\infty$, $(\frac{1}
 $$
 \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n \in \mathbb{N}, n \ge N \implies |a_n-a| < \varepsilon.
 $$
-また、この時$a_n \to a$ ($n \to \infty$)や$\lim_{n \to \infty}a_n = a$と書くが、``$\to \infty$''の部分や``$n \to \infty$''はしばしば省略される。
+また、この時$a_n \to a$ ($n \to \infty$)や$\lim_{n \to \infty}a_n = a$と書くが、しばしば$\lim_n a_n = a$や$\lim a_n = a$などと省略される。
 
 数列$(a_n)_{n \in \mathbb{N}}$が何らかの数に収束する時この数列は\emph{収束する}といい、そうでない時\emph{発散する}という。
 \end{definition}
@@ -260,7 +259,7 @@ $\min\lrset{ a_n, b_n } \to \min\lrset{ a, b }$.
 \end{proposition}
 
 \begin{remark}
-証明でも触れるが、最後の商の極限について$b_n \to b \ne 0$だと十分大きいすべての$n$について$b_n \ne 0$であり、そのような$n$に対して$\frac{a_n}{b_n}$を考えることに注意する。
+証明でも触れるが、五つ目の商の極限について$b_n \to b \ne 0$だと十分大きいすべての$n$について$b_n \ne 0$であり、そのような$n$に対して$\frac{a_n}{b_n}$を考えることに注意する。
 \end{remark}
 
 これらのうち極限の定義に立ち返って証明されるのは最初の二つで、他ははさみうちの原理を使うことで見通しよく証明できる。
@@ -387,7 +386,7 @@ $$
 四つ目も同様にして証明できる。
 \end{proof}
 
-$\infty-\infty$, $0\times\infty$, $\frac{\infty}{\infty}$, $\frac{0}{0}$の形を\emph{不定形}といい、不定形以外の極限は$\pm \infty$を含んでいても基本的に正当化される。
+拡大実数のところで紹介した不定形$\infty-\infty$, $0\times\infty$, $\frac{\infty}{\infty}$, $\frac{0}{0}$以外の極限は$\pm \infty$を含んでいても基本的に正当化される。
 
 以上を用いると様々な数列の極限を求めることができる。
 
@@ -402,7 +401,7 @@ $\frac{n+2}{3 n+4} = \frac{1+2 n^{-1}}{3+4 n^{-1}} \to \frac{1+2\cdot 0}{3+4\cdo
 
 同じ$+\infty$に発散する数列でも発散の速度は
 $$
-n, \quad n^2, \quad n^3, \quad 2^n, \quad 3^n, \quad n!, \quad n^n
+n, \quad n^2, \quad n^3, \quad 2^n, \quad 3^n, \quad n!
 $$
 の順に早くなる。
 つまり、左にあるものをそれより右にあるもので割って得られる数列は$0$に収束する。
@@ -451,6 +450,14 @@ $$
 $$
 よって、$0 \le d < 1$より命題\ref{t_limgeomseq}から最右辺は$0$に収束するので、はさみうちの原理から$a_n \to 0$である。
 \end{proof}
+
+\begin{example}
+$a$を実数として、$a^n$と$n!$の発散の速さについて、
+$$
+\abs{\frac{\frac{a^{n+1}}{(n+1)!}}{\frac{a^n}{n!}}} = \frac{a}{n+1} \to 0 \quad (n \to \infty).
+$$
+よって、$n!$の方が早く発散する。
+\end{example}
 
 \section{単調数列の極限}
 
