@@ -145,7 +145,7 @@ $x \in X\setminus\lrset{a}$で定義された関数$\frac{f(x)-f(a)}{x-a}$が右
 関数$f(x)$は点$x = a$で\emph{右微分可能}であるといい極限を\emph{右微分係数}という。
 $y = f(x)$の点$x = a$での右微分係数を
 $$
-f'_+(a), \dv{f}{x^+}{(a)}, \quad \eval{\dv{f}{x^+}}_{x = a}, \quad \eval{\dv{x^+}(f(x))}_{x = a}, \quad \eval{\dv{y}{x^+}}_a
+f'_+(a), \quad \dv{f}{x^+}{(a)}, \quad \eval{\dv{f}{x^+}}_{x = a}, \quad \eval{\dv{x^+}(f(x))}_{x = a}, \quad \eval{\dv{y}{x^+}}_a
 $$
 などで表す。
 つまり、
@@ -158,7 +158,7 @@ $x \in X\setminus\lrset{a}$で定義された関数$\frac{f(x)-f(a)}{x-a}$が左
 関数$f(x)$は点$x = a$で\emph{左微分可能}であるといい極限を\emph{左微分係数}という。
 $y = f(x)$の点$x = a$での左微分係数を
 $$
-f'_-(a), \dv{f}{x^-}{(a)}, \quad \eval{\dv{f}{x^-}}_{x = a}, \quad \eval{\dv{x^-}(f(x))}_{x = a}, \quad \eval{\dv{y}{x^-}}_a
+f'_-(a), \quad \dv{f}{x^-}{(a)}, \quad \eval{\dv{f}{x^-}}_{x = a}, \quad \eval{\dv{x^-}(f(x))}_{x = a}, \quad \eval{\dv{y}{x^-}}_a
 $$
 などで表す。
 つまり、
@@ -184,6 +184,7 @@ $$
 \end{proposition}
 
 \begin{proof}
+右極限、左極限が一致しているので命題\ref{t_lim_oslim}から従う。
 \end{proof}
 
 実数の集合$X$で$X$のすべての点が$X$の内点になっているものを\emph{開集合}という。
@@ -652,7 +653,7 @@ $$
 したがってほしかった不等式が得られた。
 \end{proof}
 
-最大値原理は極大・極小の必要条件を与えるが、次の定理は十分条件の一つを片側極限を使って与える。
+最大値原理は極大・極小の必要条件を与えるが、次の定理は十分条件の一つを片側微分を使って与える。
 
 \begin{theorem}
 $f$を実数の集合$X$上の関数、$a$を$X$の内点とする。
@@ -675,6 +676,28 @@ $$
 \end{theorem}
 
 \begin{proof}
+前半の極大であることを示す。
+右微分の定義より
+$$
+\lim_{x \to a+}\frac{f(x)-f(a)}{x-a} = f'_+(a) < 0.
+$$
+よって$\delta_+ > 0$が存在して任意の$a < x < a+\delta_+$に対して
+$$
+\frac{f(x)-f(a)}{x-a} < \frac{1}{2}f'_+(a) < 0.
+$$
+つまり$f(x) < f(a)$である。
+同様にして、左微分の定義より
+$$
+\lim_{x \to a-}\frac{f(x)-f(a)}{x-a} = f'_-(a) > 0.
+$$
+よって$\delta_- > 0$が存在して任意の$a-\delta_- < x < a$に対して
+$$
+\frac{f(x)-f(a)}{x-a} > \frac{1}{2}f'_+(a) > 0.
+$$
+つまり$f(x) < f(a)$である。
+以上より$f(x)$は$x = a$で極大であることがわかる。
+
+後半の極小を示す方は同様に証明されるので省略する。
 \end{proof}
 
 微分を使って関数の増減などの挙動を調べる際に基礎的になるのが次の平均値の定理である。
