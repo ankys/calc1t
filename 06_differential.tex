@@ -752,6 +752,7 @@ $c$は$I$の内点なので仮定より$f'(c) = 0$より$f(a) = f(b)$がわか�
 さらに詳しく見ると以下が成り立つ。
 
 \begin{theorem}
+\label{t_diff_monotone}
 $f$を区間$I$上の連続関数とする。
 \begin{itemize}
 \item
@@ -956,7 +957,116 @@ $$
 つまり一階微分導関数が存在しても二階微分導関数は存在しないことがある。
 \end{example}
 
-\section{凸関数}
+\section{凸関数・凹関数}
+
+\begin{definition}[凸関数・凹関数]
+$f$を区間$I$上で定義された実数値関数とする。
+\begin{itemize}
+\item
+任意の$0 \le p \le 1$と$x, y \in I$に対して
+\begin{equation}
+\label{e_convex}
+f(p x+(1-p)y) \le p f(x)+(1-p)f(y)
+\end{equation}
+が成り立つとき、$f$は$I$上の凸関数という。
+\item
+任意の$0 \le p \le 1$と$x, y \in I$に対して
+$$
+f(p x+(1-p)y) \ge p f(x)+(1-p)f(y)
+$$
+が成り立つとき、$f$は$I$上の凹関数という。
+\end{itemize}
+\end{definition}
+
+この凸関数の定義の条件はグラフ$y = f(x)$が下に凸であることを表している。
+漢字では凸は上に凸であるように見えるが、用語としては逆なので注意する。
+
+\begin{example}
+絶対値関数$f(x) = \abs{x}$は$\mathbb{R}$上の凸関数である。
+実際、三角不等式より
+$$
+\abs{p x+(1-p)y} \le \abs{p x}+\abs{(1-p)y} = p\abs{x}+(1-p)\abs{y}
+$$
+である。
+\end{example}
+
+凸関数であることの特徴づけの一つは二階微分が非負であることである。
+
+\begin{theorem}[凸関数と二階微分]
+$f$を開区間$I$上で定義された実数値関数で$I$上二回微分可能であるとする。
+\begin{itemize}
+\item
+以下の条件は同値である。
+\begin{enumerate}
+\item
+$f$が$I$上の凸関数である。
+\item
+$x < z < y$を満たす任意の$x, y, z \in I$に対して、
+$$
+\frac{f(z)-f(x)}{z-x} \le \frac{f(y)-f(x)}{y-x} \le \frac{f(y)-f(z)}{y-z}
+$$
+が成り立つ。
+\item
+$f'$は$I$上単調増加である。
+\item
+任意の$x \in I$に対して$f''(x) \ge 0$が成り立つ。
+\end{enumerate}
+\item
+以下の条件は同値である。
+\begin{enumerate}
+\item
+$f$が$I$上の凹関数である。
+\item
+$x < z < y$を満たす任意の$x, y, z \in I$に対して、
+$$
+\frac{f(z)-f(x)}{z-x} \ge \frac{f(y)-f(x)}{y-x} \ge \frac{f(y)-f(z)}{y-z}
+$$
+が成り立つ。
+\item
+$f'$は$I$上単調減少である。
+\item
+任意の$x \in I$に対して$f''(x) \le 0$が成り立つ。
+\end{enumerate}
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+凸関数の方について示す。
+
+1.ならば2.について、一つ目の不等号は
+$$
+f(z) \le \frac{z-x}{y-x}(f(y)-f(x))+f(x) = \frac{y-z}{y-x}f(x)+\frac{z-x}{y-x}f(y)
+$$
+と同値で、$p = \frac{y-z}{y-x}$とおくと凸関数の条件式$f(p x+(1-p)y) \le p f(x)+(1-p)f(y)$に他ならない。
+もう一つの不等号は
+$$
+f(z) \le -\frac{y-z}{y-x}(f(y)-f(x))+f(y) = \frac{y-z}{y-x}f(x)+\frac{z-x}{y-x}f(y)
+$$
+と同値で同様に成り立つ。
+
+2.ならば1.について、$0 < p < 1$と$x < y$を満たす$x, y \in I$に対して\eqref{e_convex}を示せばよい。
+$z = p x+(1-p)y$とおくと、
+$$
+f(p x+(1-p)y) = f(z) \le \frac{y-z}{y-x}f(x)+\frac{z-x}{y-x}f(y) = p f(x)+(1-p)f(y)
+$$
+である。
+
+2.ならば3.について、$z \to x$あるいは$z \to y$とすることで、
+$$
+f'(x) \le \frac{f(y)-f(x)}{y-x} \le f'(y)
+$$
+を得て、$f'$は単調である。
+
+3.ならば2.について、1.ならば2.のところでわかるように$\frac{f(z)-f(x)}{z-x} \le \frac{f(y)-f(x)}{y-x}$と$\frac{f(y)-f(x)}{y-x} \le \frac{f(y)-f(z)}{y-z}$は同値で、片方が成り立たないとするともう片方も成り立たず、
+$$
+\frac{f(z)-f(x)}{z-x} > \frac{f(y)-f(x)}{y-x} > \frac{f(y)-f(z)}{y-z}
+$$
+となる。
+ここで、平均値の定理より$f'(a) = \frac{f(z)-f(x)}{z-x}$となる$x < a < z$と$f'(b) = \frac{f(y)-f(z)}{y-z}$となる$z < b < y$が存在する。
+仮定より$f'(a) \le f'(b)$なので、矛盾が導かれ最終的に2.が成立することがわかる。
+
+3.と4.の同値性は定理\ref{t_diff_monotone}からすぐわかる。
+\end{proof}
 
 \section{高階微分}
 
