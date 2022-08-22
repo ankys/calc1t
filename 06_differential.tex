@@ -981,6 +981,8 @@ $$
 この凸関数の定義の条件はグラフ$y = f(x)$が下に凸であることを表している。
 漢字では凸は上に凸であるように見えるが、用語としては逆なので注意する。
 
+凸関数・凹関数は必ず連続関数であることに注意する。
+
 \begin{example}
 絶対値関数$f(x) = \abs{x}$は$\mathbb{R}$上の凸関数である。
 実際、三角不等式より
@@ -992,7 +994,7 @@ $$
 
 凸関数であることの特徴づけの一つは二階微分が非負であることである。
 
-\begin{theorem}[凸関数と二階微分]
+\begin{proposition}[凸関数と二階微分]
 $f$を開区間$I$上で定義された実数値関数で$I$上二回微分可能であるとする。
 \begin{itemize}
 \item
@@ -1028,7 +1030,7 @@ $f'$は$I$上単調減少である。
 任意の$x \in I$に対して$f''(x) \le 0$が成り立つ。
 \end{enumerate}
 \end{itemize}
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 凸関数の方について示す。
@@ -1083,6 +1085,42 @@ $f$が一回微分可能でなくとも1., 2.の同値性が示される。
 対数関数$f(x) = \log x$は$f''(x) = -\frac{1}{x^2} < 0$なので、$\mathbb{R}$上の凹関数である。
 \end{itemize}
 \end{example}
+
+今後は微分可能とは限らない凸関数・凹関数について詳しく見ていく。
+
+\begin{proposition}
+$f$を区間$I$上の実数値関数、$a$を$I$上の点とする。
+\begin{itemize}
+\item
+$f$が凸関数のとき、$x \in I\setminus\lrset{a}$に対する関数$\frac{f(x)-f(a)}{x-a}$は単調増加である。
+\item
+$f$が凹関数のとき、$x \in I\setminus\lrset{a}$に対する関数$\frac{f(x)-f(a)}{x-a}$は単調減少である。
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+凸関数・凹関数に対して次のような直線を引くことができる。
+
+\begin{proposition}
+$f$を区間$I$上の実数値関数、$a$を$I$上の点とする。
+\begin{itemize}
+\item
+$f$が凸関数のとき、実数$k$が存在して任意の$x \in I$に対して$f(x) \ge f(a)+k(x-a)$が成立する。
+\item
+$f$が凹関数のとき、実数$k$が存在して任意の$x \in I$に対して$f(x) \le f(a)+k(x-a)$が成立する。
+\end{itemize}
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{remark}
+$f$が微分可能な時はこの直線は$f(x)$の$x = a$での接線とすればよい。
+\end{remark}
 
 \section{高階微分}
 
