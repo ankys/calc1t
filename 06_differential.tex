@@ -1140,7 +1140,16 @@ $f$が凹関数のとき、実数$k$が存在して任意の$x \in I$に対し�
 \end{proposition}
 
 \begin{proof}
+凸関数の方について示す。
+前の命題より任意の$x < a < y$に対して$\frac{f(x)-f(a)}{x-a} \le \frac{f(y)-f(a)}{y-a}$が成り立つ。
+ここで命題\ref{t_supinf_indep}より
+$$
+\frac{f(x)-f(a)}{x-a} \le k \le \frac{f(y)-f(a)}{y-a}
+$$
+となる実数$k$が存在する。
+あとは式を整理すればこの$k$こそほしかった数であることがわかる。
 
+凹関数の方は同様なので詳細は省略する。
 \end{proof}
 
 \begin{remark}
