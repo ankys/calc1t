@@ -994,7 +994,8 @@ $$
 
 凸関数であることの特徴づけの一つは二階微分が非負であることである。
 
-\begin{proposition}[凸関数と二階微分]
+\begin{proposition}[凸関数の特徴づけ]
+\label{t_convex}
 $f$を開区間$I$上で定義された実数値関数で$I$上二回微分可能であるとする。
 \begin{itemize}
 \item
@@ -1068,6 +1069,8 @@ $$
 仮定より$f'(a) \le f'(b)$なので、矛盾が導かれ最終的に2.が成立することがわかる。
 
 3.と4.の同値性は定理\ref{t_diff_monotone}からすぐわかる。
+
+凹関数の方は同様なので詳細は省略する。
 \end{proof}
 
 \begin{remark}
@@ -1093,13 +1096,35 @@ $f$を区間$I$上の実数値関数、$a$を$I$上の点とする。
 \begin{itemize}
 \item
 $f$が凸関数のとき、$x \in I\setminus\lrset{a}$に対する関数$\frac{f(x)-f(a)}{x-a}$は単調増加である。
+つまり$x \le y$を満たす任意の$x, y \in I\setminus\lrset{a}$に対して、
+$$
+\frac{f(x)-f(a)}{x-a} \le \frac{f(y)-f(a)}{y-a}
+$$
+が成り立つ。
 \item
 $f$が凹関数のとき、$x \in I\setminus\lrset{a}$に対する関数$\frac{f(x)-f(a)}{x-a}$は単調減少である。
+つまり$x \le y$を満たす任意の$x, y \in I\setminus\lrset{a}$に対して、
+$$
+\frac{f(x)-f(a)}{x-a} \ge \frac{f(y)-f(a)}{y-a}
+$$
+が成り立つ。
 \end{itemize}
 \end{proposition}
 
 \begin{proof}
+凸関数の方について示す。
+凸関数の特徴づけ（命題\ref{t_convex}の1.と2.とその注意参照）を使う。
+\begin{itemize}
+\item
+$x \le y < a$の場合、特徴づけより$\frac{f(x)-f(a)}{x-a} = \frac{f(a)-f(x)}{a-x} \le \frac{f(a)-f(y)}{a-y} = \frac{f(y)-f(a)}{y-a}$。
+\item
+$x < a < y$の場合、特徴づけより$\frac{f(x)-f(a)}{x-a} = \frac{f(a)-f(x)}{a-x} \le \frac{f(y)-f(a)}{y-a}$。
+\item
+$a < x \le y$の場合、特徴づけより$\frac{f(x)-f(a)}{x-a} \le \frac{f(y)-f(a)}{y-a}$。
+\end{itemize}
+よってどの場合もほしかった不等式が成り立つ。
 
+凹関数の方は同様なので詳細は省略する。
 \end{proof}
 
 凸関数・凹関数に対して次のような直線を引くことができる。
