@@ -1130,6 +1130,7 @@ $a < x \le y$の場合、特徴づけより$\frac{f(x)-f(a)}{x-a} \le \frac{f(y)
 凸関数・凹関数に対して次のような直線を引くことができる。
 
 \begin{proposition}
+\label{t_convex_supp}
 $f$を区間$I$上の実数値関数、$a$を$I$上の点とする。
 \begin{itemize}
 \item
@@ -1155,6 +1156,43 @@ $$
 \begin{remark}
 $f$が微分可能な時はこの直線は$f(x)$の$x = a$での接線とすればよい。
 \end{remark}
+
+凸関数・凹関数に関する有名な不等式として次のイェンセンの不等式がある。
+
+\begin{theorem}[イェンセンの不等式]
+$f$を区間$I$上の実数値関数とする。
+$N = 1, 2, 3, \cdots$個の$a_1, \cdots, a_N$を$I$上の点、$0 \le p_1, \cdots, p_N \le 1$を$p_1+\cdots+p_N$を満たす数とする。
+\begin{itemize}
+\item
+$f$が凸関数のとき、
+$$
+f(p_1 a_1+\cdots+p_N a_N) \le p_1 f(a_1)+\cdots+p_N f(a_N)
+$$
+が成り立つ。
+\item
+$f$が凹関数のとき、
+$$
+f(p_1 a_1+\cdots+p_N a_N) \ge p_1 f(a_1)+\cdots+p_N f(a_N)
+$$
+が成り立つ。
+\end{itemize}
+\end{theorem}
+
+この不等式はグラフ$y = f(x)$上の点$(a_1, f(a_1)), \cdots, (a_N, f(a_N))$がなす多角形の重心がグラフより上側（凸関数の場合）になることを示していて、$p_1, \cdots, p_N$は重みを表す。
+$N = 2$の場合は凸関数・凹関数の定義に他ならない。
+イェンセンの不等式の証明は数学的帰納法によって簡単にできるが、後で積分版イェンセンの不等式を示すために前の命題を用いたものを紹介する。
+
+\begin{proof}
+凸関数の方について示す。
+命題\ref{t_convex_supp}より$f(x) \ge f(a)+k(x-a)$を満たす実数$k$が存在する。
+ここで$a = p_1 a_1+\cdots+p_N a_N$、$x = a_n$ ($n = 1, \cdots N$)として$p_n$倍して足し合わせると、$q_1+\cdots+p_N = 1$に注意して、
+$$
+\sum_{n = 1}^N p_n f(a_n) \ge \sum_{n = 1}^N p_n(f(a)+(a_n-a)) = f(a)+(\sum_{n = 1}^N p_n a_n-a) = f(a).
+$$
+よってほしかった不等式を得る。
+
+凹関数の方は同様なので詳細は省略する。
+\end{proof}
 
 \section{高階微分}
 
