@@ -1185,9 +1185,9 @@ $N = 2$の場合は凸関数・凹関数の定義に他ならない。
 \begin{proof}
 凸関数の方について示す。
 命題\ref{t_convex_supp}より$f(x) \ge f(a)+k(x-a)$を満たす実数$k$が存在する。
-ここで$a = p_1 a_1+\cdots+p_N a_N$、$x = a_n$ ($n = 1, \cdots N$)として$p_n$倍して足し合わせると、$q_1+\cdots+p_N = 1$に注意して、
+ここで$a = p_1 a_1+\cdots+p_N a_N$、$x = a_n$ ($n = 1, \cdots N$)として$p_n$倍して足し合わせると、$p_1+\cdots+p_N = 1$に注意して、
 $$
-\sum_{n = 1}^N p_n f(a_n) \ge \sum_{n = 1}^N p_n(f(a)+(a_n-a)) = f(a)+(\sum_{n = 1}^N p_n a_n-a) = f(a).
+\sum_{n = 1}^N p_n f(a_n) \ge \sum_{n = 1}^N p_n(f(a)+k(a_n-a)) = f(a)+k(\sum_{n = 1}^N p_n a_n-a) = f(a).
 $$
 よってほしかった不等式を得る。
 

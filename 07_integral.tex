@@ -922,7 +922,34 @@ $$
 \end{proof}
 
 \begin{theorem}[イェンセンの不等式]
+$y(x)$, $p(x)$を有界閉区間$[a, b]$上の連続関数で任意の$x \in [a, b]$に対して$p(x) \ge 0$と$\int_a^b p(x)\dd{x} = 1$を満たし、$f$を$[\inf y, \sup y]$上の連続関数とする。
+\begin{itemize}
+\item
+$f$が凸関数のとき、
+$$
+f\qty(\int_a^b p(x)y(x)\dd{x}) \le \int_a^b p(x)f(y(x))\dd{x}
+$$
+が成り立つ。
+\item
+$f$が凹関数のとき、
+$$
+f\qty(\int_a^b p(x)y(x)\dd{x}) \ge \int_a^b p(x)f(y(x))\dd{x}
+$$
+が成り立つ。
+\end{itemize}
 \end{theorem}
+
+\begin{proof}
+凸関数の方について示す。
+命題\ref{t_convex_supp}より$f(y) \ge f(y)+k(y-c)$を満たす実数$k$が存在する。
+ここで$c = \int_a^b p(x)y(x)\dd{x}$、$y = y(x)$ ($x \in [a, b]$)として$p(x)$倍して積分すると、$\int_a^b p(x)\dd{x} = 1$に注意して、
+$$
+\int_a^b p(x)f(y(x))\dd{x} \ge \int_a^b p(x)(f(c)+k(y(x)-c))\dd{x} = f(c)+k\qty(\int_a^b p(x)y(x)\dd{x}-c) = f(c).
+$$
+よってほしかった不等式を得る。
+
+凹関数の方は同様なので詳細は省略する。
+\end{proof}
 
 \section{積分型の平均値の定理}
 
