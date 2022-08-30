@@ -922,18 +922,18 @@ $$
 \end{proof}
 
 \begin{theorem}[イェンセンの不等式]
-$y(x)$, $p(x)$を有界閉区間$[a, b]$上の連続関数で任意の$x \in [a, b]$に対して$p(x) \ge 0$と$\int_a^b p(x)\dd{x} = 1$を満たし、$f$を$[\inf y, \sup y]$上の連続関数とする。
+$x(t)$, $p(t)$を有界閉区間$I$上の連続関数で任意の$t \in [a, b]$に対して$p(t) \ge 0$と$\int_I p(t)\dd{t} = 1$を満たし、$f$を$[\inf x, \sup x]$上の連続関数とする。
 \begin{itemize}
 \item
 $f$が凸関数のとき、
 $$
-f\qty(\int_a^b p(x)y(x)\dd{x}) \le \int_a^b p(x)f(y(x))\dd{x}
+f\qty(\int_I p(t)x(t)\dd{t}) \le \int_I p(t)f(x(t))\dd{t}
 $$
 が成り立つ。
 \item
 $f$が凹関数のとき、
 $$
-f\qty(\int_a^b p(x)y(x)\dd{x}) \ge \int_a^b p(x)f(y(x))\dd{x}
+f\qty(\int_I p(t)x(t)\dd{t}) \ge \int_I p(t)f(x(t))\dd{t}
 $$
 が成り立つ。
 \end{itemize}
@@ -941,10 +941,10 @@ $$
 
 \begin{proof}
 凸関数の方について示す。
-命題\ref{t_convex_supp}より$f(y) \ge f(y)+k(y-c)$を満たす実数$k$が存在する。
-ここで$c = \int_a^b p(x)y(x)\dd{x}$、$y = y(x)$ ($x \in [a, b]$)として$p(x)$倍して積分すると、$\int_a^b p(x)\dd{x} = 1$に注意して、
+命題\ref{t_convex_supp}より$f(x) \ge f(x)+k(x-a)$を満たす実数$k$が存在する。
+ここで$a = \int_I p(t)x(t)\dd{t}$、$x = x(t)$ ($t \in I$)として$p(t)$倍して積分すると、$\int_I p(t)\dd{t} = 1$に注意して、
 $$
-\int_a^b p(x)f(y(x))\dd{x} \ge \int_a^b p(x)(f(c)+k(y(x)-c))\dd{x} = f(c)+k\qty(\int_a^b p(x)y(x)\dd{x}-c) = f(c).
+\int_I p(t)f(x(t))\dd{t} \ge \int_I p(t)(f(a)+k(x(t)-a))\dd{t} = f(a)+k\qty(\int_I p(t)x(t)\dd{t}-a) = f(a).
 $$
 よってほしかった不等式を得る。
 
