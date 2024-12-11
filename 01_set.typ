@@ -14,7 +14,7 @@ _集合_とはいくつかの「もの」の集まりであり、その集合に
 そうでない時は、$a in.not A$と書く。
 
 集合を記述する方法にはいくつかありこのテキストでは四種類使う。
-そのうち一つが外延記法といって元を列挙して記述する方法であり、例えば$1 , 2 , 3$の三つの元からなる集合は
+そのうち一つが外延記法といって元を列挙して記述する方法であり、例えば$1 , 2 , 3$の3つの元からなる集合は
 $
 { 1, 2, 3 }
 $
@@ -151,11 +151,11 @@ $X$が空集合のとき、命題「任意の$x in X$に対して$P(x)$」は真
 
 命題の演算の性質として以下が挙げられる。
 
-+ （結合法則）任意の命題$P$, $Q$, $R$に対して、$(P and Q) and R = P and (Q and R)$, $(P or Q) or R = P or (Q or R)$が成り立つ。
-+ （交換法則）任意の命題$P$, $Q$に対して、$P and Q = Q and P$, $P or Q = Q or P$が成り立つ。
-+ （分配法則）任意の命題$P$, $Q$, $R$に対して、$P and (Q or R) = (P and Q) or (P and R)$, $P or (Q and R) = (P or Q) and (P or R)$が成り立つ。
++ （結合法則）任意の命題$P$, $Q$, $R$に対して、$(P and Q) and R = P and (Q and R)$と$(P or Q) or R = P or (Q or R)$が成り立つ。
++ （交換法則）任意の命題$P$, $Q$に対して、$P and Q = Q and P$と$P or Q = Q or P$が成り立つ。
++ （分配法則）任意の命題$P$, $Q$, $R$に対して、$P and (Q or R) = (P and Q) or (P and R)$と$P or (Q and R) = (P or Q) and (P or R)$が成り立つ。
 + （二重否定）任意の命題$P$に対して、$not (not P) = P$が成り立つ。
-+ （ド・モルガンの法則）任意の命題$P$, $Q$に対して、$not (P and Q) = not P or not Q$, $not (P or Q) = not P and not Q$が成り立つ。
++ （ド・モルガンの法則）任意の命題$P$, $Q$に対して、$not (P and Q) = not P or not Q$と$not (P or Q) = not P and not Q$が成り立つ。
 + （背理法の原理）任意の命題$P$, $Q$に対して、$not (P ==> Q) = P and not Q$が成り立つ。
 + （対偶）任意の命題$P$, $Q$に対して、$P ==> Q = not Q ==> not P$が成り立つ。
 + 任意の命題$P(x)$に対して、$not (forall x in X , P(x)) = exists x in X , not P(x)$が成り立つ。
@@ -189,11 +189,11 @@ $X$を集合として、$A$, $B$をその部分集合とする。
 
 命題の演算の性質に対応して集合の演算には次の性質がある。
 
-+ （結合法則）任意の集合$A$, $B$, $C$に対して、$(A sect B) sect C = A sect (B sect C)$, $(A union B) union C = A union (B union C)$が成り立つ。
-+ （交換法則）任意の集合$A$, $B$に対して、$A sect B = B sect A$, $A union B = B union A$が成り立つ。
-+ （分配法則）任意の集合$A$, $B$, $C$に対して、$A sect (B union C) = (A sect B) union (A sect C)$, $A union (B sect C) = (A union B) sect (A union C)$が成り立つ。
++ （結合法則）任意の集合$A$, $B$, $C$に対して、$(A sect B) sect C = A sect (B sect C)$と$(A union B) union C = A union (B union C)$が成り立つ。
++ （交換法則）任意の集合$A$, $B$に対して、$A sect B = B sect A$と$A union B = B union A$が成り立つ。
++ （分配法則）任意の集合$A$, $B$, $C$に対して、$A sect (B union C) = (A sect B) union (A sect C)$と$A union (B sect C) = (A union B) sect (A union C)$が成り立つ。
 + 任意の集合$A$に対して、$(A^c)^c = A$が成り立つ。
-+ （ド・モルガンの法則）任意の集合$A$, $B$に対して、$(A sect B)^c = A^c union B^c$, $(A union B)^c = A^c sect B^c$が成り立つ。
++ （ド・モルガンの法則）任意の集合$A$, $B$に対して、$(A sect B)^c = A^c union B^c$と$(A union B)^c = A^c sect B^c$が成り立つ。
 
 == 写像の像と逆像
 
