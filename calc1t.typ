@@ -5,13 +5,13 @@
 
 #import "@preview/ilm:1.4.0": *
 #set text(lang: "ja")
-#show emph: it => { text(it, weight: "bold") }
 #show: ilm.with(
 	title: title,
 	author: author,
 	date: date,
 	table-of-contents: none,
 )
+#show emph: it => { text(it, weight: "bold") }
 
 #include "00_preface.typ"
 
