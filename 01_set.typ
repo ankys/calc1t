@@ -1,7 +1,8 @@
 
 = 集合と論理
 
-#import "deps/theorem.typ": theorem, proposition, definition, example, remark, proof
+#import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
+#show: thmrules.with()
 
 == 集合、命題、写像
 

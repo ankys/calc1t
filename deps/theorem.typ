@@ -1,6 +1,6 @@
 
 #import "@preview/ctheorems:1.1.3": thmrules, thmplain, thmbox, thmproof
-#show: thmrules.with()
+#let thmrules = thmrules
 #let theorem = thmbox("theorem", "定理", stroke: black)
 #let proposition = thmbox("theorem", "命題", stroke: black)
 #let definition = thmbox("theorem", "定義", stroke: black)
