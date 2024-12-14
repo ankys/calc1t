@@ -564,238 +564,239 @@ $
 ]
 
 == 部分列の極限
-<部分列の極限>
-$plus.minus 1$を交互に取る数列$((-1)^n)_(n = 0)^oo$はそれ自身は極限の定義に照らし合わせるとどのような数にも収束しない（発散する）が、
-奇数番目の項や偶数番目の項に制限すれば$plus.minus 1$に収束するので、それらを極限のようなものとして扱いたい場合がある。
+
+$plus.minus 1$の値を交互に取る数列$((-1)^n)_(n = 0)^oo$はそれ自身は極限の定義に照らし合わせるとどのような数にも収束しない（発散する）が、
+偶数番目の項や奇数番目の項に制限すれば$plus.minus 1$に収束するので、それらを極限のようなものとして扱いたい場合がある。
 そのような場合に重要になる概念が部分列である。
 
-#block[
+#definition([部分列])[
 $(a_n)_(n in NN)$を数列とする。
 ここで、$(n_k)_(k in NN)$を自然数列であって、各$k$に対して$n_k < n_(k+1)$が成り立つ、つまり
-$ n_0 < n_1 < n_2 < n_3 < dots $
+$
+n_0 < n_1 < n_2 < n_3 < dots
+$
 のとき、$(a_n)$のうち項を$n = n_k$に制限して得られる数列$(a_(n_k))_(k in NN)$を$(a_n)$の_部分列_という。
 
 部分列$(a_(n_k))_(k in NN)$が何らかの数$a$に収束する時、もとの数列$(a_n)$は$a$に_部分列収束_するあるいは$a$が$(a_n)$の_部分列極限_であるという。
-
 ]
-#block[
-- $n_k = k$として取ると$(a_(n_k))_k = (a_k)_k$なので、$(a_n)$自身は$(a_n)$の部分列であり、特に部分列は常に存在する。
 
+#remark[
+- $n_k = k$として取ると$(a_(n_k))_k = (a_k)_k$なので、$(a_n)$自身は$(a_n)$の部分列であり、特に部分列は常に存在する。
 - 部分列極限は部分列の取り方によって変わるので一意とは限らない。
   また、部分列は収束するとは限らないので存在とも限らない。
-
 ]
-#block[
-- 数列$((-1)^n)_(n = 0)^oo$に対して$n$が偶数に制限すると$((-1)^(2 k))_(k = 0)^oo = (+ 1)_(k = 0)^oo$で$+ 1$に部分列収束し、$n$が奇数に制限すると$((-1)^(2 k+1))_(k = 0)^oo = (-1)_(k = 0)^oo$で$-1$に部分列収束することがわかる。
 
+#example[
+- 数列$((-1)^n)_(n = 0)^oo$に対して$n$が偶数$2 k$に制限すると$((-1)^(2 k))_(k = 0)^oo = (+1)_(k = 0)^oo$で$+1$に部分列収束し、$n$が奇数$2 k+1$に制限すると$((-1)^(2 k+1))_(k = 0)^oo = (-1)_(k = 0)^oo$で$-1$に部分列収束することがわかる。
 - 実は数列$(sin n)_(n = 0)^oo$の部分列極限全体からなる集合は閉区間$[-1, 1]$になる（三角関数の周期$2 pi$が無理数であることに注意する）。
-
 ]
+
 もとの数列が収束するならば部分列は同じ極限に収束する。
 
-#block[
+#proposition[
 数列$(a_n)_(n in NN)$が数$a$に収束するとすると、任意の部分列$(a_(n_k))_(k in NN)$も$a$に収束する。
-
 ]
-#block[
 
-定義から$n_k >= k$がわかることに注意する（特に$n_k -> oo$
-($k -> oo$)である）。
-$epsilon > 0$に対して、$a_n -> a$より任意の$N$以上の自然数$n$に対して$abs(a_n-a|) < epsilon$となるような自然数$N$が存在する。
-ここで$K = N$とおくと任意の$K$以上の自然数$k$に対して、$n_k >= k >= N$なので、$abs(a_(n_k)-a|) < epsilon$である。
-よって、$a_(n_k) -> oo$である。
-
+#proof[
+定義から$n_k >= k$がわかることに注意する（特に$n_k -> oo$ ($k -> oo$)である）。
+$a_n -> a$より、$epsilon > 0$に対して、自然数$N$が存在して$N$以上の任意の自然数$n$に対して$abs(a_n-a) < epsilon$となる。
+ここで$K = N$とおくと任意の$K$以上の自然数$k$に対して、$n_k >= k >= N$なので、$abs(a_(n_k)-a) < epsilon$である。
+よって、$a_(n_k) -> a$である。
 ]
+
+#remark[
 これを用いれば$a_n -> a$のとき$a_(n+1) -> a$などがいえる。
+]
 
 部分列極限の中でも最大のものと最小のものはそれぞれ上極限、下極限と呼ばれる。
 
-#block[
+#definition([上極限・下極限])[
 $(a_n)_(n in NN)$を実数列とする。
 
 - 上限・下限を使って定義される次の数を$(a_n)$の$n -> oo$での_上極限_という。
-  $ limsup_(n -> oo) a_n = inf_(k in NN) sup { a_n mid(|) n in NN, n >= k } . $
-
+  $
+  limsup_(n -> oo) a_n = inf_(k in NN) sup { a_n mid(|) n in NN, n >= k }.
+  $
 - 上限・下限を使って定義される次の数を$(a_n)$の$n -> oo$での_下極限_という。
-  $ liminf_(n -> oo) a_n = sup_(k in NN) inf { a_n mid(|) n in NN, n >= k } . $
-
+  $
+  liminf_(n -> oo) a_n = sup_(k in NN) inf { a_n mid(|) n in NN, n >= k }.
+  $
 ]
+
 上極限・下極限は上限・下限で定義されるので（$plus.minus oo$を認めれば）必ず存在するという利点がある。
 
-#block[
+#remark[
 自然数$n$に対して$n$以上の自然数の集合は$n$が増えると小さくなるので$sup { a_k mid(|) k in NN, k >= n }$は単調減少である。
 したがって上極限の定義の中の下限は極限にかえることができる。
 下極限も同様で、つまり
-$ limsup_(n -> oo) a_n = lim_(k -> oo) sup { a_n mid(|) n in NN, n >= k }, quad liminf_(n -> oo) a_n = lim_(k -> oo) inf { a_n mid(|) n in NN, n >= k } $
+$
+limsup_(n -> oo) a_n = lim_(k -> oo) sup { a_n mid(|) n in NN, n >= k },
+quad liminf_(n -> oo) a_n = lim_(k -> oo) inf { a_n mid(|) n in NN, n >= k }
+$
 が成立する。
-
 ]
+
 また、定義から$liminf a_n <= limsup a_n$である。
 この等号が成立するための条件が極限が存在することになる。
 
-#block[
-$(a_n)_(n in NN)$を数列とする。
+#proposition[
+$(a_n)_(n in NN)$を実数列とする。
 
 - $(a_n)$が収束するならば、$liminf a_n = limsup a_n = lim a_n$である。
-
 - $liminf a_n = limsup a_n$ならば$(a_n)$はその値に収束する。
-
 ]
-#block[
+
+#remark[
 この定理は$a_n -> plus.minus oo$の場合も同様のものが成立する。
-
 ]
-#block[
+
+#proof[
 前半はすぐわかるので証明を省略する。
 後半について任意の自然数$k$に対して
-$ inf { a_n mid(|) n in NN, n >= k } <= a_k <= sup { a_n mid(|) n in NN, n >= k } $
+$
+inf { a_n mid(|) n in NN, n >= k } <= a_k <= sup { a_n mid(|) n in NN, n >= k }
+$
 であり最左辺と最右辺がともに$liminf a_n = limsup a_n$に収束するので、
 はさみうちの原理より$a_n -> liminf a_n = limsup a_n$である。
-
 ]
-#block[
-<t_ord_slim> $(a_n)_(n in NN)$,
-$(b_n)_(n in NN)$を十分大きい任意の自然数$n$に対して$a_n <= b_n$を満たす実数列とする。
+
+#proposition[
+$(a_n)_(n in NN)$と$(b_n)_(n in NN)$を十分大きい任意の自然数$n$に対して$a_n <= b_n$を満たす実数列とする。
+この時、以下が成り立つ。
 
 - $limsup a_n <= limsup b_n$.
-
 - $liminf a_n <= liminf b_n$.
+] <t_ord_slim>
 
-]
-この命題は命題@t_limord を一般化したものになっている。
+この命題は@t_limord を一般化したものになっている。
 
-#block[
+#remark[
 この命題は上極限・下極限が$plus.minus oo$の場合でも成立する。
-
 ]
-#block[
 
+#proof[
 上極限・下極限の定義から容易に証明できるので詳細は省略する。
-
 ]
-#block[
-<t_max_ulim> $(a_n)_(n in NN)$を実数列とする。
+
+#proposition[
+$(a_n)_(n in NN)$を実数列とする。
+この時、以下が成り立つ。
 
 - $a_(n_k) -> limsup a_n$となる部分列$(a_(n_k))$が存在する。
-
 - $a_(n_k) -> liminf a_n$となる部分列$(a_(n_k))$が存在する。
+] <t_max_ulim>
 
-]
-#block[
+#remark[
 この命題は上極限・下極限が$plus.minus oo$の場合でも成立する。
-
 ]
+
 #block[
 上極限のみ示す。
 $limsup_(n -> oo) a_n$が$+oo$でないつまり実数の場合を証明する。
-各$k in NN$に対して実数$b_k = limsup a_n-frac(1, k+1)$を定めると$b_k -> limsup a_n$であり、$b_k < sup { a_n mid(|) n in NN, n >= k }$であることに注意する。
+各$k in NN$に対して実数$b_k = limsup a_n-1/(k+1)$を定めると$b_k -> limsup a_n$であり、$b_k < sup { a_n mid(|) n in NN, n >= k }$であることに注意する。
 よって$b_k < a_n$となる自然数$n >= k$が存在するので、自然数列$n_k$を
-$ n_(k+1) = min { n in NN mid(|) b_(k+1) < a_n, n >= n_k+1 > n_k }, quad n_0 = min { n in NN mid(|) b_0 < a_n } $
+$
+n_(k+1) = min { n in NN mid(|) b_(k+1) < a_n, n >= n_k+1 > n_k },
+quad n_0 = min { n in NN mid(|) b_0 < a_n }
+$
 で定義すると、$(a_(n_k))$は$(a_n)$の部分列であり、
-$ b_k < a_(n_k) <= sup { a_n mid(|) n in NN, n >= k } $
+$
+b_k < a_(n_k) <= sup { a_n mid(|) n in NN, n >= k }
+$
 を満たす。
-最左辺も再右辺も$limsup_(n -> oo) a_n$に収束するので、はさみうちの原理より部分列$(a_(n_k))$も$limsup_(n -> oo) a_n$に収束する。
+最左辺も最右辺も$limsup_(n -> oo) a_n$に収束するので、はさみうちの原理より部分列$(a_(n_k))$も$limsup_(n -> oo) a_n$に収束する。
 
 $limsup_(n -> oo) a_n =+oo$の場合は$b_k = k$として同じようなことをすればよい。
-下極限については同様に証明できる（詳細省略）。
-
+下極限についても同様に証明できる（詳細省略）。
 ]
+
 特に次が従う。
 
-#block[
+#theorem([ボルツァーノ・ワイエルシュトラスの定理])[
 有界な実数列は収束する部分列を持つ。
-
 ]
-#block[
 
+#proof[
 実数列$(a_n)$の上極限$limsup a_n$はその定義から$(a_n)$が有界だと$plus.minus oo$でないことがわかる。
-よって、命題@t_max_ulim を用いれば$(a_n)$は実数$limsup a_n$に収束する部分列が存在することがわかるので、定理が示された。
-
+よって、@t_max_ulim を用いれば$(a_n)$は実数$limsup a_n$に収束する部分列が存在することがわかるので、定理が示された。
 ]
-#block[
+
+#theorem[
 $(a_n)_(n in NN)$を数列、$a$を数とする。
 もし$(a_n)$の任意の部分列$(a_(n_k))$が$a$に部分列収束する、つまり$a$に収束する部分列$(a_(n_(k_l)))$が存在するとき、$(a_n)$は$a$に収束する。
-
 ]
-#block[
 
-実数列$(abs(a_n-a|))_n$を考えると命題@t_max_ulim より上極限$limsup_n abs(a_n-a|)$に収束する部分列$(abs(a_(n_k)-a|))_k$が取れる。
-仮定より$(a_(n_k))_k$は$a$に部分列収束するので$abs(a_(n_(k_l))-a|) -> 0$となる$(abs(a_(n_k)-a|))_k$の部分列$(abs(a_(n_(k_l))-a|))_l$が存在する。
-$(abs(a_(n_(k_l))-a|))_l$は$limsup_n abs(a_n-a|)$にも収束すると言え、極限の一意性から$limsup_n abs(a_n-a|) = 0$である。
-したがって、$0 <= liminf_n abs(a_n-a|) <= limsup_n abs(a_n-a|) = 0$より、$(abs(a_n-a|))_n$は$0$に収束し、つまり$(a_n)$は$a$に収束する。
-
+#proof[
+実数列$(abs(a_n-a))_n$を考えると@t_max_ulim より上極限$limsup_n abs(a_n-a)$に収束する部分列$(abs(a_(n_k)-a))_k$が取れる。
+仮定より$(a_(n_k))_k$は$a$に部分列収束するので$abs(a_(n_(k_l))-a) -> 0$となる$(abs(a_(n_k)-a))_k$の部分列$(abs(a_(n_(k_l))-a))_l$が存在する。
+$(abs(a_(n_(k_l))-a))_l$は$limsup_n abs(a_n-a)$にも収束すると言え、極限の一意性から$limsup_n abs(a_n-a) = 0$である。
+したがって、$0 <= liminf_n abs(a_n-a|) <= limsup_n abs(a_n-a|) = 0$より、$(abs(a_n-a))_n$は$0$に収束し、つまり$(a_n)$は$a$に収束する。
 ]
+
 以上の内容をもとに漸化式で定まる数列の極限について一般論を述べる。
 
-#block[
-$I$を実数の集合、$F = F (a, n)$, $G = G (a)$を関数とする。
+#theorem[
+$I$を実数の集合、$F = F(a, n)$, $G = G(a)$を関数とする。
 
 - $I$, $F$, $G$が
-
- +任意の$a in I$と$n in NN$に対して$F (a, n) in I$、つまり$F (I, NN) subset I$。
-
- +$I$は上に有界である。
-
- +任意の$a in I$と$n in NN$に対して$a >= F (a, n)$。
-
- +任意の$(a_n)_(n in NN)$
-    ($a_n in I$)と$a in I$に対して$a_n -> a ==> F (a_n, n) -> G (a)$。
-
- +$a = G (a)$を満たす$a in I$は一意である。
-
-  を満たす時、漸化式$a_(n+1) = F (a_n, n)$によって任意の$a_0 in I$に対して数列$(a_n)_(n in NN)$
-  ($a_n in I$)が定義でき、$(a_n)$は上に有界かつ単調増加より収束し極限を$a$とおくと、$a$は極限方程式$a = G (a)$の一意解であり$a = max I$である。
-
+  + 任意の$a in I$と$n in NN$に対して$F(a, n) in I$、つまり$F(I, NN) subset I$を満たす。
+  + $I$は上に有界である。
+  + 任意の$a in I$と$n in NN$に対して$a >= F(a, n)$である。
+  + 任意の$(a_n)_(n in NN)$ ($a_n in I$)と$a in I$に対して$a_n -> a ==> F(a_n, n) -> G(a)$となる。
+  + $a = G(a)$を満たす$a in I$は一意である。
+  を満たす時、漸化式$a_(n+1) = F(a_n, n)$によって任意の$a_0 in I$に対して数列$(a_n)_(n in NN)$ ($a_n in I$)が定義でき、$(a_n)$は上に有界かつ単調増加より収束し極限を$a$とおくと、$a$は極限方程式$a = G(a)$の一意解であり$a = max I$である。
 - $I$, $F$, $G$が
-
- +任意の$a in I$と$n in NN$に対して$F (a, n) in I$、つまり$F (I, NN) subset I$。
-
- +$I$は下に有界である。
-
- +任意の$a in I$と$n in NN$に対して$a <= F (a, n)$。
-
- +任意の$(a_n)_(n in NN)$
-    ($a_n in I$)と$a in I$に対して$a_n -> a ==> F (a_n, n) -> G (a)$。
-
- +$a = G (a)$を満たす$a in I$は一意である。
-
-  を満たす時、漸化式$a_(n+1) = F (a_n, n)$によって任意の$a_0 in I$に対して数列$(a_n)_(n in NN)$
-  ($a_n in I$)が定義でき、$(a_n)$は下に有界かつ単調減少より収束し極限を$a$とおくと、$a$は極限方程式$a = G (a)$の一意解であり$a = min I$である。
-
+  + 任意の$a in I$と$n in NN$に対して$F(a, n) in I$、つまり$F(I, NN) subset I$を満たす。
+  + $I$は下に有界である。
+  + 任意の$a in I$と$n in NN$に対して$a <= F(a, n)$である。
+  + 任意の$(a_n)_(n in NN)$ ($a_n in I$)と$a in I$に対して$a_n -> a ==> F(a_n, n) -> G(a)$となる。
+  + $a = G(a)$を満たす$a in I$は一意である。
+  を満たす時、漸化式$a_(n+1) = F(a_n, n)$によって任意の$a_0 in I$に対して数列$(a_n)_(n in NN)$ ($a_n in I$)が定義でき、$(a_n)$は下に有界かつ単調減少より収束し極限を$a$とおくと、$a$は極限方程式$a = G(a)$の一意解であり$a = min I$である。
 ]
-#block[
-三つ目の仮定は一般には外せない。 例えば$I = [-1, 1]$,
-$F (a, n) = G (a) =-a$とおくと、三番目以外の仮定を満たすが、
+
+#remark[
+三つ目の仮定は一般には外せない。
+例えば$I = [-1, 1]$, $F(a, n) = G(a) = -a$とおくと、三番目以外の仮定を満たすが、
 $a_n = (-1)^n a_0$となり$a_0 eq.not 0$のとき$(a_n)$は発散する。
-
 ]
+
 数列の極限の最後に次のような極限に関する定理を紹介する。
 
-#block[
-<t_average_conv> 数列$(a_n)_(n = 1)^oo$が$a$に収束するとする。 この時、
-$ frac(a_1+dots+a_n, n) -> a quad (n -> oo) $
+#theorem[
+数列$(a_n)_(n = 1)^oo$が$a$に収束するとする。
+この時、
+$
+(a_1+dots+a_n)/n -> a quad (n -> oo)
+$
 が成り立つ。
+] <t_average_conv>
 
-]
-#block[
+#remark[
 $(a_n)_(n = 1)^oo$が$plus.minus oo$に発散する時でも同様の結果が成り立つ。
-
 ]
+
 この定理の証明にはある程度極限の定義に立ち戻る必要がある。
 
-#block[
-三角不等式より$n = 1, 2, 3, dots$に対して
-\$\$\\lrabs{\\frac{a\_1+\\cdots+a\_n}{n}-a} = \\frac{|(a\_1-a)+\\cdots+(a\_n-a)|}{n} \\le \\frac{|a\_1-a|+\\cdots+|a\_n-a|}{n}\$\$
+#proof[
+三角不等式より$n = 1, 2, 3, dots$に対して、
+$
+abs((a_1+dots+a_n)/n-a) = abs((a_1-a)+dots+(a_n-a))/n <= (abs(a_1-a)+dots+abs(a_n-a))/n
+$
 であることに注意する。
-$epsilon > 0$に対して、$a_n -> a$であることから、$N$以上のすべての自然数$n$に対して$abs(a_n-a|) < epsilon$となるような$N = 1, 2, 3, dots$が存在するので、$N$以上の自然数$n$に対して、
-\$\$\\lrabs{\\frac{a\_1+\\cdots+a\_n}{n}-a}
-\< \\frac{|a\_1-a|+\\cdots+|a\_N-a|+(n-N)\\varepsilon}{n}
-= \\varepsilon+\\frac{|a\_1-a|+\\cdots+|a\_N-a|-N\\varepsilon}{n}\$\$
-である。 ここで$n -> oo$とすると最右辺は$epsilon$に収束するので、
-\$\$\\limsup\_{n \\to \\infty}\\lrabs{\\frac{a\_1+\\cdots+a\_n}{n}-a} \\le \\varepsilon\$\$
+$epsilon > 0$に対して、$a_n -> a$であることから、$N$以上のすべての自然数$n$に対して$abs(a_n-a) < epsilon$となるような$N = 1, 2, 3, dots$が存在するので、$N$以上の自然数$n$に対して、
+$
+abs((a_1+dots+a_n)/n-a)
+< (abs(a_1-a)+dots+abs(a_N-a)+(n-N)epsilon)/n
+= epsilon+(abs(a_1-a)+dots+abs(a_N-a)-N epsilon)/n
+$
+である。
+ここで$n -> oo$とすると最右辺は$epsilon$に収束するので、
+$
+limsup_(n -> oo) abs((a_1+dots+a_n)/n-a) <= epsilon
+$
 で、$epsilon$は任意の正の数なので、ほしかった極限の式が得られる。
-
 ]
+
 == 関数の極限
 <関数の極限>
 この節では実数の集合$X$上で定義された実数値関数$f : X -> RR$を考える。
