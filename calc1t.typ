@@ -13,6 +13,16 @@
 )
 #show emph: it => { text(it, weight: "bold") }
 
+#import "deps/autoeqnum.typ": autoeqnum
+#show heading.where(level: 2): it => {
+	counter(math.equation).update(0)
+	it
+}
+#show: autoeqnum.with(mode: "ref", numbering: it => {
+	let count = counter(heading).get()
+	numbering("(1.1)", ..count, it)
+})
+
 #include "00_preface.typ"
 
 #outline()
