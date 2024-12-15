@@ -3,13 +3,22 @@
 #let author = [中安淳]
 #let date = datetime.today()
 
-#set page(paper: "a4", margin: 10mm)
+#import "@preview/hydra:0.5.1": hydra
+#let page-header = context{
+	let page-num = here().page()
+	if calc.odd(page-num) [
+		#hydra(2)#h(1fr)*#page-num*
+	] else [
+		*#page-num*#h(1fr)#hydra(1)
+	]
+}
+#set page(paper: "a4", margin: (left: 15mm, right: 15mm, top: 30mm, bottom: 20mm), numbering: "1", header: page-header, footer: none)
 #set text(size: 10pt)
 
 #set text(lang: "ja")
 
 #let mincho = ("Libertinus Serif", "Zen Old Mincho")
-#let gothic = ("Zen Kaku Gothic New")
+#let gothic = ("Libertinus Serif", "Zen Kaku Gothic New")
 #set text(font: mincho)
 #show emph: set text(font: gothic, weight: "bold")
 #show strong: set text(font: gothic, weight: "bold")
@@ -23,15 +32,13 @@
 		#v(2em, weak: true)
 		#date
 	]
+	set page(header: none)
 	pagebreak()
+	set page(header: none)
 }
 
 #set heading(numbering: "第1章")
 #show heading.where(level: 2): set heading(numbering: "1.1")
-#show heading: it => {
-	strong(it)
-	par(text(size: 0pt, ""))
-}
 
 #show heading.where(level: 1): it => {
 	pagebreak(weak: true, to: "odd")
@@ -42,6 +49,10 @@
 	v(3em, weak: true)
 	text(2em)[*#it.body*]
 	v(5em, weak: true)
+}
+#show heading.where(level: 2): it => {
+	strong(it)
+	par(text(size: 0pt, ""))
 }
 
 #show outline: set heading(numbering: none)
