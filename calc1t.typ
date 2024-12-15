@@ -3,6 +3,9 @@
 #let author = [中安淳]
 #let date = datetime.today()
 
+#set page(paper: "a4", margin: 10mm)
+#set text(size: 10pt)
+
 #set text(lang: "ja")
 
 #let mincho = ("Libertinus Serif", "Zen Old Mincho")
@@ -24,10 +27,27 @@
 }
 
 #set heading(numbering: "第1章")
-#show heading.where(level: 2): set heading(numbering: "1.1.")
+#show heading.where(level: 2): set heading(numbering: "1.1")
+#show heading: it => {
+	strong(it)
+	par(text(size: 0pt, ""))
+}
+
+#show heading.where(level: 1): it => {
+	pagebreak(weak: true, to: "odd")
+	v(5em)
+	if (it.numbering != none) {
+		text(1.5em)[*#numbering(it.numbering, counter(heading).get().first())*]
+	}
+	v(3em, weak: true)
+	text(2em)[*#it.body*]
+	v(5em, weak: true)
+}
 
 #show outline: set heading(numbering: none)
 #show outline.entry.where(level: 1): it => strong(it)
+
+#set par(first-line-indent: 1em)
 
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
