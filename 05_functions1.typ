@@ -1,4 +1,17 @@
+
 = 種々の関数１
+
+#import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
+#show: thmrules.with()
+
+#let arsinh = $op("arsinh")$
+#let arcosh = $op("arcosh")$
+#let artanh = $op("artanh")$
+#let opabs = $op("abs")$
+#let sgn = $op("sgn")$
+#let opsgn = $op("sgn")$
+#let opfloor = $op("floor")$
+#let opceil = $op("ceil")$
 
 == べき関数
 
@@ -218,33 +231,41 @@ $
 ]
 
 == 三角関数
-<三角関数>
-直角三角形の辺の長さの比から定まる三角比をもとにした_正弦関数_$sin x$,
-_余弦関数_$cos x$,
-_正接関数_$tan x$は次を満たす関数であり、まとめて_三角関数_という。
+直角三角形の辺の長さの比から定まる三角比をもとにした_正弦関数_$sin x$、_余弦関数_$cos x$、_正接関数_$tan x$は次を満たす関数であり、まとめて_三角関数_という。
 
-- $sin x$,
-  $cos x$はともに$RR$上の実数値連続関数であり、任意の実数$x$に対して
-  $ cos^2 x+sin^2 x = 1 $ が成り立つ。
-
-- $sin x$, $cos x$はともに周期$2 pi$,
-  $pi = 3.1415926535 dots$を持つ、つまり任意の実数$x$に対して
-  $ sin (x+2 pi) = sin x, quad cos (x+2 pi) = cos x $ が成り立つ。
-
-- $sin 0 = 0$, $sin pi / 6 = 1 / 2$, $sin pi / 4 = 1 / sqrt(2)$,
-  $sin pi / 3 = sqrt(3) / 2$, $sin pi / 2 = 1$で、実数$x$に対して
-  $ sin (pi / 2 - x) = cos x, quad sin (pi - x) = sin x, quad sin (- x) = - sin x $
+- $sin x$, $cos x$はともに$RR$上の実数値連続関数であり、任意の実数$x$に対して
+  $
+  cos^2 x+sin^2 x = 1
+  $
   が成り立つ。
-
-- $sin x$は$[- pi / 2, pi / 2]$で狭義単調増加で、$cos x$は$[0, pi]$で狭義単調減少である。
-
+- $sin x$, $cos x$はともに周期$2 pi$, $pi = 3.1415926535 dots$を持つ
+  つまり任意の実数$x$に対して
+  $
+  sin (x+2 pi) = sin x,
+  quad cos (x+2 pi) = cos x
+  $
+  が成り立つ。
+- $sin 0 = 0$, $sin pi/6 = 1/2$, $sin pi/4 = 1/sqrt(2)$, $sin pi/3 = sqrt(3)/2$, $sin pi/2 = 1$で、
+  実数$x$に対して
+  $
+  sin (pi/2-x) = cos x,
+  quad sin (pi-x) = sin x,
+  quad sin (-x) = -sin x
+  $
+  が成り立つ。
+- $sin x$は$[-pi/2, +pi/2]$で狭義単調増加で、$cos x$は$[0, pi]$で狭義単調減少である。
 - 加法定理、つまり任意の実数$x$, $y$に対して、
-  $ sin (x+y) = sin x cos y+cos x sin y, quad cos (x+y) = cos x cos y - sin x sin y $
+  $
+  sin (x+y) = sin x cos y+cos x sin y,
+  quad cos (x+y) = cos x cos y-sin x sin y
+  $
   が成り立つ。
-
-- 極限の式 $ lim_(x -> 0) frac(sin x, x) = 1 $ が成り立つ。
-
-- $tan x = frac(sin x, cos x)$であり、$x in RR \\ { pi / 2+n pi mid(|) n in bb(Z) }$に対して定義される。
+- 極限の式
+  $
+  lim_(x -> 0) (sin x)/x = 1
+  $
+  が成り立つ。
+- $tan x = (sin x)/(cos x)$であり、$x in RR \\ { pi/2+n pi mid(|) n in ZZ }$に対して定義される。
 
 ただし、途中に出てくる定数$pi$を_円周率_という。
 $(sin x)^n$などはしばしば$sin^n x$と記述される。
@@ -252,86 +273,102 @@ $(sin x)^n$などはしばしば$sin^n x$と記述される。
 このテキストではこれらの三角関数は存在するものとして話を進める。
 三角関数の定義つまりこれらの性質を満たす関数の構成は、指数関数の複素数への拡張による方法やべき級数による方法、微分方程式の解として特徴づける方法などがあるが、現段階の知識ではうまく定義できない。
 ただし最初の方法についてあらましを述べると、指数関数を複素数$z$に拡張して$exp z = e^z$を構成すると_オイラーの関係式_$e^(i x) = cos x+i sin x$によって三角関数$cos x$と$sin x$を得る。
-複素数に拡張しても複素数$z$,
-$w$に対して指数法則$e^(z+w) = e^z e^w$と極限$frac(e^z -1, z) = 1$
+複素数に拡張しても複素数$z$, $w$に対して指数法則$e^(z+w) = e^z e^w$と極限$(e^z-1)/z = 1$
 ($z -> 0$)が成り立つので、三角関数の加法定理と極限の式が導かれる。
 加法定理より指数法則の方が単純で覚えやすいので、加法定理を忘れたとしても指数法則とオイラーの関係式から導くことができる。
 
 == 逆三角関数
-<逆三角関数>
-正弦関数$sin y$は$[- pi / 2 ,+pi / 2]$上で狭義単調増加な連続関数で$sin (- pi / 2) = -1$,
-$sin (+ pi / 2) =+1$より、$sin y$の逆関数として_逆正弦関数_$arcsin x$が$[-1 ,+1]$上の$[- pi / 2 ,+pi / 2]$値の狭義単調増加な連続関数として得られる。
-余弦関数$cos y$は$[0, pi]$上で狭義単調減少な連続関数で$cos 0 =+1$,
-$cos pi = -1$より、$cos y$の逆関数として_逆余弦関数_$arccos x$が$[-1 ,+1]$上の$[0, pi]$値の狭義単調減少な連続関数として得られる。
-正接関数$tan y$は$(- pi / 2 ,+pi / 2)$上で狭義単調増加な連続関数で$lim_(y -> - pi / 2) tan y = -oo$,
-$lim_(y ->+pi / 2) tan y = +oo$より、$tan y$の逆関数として_逆正接関数_$arctan x$が$RR$上の$(- pi / 2 ,+pi / 2)$値の狭義単調増加な連続関数として得られる。
+
+正弦関数$sin y$は$[-pi/2, +pi/2]$上で狭義単調増加な連続関数で$sin (-pi/2) = -1$,
+$sin (+pi/2) = +1$より、$sin y$の逆関数として_逆正弦関数_$arcsin x$が$[-1, +1]$上の$[- pi/2, +pi/2]$値の狭義単調増加な連続関数として得られる。
+余弦関数$cos y$は$[0, pi]$上で狭義単調減少な連続関数で$cos 0 = +1$, $cos pi = -1$より、$cos y$の逆関数として_逆余弦関数_$arccos x$が$[-1, +1]$上の$[0, pi]$値の狭義単調減少な連続関数として得られる。
+正接関数$tan y$は$(-pi/2, +pi/2)$上で狭義単調増加な連続関数で$lim_(y -> -pi/2) tan y = -oo$, $lim_(y -> +pi/2) tan y = +oo$より、$tan y$の逆関数として_逆正接関数_$arctan x$が$RR$上の$(-pi/2, +pi/2)$値の狭義単調増加な連続関数として得られる。
 これらの関数をまとめて_逆三角関数_という。
 
-#block[
+#example[
 逆三角関数は三角比を角度に変換し、三角関数と合成させることで三角比や角度を別の三角比や角度に変換できる。
-例えば、$x in [-1 ,+1]$に対して、$arcsin x in [- pi / 2 ,+pi / 2]$より、
-$ cos (arcsin x) = sqrt(1 - sin^2 (arcsin x)) = sqrt(1 - x^2) $ である。
-
+例えば、$x in [-1, +1]$に対して、$arcsin x in [-pi/2, +pi/2]$より、
+$
+cos (arcsin x)
+= sqrt(1-sin^2 (arcsin x))
+= sqrt(1-x^2)
+$
+である。
 ]
+
 == 双曲線関数
-<双曲線関数>
+
 実数$x$に対して次で定まる$RR$上の関数として_双曲線正弦関数_$sinh x$、_双曲線余弦関数_$cosh x$、_双曲線正接関数_$tanh x$を導入する。
-$ sinh x = frac(e^x - e^(- x), 2), quad cosh x = frac(e^x+e^(- x), 2), quad tanh x = frac(sinh x, cosh x) . $
+$
+sinh x = (e^x-e^(-x))/2,
+quad cosh x = (e^x+e^(-x))/2,
+quad tanh x = (sinh x)/(cosh x).
+$
 これらの関数をまとめて_双曲線関数_という。
 
 この定義からすぐに以下の性質がわかる。
 
-- $sinh x$,
-  $cosh x$はともに$RR$上の実数値連続関数であり、任意の実数$x$に対して
-  $ cosh^2 x - sinh^2 x = 1 $ が成り立つ。
-
-- $sinh x$は$RR$で狭義単調増加で、$cosh x$は$\( -oo, -0 \]$で狭義単調減少、$\[+0 ,+oo \)$で狭義単調増加である。
-
-- $sinh 0 = 0$, $lim_(x -> +oo) sinh x = +oo$, $cosh 0 = 1$,
-  $lim_(x -> +oo) cosh x = +oo$で、実数$x$に対して
-  $ sinh (- x) = - sinh x, quad cosh (- x) = cosh x $ が成り立つ。
-
-- 加法定理、つまり任意の実数$x$, $y$に対して、
-  $ sinh (x+y) = sinh x cosh y+cosh x sinh y, quad cosh (x+y) = cosh x cosh y+sinh x sinh y $
+- $sinh x$, $cosh x$はともに$RR$上の実数値連続関数であり、任意の実数$x$に対して
+  $
+  cosh^2 x-sinh^2 x = 1
+  $
   が成り立つ。
-
-- 極限の式 $ lim_(x -> 0) frac(sinh x, x) = 1 $ が成り立つ。
-
+- $sinh x$は$RR$で狭義単調増加で、$cosh x$は$\(-oo, -0\]$で狭義単調減少、$\[+0, +oo\)$で狭義単調増加である。
+- $sinh 0 = 0$, $lim_(x -> +oo) sinh x = +oo$, $cosh 0 = 1$, $lim_(x -> +oo) cosh x = +oo$で、
+  実数$x$に対して
+  $
+  sinh (-x) = -sinh x,
+  quad cosh (-x) = cosh x
+  $
+  が成り立つ。
+- 加法定理、つまり任意の実数$x$, $y$に対して、
+  $
+  sinh (x+y) = sinh x cosh y+cosh x sinh y,
+  quad cosh (x+y) = cosh x cosh y+sinh x sinh y
+  $
+  が成り立つ。
+- 極限の式
+  $
+  lim_(x -> 0) (sinh x)/x = 1
+  $
+  が成り立つ。
 - $tanh x$は$RR$上の連続関数である。
 
-最初の等式は平面上の点$(cosh x, sinh x)$が双曲線$x^2 - y^2 = 1$上の点であることを表しそこから双曲線関数と呼ばれる。
+最初の等式は平面上の点$(cosh x, sinh x)$が双曲線$x^2-y^2 = 1$上の点であることを表しそこから双曲線関数と呼ばれる。
 $(sinh x)^n$などはしばしば$sinh^n x$と記述される。
 
 == 逆双曲線関数
-<逆双曲線関数>
+
 双曲線正弦関数$sinh y$は$RR$上で狭義単調増加な連続関数で$lim_(y -> -oo) sinh y = -oo$,
-$lim_(y -> +oo) sinh y = +oo$より、$sinh y$の逆関数として_逆双曲線正弦関数_\$\\arsinh x\$が$RR$上の$RR$値の狭義単調増加な連続関数として得られる。
-双曲線余弦関数$cosh y$は$\[ 0 ,+oo \)$上で狭義単調増加な連続関数で$cosh 0 = 1$,
-$lim_(y -> +oo) cosh y = +oo$より、$cos y$の逆関数として_逆双曲線余弦関数_\$\\arcosh x\$が$\[ 1 ,+oo \)$上の$\[ 0 ,+oo \)$値の狭義単調増加な連続関数として得られる。
-双曲線正接関数$tanh y$は$RR$上で狭義単調増加な連続関数で$lim_(y -> -oo) tan y = -1$,
-$lim_(y -> +oo) tanh y =+1$より、$tanh y$の逆関数として_逆双曲線正接関数_$arctan x$が$(-1 ,+1)$上の$RR$値の狭義単調増加な連続関数として得られる。
+$lim_(y -> +oo) sinh y = +oo$より、$sinh y$の逆関数として_逆双曲線正弦関数_$arsinh x$が$RR$上の$RR$値の狭義単調増加な連続関数として得られる。
+双曲線余弦関数$cosh y$は$\[0, +oo\)$上で狭義単調増加な連続関数で$cosh 0 = 1$, $lim_(y -> +oo) cosh y = +oo$より、$cosh y$の逆関数として_逆双曲線余弦関数_$arcosh x$が$\[1, +oo\)$上の$\[0, +oo\)$値の狭義単調増加な連続関数として得られる。
+双曲線正接関数$tanh y$は$RR$上で狭義単調増加な連続関数で$lim_(y -> -oo) tan y = -1$, $lim_(y -> +oo) tanh y = +1$より、$tanh y$の逆関数として_逆双曲線正接関数_$artanh x$が$(-1, +1)$上の$RR$値の狭義単調増加な連続関数として得られる。
 これらの関数をまとめて_逆双曲線関数_という。
 
-上では逆双曲線関数を抽象的に定義したが、双曲線関数の表示にもとづいて$sinh y = frac(e^y - e^(- y), 2) = x$を$x$について解くことで、次の表示を得られる。
-\$\$\\arsinh x = \\log\\left(x+\\sqrt{x^2+1}\\right),
-\\quad \\arcosh x = \\log\\left(x+\\sqrt{x^2-1}\\right) \\quad (x \\ge 1),
-\\quad \\artanh x = \\frac{1}{2}\\log\\frac{1+x}{1-x} \\quad (-1 \< x \< +1).\$\$
+上では逆双曲線関数を抽象的に定義したが、双曲線関数の表示にもとづいて$sinh y = (e^y-e^(-y))/2 = x$を$x$について解くことで、次の表示を得られる。
+$
+arsinh x = log(x+sqrt(x^2+1)),
+quad arcosh x = log(x+sqrt(x^2-1)) (x >= 1),
+quad artanh x = (1/2)log (1+x)/(1-x) (-1 < x < +1).
+$
 
 == その他の関数
-<その他の関数>
-実数$x$に対して絶対値$lr(|x|)$を対応させる関数を_絶対値関数_といい\$\\opabs\$や$lr(|x|)$と表す。
+
+実数$x$に対して絶対値$abs(x)$を対応させる関数を_絶対値関数_といい$opabs$や$abs(x)$と表す。
 絶対値関数は$RR$上の連続関数である。
 
-実数$x$に対して次の符号\$\\sgn(x)\$を対応させる関数を_符号関数_といい\$\\sgn\$と表す。
-\$\$\\sgn(x) =
-\\begin{cases}
-+1 & \\text{(\$x \> 0\$),} \\\\
-0 & \\text{(\$x = 0\$),} \\\\
--1 & \\text{(\$x \< 0\$).} \\\\
-\\end{cases}\$\$
-符号関数は$RR \\ { 0 }$で連続関数であるが$0$で連続でない。
+実数$x$に対して次の符号$sgn(x)$を対応させる関数を_符号関数_といい$opsgn$と表す。
+$
+sgn(x) =
+cases(
+  +1 & (x > 0)",",
+  0 & (x = 0)",",
+  -1 & (x < 0)"."
+)
+$
+符号関数は$RR\\{0}$で連続関数であるが$0$で連続でない。
 
-実数$x$に対して床$⌊ x ⌋$を対応させる関数を_床関数_といい\$\\floor\$や$⌊ x ⌋$と表す。
-実数$x$に対して天井$⌈ x ⌉$を対応させる関数を_天井関数_といい\$\\ceil\$や$⌈ x ⌉$と表す。
-床関数と天井関数は$RR \\ bb(Z)$で連続関数であるが整数の点で連続でない。
+実数$x$に対して床$floor(x)$を対応させる関数を_床関数_といい$opfloor$や$floor(x)$と表す。
+実数$x$に対して天井$ceil(x)$を対応させる関数を_天井関数_といい$opceil$や$ceil(x)$と表す。
+床関数と天井関数は$RR\\ZZ$で連続関数であるが整数の点で連続でない。
 しかしながら、右連続・左連続を考えると、床関数は整数の点でも右連続で、天井関数は整数の点でも左連続である。
