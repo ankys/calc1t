@@ -1,16 +1,9 @@
 
 #let title = [微分積分学１]
-#let author = "中安淳"
+#let author = [中安淳]
 #let date = datetime.today()
 
-#import "@preview/ilm:1.4.0": *
 #set text(lang: "ja")
-#show: ilm.with(
-	title: title,
-	author: author,
-	date: date,
-	table-of-contents: none,
-)
 
 #let mincho = ("Libertinus Serif", "Zen Old Mincho")
 #let gothic = ("Zen Kaku Gothic New")
@@ -18,8 +11,21 @@
 #show emph: set text(font: gothic, weight: "bold")
 #show strong: set text(font: gothic, weight: "bold")
 
+#let maketitle(title: none, author: none, date: none) = {
+	pagebreak(weak: true)
+	align(center + horizon)[
+		#text(2em)[*#title*]
+		#v(3em, weak: true)
+		#author
+		#v(2em, weak: true)
+		#date
+	]
+	pagebreak()
+}
+
 #set heading(numbering: "第1章")
 #show heading.where(level: 2): set heading(numbering: "1.1.")
+
 #show outline: set heading(numbering: none)
 #show outline.entry.where(level: 1): it => strong(it)
 
@@ -32,6 +38,12 @@
 	let count = counter(heading).get()
 	numbering("(1.1)", ..count, it)
 })
+
+#maketitle(
+	title: title,
+	author: author,
+	date: date,
+)
 
 #include "00_preface.typ"
 
