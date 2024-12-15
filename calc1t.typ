@@ -11,7 +11,17 @@
 	date: date,
 	table-of-contents: none,
 )
-#show emph: it => { text(it, weight: "bold") }
+
+#let mincho = ("Libertinus Serif", "Zen Old Mincho")
+#let gothic = ("Zen Kaku Gothic New")
+#set text(font: mincho)
+#show emph: set text(font: gothic, weight: "bold")
+#show strong: set text(font: gothic, weight: "bold")
+
+#set heading(numbering: "第1章")
+#show heading.where(level: 2): set heading(numbering: "1.1.")
+#show outline: set heading(numbering: none)
+#show outline.entry.where(level: 1): it => strong(it)
 
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
