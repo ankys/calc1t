@@ -17,8 +17,8 @@
 
 #set text(lang: "ja")
 
-#let mincho = ("Libertinus Serif", "Zen Old Mincho")
-#let gothic = ("Libertinus Serif", "Zen Kaku Gothic New")
+#let mincho = ("Libertinus Serif", "Noto Serif CJK JP")
+#let gothic = ("Libertinus Serif", "Noto Sans CJK JP")
 #set text(font: mincho)
 #show emph: set text(font: gothic, weight: "bold")
 #show strong: set text(font: gothic, weight: "bold")
