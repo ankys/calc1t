@@ -1,67 +1,99 @@
 
 = 微分
 
+#import "@preview/physica:0.9.3": dv, eval
+
 == 微分係数と微分導関数
 
 この節では実数の集合$X$上で定義された実数値関数$f: X -> RR$と$X$の点$a$を考える。
-特に$a$に対して正の数$delta > 0$が存在して$B_delta (a) = { x in RR mid() abs(x-a) < delta }$は$X$の部分集合になっている状態を考え、このような点$a$を$X$の_内点_という。
+特に$a$に対して正の数$delta > 0$が存在して$B_delta (a) = { x in RR mid(|) abs(x-a) < delta }$は$X$の部分集合になっている状態を考え、このような点$a$を$X$の_内点_という。
 
-#block[
+#definition([微分係数])[
 $f$を実数の集合$X$上で定義された実数値関数として、$a$を$X$の内点とする。
-ここで、\$x \\in X\\setminus\\lrset{a}\$で定義された関数$frac(f(x)-f(a), x-a)$が$x -> a$で収束する時、
+ここで、$x in X\\{a}$で定義された関数$(f(x)-f(a))/(x-a)$が$x -> a$で収束する時、
 関数$f(x)$は点$x = a$で_微分可能_であるといい極限を_微分係数_という。
 $y = f(x)$の点$x = a$での微分係数を
-\$\$f\'(a), \\quad \\dv{f}{x}{(a)}, \\quad \\eval{\\dv{f}{x}}\_{x = a}, \\quad \\eval{\\dv{x}(f(x))}\_{x = a}, \\quad \\eval{y\'}\_a, \\quad \\eval{\\dv{y}{x}}\_a\$\$
+$
+f'(a),
+quad dv(f, x)(a),
+quad eval(dv(f, x))_(x = a),
+quad eval(dv(,x)(f(x)))_(x = a),
+quad eval(y')_a,
+quad eval(dv(y, x))_(x = a)
+$
 などで表す。 つまり、
-$ f' (a) = lim_(x -> a) frac(f(x)-f(a), x-a) = lim_(h -> 0) frac(f(a+h)-f(a), h) $
+$
+f'(a)
+= lim_(x -> a) (f(x)-f(a))/(x-a)
+= lim_(h -> 0) (f(a+h)-f(a))/h
+$
 である。
-
 ]
-#block[
+
+#remark[
 微分可能であるためには連続である必要がある。
-
 ]
+
 微分を考える動機として接線の計算が挙げられる。
-つまり、関数$y = f(x)$のグラフに対して点$(x, y) = (a, f(a))$と点$(x, y) = (a+h, f(a+h))$
-($h eq.not 0$)を通る直線は
-$ y = frac(f(a+h)-f(a), h) (x-a)+f(a) $
+つまり、関数$y = f(x)$のグラフに対して点$(x, y) = (a, f(a))$と点$(x, y) = (a+h, f(a+h))$ ($h eq.not 0$)を通る直線は
+$
+y = (f(a+h)-f(a))/h (x-a)+f(a) $
 となるが、$f$が$a$で微分可能とすると$h$を$0$に近づけることで直線の方程式
-$ y = f' (a) (x-a)+f(a) $ を得る。
+$
+y = f'(a)(x-a)+f(a)
+$
+を得る。
 関数$y = f(x)$のグラフとこの直線は視覚的には接しているように見えることが多く、
 実際図形的に定義される円（の一部）の接線と上記の直線は一致する。
-そこで関数$y = f(x)$と点$x = a$に対して上記の方程式@e_tangentで定まる直線を$y = f(x)$の$x = a$での_接線_という。
+そこで関数$y = f(x)$と点$x = a$に対して上記の方程式@e_tangent で定まる直線を$y = f(x)$の$x = a$での_接線_という。
 
 それはさておき、以下のことは複雑な形の関数の微分を計算する際に基礎的である。
 
-#block[
+#proposition([和と定数倍の微分])[
 関数$f(x)$, $g(x)$が点$x = a$で微分可能として、$c$を実数の定数とする。
 この時、和$f(x)+g(x)$と定数倍$c f(x)$も$x = a$で微分可能で、
-\$\$\\eval{\\dv{x}(f(x)+g(x))}\_{x = a} = f\'(a)+g\'(a),
-\\quad \\eval{\\dv{x}(c f(x))}\_{x = a} = c f\'(a)\$\$ が成立する。
-
+$
+eval(dv(, x)(f(x)+g(x)))_(x = a) = f'(a)+g'(a),
+quad eval(dv(, x)(c f(x)))_(x = a) = c f'(a)
+$
+が成立する。
 ]
+
 このことを微分の線形性という。
 
-#block[
+#proof[
 $x -> a$で
-$ frac((f(x)+g(x))-(f(a)+g(a)), x-a) = frac(f(x)-f(a), x-a)+frac(g(x)-g(a), x-a) -> f' (a)+g' (a), $
-$ frac(c f(x)-c f(a), x-a) = c frac(f(x)-f(a), x-a) -> c f' (a) $
+$
+((f(x)+g(x))-(f(a)+g(a)))/(x-a)
+= (f(x)-f(a))/(x-a)+(g(x)-g(a))/(x-a)
+-> f'(a)+g'(a),
+$
+$
+(c f(x)-c f(a))/(x-a) = c (f(x)-f(a))/(x-a)
+-> c f'(a)
+$
 より示される。
-
 ]
-#block[
+
+#proposition([積の微分])[
 関数$f(x)$, $g(x)$が点$x = a$で微分可能とする。
-この時、積$f(x) g(x)$も$x = a$で微分可能で、
-\$\$\\eval{\\dv{x}(f(x)g(x))}\_{x = a} = f\'(a)g(a)+f(a)g\'(a)\$\$
+この時、積$f(x)g(x)$も$x = a$で微分可能で、
+$
+eval(dv(, x)(f(x)g(x)))_(x = a) = f'(a)g(a)+f(a)g'(a)
+$
 が成立する。
-
 ]
-#block[
+
+#proof[
 $x -> a$で
-$ frac(f(x) g(x)-f(a) g(a), x-a) = frac(f(x)-f(a), x-a) g(x)+f(a) frac(g(x)-g(a), x-a) -> f' (a) g(a)+f(a) g' (a) $
+$
+(f(x) g(x)-f(a) g(a))/(x-a)
+= (f(x)-f(a))/(x-a) g(x)+f(a) (g(x)-g(a))/(x-a)
+-> f'(a)g(a)+f(a)g'(a)
+$
 より示される。
-
 ]
+
 #block[
 関数$f(x)$, $g(x)$が点$x = a$で微分可能で$g(a) eq.not 0$とする。
 この時、積$frac(f(x), g(x))$も$x = a$で微分可能で、
