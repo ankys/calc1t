@@ -5,6 +5,9 @@
 #show: thmrules.with()
 
 #import "@preview/physica:0.9.3": dd
+#let arsinh = $op("arsinh")$
+#let arcosh = $op("arcosh")$
+#let artanh = $op("artanh")$
 
 == 積分の導入
 
@@ -400,114 +403,181 @@ $
 ]
 
 == 微分積分学の基本定理
-<微分積分学の基本定理>
+
 微分と積分の間の関係性を示すのが微分積分学の基本定理である。
 その表現のために必要になる概念が原始関数と不定積分である。
 高校数学ではこの二つは同じようなものであったが、微分の理論で生じるのが原始関数で積分の理論で生じるのが不定積分であるという違いがある。
 
-#block[
-$f(x)$を開区間$I$上の関数とする。
-$I$上の微分可能な関数$f(x)$であって各$x in I$に対して
-$ F' (x) = f(x) $ が成り立つとき、$F$を$f$の_原始関数_という。
+つまり、微分して目的の関数になるものが原始関数である。
 
+#definition([原始関数])[
+$f(x)$を開区間$I$上の関数とする。
+$I$上の微分可能な関数$F(x)$であって各$x in I$に対して
+$
+F'(x) = f(x)
+$ <e_prim>
+が成り立つとき、$F$を$f$の_原始関数_という。
 ]
+
 これに対して、定積分の端点を変数にして得られる関数が不定積分である。
 
-#block[
-$f(x)$を閉区間$I$上の積分可能な関数として、$a in I$とする。
-ここで$x in I$に対して $ f(x) = integral_a^x f(t) ⅆ t $
+#definition([不定積分])[
+$f(x)$を区間$I$上の任意の有界閉区間で積分可能な関数として、$a in I$とする。
+ここで$x in I$に対して
+$
+F(x) = integral_a^x f(t) dd(t)
+$ <e_indef_int>
 とすることで定義される$I$上の関数$F$を$f$の_不定積分_という。
-
 ]
+
 _微分積分学の基本定理_は連続関数の不定積分はその関数の原始関数であることを主張する。
 
-#block[
+#theorem([微分積分学の基本定理])[
 $f$を開区間$I$上の連続関数とする。
 
-- このとき$a in I$に対して#link(<e_indef_int>)[\[e\_indef\_int\]_で定まる不定積分$f(x)$は$f(x)$の原始関数である、つまり#link(<e_prim>)[\[e\_prim\]_が成り立つ。
-
-- $F$を$f$の原始関数の一つとすると任意の$a, b in I$に対して、
-  $ integral_a^b f(x) dd(x) = f(b)-f(a) $ が成り立つ。
-
+- このとき$a in I$に対して@e_indef_int で定まる不定積分$F(x)$は$f(x)$の原始関数である、つまり@e_prim が成り立つ。
+- $F$を$f$の原始関数の一つとすると、任意の$a, b in I$に対して
+  $
+  integral_a^b f(x) dd(x) = F(b)-F(a)
+  $
+  が成り立つ。
 ]
-#block[
 
-
-- $x in I$に対して$F' (x)$を書き下すと命題@t_int_intervalを使って、
-  \$\$F\'(x)
-  = \\lim\_{h \\to 0}\\frac{F(x+h)-F(x)}{h}
-  = \\lim\_{h \\to 0}\\frac{1}{h}\\qty(\\int\_a^{x+h} f(t)\\dd{t}-\\int\_a^x f(t)\\dd{t})
-  = \\lim\_{h \\to 0}\\frac{1}{h}\\int\_x^{x+h} f(t)\\dd{t}\$\$
-  となり、$f$の$x$での連続性の度合い$omega$を取ることで、
-  \$\$\\abs{\\frac{1}{h}\\int\_x^{x+h} f(t)\\dd{t}-f(x)}
-  = \\abs{\\frac{1}{h}\\int\_x^{x+h} (f(t)-f(x))\\dd{t}}
-  \\le \\frac{1}{h}\\int\_x^{x+h} \\abs{f(t)-f(x)}\\dd{t}
-  \\le \\frac{1}{h}\\int\_x^{x+h} \\omega(h)\\dd{t}
-  = \\omega(h)\$\$
+#proof[
++ $x in I$に対して$F'(x)$を書き下すと@t_int_interval を使って、
+  $
+  F'(x)
+  = lim_(h -> 0) (F(x+h)-F(x))/h
+  = lim_(h -> 0) 1/h (integral_a^(x+h) f(t) dd(t)-integral_a^x f(t) dd(t))
+  = lim_(h -> 0) 1/h integral_x^(x+h) f(t) dd(t)
+  $
+  となり、$f$の$x$での連続性の度合い関数$omega$を取ることで、
+  $
+  abs(1/h integral_x^(x+h) f(t) dd(t)-f(x))
+  = abs(1/h integral_x^(x+h) (f(t)-f(x)) dd(t))
+  <= 1/h integral_x^(x+h) abs(f(t)-f(x)) dd(t)
+  <= 1/h integral_x^(x+h) omega(h) dd(t)
+  = omega(h).
+  $
   右辺は$h -> 0$で$0$に収束するので、結論として$F' (x) = f(x)$がわかる。
-
-- $f$の不定積分を$G$とおく、つまり $ g(x) = integral_a^x f(t) ⅆ t $
++ $f$の不定積分を$G$とおく、つまり
+  $
+  G(x) = integral_a^x f(t) dd(t)
+  $
   とすると(1)より$G$は$f$の原始関数である。
-  したがって、$g(x)-f(x)$は、微分導関数が$f(x)-f(x) = 0$より、定数関数なので、
-  $ f(b)-f(a) = g(b)-g(a) = integral_a^b f(x) dd(x)-integral_a^a f(x) dd(x) = integral_a^b f(x) dd(x) $
+  したがって、$G(x)-F(x)$は、微分導関数が$f(x)-f(x) = 0$より、定数関数なので、
+  $
+  F(b)-F(a) = G(b)-G(a)
+  = integral_a^b f(x) dd(x)-integral_a^a f(x) dd(x)
+  = integral_a^b f(x) dd(x)
+  $
   である。
-
-
-
 ]
+
 この微分積分学の基本定理を用いれば定積分を計算することは原始関数を一つ見つけることに帰着される。
-また、$f(b)-f(a)$のことを
-\$\$\\lreval{F}\_a^b, \\quad \\lreval{F(x)}\_{x = a}^b, \\quad \\lreval{F(x)}\_a^b\$\$
+また、$F(b)-F(a)$のことを
+$
+eval(F, a, b),
+quad eval(F(x))_(x = a)^b,
+quad eval(F(x))_a^b
+$
 などと略記する。
 
-#block[
+#example[
 一次関数$f(x) = k x+m$に対して、二次関数$f(x) = k/2 x^2+m x$は$f(x)$の原始関数であることがすぐわかるので、
-\$\$\\int\_a^b (k x+m)\\dd{x} = \\lreval\*{\\frac{k}{2}x^2+m x}\_a^b = \\frac{k}{2}(b^2-a^2)+m(b-a) = \\frac{1}{2}((k a+m)+(k b+m))(b-a)\$\$
+$
+integral_a^b (k x+m) dd(x)
+= eval(k/2 x^2+m x, a, b)
+= (k/2 b^2+m b)-(k/2 a^2+m a)
+$
 と（区分求積法より）簡単に計算できる。
-
 ]
-ここでは連続関数$f(x)$が与えられたときに$f の$すべての原始関数、つまり$f$の原始関数全体の集合について考えよう。
-この集合を $ integral f(x) dd(x) $ と書くことにする。 $F$,
-$G$を$f$の原始関数とすると、$g(x)-f(x)$は、微分導関数が$f(x)-f(x) = 0$より、定数関数になる。
+
+ここでは連続関数$f(x)$が与えられたときに$f$のすべての原始関数、つまり$f$の原始関数全体の集合について考えよう。
+この集合を
+$
+integral f(x) dd(x)
+$
+と書くことにする。
+$F$, $G$を$f$の原始関数とすると、$G(x)-F(x)$は、微分導関数が$f(x)-f(x) = 0$より、定数関数になる。
 つまり、$f$の原始関数$F$を一つ見つけたら原始関数全体の集合は
-\$\$\\int f(x)\\dd{x} = \\lrset{ F(x)+C }\$\$
+$
+integral f(x) dd(x) = { F(x)+C mid(|) C in bb(R) }
+$
 とでき、この時の$C$を積分定数という。 上の記述はしばしば
-$ integral f(x) dd(x) = f(x)+C $ と略記される。
+$
+integral f(x) dd(x) = f(x)+C
+$
+と略記される。
 積分定数もしばしば省略されるが、微分方程式の理論では積分定数は省略されないので、このテキストでは省略せずに書くことにする。
 
 以下では微分の公式から直ちに得られる積分の公式を列挙する。
 一部被積分関数が連続である範囲が実数全体でない場合もあるので注意する。
 
-#block[
-$ integral x^n dd(x) = frac(1, n+1) x^(n+1)+C quad (n = 0, 1, 2, 3, dots), quad integral x^n dd(x) = frac(1, n+1) x^(n+1)+C quad (n =-2,-3, dots, x eq.not 0), $
-$ integral abs(x)^a dd(x) = frac(1, a+1) x abs(x)^a+C quad (a eq.not-1, x eq.not 0) . $
-$ integral e^x dd(x) = e^x+C, quad integral a^x dd(x) = frac(1, log a) a^x+C quad (a > 0, a eq.not 1) . $
-$ integral 1/x dd(x) = log abs(x)+C quad (x eq.not 0), $
-$ integral sin x dd(x) =-cos x+C, quad integral cos x dd(x) = sin x+C, quad integral frac(1, cos^2 x) dd(x) = tan x+C quad (x eq.not pi/2+n pi, n in bb(Z)) . $
-$ integral 1/sqrt(1-x^2) dd(x) = arcsin x+C quad (- 1 < x <+1), quad integral frac(1, 1+x^2) dd(x) = arctan x+C . $
-$ integral sinh x dd(x) = cosh x+C, quad integral cosh x dd(x) = sinh x+C, quad integral frac(1, cosh^2 x) dd(x) = tanh x+C . $
-\$\$\\int \\frac{1}{\\sqrt{1+x^2}}\\dd{x} = \\arsinh x+C,
-\\quad \\int \\frac{1}{1-x^2}\\dd{x} = \\frac{1}{2}\\log\\abs{\\frac{1+x}{1-x}}+C \\quad (x \\ne \\pm 1).\$\$
-
+#proposition([種々の関数の積分１])[
+$
+integral x^n dd(x) = 1/(n+1) x^(n+1)+C quad (n = 0, 1, 2, 3, dots),
+quad integral x^n dd(x) = 1/(n+1) x^(n+1)+C quad (n =-2,-3, dots, x eq.not 0),
+$
+$
+integral abs(x)^a dd(x) = 1/(a+1) x abs(x)^a+C quad (a eq.not-1, x eq.not 0).
+$
+$
+integral e^x dd(x) = e^x+C,
+quad integral a^x dd(x) = 1/(log a) a^x+C quad (a > 0, a eq.not 1).
+$
+$
+integral 1/x dd(x) = log abs(x)+C quad (x eq.not 0),
+$
+$
+integral sin x dd(x) = -cos x+C,
+quad integral cos x dd(x) = sin x+C,
+quad integral 1/(cos^2 x) dd(x) = tan x+C quad (x eq.not pi/2+n pi, n in bb(Z)).
+$
+$
+integral 1/sqrt(1-x^2) dd(x) = arcsin x+C quad (- 1 < x < +1),
+quad integral 1/(1+x^2) dd(x) = arctan x+C.
+$
+$
+integral sinh x dd(x) = cosh x+C,
+quad integral cosh x dd(x) = sinh x+C,
+quad integral 1/(cosh^2 x) dd(x) = tanh x+C.
+$
+$
+integral 1/sqrt(1+x^2) dd(x) = arsinh x+C,
+quad integral 1/(1-x^2) dd(x) = 1/2 log abs((1+x)/(1-x))+C quad (x in.not plus.minus 1).
+$
 ]
-#block[
+
+#remark[
 上記では細かく書いたが、いくつかは簡単に
-$ integral x^a dd(x) = cases(delim: "{", frac(1, a+1) x^(a+1)+C & upright("(") a eq.not-1 upright("),"), log abs(x)+C & upright("(") a =-1 upright(")"), ) $
+$
+integral x^a dd(x) = cases(
+  1/(a+1) x^(a+1)+C & (a eq.not -1)",",
+  log abs(x)+C & (a = -1)
+)
+$
 と覚えておけばよい。
-
 ]
+
 また、被積分関数が単純な関数についての積分として次が挙げられる。
 
-#block[
-$ integral log abs(x) dd(x) = x log abs(x)-x+C quad (x eq.not 0) . $
-$ integral tan x dd(x) =-log abs(cos x)+C quad (x eq.not pi/2+n pi, n in bb(Z)) . $
-$ integral tanh x dd(x) = log(cosh x)+C . $
-
+#proposition([種々の関数の積分２])[
+$
+integral log abs(x) dd(x) = x log abs(x)-x+C quad (x eq.not 0).
+$
+$
+integral tan x dd(x) = -log abs(cos x)+C quad (x eq.not pi/2+n pi, n in bb(Z)).
+$
+$
+integral tanh x dd(x) = log(cosh x)+C.
+$
 ]
-#block[
- 証明は右辺を微分することで確かめられるので省略する。
 
+#proof[
+証明は右辺を微分することで確かめられるので省略する。
 ]
+
 == 部分積分と置換積分
 <部分積分と置換積分>
 まず、次が成り立つことに注意する。
@@ -546,7 +616,7 @@ $ integral log x dd(x) = integral (x)' log x dd(x) = x log x-integral x (log x)'
 ]
 #block[
 $f(x)$を連続関数、$phi.alt (t)$を$C^1$級関数とするとき、$x = phi.alt (t)$とおくと、
-$ integral f(phi.alt (t)) phi.alt' (t) ⅆ t = integral f(x) dd(x) $
+$ integral f(phi.alt (t)) phi.alt' (t) dd(t) = integral f(x) dd(x) $
 が成り立つ。
 
 ]
@@ -579,7 +649,7 @@ $g(x)$を有界閉区間$[a, b]$を含む開区間で$C^1$級関数とすると�
 #block[
 $[alpha, beta]$を$t$の有界閉区間、$I$を$x$の区間とし、$f$を$I$上の連続関数、$x = phi.alt (t)$を$[alpha, beta]$を含む開区間で$C^1$級関数であって値域が$I$に入っているとする。
 ここで$phi.alt (alpha) = a$, $phi.alt (beta) = b$とするとき、
-$ integral_alpha^beta f(phi.alt (t)) phi.alt' (t) ⅆ t = integral_a^b f(x) dd(x) $
+$ integral_alpha^beta f(phi.alt (t)) phi.alt' (t) dd(t) = integral_a^b f(x) dd(x) $
 が成り立つ。
 
 ]
@@ -654,7 +724,7 @@ $cos x$を含む関数$R (sin x, cos x)$（$R$は実数係数の有理式）は$
 == 積分の漸化式
 <積分の漸化式>
 この節では被積分関数に自然数定数$n$があるような積分を考える。
-もちろん$integral x^n dd(x) = frac(1, n+1) x^(n+1)+C$のような簡単な例もあるが、一般項が簡単には求まらないことが普通である。
+もちろん$integral x^n dd(x) = 1/(n+1) x^(n+1)+C$のような簡単な例もあるが、一般項が簡単には求まらないことが普通である。
 そこで部分積分や置換積分を使って漸化式を立てて目的の積分を計算するという技法が取られる。
 
 #block[
@@ -682,7 +752,7 @@ $ I_n = frac(n-1, n) I_(n-2) quad (n >= 2), quad I_0 = pi/2, quad I_1 = 1 $
 ]
 #block[
 <t_wallis_limit>
-ウォリス積分#link(<e_wallis_int>)[\[e\_wallis\_int\]_で定まる数列$(I_n)_(n = 0)^oo$は
+ウォリス積分@e_wallis_int>)[\[e\_wallis\_int\]_で定まる数列$(I_n)_(n = 0)^oo$は
 $ lim_(n -> oo) sqrt(n) I_n = sqrt(pi/2) $
 
 ]
@@ -735,7 +805,7 @@ $ integral_0^1 sqrt(1-x^4) dd(x) <= sqrt(integral_0^1 (1-x^4) dd(x)) = 2/sqrt(5)
 ]
 #block[
 $f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$,
-$q$を#link(<e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数とする。
+$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数とする。
 このとき不等式
 \$\$\\int\_a^b |f(x)g(x)|\\dd{x} \\le \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}}\\qty(\\int\_a^b |g(x)|^q\\dd{x})^{\\frac{1}{q}}\$\$
 が成り立つ。
@@ -779,7 +849,7 @@ $ integral_a^b abs(f(x)+g(x))^p dd(x) & = integral_a^b abs(f(x)+g(x)) abs(f(x)+g
 $p = 1$のときはすでに結論を得ていることに注意して、以降では$p > 1$の場合を考える。
 ここで、 \$\$A = \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}},
 \\quad B = \\qty(\\int\_a^b |g(x)|^p\\dd{x})^{\\frac{1}{p}}\$\$ とおき、
-$q$を#link(<e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = frac(p, p-1)$として取ると、ヘルダーの不等式から
+$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = frac(p, p-1)$として取ると、ヘルダーの不等式から
 \$\$\\begin{aligned}
 \\int\_a^b |f(x)+g(x)|^p\\dd{x}
 &\\le A\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}}+B\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}} \\\\
@@ -789,7 +859,7 @@ $q$を#link(<e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q =
 ]
 #block[
 $x (t)$,
-$p (t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p (t) >= 0$と$integral_I p (t) ⅆ t = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
+$p (t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p (t) >= 0$と$integral_I p (t) dd(t) = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
 
 - $f$が凸関数のとき、
   \$\$f\\qty(\\int\_I p(t)x(t)\\dd{t}) \\le \\int\_I p(t)f(x(t))\\dd{t}\$\$
@@ -803,8 +873,8 @@ $p (t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対し
 #block[
  凸関数の方について示す。
 命題@t_convex_suppより$f(x) >= f(x)+k (x-a)$を満たす実数$k$が存在する。
-ここで$a = integral_I p (t) x (t) ⅆ t$、$x = x (t)$
-($t in I$)として$p (t)$倍して積分すると、$integral_I p (t) ⅆ t = 1$に注意して、
+ここで$a = integral_I p (t) x (t) dd(t)$、$x = x (t)$
+($t in I$)として$p (t)$倍して積分すると、$integral_I p (t) dd(t) = 1$に注意して、
 \$\$\\int\_I p(t)f(x(t))\\dd{t} \\ge \\int\_I p(t)(f(a)+k(x(t)-a))\\dd{t} = f(a)+k\\qty(\\int\_I p(t)x(t)\\dd{t}-a) = f(a).\$\$
 よってほしかった不等式を得る。
 
@@ -848,7 +918,7 @@ $ integral_I f(x) dd(x), quad integral_a^b f(x) dd(x) $ で表す。
 #block[
 $a$を実数とするとき、
 $ integral_1^oo x^a dd(x) = cases(delim: "{",+oo & (a >=-1) ,, frac(1,-a-1) & (a <-1) .) $
-$ integral_0^1 x^a dd(x) = cases(delim: "{", frac(1, a+1) & (a >-1) ,,+oo & (a <=-1) .) $
+$ integral_0^1 x^a dd(x) = cases(delim: "{", 1/(a+1) & (a >-1) ,,+oo & (a <=-1) .) $
 
 ]
 #block[
