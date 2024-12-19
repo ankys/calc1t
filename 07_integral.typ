@@ -853,122 +853,164 @@ $
 ]
 
 == 積分の不等式
-<積分の不等式>
+
 この節では積分を含んだいくつかの有名な不等式を紹介し、応用として（本来の応用先ではないが）積分が計算できない問題に対して評価を与える。
 
-#block[
+#proposition([連続関数に対する積分の大小関係])[
 $f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数とする。
 各$x in [a, b]$に対して$f(x) <= g(x)$を満たすとき、
-$ integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x) $ が成り立つ。
-等号成立条件は任意の$x in [a, b]$に対して$f(x) = g(x)$が成り立つことである。
-
-]
-#block[
-_Proof._
-
-]
-#block[
-$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数とする。 このとき不等式
-\$\$\\qty(\\int\_a^b f(x)g(x)\\dd{x})^2 \\le \\qty(\\int\_a^b f(x)^2\\dd{x})\\qty(\\int\_a^b g(x)^2\\dd{x})\$\$
+$
+integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x)
+$
 が成り立つ。
-
+等号成立条件は任意の$x in [a, b]$に対して$f(x) = g(x)$が成り立つことである。
 ]
-#block[
- 任意の実数$t$に対して
-\$\$\\int\_a^b (f(x)t+g(x))^2\\dd{x} = \\qty(\\int\_a^b f(x)^2\\dd{x})t^2+2\\qty(\\int\_a^b f(x)g(x)\\dd{x})t+\\qty(\\int\_a^b g(x)^2\\dd{x}) \\ge 0\$\$
+
+#proof[
+]
+
+#theorem([コーシー・シュワルツの不等式])[
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数とする。 このとき不等式
+$
+(integral_a^b f(x)g(x) dd(x))^2
+<= (integral_a^b f(x)^2 dd(x))(integral_a^b g(x)^2 dd(x))
+$
+が成り立つ。
+]
+
+#proof[
+任意の実数$t$に対して
+$
+integral_a^b (f(x)t+g(x))^2 dd(x)
+= (integral_a^b f(x)^2 dd(x))t^2+2(integral_a^b f(x)g(x) dd(x))t+(integral_a^b g(x)^2 dd(x))
+>= 0
+$
 に注意する。
 これは$t$についての二次不等式なので判別式が非正であり、ほしかった不等式を得る。
-
 ]
-#block[
-$[a, b] = [0, 1]$, $f(x) = sqrt(1-x^4)$,
-$g(x) = 1$としてコーシー・シュワルツの不等式を用いれば、
-$ integral_0^1 sqrt(1-x^4) dd(x) <= sqrt(integral_0^1 (1-x^4) dd(x)) = 2/sqrt(5) $
+
+#example[
+$[a, b] = [0, 1]$, $f(x) = sqrt(1-x^4)$, $g(x) = 1$としてコーシー・シュワルツの不等式を用いれば、
+$
+integral_0^1 sqrt(1-x^4) dd(x)
+<= sqrt(integral_0^1 (1-x^4) dd(x))
+= 2/sqrt(5)
+$
 を得る。
-
 ]
-#block[
-$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$,
-$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数とする。
+
+#theorem([ヘルダーの不等式])[
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$, $q$を@e_holder_conj を満たす実数とする。
 このとき不等式
-\$\$\\int\_a^b |f(x)g(x)|\\dd{x} \\le \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}}\\qty(\\int\_a^b |g(x)|^q\\dd{x})^{\\frac{1}{q}}\$\$
+$
+integral_a^b abs(f(x)g(x)) dd(x)
+<= (integral_a^b abs(f(x))^p dd(x))^(1/p) (integral_a^b abs(g(x))^q dd(x))^(1/q)
+$
 が成り立つ。
-
 ]
-#block[
- \$\$A = \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}},
-\\quad B = \\qty(\\int\_a^b |g(x)|^q\\dd{x})^{\\frac{1}{q}}\$\$ とおく。
+
+#proof[
+$
+A = (integral_a^b abs(f(x))^p dd(x))^(1/p),
+quad B = (integral_a^b abs(g(x))^q dd(x))^(1/q)
+$
+とおく。
 $A = 0$のときは$f(x) = 0$、$B = 0$のときは$g(x) = 0$となり不等式は成立するので、$A > 0$かつ$B > 0$の場合を考える。
-各$x in [a, b]$に対してヤングの不等式（命題@t_young_ineq）より
-\$\$\\abs{\\frac{f(x)}{A}\\cdot\\frac{g(x)}{B}} \\le \\frac{1}{p}\\frac{\\abs{f(x)}^p}{A^p}+\\frac{1}{q}\\frac{\\abs{g(x)}^q}{B^q}\$\$
+各$x in [a, b]$に対してヤングの不等式（@t_young_ineq）より
+$
+abs(f(x)/A) abs(g(x)/B)
+<= 1/p abs(f(x)/A)^p+1/q abs(g(x)/B)^q
+$
 なので、積分して
-\$\$\\int\_a^b \\abs{\\frac{f(x)}{A}\\cdot\\frac{g(x)}{B}}\\dd{x} \\le \\frac{1}{p}+\\frac{1}{q} = 1.\$\$
+$
+integral_a^b abs(f(x)/A) abs(g(x)/B) dd(x)
+<= 1/p integral_a^b abs(f(x)/A)^p dd(x)+1/q integral_a^b abs(g(x)/B)^q dd(x)
+= 1/p+1/q = 1.
+$
 よってほしかった不等式が得られる。
-
 ]
-#block[
-$p = 2$,
-$q = 2$のヘルダーの不等式はコーシー・シュワルツの不等式に他ならない。
 
+#remark[
+$p = 2$, $q = 2$の場合のヘルダーの不等式はコーシー・シュワルツの不等式に他ならない。
 ]
-#block[
+
+#remark[
 $p = 1$に対応する場合は$q = oo$となり、そのままでは考えられないが、
-\$\$\\int\_a^b |f(x)g(x)|\\dd{x} \\le \\qty(\\int\_a^b |f(x)|\\dd{x})\\max\_{x \\in \[a, b\]}|g(x)|\$\$
+$
+integral_a^b abs(f(x)g(x)) dd(x)
+<= (integral_a^b abs(f(x)) dd(x)) max_{x in [a, b]} abs(g(x))
+$
 が対応する不等式と考えることができる。
-
 ]
-#block[
-$f(x)$,
-$g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$を$1$以上の実数とする。
+
+#theorem([ミンコフスキーの不等式])[
+$f(x)$, $g(x)$を有界閉区間$[a, b]$上の連続関数として、$p$を$1$以上の実数とする。
 このとき不等式
-\$\$\\qty(\\int\_a^b |f(x)+g(x)|^p\\dd{x})^{\\frac{1}{p}} \\le \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}}+\\qty(\\int\_a^b |g(x)|^p\\dd{x})^{\\frac{1}{p}}\$\$
+$
+(integral_a^b abs(f(x)+g(x))^p dd(x))^(1/p)
+<= (integral_a^b abs(f(x))^p dd(x))^(1/p)+(integral_a^b abs(g(x))^p dd(x))^(1/p)
+$
 が成り立つ。
-
 ]
-#block[
- 途中で三角不等式を一回使うことで
-$ integral_a^b abs(f(x)+g(x))^p dd(x) & = integral_a^b abs(f(x)+g(x)) abs(f(x)+g(x))^(p-1) dd(x)\
- & <= integral_a^b abs(f(x)) abs(f(x)+g(x))^(p-1) dd(x)+integral_a^b abs(g(x)) abs(f(x)+g(x))^(p-1) dd(x) $
+
+#proof[
+途中で三角不等式を一回使うことで
+$
+integral_a^b abs(f(x)+g(x))^p dd(x)
+&= integral_a^b abs(f(x)+g(x)) abs(f(x)+g(x))^(p-1) dd(x) \
+&<= integral_a^b abs(f(x))abs(f(x)+g(x))^(p-1) dd(x)+integral_a^b abs(g(x))abs(f(x)+g(x))^(p-1) dd(x)
+$
 を得る。
 $p = 1$のときはすでに結論を得ていることに注意して、以降では$p > 1$の場合を考える。
-ここで、 \$\$A = \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}},
-\\quad B = \\qty(\\int\_a^b |g(x)|^p\\dd{x})^{\\frac{1}{p}}\$\$ とおき、
-$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = p/(p-1)$として取ると、ヘルダーの不等式から
-\$\$\\begin{aligned}
-\\int\_a^b |f(x)+g(x)|^p\\dd{x}
-&\\le A\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}}+B\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}} \\\\
-&= (A+B)\\qty(\\int\_a^b |f(x)+g(x)|^p\\dd{x})^{\\frac{p-1}{p}}
-\\end{aligned}\$\$ よってほしかった不等式が得られる。
-
+ここで、
+$
+A = (integral_a^b abs(f(x))^p dd(x))^(1/p),
+quad B = (integral_a^b abs(g(x))^p dd(x))^(1/p)
+$
+とおき、
+$q$を@e_holder_conj を満たす実数つまり$q = p/(p-1)$として取ると、ヘルダーの不等式から
+$
+integral_a^b abs(f(x)+g(x))^p dd(x)
+&<= A(integral_a^b abs(f(x)+g(x))^((p-1)q) dd(x))^(1/q)+B(integral_a^b abs(f(x)+g(x))^((p-1)q) dd(x))^(1/q) \
+&= (A+B)(integral_a^b abs(f(x)+g(x))^p dd(x))^((p-1)/p)
+$
+よってほしかった不等式が得られる。
 ]
-#block[
-$x (t)$,
-$p(t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p(t) >= 0$と$integral_I p(t) dd(t) = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
+
+#theorem([イェンセンの不等式])[
+$x(t)$, $p(t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p(t) >= 0$と$integral_I p(t) dd(t) = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
 
 - $f$が凸関数のとき、
-  \$\$f\\qty(\\int\_I p(t)x(t)\\dd{t}) \\le \\int\_I p(t)f(x(t))\\dd{t}\$\$
+  $
+  f(integral_I p(t)x(t) dd(t)) <= integral_I p(t)f(x(t)) dd(t)
+  $
   が成り立つ。
-
 - $f$が凹関数のとき、
-  \$\$f\\qty(\\int\_I p(t)x(t)\\dd{t}) \\ge \\int\_I p(t)f(x(t))\\dd{t}\$\$
+  $
+  f(integral_I p(t)x(t) dd(t)) >= integral_I p(t)f(x(t)) dd(t)
+  $
   が成り立つ。
-
 ]
-#block[
- 凸関数の方について示す。
-命題@t_convex_suppより$f(x) >= f(x)+k (x-a)$を満たす実数$k$が存在する。
-ここで$a = integral_I p(t) x (t) dd(t)$、$x = x (t)$
-($t in I$)として$p(t)$倍して積分すると、$integral_I p(t) dd(t) = 1$に注意して、
-\$\$\\int\_I p(t)f(x(t))\\dd{t} \\ge \\int\_I p(t)(f(a)+k(x(t)-a))\\dd{t} = f(a)+k\\qty(\\int\_I p(t)x(t)\\dd{t}-a) = f(a).\$\$
+
+#proof[
+凸関数の方について示す。
+@t_convex_supp より$f(x) >= f(a)+k (x-a)$を満たす実数$k$が存在する。
+ここで$a = integral_I p(t)x(t) dd(t)$、$x = x(t)$ ($t in I$)として$p(t)$倍して積分すると、$integral_I p(t) dd(t) = 1$に注意して、
+$
+integral_I p(t)f(x(t)) dd(t)
+>= integral_I p(t)(f(a)+k(x(t)-a)) dd(t)
+= f(a)+k (integral_I p(t)x(t) dd(t)-a)
+= f(a).
+$
 よってほしかった不等式を得る。
 
 凹関数の方は同様なので詳細は省略する。
-
 ]
+
 == 積分型の平均値の定理
-<積分型の平均値の定理>
+
 == 区分求積法の応用
-<区分求積法の応用>
+
 == 広義積分
 <広義積分>
 有界閉区間とは限らない区間上の連続関数あるいは単調関数（広義単調増加関数と広義単調減少関数）に対する定積分である広義積分は区間を有界閉区間で近似することで定義される。
