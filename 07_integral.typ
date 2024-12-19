@@ -4,7 +4,7 @@
 #import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.3": dd
+#import "@preview/physica:0.9.3": dd, dv
 #let arsinh = $op("arsinh")$
 #let arcosh = $op("arcosh")$
 #let artanh = $op("artanh")$
@@ -459,7 +459,7 @@ $f$を開区間$I$上の連続関数とする。
   <= 1/h integral_x^(x+h) omega(h) dd(t)
   = omega(h).
   $
-  右辺は$h -> 0$で$0$に収束するので、結論として$F' (x) = f(x)$がわかる。
+  右辺は$h -> 0$で$0$に収束するので、結論として$F'(x) = f(x)$がわかる。
 + $f$の不定積分を$G$とおく、つまり
   $
   G(x) = integral_a^x f(t) dd(t)
@@ -535,7 +535,7 @@ quad integral cos x dd(x) = sin x+C,
 quad integral 1/(cos^2 x) dd(x) = tan x+C quad (x eq.not pi/2+n pi, n in bb(Z)).
 $
 $
-integral 1/sqrt(1-x^2) dd(x) = arcsin x+C quad (- 1 < x < +1),
+integral 1/sqrt(1-x^2) dd(x) = arcsin x+C quad (-1 < x < +1),
 quad integral 1/(1+x^2) dd(x) = arctan x+C.
 $
 $
@@ -579,101 +579,152 @@ $
 ]
 
 == 部分積分と置換積分
-<部分積分と置換積分>
+
 まず、次が成り立つことに注意する。
 
-#block[
+#proposition[
 連続関数$f$, $g$に対して、
-$ integral (f(x)+g(x)) dd(x) = integral f(x) dd(x)+integral f(x) dd(x) $
+$
+integral (f(x)+g(x)) dd(x) = integral f(x) dd(x)+integral g(x) dd(x)
+$
 が成り立つ。
-
 ]
+
 積の微分や合成関数の微分に対応する積分の計算法が部分積分と置換積分である。
 
-#block[
+#theorem([部分積分])[
 $f(x)$, $g(x)$を$C^1$級関数とするとき、
-$ integral f(x) g' (x) dd(x) = f(x) g(x)-integral f' (x) g(x) dd(x) $
+$
+integral f(x)g'(x) dd(x) = f(x)g(x)-integral f'(x)g(x) dd(x)
+$
 が成り立つ。
-
 ]
-#block[
- $f(x) = f(x) g(x)$とおくと積の微分より
-\$\$\\dv{x}(F(x)) = f\'(x)g(x)+f(x)g\'(x).\$\$
-つまり$f(x) g(x)$は$f' (x) g(x)+f(x) g' (x)$の原始関数より
-$ integral f' (x) g(x)+f(x) g' (x) dd(x) = f(x) g(x)+C . $
+
+#proof[
+$F(x) = f(x)g(x)$とおくと積の微分より
+$
+F'(x) = f'(x)g(x)+f(x)g'(x).
+$
+つまり$f(x)g(x)$は$f'(x)g(x)+f(x)g'(x)$の原始関数より
+$
+integral f'(x)g(x)+f(x)g'(x) dd(x) = f(x)g(x)+C.
+$
 よって整理して示すべき式を得る。
-
 ]
-#block[
+
+#example[
 部分積分により
-$ integral x e^x dd(x) = integral x (e^x)' dd(x) = x e^x-integral (x)' e^x dd(x) = x e^x-integral e^x dd(x) = (x-1) e^x+C . $
-
+$
+integral x e^x dd(x)
+= integral x (e^x)' dd(x)
+= x e^x-integral (x)' e^x dd(x)
+= x e^x-integral e^x dd(x)
+= (x-1)e^x+C.
+$
 ]
-#block[
+
+#example[
 部分積分により
-$ integral log x dd(x) = integral (x)' log x dd(x) = x log x-integral x (log x)' dd(x) = x log x-integral dd(x) = x log x-x+C . $
-
+$
+integral log x dd(x)
+= integral (x)' log x dd(x)
+= x log x-integral x (log x)' dd(x)
+= x log x-integral dd(x)
+= x log x-x+C.
+$
 ]
-#block[
-$f(x)$を連続関数、$phi.alt (t)$を$C^1$級関数とするとき、$x = phi.alt (t)$とおくと、
-$ integral f(phi.alt (t)) phi.alt' (t) dd(t) = integral f(x) dd(x) $
+
+#theorem([置換積分])[
+$f(x)$を連続関数、$phi(t)$を$C^1$級関数とするとき、$x = phi(t)$とおくと、
+$
+integral f(phi(t))phi'(t) dd(t) = integral f(x) dd(x)
+$
 が成り立つ。
-
 ]
-#block[
-置換積分は\$\\dv{t}{x}\\dd{t} = \\dd{x}\$と考えると覚えやすい。
 
+#remark[
+置換積分は$dv(x, t)dd(t) = dd(x)$と考えると覚えやすい。
 ]
-#block[
 
+#proof[
 $F$を連続関数$f(x)$の原始関数（の一つ）とおくと合成関数の微分より
-\$\$\\dv{t}(F(\\phi(t))) = F\'(\\phi(t))\\phi\'(t) = f(\\phi(t))\\phi\'(t).\$\$
-つまり$f(phi.alt (t))$は$f(phi.alt (t)) phi.alt' (t)$の原始関数より、$x = phi.alt (t)$と置換することで
-$ integral f(phi.alt (t)) phi.alt' (t) dd(x) = f(phi.alt (t))+C = f(x)+C = integral f(x) dd(x) . $
-
+$
+dv(, t)(F(phi(t))) = F'(phi(t))phi'(t) = f(phi(t))phi'(t).
+$
+つまり$F(phi(t))$は$f(phi(t))phi'(t)$の原始関数より、$x = phi(t)$と置換することで
+$
+integral f(phi(t))phi'(t) dd(t)
+= F(phi(t))+C
+= F(x)+C
+= integral f(x) dd(x)
+$
+である。
 ]
-#block[
+
+#example[
 置換積分により$y = x^2$とおくと
-$ integral x e^(x^2) dd(x) = integral 1/2 (x^2)' e^(x^2) dd(x) = integral 1/2 e^y ⅆ y = 1/2 e^y+C = 1/2 e^(x^2)+C . $
-
+$
+integral x e^(x^2) dd(x)
+= integral 1/2 (x^2)' e^(x^2) dd(x)
+= integral 1/2 e^y dd(y)
+= 1/2 e^y+C
+= 1/2 e^(x^2)+C.
+$
 ]
+
 部分積分と置換積分を定積分に適用するとき、部分積分はそのままだが置換積分は積分範囲に注意が必要である。
 
-#block[
-$f(x)$,
-$g(x)$を有界閉区間$[a, b]$を含む開区間で$C^1$級関数とするとき、
-\$\$\\int\_a^b f(x)g\'(x)\\dd{x} = \\lreval{f(x)g(x)}\_a^b-\\int\_a^b f\'(x)g(x)\\dd{x}\$\$
+#theorem([定積分の部分積分])[
+$f(x)$, $g(x)$を有界閉区間$[a, b]$を含む開区間で$C^1$級関数とするとき、
+$
+integral_a^b f(x)g'(x) dd(x) = eval(f(x)g(x))_a^b-integral_a^b f'(x)g(x) dd(x)
+$
 が成り立つ。
-
 ]
-#block[
-$[alpha, beta]$を$t$の有界閉区間、$I$を$x$の区間とし、$f$を$I$上の連続関数、$x = phi.alt (t)$を$[alpha, beta]$を含む開区間で$C^1$級関数であって値域が$I$に入っているとする。
-ここで$phi.alt (alpha) = a$, $phi.alt (beta) = b$とするとき、
-$ integral_alpha^beta f(phi.alt (t)) phi.alt' (t) dd(t) = integral_a^b f(x) dd(x) $
+
+#theorem([定積分の置換積分])[
+$[alpha, beta]$を$t$の有界閉区間、$I$を$x$の区間とし、$f$を$I$上の連続関数、$x = phi(t)$を$[alpha, beta]$を含む開区間で$C^1$級関数であって値域が$I$に入っているとする。
+ここで$phi(alpha) = a$, $phi(beta) = b$とするとき、
+$
+integral_alpha^beta f(phi(t))phi'(t) dd(t) = integral_a^b f(x) dd(x)
+$
 が成り立つ。
-
 ]
+
 部分積分と置換積分の応用として逆関数の積分がある。
 
-#block[
+#theorem([逆関数の積分])[
 $f$を連続関数として、$F$を$f$の原始関数の一つとする。
-$f$が逆関数$f^(- 1)$を持つとすると、
-$ integral f^(- 1)(x) dd(x) = x f^(- 1)(x)-f(f^(- 1)(x))+C $
+$f$が逆関数$f^(-1)$を持つとすると、
+$
+integral f^(-1)(x) dd(x) = x f^(-1)(x)-F(f^(-1)(x))+C
+$
 が成り立つ。
-
 ]
-#block[
- $y = f^(- 1)(x)$と置換すると、$x = f(y)$より
-$ integral f^(- 1)(x) dd(x) = integral y f' (y) ⅆ y . $ 部分積分より
-$ integral f^(- 1)(x) dd(x) = y f(y)-integral f(y) ⅆ y = y f(y)-f(y)+C . $
-よって、$f(f^(- 1)(x)) = x$に注意して$x$で書き直せばほしかった式が得られる。
 
+#proof[
+$y = f^(-1)(x)$と置換すると、$x = f(y)$より
+$
+integral f^(-1)(x) dd(x) = integral y f'(y) dd(y).
+$
+部分積分より
+$
+integral f^(-1)(x) dd(x) = y f(y)-integral f(y) dd(y) = y f(y)-F(y)+C.
+$
+よって、$f(f^(-1)(x)) = x$に注意して$x$で書き直せばほしかった式が得られる。
 ]
-#block[
-$f(x) = exp (x) = e^x$を考えると原始関数は$f(x) = e^x = f(x)$、逆関数は$f^(- 1)(x) = log x$より
-$ integral log x dd(x) = integral f^(- 1)(x) dd(x) = x f^(- 1)(x)-f(f^(- 1)(x))+C = x log x-x+C . $
 
+#example[
+$f(x) = exp x = e^x$を考えると原始関数は$F(x) = e^x = f(x)$、逆関数は$f^(-1)(x) = log x$より
+$
+integral log x dd(x)
+= integral f^(-1)(x) dd(x)
+= x f^(-1)(x)-F(f^(-1)(x))+C
+= x log x-x+C
+$
+である。
 ]
+
 == 種々の積分の計算
 <種々の積分の計算>
 この章では積分を計算する系統だった技法をいくつか紹介することで様々な関数の積分が計算できるようにする。
@@ -992,7 +1043,7 @@ $f$を区間$I$上の連続関数あるいは単調関数とする。
 #block[
 広義積分 $ integral_0^oo e^(- x^2) dd(x) $ は絶対収束する。 実際
 \$\$e^{-x^2} \\le \\min\\lrset{ \\frac{1}{e x^2}, 1 }\$\$
-であることから従う（$e^(- x^2) <= e^(- 1) x^(- 2)$については例@t_gauss_est参照）。
+であることから従う（$e^(- x^2) <= e^(-1) x^(- 2)$については例@t_gauss_est参照）。
 
 ]
 #block[
