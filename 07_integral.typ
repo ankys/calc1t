@@ -502,7 +502,7 @@ $
 $F$, $G$を$f$の原始関数とすると、$G(x)-F(x)$は、微分導関数が$f(x)-f(x) = 0$より、定数関数になる。
 つまり、$f$の原始関数$F$を一つ見つけたら原始関数全体の集合は
 $
-integral f(x) dd(x) = { F(x)+C mid(|) C in bb(R) }
+integral f(x) dd(x) = { F(x)+C mid(|) C in RR }
 $
 とでき、この時の$C$を積分定数という。 上の記述はしばしば
 $
@@ -726,52 +726,53 @@ $
 ]
 
 == 種々の積分の計算
-<種々の積分の計算>
+
 この章では積分を計算する系統だった技法をいくつか紹介することで様々な関数の積分が計算できるようにする。
 
-実数係数の有理式つまり実数係数の多項式$p (x) eq.not 0$と実数係数の多項式$q (x)$の分数の形$frac(q (x), p (x))$になっている関数は積分が計算できる。
+実数係数の有理式つまり実数係数の多項式$p(x) eq.not 0$と実数係数の多項式$q(x)$の分数の形$(q(x))/(p(x))$になっている関数は積分が計算できる。
 これは部分分数分解によりどの有理式も次の形の有理式の和として表されることによる。
 
-- 単項式$a x^n$ ($a in bb(R)$, $n = 0, 1, 2, 3, dots$)。
+- 単項式$a x^n$ ($a in RR$, $n = 0, 1, 2, 3, dots$)。
+- 一次式の累乗$a/(x-b)^n$ ($a, b in RR$, $n = 1, 2, 3, dots$)。
+- 判別式が負な二次式の累乗で次の形$(2 a (x-b))/(((x-b)^2+c^2)^n)$ ($a, b, c in RR$, $n = 1, 2, 3, dots$)。
+- 判別式が負な二次式の累乗$a/((x-b)^2+c^2)^n$ ($a, b, c in RR$, $c eq.not 0$, $n = 1, 2, 3, dots$)。
 
-- 一次式の累乗$a/(x-b)^n$ ($a, b in bb(R)$,
-  $n = 1, 2, 3, dots$)。
-
-- 判別式が負な二次式の累乗で次の形$frac(2 a (x-b), ((x-b)^2+c^2)^n)$
-  ($a, b, c in bb(R)$, $n = 1, 2, 3, dots$)。
-
-- 判別式が負な二次式の累乗$a/((x-b)^2+c^2)^n$
-  ($a, b, c in bb(R)$, $c eq.not 0$, $n = 1, 2, 3, dots$)。
-
-これらのうち(i)と(ii)は$x^n$,
-$x^(- n)$の積分を使えばよく、(iii)は$y = (x-b)^2+c^2$と置換することで$y^(- n)$の積分に帰着される。
-(iv)は置換$y = frac(x-b, c)$により、
-$ I_n = integral 1/(x^2+1)^n dd(x) $
+これらのうち(i)と(ii)は$x^n$, $x^(-n)$の積分をそれぞれ使えばよく、
+(iii)は$y = (x-b)^2+c^2$と置換することで$y^(-n)$の積分に帰着される。
+(iv)は置換$y = (x-b)/c$により、
+$
+I_n = integral 1/(x^2+1)^n dd(x)
+$
 の計算に帰着され、部分積分からこの$I_n$が満たす漸化式
-$ I_(n+1) = frac(x, 2 n (x^2+1)^n)+frac(2 n-1, 2 n) I_n, quad I_1 = arctan x+C $
+$
+I_(n+1) = x/(2 n (x^2+1)^n)+(2 n-1)/(2 n) I_n, quad I_1 = arctan x+C
+$
 により計算できる（一般項は難しいが与えれた$n$に対する$I_n$は計算できる）。
 
-#block[
+#example[
 ]
-根号を含む関数$R (x, root(n, frac(a x+b, c x+d)))$（$R$は実数係数の有理式、$a, b, c, d in bb(R)$,
-$a d-b c eq.not 0$, $n = 1, 2, 3, dots$）も積分が計算できる。
-これは$y = root(n, frac(a x+b, c x+d))$と置換することで$y$についての有理式の積分に帰着されることによる。
 
-#block[
-]
-別の形の根号を含む関数$R (x, sqrt(a x^2+b x+c))$も積分が計算できる。
+根号を含む関数$R(x, root(n, (a x+b)/(c x+d)))$（$R$は実数係数の有理式、$a, b, c, d in RR$, $a d-b c eq.not 0$, $n = 1, 2, 3, dots$）も積分が計算できる。
+これは$y = root(n, (a x+b)/(c x+d))$と置換することで$y$についての有理式の積分に帰着されることによる。
 
-#block[
+#example[
 ]
-さらに$sin x$,
-$cos x$を含む関数$R (sin x, cos x)$（$R$は実数係数の有理式）は$t = tan (x/2)$という置換により$t$についての有理式の積分に帰着される。
 
-#block[
-]
-特に$R (sin^2 x, cos^2 x)$（$R$は実数係数の有理式）の形の関数の場合は$t = tan x$という置換によりさらに簡単に積分が求められる。
+別の形の根号を含む関数$R(x, sqrt(a x^2+b x+c))$も積分が計算できる。
 
-#block[
+#example[
 ]
+
+さらに$sin x$, $cos x$を含む関数$R(sin x, cos x)$（$R$は実数係数の有理式）は$t = tan x/2$という置換により$t$についての有理式の積分に帰着される。
+
+#example[
+]
+
+特に$R(sin^2 x, cos^2 x)$（$R$は実数係数の有理式）の形の関数の場合は$t = tan x$という置換によりさらに簡単に積分が求められる。
+
+#example[
+]
+
 == 積分の漸化式
 <積分の漸化式>
 この節では被積分関数に自然数定数$n$があるような積分を考える。
@@ -783,7 +784,7 @@ $n = 0, 1, 2, 3, dots$に対して積分 $ integral sin^n x dd(x) $
 を考える。 この積分は部分積分を使うことにより$n >= 2$に対して、
 $ integral sin^n x dd(x) = integral (- cos x)' sin^(n-1) x dd(x) =-cos x sin^(n-1) x+integral (n-1) cos x sin^(n-2) x cos x dd(x) =-cos x sin^(n-1) x+(n-1) integral sin^(n-2) x dd(x)-(n-1) integral sin^n x dd(x) $
 となるので、積分の漸化式
-$ integral sin^n x dd(x) =-1/n cos x sin^(n-1) x+frac(n-1, n) integral sin^(n-2) x dd(x) $
+$ integral sin^n x dd(x) =-1/n cos x sin^(n-1) x+(n-1)/n integral sin^(n-2) x dd(x) $
 を得る。 最初の$n = 0, 1$の場合だけ積分を計算したらこの漸化式から
 $  & integral sin^0 x dd(x) = x+C ,\
  & integral sin^1 x dd(x) =-cos x+C ,\
@@ -797,7 +798,7 @@ $ I_n = integral_0^(pi/2) sin^n x dd(x) = integral_0^(pi/2) cos^n x dd(x) $
 なお、$sin$の定積分と$cos$の定積分が等しいことは$x$を$pi/2-x$と置換すればわかる。
 この積分$I_n$を_ウォリス積分_という。
 不定積分が得られているので定積分に対する漸化式は
-$ I_n = frac(n-1, n) I_(n-2) quad (n >= 2), quad I_0 = pi/2, quad I_1 = 1 $
+$ I_n = (n-1)/n I_(n-2) quad (n >= 2), quad I_0 = pi/2, quad I_1 = 1 $
 となる。
 
 ]
@@ -815,7 +816,7 @@ $ n I_n I_(n-1) = I_1 I_0 = pi/2 $ がわかる。
 
 ここで、$0 <= x <= pi/2$で$sin^(n+1) x <= sin^n x <= sin^(n-1) x$より
 $ I_(n+1) <= I_n <= I_(n-1) $ であり、$n I_n >= 0$をかけて
-$ n I_(n+1) I_n = frac(n, n+1) pi/2 <= n I_n^2 <= n I_n I_(n-1) = pi/2 $
+$ n I_(n+1) I_n = n/(n+1) pi/2 <= n I_n^2 <= n I_n I_(n-1) = pi/2 $
 を得る。 したがってはさみうちの原理より結論の式を得る。
 
 ]
@@ -900,7 +901,7 @@ $ integral_a^b abs(f(x)+g(x))^p dd(x) & = integral_a^b abs(f(x)+g(x)) abs(f(x)+g
 $p = 1$のときはすでに結論を得ていることに注意して、以降では$p > 1$の場合を考える。
 ここで、 \$\$A = \\qty(\\int\_a^b |f(x)|^p\\dd{x})^{\\frac{1}{p}},
 \\quad B = \\qty(\\int\_a^b |g(x)|^p\\dd{x})^{\\frac{1}{p}}\$\$ とおき、
-$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = frac(p, p-1)$として取ると、ヘルダーの不等式から
+$q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = p/(p-1)$として取ると、ヘルダーの不等式から
 \$\$\\begin{aligned}
 \\int\_a^b |f(x)+g(x)|^p\\dd{x}
 &\\le A\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}}+B\\qty(\\int\_a^b |f(x)+g(x)|^{(p-1)q}\\dd{x})^{\\frac{1}{q}} \\\\
@@ -910,7 +911,7 @@ $q$を@e_holder_conj>)[\[e\_holder\_conj\]_を満たす実数つまり$q = frac(
 ]
 #block[
 $x (t)$,
-$p (t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p (t) >= 0$と$integral_I p (t) dd(t) = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
+$p(t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対して$p(t) >= 0$と$integral_I p(t) dd(t) = 1$を満たし、$f$を$[inf x, sup x]$上の連続関数とする。
 
 - $f$が凸関数のとき、
   \$\$f\\qty(\\int\_I p(t)x(t)\\dd{t}) \\le \\int\_I p(t)f(x(t))\\dd{t}\$\$
@@ -924,8 +925,8 @@ $p (t)$を有界閉区間$I$上の連続関数で任意の$t in [a, b]$に対し
 #block[
  凸関数の方について示す。
 命題@t_convex_suppより$f(x) >= f(x)+k (x-a)$を満たす実数$k$が存在する。
-ここで$a = integral_I p (t) x (t) dd(t)$、$x = x (t)$
-($t in I$)として$p (t)$倍して積分すると、$integral_I p (t) dd(t) = 1$に注意して、
+ここで$a = integral_I p(t) x (t) dd(t)$、$x = x (t)$
+($t in I$)として$p(t)$倍して積分すると、$integral_I p(t) dd(t) = 1$に注意して、
 \$\$\\int\_I p(t)f(x(t))\\dd{t} \\ge \\int\_I p(t)(f(a)+k(x(t)-a))\\dd{t} = f(a)+k\\qty(\\int\_I p(t)x(t)\\dd{t}-a) = f(a).\$\$
 よってほしかった不等式を得る。
 
@@ -968,7 +969,7 @@ $ integral_I f(x) dd(x), quad integral_a^b f(x) dd(x) $ で表す。
 
 #block[
 $a$を実数とするとき、
-$ integral_1^oo x^a dd(x) = cases(delim: "{",+oo & (a >=-1) ,, frac(1,-a-1) & (a <-1) .) $
+$ integral_1^oo x^a dd(x) = cases(delim: "{",+oo & (a >=-1) ,, 1/(-a-1) & (a <-1) .) $
 $ integral_0^1 x^a dd(x) = cases(delim: "{", 1/(a+1) & (a >-1) ,,+oo & (a <=-1) .) $
 
 ]
@@ -1047,7 +1048,7 @@ $f$を区間$I$上の連続関数あるいは単調関数とする。
 
 ]
 #block[
-広義積分 $ integral_0^oo frac(sin x, x) dd(x) $
+広義積分 $ integral_0^oo (sin x)/x dd(x) $
 は収束するが、絶対収束しない。
 
 ]
