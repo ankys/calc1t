@@ -774,52 +774,84 @@ $
 ]
 
 == 積分の漸化式
-<積分の漸化式>
+
 この節では被積分関数に自然数定数$n$があるような積分を考える。
 もちろん$integral x^n dd(x) = 1/(n+1) x^(n+1)+C$のような簡単な例もあるが、一般項が簡単には求まらないことが普通である。
 そこで部分積分や置換積分を使って漸化式を立てて目的の積分を計算するという技法が取られる。
 
-#block[
-$n = 0, 1, 2, 3, dots$に対して積分 $ integral sin^n x dd(x) $
-を考える。 この積分は部分積分を使うことにより$n >= 2$に対して、
-$ integral sin^n x dd(x) = integral (- cos x)' sin^(n-1) x dd(x) =-cos x sin^(n-1) x+integral (n-1) cos x sin^(n-2) x cos x dd(x) =-cos x sin^(n-1) x+(n-1) integral sin^(n-2) x dd(x)-(n-1) integral sin^n x dd(x) $
+#example([ウォリス積分])[
+$n = 0, 1, 2, 3, dots$に対して積分
+$
+integral sin^n x dd(x)
+$
+を考える。
+この積分は部分積分を使うことにより$n >= 2$に対して、
+$
+integral sin^n x dd(x)
+= integral (-cos x)' sin^(n-1) x dd(x)
+= -cos x sin^(n-1) x+integral (n-1) cos^2 x sin^(n-2) x cos x dd(x)
+= -cos x sin^(n-1) x+(n-1) integral sin^(n-2) x dd(x)-(n-1) integral sin^n x dd(x)
+$
 となるので、積分の漸化式
-$ integral sin^n x dd(x) =-1/n cos x sin^(n-1) x+(n-1)/n integral sin^(n-2) x dd(x) $
+$
+integral sin^n x dd(x) = -1/n cos x sin^(n-1) x+(n-1)/n integral sin^(n-2) x dd(x)
+$
 を得る。 最初の$n = 0, 1$の場合だけ積分を計算したらこの漸化式から
-$  & integral sin^0 x dd(x) = x+C ,\
- & integral sin^1 x dd(x) =-cos x+C ,\
- & integral sin^2 x dd(x) =-1/2 cos x sin x+1/2 x+C ,\
- & integral sin^3 x dd(x) =-1/3 cos x sin^2 x-2/3 cos x+C $
+$
+& integral sin^0 x dd(x) = x+C, \
+& integral sin^1 x dd(x) = -cos x+C, \
+& integral sin^2 x dd(x) = -1/2 cos x sin x+1/2 x+C, \
+& integral sin^3 x dd(x) = -1/3 cos x sin^2 x-2/3 cos x+C
+$
 などと順に計算することができる。
 
 また、定積分
-$ I_n = integral_0^(pi/2) sin^n x dd(x) = integral_0^(pi/2) cos^n x dd(x) $
-の場合を考えよう。
+$
+I_n = integral_0^(pi/2) sin^n x dd(x) = integral_0^(pi/2) cos^n x dd(x)
+$ <e_wallis_int>
+を考えよう。
 なお、$sin$の定積分と$cos$の定積分が等しいことは$x$を$pi/2-x$と置換すればわかる。
 この積分$I_n$を_ウォリス積分_という。
 不定積分が得られているので定積分に対する漸化式は
-$ I_n = (n-1)/n I_(n-2) quad (n >= 2), quad I_0 = pi/2, quad I_1 = 1 $
+$
+I_n = (n-1)/n I_(n-2) quad (n >= 2),
+quad I_0 = pi/2,
+quad I_1 = 1
+$
 となる。
-
 ]
-#block[
-<t_wallis_limit>
-ウォリス積分@e_wallis_int>)[\[e\_wallis\_int\]_で定まる数列$(I_n)_(n = 0)^oo$は
-$ lim_(n -> oo) sqrt(n) I_n = sqrt(pi/2) $
 
-]
-#block[
- ウォリス積分の漸化式より
-$ (n+1) I_(n+1) I_n = n I_n I_(n-1) $
+#theorem([ウォリスの公式])[
+ウォリス積分@e_wallis_int で定まる数列$(I_n)_(n = 0)^oo$は
+$
+lim_(n -> oo) sqrt(n) I_n = sqrt(pi/2)
+$
+を満たす。
+] <t_wallis_limit>
+
+#proof[
+ウォリス積分の漸化式より
+$
+(n+1) I_(n+1) I_n = n I_n I_(n-1)
+$
 なので、数列$(n I_n I_(n-1))_n$は定数列であり、
-$ n I_n I_(n-1) = I_1 I_0 = pi/2 $ がわかる。
+$
+n I_n I_(n-1) = I_1 I_0 = pi/2
+$
+がわかる。
 
 ここで、$0 <= x <= pi/2$で$sin^(n+1) x <= sin^n x <= sin^(n-1) x$より
-$ I_(n+1) <= I_n <= I_(n-1) $ であり、$n I_n >= 0$をかけて
-$ n I_(n+1) I_n = n/(n+1) pi/2 <= n I_n^2 <= n I_n I_(n-1) = pi/2 $
-を得る。 したがってはさみうちの原理より結論の式を得る。
-
+$
+I_(n+1) <= I_n <= I_(n-1)
+$
+であり、$n I_n >= 0$をかけて
+$
+n I_(n+1) I_n = n/(n+1) pi/2 <= n I_n^2 <= n I_n I_(n-1) = pi/2
+$
+を得る。
+したがってはさみうちの原理より結論の式を得る。
 ]
+
 == 積分の不等式
 <積分の不等式>
 この節では積分を含んだいくつかの有名な不等式を紹介し、応用として（本来の応用先ではないが）積分が計算できない問題に対して評価を与える。
