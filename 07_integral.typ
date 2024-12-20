@@ -1012,117 +1012,202 @@ $
 == 区分求積法の応用
 
 == 広義積分
-<広義積分>
-有界閉区間とは限らない区間上の連続関数あるいは単調関数（広義単調増加関数と広義単調減少関数）に対する定積分である広義積分は区間を有界閉区間で近似することで定義される。
-このとき、極限の有無によって広義積分の可能性が分かれることに注意する。
 
-#block[
+有界閉区間とは限らない区間上の連続関数あるいは単調関数（広義単調増加関数と広義単調減少関数）に対する定積分である広義積分は区間を有界閉区間で近似することで定義される。
+このとき、極限の有無によって広義積分での積分可能性が分かれることに注意する。
+
+#definition([広義積分])[
 $f$を区間$I$上の連続関数あるいは単調関数とする。
 
-- $I = \[ a, b \)$（$b$は実数または正の無限大）の場合、極限
-  $ lim_(t -> b -) integral_a^t f(x) dd(x) $
-  が存在するとき$f$は$\[ a, b \)$上で_広義積分可能_であるまたは_広義積分が収束する_といい、その極限を$f$の$\[ a, b \)$上の_広義積分_という。
-
-- $I = \( a, b \]$（$a$は実数または負の無限大）の場合、極限
-  $ lim_(t -> a +) integral_t^b f(x) dd(x) $
-  が存在するとき$f$は$\( a, b \]$上で_広義積分可能_であるまたは_広義積分が収束する_といい、その極限を$f$の$\( a, b \]$上の_広義積分_という。
-
+- $I = \[a, b\)$（$b$は実数または正の無限大）の場合、極限
+  $
+  lim_(t -> b-) integral_a^t f(x) dd(x)
+  $
+  が存在するとき$f$は$\[a, b\)$上で_広義積分可能_であるまたは_広義積分が収束する_といい、その極限を$f$の$\[a, b\)$上の_広義積分_という。
+- $I = \(a, b\]$（$a$は実数または負の無限大）の場合、極限
+  $
+  lim_(t -> a+) integral_t^b f(x) dd(x)
+  $
+  が存在するとき$f$は$\(a, b\]$上で_広義積分可能_であるまたは_広義積分が収束する_といい、その極限を$f$の$\(a, b\]$上の_広義積分_という。
 - $I = (a, b)$（$a$は実数または負の無限大、$b$は実数または正の無限大）の場合、$a < c < b$に対して極限
-  $ lim_(t -> a +) integral_t^c f(x) dd(x), quad lim_(t -> b -) integral_c^t f(x) dd(x) $
+  $
+  lim_(t -> a+) integral_t^c f(x) dd(x), quad lim_(t -> b-) integral_c^t f(x) dd(x)
+  $
   の両方が存在するとき$f$は$(a, b)$上で_広義積分可能_であるまたは_広義積分が収束する_といい、その極限の和を$f$の$(a, b)$上の_広義積分_という。
 
-ここで、$f$の$I = [a, b \), \( a, b], (a, b)$上の広義積分を
-$ integral_I f(x) dd(x), quad integral_a^b f(x) dd(x) $ で表す。
-
+ここで、$f$の$I = [a, b\), \(a, b], (a, b)$上の広義積分を
+$
+integral_I f(x) dd(x),
+quad integral_a^b f(x) dd(x)
+$
+で表す。
 ]
-#block[
+
+#remark[
 開区間$I = (a, b)$において、広義積分可能かどうかや広義積分の値は$c$の取り方によらない。
-
 ]
-次の命題は広義積分の理論において重要であり、指数が$a =-1$のところで切り替わることは記憶するに値する。
+
+次の命題は広義積分の理論において重要であり、指数が$a = -1$のところで切り替わることは記憶するに値する。
 
 #block[
 $a$を実数とするとき、
-$ integral_1^oo x^a dd(x) = cases(delim: "{",+oo & (a >=-1) ,, 1/(-a-1) & (a <-1) .) $
-$ integral_0^1 x^a dd(x) = cases(delim: "{", 1/(a+1) & (a >-1) ,,+oo & (a <=-1) .) $
-
+$
+integral_1^oo x^a dd(x)
+= cases(
+  +oo & (a >= -1)",",
+  1/(-a-1) & (a < -1)","
+)
+$
+$
+integral_0^1 x^a dd(x)
+= cases(
+  1/(a+1) & (a > -1)",",
+  +oo & (a <= -1)
+)
+$
+が成り立つ。
 ]
-#block[
- 前半は$a eq.not-1$のとき$t -> oo$で、
-\$\$\\int\_1^t x^a\\dd{x} = \\lreval\*{\\frac{1}{a+1}x^{a+1}}\_1^t = \\frac{1}{a+1}t^{a+1}-\\frac{1}{a+1} \\to
-\\begin{cases}
-+\\infty & (a \> -1), \\\\
-\\frac{1}{-a-1} & (a \< -1).
-\\end{cases}\$\$ また、$a =-1$のときは
-\$\$\\int\_1^t x^{-1}\\dd{x} = \\lreval\*{\\log x}\_1^t = \\log t \\to +\\infty.\$\$
-後半は$a eq.not-1$のとき$t -> 0 +$で、
-\$\$\\int\_t^1 x^a\\dd{x} = \\lreval\*{\\frac{1}{a+1}x^{a+1}}\_t^1 = \\frac{1}{a+1}-\\frac{1}{a+1}t^{a+1} \\to
-\\begin{cases}
-\\frac{1}{a+1} & (a \> -1). \\\\
-+\\infty & (a \< -1).
-\\end{cases}\$\$ また、$a =-1$のときは
-\$\$\\int\_t^1 x^{-1}\\dd{x} = \\lreval\*{\\log x}\_t^1 = -\\log t \\to +\\infty.\$\$
+
+#proof[
+前半は$a eq.not -1$のとき$t -> oo$で、
+$
+integral_1^t x^a dd(x)
+= eval(1/(a+1) x^(a+1))_1^t
+= 1/(a+1) t^(a+1)-1/(a+1)
+-> cases(
+  +oo & (a > -1)",",
+  1/(-a-1) & (a < -1)"."
+)
+$
+また、$a =-1$のときは
+$
+integral_1^t x^(-1) dd(x)
+= eval(log x)_1^t
+= log t
+-> + oo.
+$
+後半は$a eq.not -1$のとき$t -> 0+$で、
+$
+integral_t^1 x^a dd(x)
+= eval(1/(a+1) x^(a+1))_t^1
+= 1/(a+1)-1/(a+1) t^(a+1)
+-> cases(
+  1/(a+1) & (a > -1)",",
+  +oo & (a < -1)"."
+)
+$
+また、$a = -1$のときは
+$
+integral_t^1 x^(-1) dd(x)
+= eval(log x)_t^1
+= -log t
+-> +oo.
+$
 以上より示された。
-
 ]
+
 以下では広義積分の値を追求するよりも収束するかどうかについて議論する。
 
-#block[
+#definition([広義積分の絶対収束])[
 区間$I$上の連続関数あるいは単調関数$f$に対して広義積分
-$ integral_I abs(f(x)) dd(x) $
+$
+integral_I abs(f(x)) dd(x)
+$
 が収束する時、$f$は$I$上で_絶対広義積分可能_または広義積分が_絶対収束_するという。
-
 ]
-#block[
-広義積分が絶対収束する場合 $ integral_I abs(f(x)) dd(x) < oo $ と表し、
-絶対収束しない場合 $ integral_I abs(f(x)) dd(x) = oo $ と表す。
 
+#remark[
+広義積分が絶対収束する場合
+$
+integral_I abs(f(x)) dd(x) < oo
+$
+と表し、
+絶対収束しない場合
+$
+integral_I abs(f(x)) dd(x) = oo
+$
+と表す。
 ]
-#block[
+
+#proposition[
 $f$を区間$I$上の連続関数あるいは単調関数とする。
 $f$の$I$上の広義積分が絶対収束するならばそれは収束している。
-
 ]
-#block[
- $I = \[ a, b \)$の場合のみ示す。 $t in I$に対して、
-\$\$F(t) = \\int\_a^t f(x)\\dd{x},
-\\quad \\bar{F}(t) = \\int\_a^t \\abs{f(x)}\\dd{x}\$\$ とおくと、
-\$\$\\abs{F(t\_+)-F(t\_-)} = \\abs{\\int\_{t\_-}^{t\_+} f(x)\\dd{x}} \\le \\abs{\\int\_{t\_-}^{t\_+} \\abs{f(x)}\\dd{x}} = \\abs{\\bar{F}(t\_+)-\\bar{F}(t\_-)}.\$\$
-よって、$t_(+)$について上極限を$t_(-)$について下極限をそれぞれ取ると$F^(‾)(t_(+))$,
-$F^(‾)(t_(-))$は仮定より収束することに注意して、
-$ limsup_(t -> b -) f(t)-liminf_(t -> b -) f(t) <= lim_(t -> b -) F^(‾)(t)-lim_(t -> b -) F^(‾)(t) = 0 . $
-したがって上極限と下極限が一致したので$f(t)$さらには広義積分は収束する。
 
+#proof[
+$I = \[a, b\)$の場合のみ示す。
+$t in I$に対して、
+$
+F(t) = integral_a^t f(x) dd(x),
+quad macron(F)(t) = integral_a^t abs(f(x)) dd(x)
+$
+とおくと、
+$
+abs(F(t_+)-F(t_-))
+= abs(integral_(t_-)^(t_+) f(x) dd(x))
+<= integral_(t_-)^(t_+) abs(f(x)) dd(x)
+= macron(F)(t_+)-macron(F)(t_-).
+$
+よって、$t_(+)$について上極限を$t_(-)$について下極限をそれぞれ取ると$macron(F)(t_(+))$,
+$macron(F)(t_(-))$は仮定より収束することに注意して、
+$
+limsup_(t -> b-) f(t)-liminf_(t -> b-) f(t)
+<= lim_(t -> b-) macron(F)(t)-lim_(t -> b-) macron(F)(t)
+= 0.
+$
+したがって上極限と下極限が一致したので$F(t)$さらには広義積分は収束する。
 ]
-#block[
+
+#proposition([広義積分の比較判定法])[
 $f$を区間$I$上の連続関数あるいは単調関数とする。
 
 - 二つの条件
-  $ abs(f(x)) <= g(x) quad forall x in I, quad integral_I g(x) < oo $
+  $
+  abs(f(x)) <= g(x) quad forall x in I,
+  quad integral_I g(x) < oo
+  $
   を満たす$I$上の非負値の連続関数あるいは単調関数$g$が存在するならば、
   $f$の$I$上での広義積分は絶対収束し、
-  \$\$\\abs{\\int\_I f(x)\\dd{x}} \\le \\int\_I \\abs{f(x)}\\dd{x} \\le \\int\_I g(x)\\dd{x}\$\$
+  $
+  abs(integral_I f(x) dd(x))
+  <= integral_I abs(f(x)) dd(x)
+  <= integral_I g(x) dd(x)
+  $
   が成り立つ。
-
 - 二つの条件
-  $ abs(f(x)) >= g(x) quad forall x in I, quad integral_I g(x) = oo $
+  $
+  abs(f(x)) >= g(x) quad forall x in I,
+  quad integral_I g(x) = oo
+  $
   を満たす$I$上の非負値の連続関数あるいは単調関数$g$が存在するならば、
   $f$の$I$上での広義積分は絶対収束せず、
-  \$\$\\int\_I \\abs{f(x)}\\dd{x} = \\infty\$\$ である。
-
+  $
+  integral_I abs(f(x)) dd(x) = oo
+  $
+  である。
 ]
-#block[
+
+#remark[
 この時の非負値関数$g$を$f$の_優関数_という。
-
 ]
-#block[
-広義積分 $ integral_0^oo e^(- x^2) dd(x) $ は絶対収束する。 実際
-\$\$e^{-x^2} \\le \\min\\lrset{ \\frac{1}{e x^2}, 1 }\$\$
-であることから従う（$e^(- x^2) <= e^(-1) x^(- 2)$については例@t_gauss_est参照）。
 
+#example[
+広義積分
+$
+integral_0^oo e^(-x^2) dd(x)
+$
+は絶対収束する。
+実際
+$
+e^(-x^2) <= min { 1/(e x^2), 1 }
+$
+であることから従う（$e^(-x^2) <= e^(-1) x^(-2)$については@t_gauss_est 参照）。
 ]
-#block[
-広義積分 $ integral_0^oo (sin x)/x dd(x) $
+
+#example[
+広義積分
+$
+integral_0^oo (sin x)/x dd(x)
+$
 は収束するが、絶対収束しない。
-
 ]
