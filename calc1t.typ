@@ -32,3 +32,4 @@
 #include "04_limit.typ"
 #include "05_functions1.typ"
 #include "06_differential.typ"
+#include "07_integral.typ"

@@ -4,7 +4,7 @@
 #import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.3": dd, dv
+#import "@preview/physica:0.9.3": dd, dv, eval
 #let arsinh = $op("arsinh")$
 #let arcosh = $op("arcosh")$
 #let artanh = $op("artanh")$
@@ -36,7 +36,7 @@ $
 つまり、区間$[a, b]$を_小区間_$[p_0, p_1], [p_1, p_2], [p_2, p_3], dots, [p_(N-1), p_N]$に分割している。
 また、_分割の大きさ_を小区間の大きさの中で最も大きいもの、つまり
 $
-abs(P) = max{ p_n-p_(n-1) mid() n = 1, 2, 3, dots, N }
+abs(P) = max{ p_n-p_(n-1) mid(|) n = 1, 2, 3, dots, N }
 $
 とする。
 
@@ -477,7 +477,7 @@ $f$を開区間$I$上の連続関数とする。
 この微分積分学の基本定理を用いれば定積分を計算することは原始関数を一つ見つけることに帰着される。
 また、$F(b)-F(a)$のことを
 $
-eval(F, a, b),
+eval(F)_a^b,
 quad eval(F(x))_(x = a)^b,
 quad eval(F(x))_a^b
 $
@@ -487,7 +487,7 @@ $
 一次関数$f(x) = k x+m$に対して、二次関数$f(x) = k/2 x^2+m x$は$f(x)$の原始関数であることがすぐわかるので、
 $
 integral_a^b (k x+m) dd(x)
-= eval(k/2 x^2+m x, a, b)
+= eval(k/2 x^2+m x)_(x = a)^b
 = (k/2 b^2+m b)-(k/2 a^2+m a)
 $
 と（区分求積法より）簡単に計算できる。
