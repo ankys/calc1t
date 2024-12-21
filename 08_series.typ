@@ -1,6 +1,11 @@
 
 = 級数
 
+#import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
+#show: thmrules.with()
+
+#import "@preview/physica:0.9.3": dd
+
 == 級数の収束
 
 数列$(a_n)_(n = 0)^oo$の項$a_0, a_1, a_2, a_3, dots$の和について考える。
@@ -175,7 +180,7 @@ $(a_n)$を数列とする。
   を満たす正項級数$sum b_n$が存在するならば、
   級数$sum a_n$は絶対収束せず、
   $
-  aum abs(a_n) = oo
+  sum abs(a_n) = oo
   $
   である。
 ]
@@ -392,187 +397,260 @@ $
 ]
 
 == べき級数
-<べき級数>
-#block[
-数列$(a_n)_(n = 0)^oo$と数$a$と$x$に対して定まる次の形の級数
-$ sum_(n = 0)^oo a_n (x-a)^n = a_0+a_1 (x-a)+a_2 (x-a)^2+a_3 (x-a)^3+dots $
-を_べき級数_または_整級数_という。
 
+#definition([べき級数])[
+数列$(a_n)_(n = 0)^oo$と数$a$と$x$に対して定まる次の形の級数
+$
+sum_(n = 0)^oo a_n (x-a)^n = a_0+a_1 (x-a)+a_2 (x-a)^2+a_3 (x-a)^3+dots
+$
+を_べき級数_または_整級数_という。
 ]
+
 べき級数は単一の$x$のみ考えるなら特殊な形の級数であるが、重要な点は$x$を変数、べき級数を関数と見て議論を展開する点にある。
 
-#block[
+#remark[
 べき級数$sum_(n = 0)^oo a_n (x-a)^n$は$x = a$のとき$a_0$に必ず収束する。
-
 ]
-#block[
+
+#proposition([べき級数の収束性])[
 べき級数$sum_(n = 0)^oo a_n (x-a)^n$が点$x = b eq.not a$で収束するならば、$abs(x-a) < abs(b-a)$を満たすすべての点$x$でこのべき級数は絶対収束する。
-
 ]
-#block[
 
-級数$sum_(n = 0)^oo a_n b^n$が収束するので、命題@t_ser_convより数列$(a_n (b-a)^n)_(n = 0)^oo$は$0$に収束し、特に有界である。
+#proof[
+級数$sum_(n = 0)^oo a_n b^n$が収束するので、@t_ser_conv より数列$(a_n (b-a)^n)_(n = 0)^oo$は$0$に収束し、特に有界である。
 そこである実数$M$が存在し、任意の$n = 0, 1, 2, 3, dots$に対して$abs(a_n (b-a)^n) <= M$である。
 ここで
-\$\$|a\_n(x-a)^n| = |a\_n(b-a)^n|\\abs{\\frac{x-a}{b-a}}^n \\le M\\abs{\\frac{x-a}{b-a}}^n\$\$
+$
+abs(a_n (x-a)^n)
+= abs(a_n (b-a)^n) abs((x-a)/(b-a))^n
+<= M abs((x-a)/(b-a))^n
+$
 であり、$abs(x-a) < abs(b-a)$であることから右辺から定まる正項級数は収束するので、
 級数$sum_(n = 0)^oo a_n (x-a)^n$は絶対収束する。
-
 ]
+
 この命題をもとに各べき級数には固有な次の値が定義できる。
 
-#block[
-べき級数$sum_(n = 0)^oo a_n (x-a)^n$に対して
-\$\$\\sup\\lrset{|b-a| \\mid \\text{級数\$\\sum\_{n = 0}^\\infty a\_n(b-a)^n\$が収束する}}\$\$
-は非負の実数または正の無限大で、べき級数$sum_(n = 0)^oo a_n (x-a)^n$の_収束半径_という。
-
+#definition([収束半径])[
+べき級数$sum_(n = 0)^oo a_n (x-a)^n$に対して、
+級数として収束するような$x = b$を考え$abs(b-a)$の上限をべき級数$sum_(n = 0)^oo a_n (x-a)^n$の_収束半径_という。
+収束半径は非負の実数または正の無限大である。
 ]
-#block[
+
+#remark[
 $r$を収束半径とするとき、$abs(x-a) > r$に対してはべき級数は必ず発散し、$abs(x-a) < r$に対しては先の命題よりべき級数は必ず絶対収束する。
 $r = oo$の場合では任意の$x$でべき級数は絶対収束する。
-
 ]
-#block[
-収束半径という用語に「半径」という単語が入っているのはべき級数の理論を$a_n$や$x$が複素数の場合に拡張したときに絶対収束が言える$x$の範囲$abs(x-a) < r$が複素平面での円板になっていることによる。
+
+#remark[
+収束半径という用語に「半径」という単語が入っているのはべき級数の理論を$a_n$や$x$が複素数の場合に拡張したときに絶対収束が確実に言える$x$の範囲$abs(x-a) < r$が複素平面での円板になっていることによる。
 実際、この章の内容は複素数の範囲に拡張でき、後の複素指数関数の部分で使われる。
-
 ]
+
 級数の収束に関するダランベールの判定法やコーシーの判定法から収束半径について次の公式が知られている。
 
-#block[
+#theorem[
 べき級数$sum_(n = 0)^oo a_n (x-a)^n$を考える。
 
 - さらに$(a_n)$はどの項も$0$でない数列として、極限
-  \$\$\\lim\_{n \\to \\infty}\\abs{\\frac{a\_{n+1}}{a\_n}} = c\$\$
+  $
+  c = lim_(n -> oo) abs(a_(n+1)/a_n)
+  $
   が存在したとするとき、べき級数の収束半径は逆数$c^(-1)$となる。
-
-- 上極限 \$\$\\limsup\_{n \\to \\infty}\\sqrt\[n\]{\\abs{a\_n}} = c\$\$
+- 上極限
+  $
+  c = limsup_(n -> oo) root(n, abs(a_n))
+  $
   について、べき級数の収束半径は逆数$c^(-1)$となる。
-
 ]
-#block[
+
+#example[
 数$c$に対してべき級数
-$ sum_(n = 0)^oo c^n x^n = 1+c x+c^2 x^2+c^3 x^3+dots $
+$
+sum_(n = 0)^oo c^n x^n = 1+c x+c^2 x^2+c^3 x^3+dots
+$
 を考える。
-\$\\lim\_{n \\to \\infty}\\abs{\\frac{c^{n+1}}{c^n}} = |c|\$よりこのべき級数の収束半径は$abs(c)^(-1)$である。
-
+$
+lim_(n -> oo) abs(c^(n+1)/c^n) = abs(c)
+$
+より、
+このべき級数の収束半径は$abs(c)^(-1)$である。
 ]
-#block[
+
+#example[
 数$c$に対してべき級数
-$ sum_(n = 0)^oo c^n x^(2 n) = 1+c x^2+c^2 x^4+c^3 x^6+dots $
+$
+sum_(n = 0)^oo c^n x^(2 n) = 1+c x^2+c^2 x^4+c^3 x^6+dots
+$
 を考える。
-\$\\lim\_{n \\to \\infty}\\sqrt\[2 n\]{\\abs{c^n}} = \\sqrt{|c|}\$よりこのべき級数の収束半径は$sqrt(abs(c))^(-1)$である。
-
+$
+limsup_(n -> oo) root(2 n, abs(c^n)) = sqrt(abs(c))
+$
+より、
+このべき級数の収束半径は$sqrt(abs(c))^(-1)$である。
 ]
+
 ここからはいよいよ関数としてのべき級数を考えよう。
 まず、べき級数$sum_(n = 0)^oo a_n (x-a)^n$の収束半径を$r$とするとき、関数
-$ f(x) = sum_(n = 0)^oo a_n (x-a)^n $
+$
+f(x) = sum_(n = 0)^oo a_n (x-a)^n
+$
 が$abs(x-a) < r$を満たす数$x$に対して定義されることに注意する。
 また、$N = 0, 1, 2, 3, dots$に対して部分和を
-$ f_N (x) = sum_(n = 0)^N a_n (x-a)^n $ とおく。
+$
+f_N (x) = sum_(n = 0)^N a_n (x-a)^n
+$
+とおく。
 この部分和は$N$次以下の多項式である。
 
-#block[
-収束半径が$r$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$は$abs(x-a) < r$で連続である。
-
+#theorem([べき級数の連続性])[
+収束半径が$r > 0$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$は$abs(x-a) < r$で連続である。
 ]
-#block[
-$abs(c-a) < r$を満たす数$c$と$epsilon > 0$を考える。
-$delta_1 = frac(r-abs(c-a), 2)$とおき、$b = a+abs(c-a)+delta_1 = a+frac(r+abs(c-a), 2)$とおくと$abs(b-a) < r$なので、
-$(f_N (b))_N$は$f(b)$に絶対収束することから、
-$ sum_(n = N+1)^oo abs(a_n) abs(b-a)^n < epsilon $
-となる自然数$N = 0, 1, 2, 3, dots$が存在する。
-次に$f_N (x)$は多項式関数より、特に連続関数なので、ある$delta_2 > 0$が存在し、任意の$abs(x-c) < delta_2$を満たす$x$に対して$abs(f_N (x)-f_N (c)) < epsilon$である。
-ここで\$\\delta = \\min\\lrset{ \\delta\_1, \\delta\_2 } \> 0\$とおくと$abs(x-c) < delta$なる数$x$に対して、$abs(x-a) < abs(b-a) < r$より
-\$\$|f(x)-f\_N(x)| = \\abs{\\sum\_{n = N+1}^\\infty a\_n(x-a)^n} \\le \\sum\_{n = N+1}^\\infty |a\_n||x-a|^n \\le \\sum\_{n = N+1}^\\infty |a\_n||b-a|^n \< \\varepsilon\$\$
-である。 したがって以上より
-$ abs(f(x)-f(c)) <= abs(f(x)-f_N (x))+abs(f_N (x)-f_N (c))+abs(f_N (c)-f(c)) <= epsilon+epsilon+epsilon = 3 epsilon $
-なので、$f(x)$は点$x = c$で連続であることがわかる。
 
+#proof[
+まずは$abs(x-a) < r$, $abs(y-a) < r$を満たす$x$, $y$と自然数$N$に対して、
+$
+abs(f(x)-f(y))
+<= abs(f(x)-f_N (x))+abs(f_N (x)-f_N (y))+abs(f_N (y)-f(y))
+<= sum_(n = N+1)^oo abs(a_n) abs(x-a)^n+abs(f_N (x)-f_N (y))+sum_(n = N+1)^oo abs(a_n) abs(y-a)^n
+$
+に注意する。
+ここで、$0 < r_0 < r$に対して、級数$sum abs(a_n) r_0^n$は収束するので、$abs(x-a), abs(y-a) <= r_0$のとき
+$
+sum_(n = N+1)^oo abs(a_n) abs(x-a)^n, sum_(n = N+1)^oo abs(a_n) abs(y-a)^n
+<= sum_(n = N+1)^oo abs(a_n) r_0^n
+$
+で右辺は$N -> oo$で$0$に収束する。
+ここで$f_N (x)$は多項式関数より特に有界閉区間で一様連続なので、度合い関数を使って$abs(f_N (x)-f_N (y)) <= omega_N(abs(x-y))$である。
+よって
+$
+abs(f(x)-f(y)) <= 2 sum_(n = N+1)^oo abs(a_n) r_0^n+omega_N(abs(x-y))
+$
+なので、
+$f(x)$は$abs(x-a) <= r_0$で一様連続であり、$abs(x-a) < r$で連続であることがわかる。
 ]
-#block[
+
+#theorem([べき級数の項別積分])[
 収束半径が$r$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$に対して
-$ integral_a^b f(x) dd(x) = sum_(n = 0)^oo frac(a_n, n+1)(b-a)^(n+1) = a_0 (b-a)+a_1/2 (b-a)^2+a_2/3 (b-a)^3+a_3/4 (b-a)^4+dots $
+$
+integral_a^b f(x) dd(x)
+= sum_(n = 0)^oo (a_n)/(n+1) (b-a)^(n+1)
+= a_0 (b-a)+a_1/2 (b-a)^2+a_2/3 (b-a)^3+a_3/4 (b-a)^4+dots
+$
 が任意の$abs(b-a) < r$を満たす実数$b$に対して成り立つ。
-
 ]
-#block[
 
-べき級数$sum_(n = 0)^oo frac(a_n, n+1)(b-a)^(n+1)$の収束半径が$r$であることに注意する。
-$N = 0, 1, 2, 3, dots$に対して、 \$\$\\begin{aligned}
-\\abs{\\int\_a^b f(x)\\dd{x}-\\int\_a^b f\_N(x)\\dd{x}}
-&\\le \\abs{\\int\_a^b |f(x)-f\_N(x)|\\dd{x}}
-\\le \\abs{\\int\_a^b \\sum\_{n = N+1}^\\infty |a\_n||x-a|^n\\dd{x}} \\\\
-&\\le \\abs{\\int\_a^b \\sum\_{n = N+1}^\\infty |a\_n||b-a|^n\\dd{x}}
-\\le \\sum\_{n = N+1}^\\infty |a\_n||b-a|^{n+1}.
-\\end{aligned}\$\$
+#proof[
+べき級数$sum_(n = 0)^oo (a_n)/(n+1) (b-a)^(n+1)$の収束半径が$r$であることに注意する。
+$N = 0, 1, 2, 3, dots$に対して、
+$
+abs(integral_a^b f(x) dd(x)-integral_a^b f_N (x) dd(x))
+<= abs(integral_a^b abs(f(x)-f_N(x)) dd(x))
+<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(x-a)^n dd(x))
+<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(b-a)^n dd(x))
+<= sum_(n = N+1)^oo abs(a_n) abs(b-a)^(n+1).
+$
 よって$N -> oo$で、$integral_a^b f_N (x) dd(x) -> integral_a^b f(x) dd(x)$であり、
-$ integral_a^b f_N (x) dd(x) = sum_(n = 0)^N frac(a_n, n+1)(b-a)^(n+1) $
+$
+integral_a^b f_N (x) dd(x) = sum_(n = 0)^N (a_n)/(n+1) (b-a)^(n+1)
+$
 であることから定理の結論が得られる。
-
 ]
-#block[
+
+#theorem([べき級数の項別微分])[
 収束半径が$r$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$は微分可能で
-$ f' (x) = sum_(n = 1)^oo n a_n (x-a)^(n-1) = sum_(n = 0)^oo (n+1) a_(n+1)(x-a)^n = a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots $
+$
+f'(x)
+= sum_(n = 1)^oo n a_n (x-a)^(n-1)
+= sum_(n = 0)^oo (n+1) a_(n+1) (x-a)^n
+= a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots
+$
 が任意の$abs(x-a) < r$を満たす実数$x$に対して成り立つ。
-
 ]
-#block[
 
-べき級数$g (x) = sum_(n = 1)^oo n a_n (x-a)^(n-1)$の収束半径が$r$であることに注意する。
-そこで前の定理より$g (x)$を項別積分すると
-$ integral_a^x g (t) ⅆ t = sum_(n = 1)^oo a_n (x-a)^n = f(x)-a_0 $
+#proof[
+べき級数$g(x) = sum_(n = 1)^oo n a_n (x-a)^(n-1)$の収束半径が$r$であることに注意する。
+そこで前の定理より$g(x)$を項別積分すると
+$
+integral_a^x g(t) dd(t) = sum_(n = 1)^oo a_n (x-a)^n = f(x)-a_0.
+$
 よって、$f$は$g$の原始関数なので、$f$を微分すると$g$を得る。
-
 ]
-#block[
+
+#remark[
 べき級数を微分して収束半径が変わらないべき級数になるので、微分することを何回も繰り返すことができ、べき級数は無限回微分可能であることわかる。
-
 ]
+
 == 種々のべき級数
-<種々のべき級数>
+
 この節ではこれまでに登場した関数とべき級数を結びつける。
 自明なこととして多項式関数はそのままべき級数と見ることができる。
 
 一般の（滑らかな）関数とべき級数を結びつけるのが次の定理でテイラーの定理から直ちに従う。
 
-#block[
+#theorem[
 $f(x)$を無限回微分可能な関数、$r$を非負の実数または正の無限大とする。
 ここで、$abs(x) < r$なる実数$x$に対して
-$ lim_(n -> oo) sup_(theta in [0, 1]) frac(f^((n))(a+theta (x-a)), n !)(x-a)^n = 0 $
+$
+lim_(n -> oo) sup_(theta in [0, 1]) (f^((n))(a+theta (x-a)))/(n!) (x-a)^n = 0
+$
 が成り立つならば、
-$ f(x) = sum_(n = 0)^oo frac(f^((n))(a), n !)(x-a)^n = 1+f' (a)(x-a)+frac(f'' (a), 2)(x-a)^2+frac(f^((3))(a), 3 !)(x-a)^3+dots quad (abs(x) < r) $
+$
+f(x)
+= sum_(n = 0)^oo (f^((n))(a))/(n!) (x-a)^n
+= 1+f'(a)(x-a)+(f''(a))/(2) (x-a)^2+(f^((3))(a))/(3!) (x-a)^3+dots quad (abs(x-a) < r)
+$ <e_taylor_exp>
 が成り立つ。
-
 ]
-このときの#link(<e_taylor_exp>)[\[e\_taylor\_exp\]_のことを関数$f(x)$の点$x = a$での_テーラー展開_という。
+
+このときの@e_taylor_exp のことを関数$f(x)$の点$x = a$での_テーラー展開_という。
 また、$a = 0$のときのテーラー展開のことを_マクローリン展開_という。
 
 次の一覧は各種関数のテーラー展開（マクローリン展開）をまとめたものである。
 
-#block[
+#proposition([種々の関数のテーラー展開])[
 $x$を実数として以下が成立する。
-$ frac(1, 1-x) = sum_(n = 0)^oo x^n = 1+x+x^2+x^3+dots quad (abs(x) < 1) . $
-$ exp (x) = e^x = sum_(n = 0)^oo frac(1, n !) x^n = 1+x+1/2 x^2+frac(1, 3 !) x^3+dots . $
-$ log (1+x) = sum_(n = 1)^oo (-1)^(n-1)/n x^n = x-1/2 x^2+1/3 x^3-dots quad (abs(x) < 1) . $
-$ sin x = sum_(k = 0)^oo frac((-1)^k, (2 k+1) !) x^(2 k+1) = x-1/6 x^3+frac(1, 5 !) x^5-dots, $
-$ cos x = sum_(k = 0)^oo frac((-1)^k, (2 k) !) x^(2 k) = 1-1/2 x^2+frac(1, 4 !) x^4-dots . $
-$ sinh x = sum_(k = 0)^oo frac(1, (2 k+1) !) x^(2 k+1) = x+1/6 x^3+frac(1, 5 !) x^5+dots, $
-$ cosh x = sum_(k = 0)^oo frac(1, (2 k) !) x^(2 k) = 1+1/2 x^2+frac(1, 4 !) x^4+dots . $
-
+$
+1/(1-x) = sum_(n = 0)^oo x^n = 1+x+x^2+x^3+dots quad (abs(x) < 1).
+$ <e_geom_power>
+$
+exp(x) = e^x = sum_(n = 0)^oo 1/(n!) x^n = 1+x+1/2 x^2+1/6 x^3+dots.
+$ <e_exp_power>
+$
+log(1+x) = sum_(n = 1)^oo (-1)^(n-1)/n x^n = x-1/2 x^2+1/3 x^3-dots quad (abs(x) < 1).
+$ <e_log_power>
+$
+sin x = sum_(k = 0)^oo ((-1)^k)/((2 k+1)!) x^(2 k+1) = x-1/6 x^3+1/120 x^5-dots,
+$
+$
+cos x = sum_(k = 0)^oo ((-1)^k)/((2 k)!) x^(2 k) = 1-1/2 x^2+1/24 x^4-dots.
+$
+$
+sinh x = sum_(k = 0)^oo 1/((2 k+1)!) x^(2 k+1) = x+1/6 x^3+1/120 x^5+dots,
+$
+$
+cosh x = sum_(k = 0)^oo 1/((2 k)!) x^(2 k) = 1+1/2 x^2+1/24 x^4+dots.
+$
 ]
+
 一般にテーラーの定理の剰余項が$0$に収束することを示すのは大変なので、既知のべき級数の項別微分、項別積分を利用して様々なテーラー展開を求めるとよい。
 
-#block[
-#link(<e_geom_power>)[\[e\_geom\_power\]_は等比級数からも導出することができる。
+#remark[
+@e_geom_power は等比級数からも導出することができる。
 さらにそれを項別積分すると、
-$ integral_0^x frac(1, 1-x) dd(x) =-log (1-x) = sum_(n = 1)^oo 1/n x^n = x+1/2 x^2+1/3 x^3+dots quad (abs(x) < 1) . $
-よって、$log (1+x)$の式#link(<e_log_power>)[\[e\_log\_power\]_を得ることができる。
-
+$
+integral_0^x 1/(1-x) dd(x)
+= -log(1-x)
+= sum_(n = 1)^oo 1/n x^n = x+1/2 x^2+1/3 x^3+dots quad (abs(x) < 1).
+$
+よって、$log(1+x)$の式@e_log_power を得ることができる。
 ]
-#block[
-関数$e^(x^2)$のテーラー展開は#link(<e_exp_power>)[\[e\_exp\_power\]_の$x$に$x^2$を代入することで
-$ e^(x^2) = sum_(n = 0)^oo frac(1, n !) x^(2 n) = 1+x^2+1/2 x^4+frac(1, 3 !) x^6+dots $
-と求めることができる。 なお、このべき級数の収束半径は$oo$である。
 
+#example[
+関数$e^(x^2)$のテーラー展開は@e_exp_power の$x$に$x^2$を代入することで
+$
+e^(x^2) = sum_(n = 0)^oo 1/(n!) x^(2 n) = 1+x^2+1/2 x^4+1/6 x^6+dots
+$
+と求めることができる。
+なお、このべき級数の収束半径は$oo$である。
 ]
