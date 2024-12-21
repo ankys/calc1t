@@ -9,7 +9,7 @@
 			*#page-num*#h(1fr)#hydra(1)
 		]
 	}
-	set page(paper: "a4", margin: (left: 15mm, right: 15mm, top: 30mm, bottom: 20mm), numbering: "1", header: page-header, footer: none)
+	set page(paper: "a4", margin: (left: 15mm, right: 15mm, top: 30mm, bottom: 20mm), numbering: "1")
 	set text(size: 10pt)
 
 	set text(lang: "ja")
@@ -20,6 +20,7 @@
 	show emph: set text(font: gothic, weight: "bold")
 	show strong: set text(font: gothic, weight: "bold")
 
+	set page(header: page-header, footer: none)
 	set heading(numbering: "第1章")
 	show heading.where(level: 2): set heading(numbering: "1.1")
 
