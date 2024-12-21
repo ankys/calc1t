@@ -36,3 +36,5 @@
 #include "08_series.typ"
 #include "09_functions2.typ"
 #include "10_equidist.typ"
+
+#bibliography("99_ref.yml")
