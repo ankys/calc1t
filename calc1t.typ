@@ -3,7 +3,7 @@
 #let author = [中安淳]
 #let date = datetime.today()
 
-#import "deps/template.typ": jbook, maketitle
+#import "deps/jbook.typ": jbook, maketitle
 #show: jbook.with()
 
 #import "deps/autoeqnum.typ": autoeqnum
