@@ -35,7 +35,7 @@
 	}
 	show heading.where(level: 2): it => {
 		strong(it)
-		par(text(size: 0pt, ""))
+		// par(text(size: 0pt, ""))
 	}
 
 	show outline: set heading(numbering: none)
@@ -43,6 +43,7 @@
 	// show outline.entry.where(level: 1): set outline.entry(fill: none)
 
 	set par(first-line-indent: 1em)
+	// set par(hanging-indent: -1em)
 	doc
 }
 

@@ -15,7 +15,7 @@
 	if args != none and args.pos().len() > 0 {
 		name = args.pos().first()
 	}
-	return [
-		【#name】#body #h(1fr)【証明終わり】
+	return block[
+		【#name】#body#h(1fr)【証明終わり】
 	]
 }
