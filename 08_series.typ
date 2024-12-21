@@ -131,7 +131,7 @@ $
 級数$sum a_n$が絶対収束するならばそれは収束している。
 ]
 
-#block[
+#proof[
 $N in NN$に対して、
 $
 A_N = sum_(n <= N) a_n,
@@ -246,7 +246,7 @@ $
 が（絶対）収束することは同値である。
 ]
 
-#block[
+#proof[
 $\[0, +oo\)$上の関数$overline(g)(x)$と$underline(g)(x)$を
 $
 overline(f)(x) = f(floor(x)),
