@@ -78,7 +78,7 @@ sum_(n = 1)^N f(t_n)(p_n-p_(n-1))
 &= 1/N (b-a) sum_(n = 1)^N f(a+n/N (b-a))
 = 1/N (b-a) sum_(n = 1)^N k(a+n/N (b-a))+m \
 // = 1/N (b-a) sum_(n = 1)^N (k a+m+1/N k(b-a)n) \
-= 1/N (b-a)((k a+m)N+1/N k(b-a) 1/2 N(N+1))
+&= 1/N (b-a)((k a+m)N+1/N k(b-a) 1/2 N(N+1))
 = (b-a)((k a+m)+1/2 k(1+N^(-1))(b-a))
 $
 となり、$N -> oo$つまり分割を細かくすることを考えると、このリーマン和は
@@ -1057,8 +1057,7 @@ integral_1^oo x^a dd(x)
   +oo & (a >= -1)",",
   1/(-a-1) & (a < -1)","
 )
-$
-$
+quad
 integral_0^1 x^a dd(x)
 = cases(
   1/(a+1) & (a > -1)",",
