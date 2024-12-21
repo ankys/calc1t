@@ -27,10 +27,11 @@
 		pagebreak(weak: true, to: "odd")
 		v(5em)
 		if (it.numbering != none) {
-			text(1.5em)[*#numbering(it.numbering, counter(heading).get().first())*]
+			let number = numbering(it.numbering, counter(heading).get().first())
+			block(text(1.5em)[*#number*])
 		}
 		v(3em, weak: true)
-		text(2em)[*#it.body*]
+		block(text(2em)[*#it.body*])
 		v(5em, weak: true)
 	}
 	show heading.where(level: 2): it => {
