@@ -39,13 +39,8 @@
 	}
 
 	show outline: set heading(numbering: none)
-	show outline.entry.where(level: 1): it => {
-		[#v(0.5em)]
-		[*#box(width: 5em)[#it.body.children.at(0)]#it.element.body#h(1fr)#box(width: 2em)[#align(right)[#it.page]]*]
-	}
-	show outline.entry.where(level: 2): it => {
-		[#box(width: 5em)[#h(1em)#it.body.children.at(0)]#it.element.body#box(width: 1fr)[#repeat([#h(1em).])]#box(width: 2em)[#align(right)[#it.page]]]
-	}
+	show outline.entry.where(level: 1): strong
+	// show outline.entry.where(level: 1): set outline.entry(fill: none)
 
 	set par(first-line-indent: 1em)
 	doc
