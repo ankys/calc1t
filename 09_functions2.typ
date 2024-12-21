@@ -1,6 +1,11 @@
 
 = 種々の関数２
 
+#import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
+#show: thmrules.with()
+
+#import "@preview/physica:0.9.3": dd, eval
+
 == 複素指数関数
 
 指数関数はテーラー展開@e_exp_power が知られているが、
@@ -53,7 +58,7 @@ sum_(n = M)^N e^(n x)
 )
 $
 $
-sum_(n = M)^N sin n x = TODO
+sum_(n = M)^N sin n x =
 $
 ]
 
@@ -62,7 +67,7 @@ $
 正確には実数全体で定義された関数
 $
 sinc x = cases(
-	(sin x)/x & (x ne 0)",",
+	(sin x)/x & (x eq.not 0)",",
 	1 & (x = 0)
 )
 $
@@ -90,7 +95,7 @@ $
 となる。
 ここで、
 $
-abs((cos x)/x^2) le 1/(x^2),
+abs((cos x)/x^2) <= 1/(x^2),
 quad integral_1^oo 1/(x^2) dd(x) < oo
 $
 なので、広義積分$integral_1^oo (cos x)/(x^2) dd(x)$は収束し、広義積分$integral_0^oo sinc x dd(x)$も収束が言える。

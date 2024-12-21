@@ -34,3 +34,4 @@
 #include "06_differential.typ"
 #include "07_integral.typ"
 #include "08_series.typ"
+#include "09_functions2.typ"
