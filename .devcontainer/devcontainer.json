@@ -1,3 +1,5 @@
 {
+	"name": "Debian",
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"postCreateCommand": "sudo apt update && sudo apt install -y fonts-noto-cjk"
 }
