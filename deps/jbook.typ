@@ -46,6 +46,9 @@
 
 	set par(first-line-indent: 1em)
 	// set par(hanging-indent: -1em)
+
+	show math.equation.where(block: true): block.with(width: 100%)
+
 	doc
 }
 
