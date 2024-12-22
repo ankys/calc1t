@@ -78,8 +78,8 @@ sum_(n = 1)^N f(t_n)(p_n-p_(n-1))
 &= 1/N (b-a) sum_(n = 1)^N f(a+n/N (b-a))
 = 1/N (b-a) sum_(n = 1)^N k(a+n/N (b-a))+m \
 // = 1/N (b-a) sum_(n = 1)^N (k a+m+1/N k(b-a)n) \
-&= 1/N (b-a)((k a+m)N+1/N k(b-a) 1/2 N(N+1))
-= (b-a)((k a+m)+1/2 k(1+N^(-1))(b-a))
+&= 1/N (b-a)((k a+m)N+1/N k(b-a) 1/2 N(N+1)) \
+&= (b-a)((k a+m)+1/2 k(1+N^(-1))(b-a))
 $
 となり、$N -> oo$つまり分割を細かくすることを考えると、このリーマン和は
 $
@@ -788,9 +788,9 @@ $
 この積分は部分積分を使うことにより$n >= 2$に対して、
 $
 integral sin^n x dd(x)
-= integral (-cos x)' sin^(n-1) x dd(x)
-= -cos x sin^(n-1) x+integral (n-1) cos^2 x sin^(n-2) x cos x dd(x)
-= -cos x sin^(n-1) x+(n-1) integral sin^(n-2) x dd(x)-(n-1) integral sin^n x dd(x)
+&= integral (-cos x)' sin^(n-1) x dd(x)
+= -cos x sin^(n-1) x+integral (n-1) cos^2 x sin^(n-2) x cos x dd(x) \
+&= -cos x sin^(n-1) x+(n-1) integral sin^(n-2) x dd(x)-(n-1) integral sin^n x dd(x)
 $
 となるので、積分の漸化式
 $

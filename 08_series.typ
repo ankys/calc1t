@@ -511,8 +511,8 @@ $
 まずは$abs(x-a) < r$, $abs(y-a) < r$を満たす$x$, $y$と自然数$N$に対して、
 $
 abs(f(x)-f(y))
-<= abs(f(x)-f_N (x))+abs(f_N (x)-f_N (y))+abs(f_N (y)-f(y))
-<= sum_(n = N+1)^oo abs(a_n) abs(x-a)^n+abs(f_N (x)-f_N (y))+sum_(n = N+1)^oo abs(a_n) abs(y-a)^n
+&<= abs(f(x)-f_N (x))+abs(f_N (x)-f_N (y))+abs(f_N (y)-f(y)) \
+&<= sum_(n = N+1)^oo abs(a_n) abs(x-a)^n+abs(f_N (x)-f_N (y))+sum_(n = N+1)^oo abs(a_n) abs(y-a)^n
 $
 に注意する。
 ここで、$0 < r_0 < r$に対して、級数$sum abs(a_n) r_0^n$は収束するので、$abs(x-a), abs(y-a) <= r_0$のとき
@@ -545,10 +545,10 @@ $
 $N = 0, 1, 2, 3, dots$に対して、
 $
 abs(integral_a^b f(x) dd(x)-integral_a^b f_N (x) dd(x))
-<= abs(integral_a^b abs(f(x)-f_N(x)) dd(x))
+&<= abs(integral_a^b abs(f(x)-f_N(x)) dd(x))
 <= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(x-a)^n dd(x))
-<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(b-a)^n dd(x))
-<= sum_(n = N+1)^oo abs(a_n) abs(b-a)^(n+1).
+<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(b-a)^n dd(x)) \
+&<= sum_(n = N+1)^oo abs(a_n) abs(b-a)^(n+1).
 $
 よって$N -> oo$で、$integral_a^b f_N (x) dd(x) -> integral_a^b f(x) dd(x)$であり、
 $

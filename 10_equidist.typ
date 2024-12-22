@@ -34,9 +34,9 @@ $
 が成り立つことと同値である。
 実際、こちらの方が強い条件になっていて、逆については任意の$epsilon > 0$に対して、ある$k = 1, 2, 3, dots$が存在して任意の自然数$n >= k$に対して$abs(a_n-a) < epsilon$, $abs(b_n-b) < epsilon$が成り立つことから、$N = 1, 2, 3, dots$に対して
 $
-abs(\#{ n <= N mid(|) a_n <= x_n < b_n }-\#{ n <= N mid(|) a <= x_n < b })
-<= k+\#{ k < n <= N mid(|) a-epsilon <= x_n < a+epsilon or b-epsilon <= x_n < b+epsilon }
-<= k+\#{ n <= N mid(|) a-epsilon <= x_n < a+epsilon }+\#{ n <= N mid(|) b-epsilon <= x_n < b+epsilon }.
+&abs(\#{ n <= N mid(|) a_n <= x_n < b_n }-\#{ n <= N mid(|) a <= x_n < b }) \
+&quad <= k+\#{ k < n <= N mid(|) a-epsilon <= x_n < a+epsilon or b-epsilon <= x_n < b+epsilon } \
+&quad <= k+\#{ n <= N mid(|) a-epsilon <= x_n < a+epsilon }+\#{ n <= N mid(|) b-epsilon <= x_n < b+epsilon }.
 $
 よって、$N$で割って$N -> oo$とすると右辺は$4 epsilon$に収束する。
 $epsilon$は任意なので、逆がいえた。
@@ -134,8 +134,8 @@ $
 よって、
 $
 sum_(n <= N) {alpha n+beta}-sum_(n <= N) {alpha n+beta+a}
-= sum_(n <= k) {alpha n+beta}+sum_(k < n <= N) {alpha n+beta}-sum_(n <= N-k) {alpha n+beta+a}-sum_(N-k < n <= N) {alpha n+beta+a}
-<= k+(N-k)epsilon.
+&= sum_(n <= k) {alpha n+beta}+sum_(k < n <= N) {alpha n+beta}-sum_(n <= N-k) {alpha n+beta+a}-sum_(N-k < n <= N) {alpha n+beta+a} \
+&<= k+(N-k)epsilon.
 $
 したがって、
 $
@@ -175,8 +175,8 @@ $
 以上のことから、
 $
 abs(sum_(n <= N) {x_n+a}-sum_(n <= N) {y_n+a})
-<= sum_(n <= N) c_n+sum_({y_n+a} < c_n or {y_n+a} >= 1-c_n) abs({x_n+a}-{y_n+a})
-<= sum_(n <= N) c_n+\#{ n <= N mid(|) {y_n+a} < c_n }+\#{ n <= N mid(|) {y_n+a} >= 1-c_n }
+&<= sum_(n <= N) c_n+sum_({y_n+a} < c_n or {y_n+a} >= 1-c_n) abs({x_n+a}-{y_n+a}) \
+&<= sum_(n <= N) c_n+\#{ n <= N mid(|) {y_n+a} < c_n }+\#{ n <= N mid(|) {y_n+a} >= 1-c_n }
 $
 となり、$N$で割って$N -> oo$とすると、$lim_(n -> oo) c_n = 0$より$lim_(N -> oo) 1/N sum_(n <= N) c_n = 0$であること（@t_average_conv）と$(y_n+a)$が一様分布することから右辺は$0$に収束する。
 ここから$(x_n)$は$(y_n)$と同様に一様分布することがわかる。

@@ -277,10 +277,10 @@ $
 実数$x$と$n = 1, 2, 3, dots$に対してべき関数$x^n$は$RR$で微分可能で、
 $
 dv(, x)(x^n)
-= lim_(h -> 0) ((x+h)^n-x^n)/h
-= lim_(h -> 0) (binom(n, 0)x^n+binom(n, 1)h x^(n-1)+binom(n, 2)h^2 x^(n-2)+dots+binom(n, n)h^n-x^n)/h
-= lim_(h -> 0) (n x^(n-1)+binom(n, 2)h x^(n-2)+dots+binom(n, n)h^(n-1))
-= n x^(n-1)
+&= lim_(h -> 0) ((x+h)^n-x^n)/h
+= lim_(h -> 0) (binom(n, 0)x^n+binom(n, 1)h x^(n-1)+binom(n, 2)h^2 x^(n-2)+dots+binom(n, n)h^n-x^n)/h \
+&= lim_(h -> 0) (n x^(n-1)+binom(n, 2)h x^(n-2)+dots+binom(n, n)h^(n-1)) \
+&= n x^(n-1)
 $
 である。
 
