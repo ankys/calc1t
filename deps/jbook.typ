@@ -14,8 +14,8 @@
 
 	set text(lang: "ja")
 
-	let mincho = ("Libertinus Serif", "Noto Serif CJK JP")
-	let gothic = ("Libertinus Serif", "Noto Sans CJK JP")
+	let mincho = ("Libertinus Serif", "Noto Serif CJK JP", "YuMincho")
+	let gothic = ("Libertinus Serif", "Noto Sans CJK JP", "YuGothic")
 	set text(font: mincho)
 	show emph: set text(font: gothic, weight: "bold")
 	show strong: set text(font: gothic, weight: "bold")
