@@ -1,7 +1,8 @@
 
 #let title = [微分積分学１]
 #let author = [中安淳]
-#let date = datetime.today()
+// #let date = datetime.today()
+#let date = [2024年12月22日]
 
 #import "deps/jbook.typ": jbook, maketitle
 #show: jbook.with()
