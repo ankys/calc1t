@@ -17,7 +17,7 @@
 	numbering("(1.1)", ..count, it)
 })
 
-// #import "deps/jbook.typ": output_outline
+// #import "deps/outputtools.typ": output_outline
 // #output_outline()
 
 #maketitle(
