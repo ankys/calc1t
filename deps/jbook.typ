@@ -1,7 +1,7 @@
 
 #import "@preview/hydra:0.5.1": hydra
 #let jbook(doc) = {
-	let page-header = context{
+	let page-header = context {
 		let page-num = here().page()
 		if calc.odd(page-num) [
 			#hydra(2)#h(1fr)*#page-num*
@@ -14,11 +14,12 @@
 
 	set text(lang: "ja")
 
-	let mincho = ("Libertinus Serif", "Noto Serif CJK JP", "YuMincho")
-	let gothic = ("Libertinus Serif", "Noto Sans CJK JP", "YuGothic")
-	set text(font: mincho)
-	show emph: set text(font: gothic, weight: "bold")
-	show strong: set text(font: gothic, weight: "bold")
+	let mincho = ("Noto Serif CJK JP")
+	let gothic = ("Noto Sans CJK JP")
+	let regex-ja = "[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}\uFF01-\uFF9F]" // 漢字、ひらがな、カタカナ、全角記号
+	show regex(regex-ja): set text(font: mincho)
+	// show emph: set text(font: gothic, weight: "bold")
+	// show strong: set text(font: gothic, weight: "bold")
 
 	set page(header: page-header, footer: none)
 	set heading(numbering: "第1章")
