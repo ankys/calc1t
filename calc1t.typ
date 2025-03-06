@@ -1,11 +1,19 @@
 
 #let title = [微分積分学１]
-#let author = [中安淳]
+#let author = "中安淳"
 // #let date = datetime.today()
 #let date = [2024年12月22日]
 
-#import "deps/jbook.typ": jbook, maketitle
-#show: jbook.with()
+// #import "deps/jbook.typ": jbook, maketitle
+// #show: jbook.with()
+#import "@preview/js:0.1.1": *
+#show: js.with(
+	paper: "a4",
+	book: true,
+	lang: "ja",
+	seriffont-cjk: "Noto Serif CJK JP",
+	sansfont-cjk: "Noto Sans CJK JP",
+)
 
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
@@ -22,7 +30,7 @@
 
 #maketitle(
 	title: title,
-	author: author,
+	authors: author,
 	date: date,
 )
 
