@@ -180,7 +180,7 @@ $A$, $B$を集合とする。
 #definition([集合の演算])[
 $X$を集合として、$A$, $B$をその部分集合とする。
 
-- 集合${ x in X mid(|) x in A and x in B }$を$A$と$B$の_共通部分_といい$A sect B$と表す。
+- 集合${ x in X mid(|) x in A and x in B }$を$A$と$B$の_共通部分_といい$A inter B$と表す。
 - 集合${ x in X mid(|) x in A or x in B }$を$A$と$B$の_和集合_といい$A union B$と表す。
 - 集合${ x in X mid(|) x in A and x in.not B }$を$A$と$B$の_差集合_といい$A \\ B$と表す。
 - 特に集合${ x in X mid(|) x in.not A } = X\\A$を$A$の_補集合_といい$A^c$と表す。
@@ -189,11 +189,11 @@ $X$を集合として、$A$, $B$をその部分集合とする。
 
 命題の演算の性質に対応して集合の演算には次の性質がある。
 
-+ （結合法則）任意の集合$A$, $B$, $C$に対して、$(A sect B) sect C = A sect (B sect C)$と$(A union B) union C = A union (B union C)$が成り立つ。
-+ （交換法則）任意の集合$A$, $B$に対して、$A sect B = B sect A$と$A union B = B union A$が成り立つ。
-+ （分配法則）任意の集合$A$, $B$, $C$に対して、$A sect (B union C) = (A sect B) union (A sect C)$と$A union (B sect C) = (A union B) sect (A union C)$が成り立つ。
++ （結合法則）任意の集合$A$, $B$, $C$に対して、$(A inter B) inter C = A inter (B inter C)$と$(A union B) union C = A union (B union C)$が成り立つ。
++ （交換法則）任意の集合$A$, $B$に対して、$A inter B = B inter A$と$A union B = B union A$が成り立つ。
++ （分配法則）任意の集合$A$, $B$, $C$に対して、$A inter (B union C) = (A inter B) union (A inter C)$と$A union (B inter C) = (A union B) inter (A union C)$が成り立つ。
 + 任意の集合$A$に対して、$(A^c)^c = A$が成り立つ。
-+ （ド・モルガンの法則）任意の集合$A$, $B$に対して、$(A sect B)^c = A^c union B^c$と$(A union B)^c = A^c sect B^c$が成り立つ。
++ （ド・モルガンの法則）任意の集合$A$, $B$に対して、$(A inter B)^c = A^c union B^c$と$(A union B)^c = A^c inter B^c$が成り立つ。
 
 == 写像の像と逆像
 
@@ -218,9 +218,9 @@ $f^(-1) ({-1}) = nothing$。
 
 + 任意の$X$の部分集合$A_1 , A_2$に対して、$A_1 subset A_2$ならば$F(A_1) subset F(A_2)$が成り立つ。
 + 任意の$Y$の部分集合$B_1 , B_2$に対して、$B_1 subset B_2$ならば$F^(-1) (B_1) subset F^(-1) (B_2)$が成り立つ。
-+ 任意の$X$の部分集合$A_1 , A_2$に対して、$F(A_1 sect A_2) subset F(A_1) sect F(A_2)$が成り立つ。
++ 任意の$X$の部分集合$A_1 , A_2$に対して、$F(A_1 inter A_2) subset F(A_1) inter F(A_2)$が成り立つ。
 + 任意の$X$の部分集合$A_1 , A_2$に対して、$F(A_1 union A_2) = F(A_1) union F(A_2)$が成り立つ。
-+ 任意の$Y$の部分集合$B_1 , B_2$に対して、$F^(-1) (B_1 sect B_2) = F(B_1) sect F(B_2)$が成り立つ。
++ 任意の$Y$の部分集合$B_1 , B_2$に対して、$F^(-1) (B_1 inter B_2) = F(B_1) inter F(B_2)$が成り立つ。
 + 任意の$Y$の部分集合$B_1 , B_2$に対して、$F^(-1) (B_1 union B_2) = F(B_1) union F(B_2)$が成り立つ。
 + 任意の$X$の部分集合$A$に対して、$F^(-1) (F (A)) supset A$が成り立つ。
 + 任意の$Y$の部分集合$B$に対して、$F (F^(-1) (B)) subset B$が成り立つ。
