@@ -11,7 +11,9 @@
 	paper: "a4",
 	book: true,
 	lang: "ja",
+	seriffont: "New Computer Modern",
 	seriffont-cjk: "Noto Serif CJK JP",
+	// sansfont: "Noto Sans CJK JP",
 	sansfont-cjk: "Noto Sans CJK JP",
 )
 
