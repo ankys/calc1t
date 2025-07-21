@@ -16,6 +16,7 @@
 	// sansfont: "Noto Sans CJK JP",
 	sansfont-cjk: "Noto Sans CJK JP",
 )
+#set par(first-line-indent: 1em) // why
 
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
