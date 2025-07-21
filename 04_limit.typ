@@ -271,7 +271,7 @@ $c$を定数とする。
   $
   abs(a_n b_n-a b) = abs(a_n (b_n-b)+(a_n-a) b) <= abs(a_n)abs(b_n-b|)+abs(b) abs(a_n-a).
   $
-  ここで、$(a_n)$は収束するので命題@t_conv_bdd より有界であるからある実数$M$が存在してすべての自然数$n$に対して$abs(a_n-a) <= M$とできることから、
+  ここで、$(a_n)$は収束するので@t_conv_bdd より有界であるからある実数$M$が存在してすべての自然数$n$に対して$abs(a_n-a) <= M$とできることから、
   $
   abs(a_n b_n-a b) <= M abs(b_n-b)+abs(b) abs(a_n-a).
   $
