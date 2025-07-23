@@ -216,7 +216,7 @@ $
 lim_(x -> 0) (log(1+x))/x = 1,
 quad lim_(x -> 0) (e^x-1)/x = 1.
 $
-]
+] <t_limit_logexp>
 
 #proof[
 一つ目の式は@t_limit_napier の三つ目の極限で自然対数を取れば直ちに得られる。
