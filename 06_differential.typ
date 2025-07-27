@@ -161,9 +161,10 @@ $f$を実数の集合$X$上で定義された実数値関数として、$a$を$X
   $y = f(x)$の点$x = a$での右微分係数を
   $
   f'^+ (a),
-  quad dv(f, x^+)(a)
+  quad dv(f, x^+)(a),
   quad eval(dv(f, x^+))_(x = a),
   quad eval(dv(, x^+)(f(x)))_(x = a),
+  quad eval(y'^+)_a,
   quad eval(dv(y, x^+))_(x = a)
   $
   などで表す。
@@ -179,9 +180,10 @@ $f$を実数の集合$X$上で定義された実数値関数として、$a$を$X
   $y = f(x)$の点$x = a$での左微分係数を
   $
   f'^- (a),
-  quad dv(f, x^-)(a)
+  quad dv(f, x^-)(a),
   quad eval(dv(f, x^-))_(x = a),
   quad eval(dv(, x^-)(f(x)))_(x = a),
+  quad eval(y'^-)_a,
   quad eval(dv(y, x^-))_(x = a)
   $
   などで表す。
@@ -981,8 +983,8 @@ $f$を開集合$X$上で定義された実数値関数であり微分導関数$f
 $y = f(x)$の二階微分導関数を
 $
 f'',
-quad dv(f, x, 2)
-quad dv(, x, 2) (f(x))
+quad dv(f, x, 2),
+quad dv(, x, 2) (f(x)),
 quad y'',
 quad dv(y, x, 2)
 $
