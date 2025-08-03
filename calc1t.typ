@@ -17,6 +17,7 @@
 	sansfont-cjk: "Noto Sans CJK JP",
 )
 #set par(first-line-indent: 1em) // why
+#show math.equation.where(block: true): block.with(width: 100%)
 
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
