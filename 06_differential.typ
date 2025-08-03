@@ -1290,11 +1290,11 @@ $
 で近似できたとする（$a_0, a_1, a_2, a_3, dots, a_N$は定数）。
 このとき、$n = 0, 1, 2, 3, dots, N$に対して
 $
-P_N ' (x) &= a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots+N a_N (x-a)^(N-1), \
-P_N '' (x) &= 2 a_2+3 dot 2 a_3 (x-a)+dots+N(N-1) a_N (x-a)^(N-2), \
-P_N ''' (x) &= 3 dot 2 a_3+dots+N(N-1)(N-2) a_N (x-a)^(N-3), \
-P_N ^((n)) (x) &= n! a_n+dots+N(N-1)(N-2)dots(N-n+1) a_N (x-a)^(N-n), \
-P_N ^((N)) (x) &= N! a_N
+P_N^' (x) &= a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots+N a_N (x-a)^(N-1), \
+P_N^'' (x) &= 2 a_2+3 dot 2 a_3 (x-a)+dots+N(N-1) a_N (x-a)^(N-2), \
+P_N^''' (x) &= 3 dot 2 a_3+dots+N(N-1)(N-2) a_N (x-a)^(N-3), \
+P_N^((n)) (x) &= n! a_n+dots+N(N-1)(N-2)dots(N-n+1) a_N (x-a)^(N-n), \
+P_N^((N)) (x) &= N! a_N
 $
 なので、
 $f(x)$と$P_N (x)$を$n$回微分して$x = a$を考えることで、$f^((n)) (a)$は$n! a_n$と等しい、つまり$a_n = frac(f^((n)) (a), n!)$と推定される。
@@ -1322,7 +1322,7 @@ $
 $n = 0, 1, 2, 3, dots, N$に対して$f^((n)) (a) = P_N ^((n)) (a)$に注意してロピタルの定理を$N-1$回用いて最後に微分の定義から
 $
 lim_(x -> a) (f(x)-P_N (x))/(x-a)^N
-&= lim_(x -> a) (f' (x)-P_N ' (x))/(N (x-a)^(N-1))
+&= lim_(x -> a) (f' (x)-P_N^' (x))/(N (x-a)^(N-1))
 = dots
 = lim_(x -> a) (f^((N-1)) (x)-P_N ^((N-1)) (x))/(N! (x-a)) \
 &= 1/(N!) lim_(x -> a) (f^((N-1)) (x)-f^((N-1)) (a)-f^((N)) (a) (x-a))/(x-a)
