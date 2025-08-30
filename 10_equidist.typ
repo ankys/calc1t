@@ -103,8 +103,8 @@ $
 実数$b$に対して、
 $
 1/N sum_(n <= N) {x_n-b}
-= 1/N sum_{{x_n} >= b}({x_n}-{b})+1/N sum_{{x_n} < b}({x_n}-{b}+1)
-= 1/N sum_(n <= N) {x_n}+1/N \#{ n <= N mid(|) x_n < b }-b.
+&= 1/N sum_({x_n} >= b) ({x_n}-{b})+1/N sum_({x_n} < b) ({x_n}-{b}+1) \
+&= 1/N sum_(n <= N) {x_n}+1/N \#{ n <= N mid(|) x_n < b }-b.
 $
 ここから補題が成立することがわかる。
 ]

@@ -975,7 +975,7 @@ $p = 2$, $q = 2$の場合のヘルダーの不等式はコーシー・シュワ�
 $p = 1$に対応する場合は$q = oo$となり、そのままでは考えられないが、
 $
 integral_a^b abs(f(x)g(x)) dd(x)
-<= (integral_a^b abs(f(x)) dd(x)) max_{x in [a, b]} abs(g(x))
+<= (integral_a^b abs(f(x)) dd(x)) max_(x in [a, b]) abs(g(x))
 $
 が対応する不等式と考えることができる。
 ]
