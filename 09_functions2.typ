@@ -316,8 +316,17 @@ $
 
 次に$f(x) = B_N (x)$のときに$g(t)$がどうなるかを考える。
 $
-integral_0^1 B_N (x+t) dd(x)
+integral_0^1 B_N (x+t) dd(x) = g(t)
 $
+とおくと、微分係数$g^((n)) (0)$は
+$
+g^((n)) (0)
+= integral_0^1 B_N^((n)) (x) dd(x)
+= integral_0^1 (N!)/((N-n)!) B_(N-n) (x) dd(x)
+= cases(N! &quad (n = N)",", 0 &quad (n = 0, dots, N-1)".")
+$
+を満たす。
+したがって、$g(t) = t^N$である。
 ]
 
 == ガンマ関数
