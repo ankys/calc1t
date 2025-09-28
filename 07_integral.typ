@@ -94,7 +94,7 @@ $
 例えば、
 $
 integral_a^b f(x) dd(x)
-= lim_(N -> oo) 1/N (b-a) sum_(n = 1)^N f(a+n/N (b-a))
+= lim_(N -> oo) (b-a)/N sum_(n = 1)^N f(a+n (b-a)/N)
 $
 とする計算法である。
 
@@ -1252,7 +1252,13 @@ $f(x)$を有界閉区間$[a, b]$上のリーマン積分可能な関数とする
 このとき、
 $
 integral_a^b f(x) dd(x)
-= lim_(N -> oo) 1/N (b-a) sum_(n = 1)^N f(a+n/N (b-a))
+= lim_(N -> oo) (b-a)/N sum_(n = 1)^N f(a+n (b-a)/N)
+$
+が成り立つ。
+特に$[a, b] = [0, 1]$の時、
+$
+integral_0^1 f(x) dd(x)
+= lim_(N -> oo) 1/N sum_(n = 1)^N f(n/N)
 $
 が成り立つ。
 ]
@@ -1260,11 +1266,11 @@ $
 #proof[
 右辺は特殊な分割
 $
-P_N = { a, a+1/N (b-a), a+2/N (b-a), a+3/N (b-a), dots, b}
+P_N = { a, a+1 (b-a)/N, a+2 (b-a)/N, a+3 (b-a)/N, dots, a+(N-1) (b-a)/N, b}
 $
 に対するリーマン和の極限なので、
 $
-underline(S)(f, P_N) <= 1/N (b-a) sum_(n = 1)^N f(a+n/N (b-a)) <= overline(S)(f, P_N)
+underline(S)(f, P_N) <= (b-a)/N sum_(n = 1)^N f(a+n (b-a)/N) <= overline(S)(f, P_N)
 $
 より、$N -> oo$の極限を取ればリーマン積分の定義から結論が得られる。
 ]
