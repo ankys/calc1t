@@ -4,16 +4,14 @@
 // #let date = datetime.today()
 #let date = [2024年12月22日]
 
-// #import "deps/jbook.typ": jbook, maketitle
-// #show: jbook.with()
-#import "@preview/js:0.1.1": *
+#import "@preview/js:0.1.3": *
 #show: js.with(
 	paper: "a4",
 	book: true,
 	lang: "ja",
 	seriffont: "New Computer Modern",
 	seriffont-cjk: "Noto Serif CJK JP",
-	// sansfont: "Noto Sans CJK JP",
+	sansfont: "Source Sans 3",
 	sansfont-cjk: "Noto Sans CJK JP",
 )
 #set par(first-line-indent: 1em) // why
