@@ -2,8 +2,7 @@
 = 一様分布論
 
 #import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
-
-#import "@preview/physica:0.9.3": dd
+#import "deps/physics.typ": dd
 
 == 一様分布定理
 

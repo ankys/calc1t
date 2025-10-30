@@ -2,8 +2,7 @@
 = 微分
 
 #import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
-
-#import "@preview/physica:0.9.3": dv, eval
+#import "deps/physics.typ": dv, evaluated
 #let arsinh = $op("arsinh")$
 #let arcosh = $op("arcosh")$
 #let artanh = $op("artanh")$
@@ -27,10 +26,10 @@ $y = f(x)$の点$x = a$での微分係数を
 $
 f'(a),
 quad dv(f, x)(a),
-quad eval(dv(f, x))_(x = a),
-quad eval(dv(,x)(f(x)))_(x = a),
-quad eval(y')_a,
-quad eval(dv(y, x))_(x = a)
+quad evaluated(dv(f, x))_(x = a),
+quad evaluated(dv(,x)(f(x)))_(x = a),
+quad evaluated(y')_a,
+quad evaluated(dv(y, x))_(x = a)
 $
 などで表す。 つまり、$h = x-a$として
 $
@@ -64,8 +63,8 @@ $ <e_tangent>
 関数$f(x)$, $g(x)$が点$x = a$で微分可能として、$c$を実数の定数とする。
 この時、和$f(x)+g(x)$と定数倍$c f(x)$も$x = a$で微分可能で、
 $
-eval(dv(, x)(f(x)+g(x)))_(x = a) = f'(a)+g'(a),
-quad eval(dv(, x)(c f(x)))_(x = a) = c f'(a)
+evaluated(dv(, x)(f(x)+g(x)))_(x = a) = f'(a)+g'(a),
+quad evaluated(dv(, x)(c f(x)))_(x = a) = c f'(a)
 $
 が成立する。
 ]
@@ -90,7 +89,7 @@ $
 関数$f(x)$, $g(x)$が点$x = a$で微分可能とする。
 この時、積$f(x)g(x)$も$x = a$で微分可能で、
 $
-eval(dv(, x)(f(x)g(x)))_(x = a) = f'(a)g(a)+f(a)g'(a)
+evaluated(dv(, x)(f(x)g(x)))_(x = a) = f'(a)g(a)+f(a)g'(a)
 $
 が成立する。
 ]
@@ -109,7 +108,7 @@ $
 関数$f(x)$, $g(x)$が点$x = a$で微分可能で$g(a) eq.not 0$とする。
 この時、商$(f(x))/(g(x))$も$x = a$で微分可能で、
 $
-eval(dv(, x)((f(x))/(g(x))))_(x = a) = (f'(a)g(a)-f(a)g'(a))/(g(a))^2
+evaluated(dv(, x)((f(x))/(g(x))))_(x = a) = (f'(a)g(a)-f(a)g'(a))/(g(a))^2
 $
 が成立する。
 ]
@@ -129,7 +128,7 @@ $
 関数$f(x)$が点$x = a$で微分可能で$g(y)$が点$y = f(x)$で微分可能とする。
 この時、合成関数$f(g(x))$も$x = a$で微分可能で、
 $
-eval(dv(, x)(f(g(x))))_(x = a) = g'(f(a))f'(a)
+evaluated(dv(, x)(f(g(x))))_(x = a) = g'(f(a))f'(a)
 $
 が成立する。
 ]
@@ -161,10 +160,10 @@ $f$を実数の集合$X$上で定義された実数値関数として、$a$を$X
   $
   f'^+ (a),
   quad dv(f, x^+)(a),
-  quad eval(dv(f, x^+))_(x = a),
-  quad eval(dv(, x^+)(f(x)))_(x = a),
-  quad eval(y'^+)_a,
-  quad eval(dv(y, x^+))_(x = a)
+  quad evaluated(dv(f, x^+))_(x = a),
+  quad evaluated(dv(, x^+)(f(x)))_(x = a),
+  quad evaluated(y'^+)_a,
+  quad evaluated(dv(y, x^+))_(x = a)
   $
   などで表す。
   つまり、
@@ -180,10 +179,10 @@ $f$を実数の集合$X$上で定義された実数値関数として、$a$を$X
   $
   f'^- (a),
   quad dv(f, x^-)(a),
-  quad eval(dv(f, x^-))_(x = a),
-  quad eval(dv(, x^-)(f(x)))_(x = a),
-  quad eval(y'^-)_a,
-  quad eval(dv(y, x^-))_(x = a)
+  quad evaluated(dv(f, x^-))_(x = a),
+  quad evaluated(dv(, x^-)(f(x)))_(x = a),
+  quad evaluated(y'^-)_a,
+  quad evaluated(dv(y, x^-))_(x = a)
   $
   などで表す。
   つまり、
@@ -331,13 +330,13 @@ $
 対数関数$log_a$は指数関数$exp_a$の逆関数であることから$(0, +oo)$で微分可能で、
 $
 dv(, x)(log x)
-= (eval(dv(, y)(e^y))_(y = log x))^(-1)
+= (evaluated(dv(, y)(e^y))_(y = log x))^(-1)
 = x^(-1)
 = 1/x,
 $
 $
 dv(, x)(log_a x)
-= (eval(dv(, y)(a^y))_(y = log_a x))^(-1)
+= (evaluated(dv(, y)(a^y))_(y = log_a x))^(-1)
 = (x log a)^(-1)
 = 1/(x log a)
 $
@@ -392,7 +391,7 @@ $
 逆正弦関数$arcsin$は$(-1, +1)$で微分可能で、
 $
 dv(, x)(arcsin x)
-= (eval(dv(, y)(sin y))_(y = arcsin x))^(-1)
+= (evaluated(dv(, y)(sin y))_(y = arcsin x))^(-1)
 = (cos(arcsin x))^(-1)
 = 1/sqrt(1-sin^2 (arcsin x))
 = 1/sqrt(1-x^2).
@@ -400,7 +399,7 @@ $
 逆余弦関数$arccos$も$(-1, +1)$で微分可能で、
 $
 dv(, x)(arccos x)
-= (eval(dv(, y)(cos y))_(y = arccos x))^(-1)
+= (evaluated(dv(, y)(cos y))_(y = arccos x))^(-1)
 = (-sin(arccos x))^(-1)
 = -1/sqrt(1-sin^2 (arccos x))
 = -1/sqrt(1-x^2).
@@ -408,7 +407,7 @@ $
 逆正接関数$arctan$は$RR$で微分可能で、
 $
 dv(, x)(arctan x)
-= (eval(dv(, y)(tan y))_(y = arctan x))^(-1)
+= (evaluated(dv(, y)(tan y))_(y = arctan x))^(-1)
 = (1/(cos^2 (arctan x)))^(-1)
 = 1/(1+tan^2 (arctan x))
 = 1/(1+x^2).
@@ -440,7 +439,7 @@ $
 逆双曲線正弦関数$arsinh x$は$RR$で微分可能で、
 $
 dv(, x)(arsinh x)
-= (eval(dv(, y)(sinh y))_(y = arsinh x))^(-1)
+= (evaluated(dv(, y)(sinh y))_(y = arsinh x))^(-1)
 = (cosh(arsinh x))^(-1)
 = 1/sqrt(1+sinh^2 (arsinh x))
 = 1/sqrt(1+x^2).
@@ -448,7 +447,7 @@ $
 逆双曲線余弦関数$arcosh x$は$(1, +oo)$で微分可能で、
 $
 dv(, x)(arcosh x)
-= (eval(dv(, y)(cosh y))_(y = arcosh x))^(-1)
+= (evaluated(dv(, y)(cosh y))_(y = arcosh x))^(-1)
 = (sinh(arcosh x))^(-1)
 = 1/sqrt(cosh^2 (arcosh x)-1)
 = 1/sqrt(x^2-1).
@@ -456,7 +455,7 @@ $
 逆双曲線正接関数$artanh x$は$(-1, +1)$で微分可能で、
 $
 dv(, x)(artanh x)
-= (eval(dv(, y)(tanh y))_(y = artanh x))^(-1)
+= (evaluated(dv(, y)(tanh y))_(y = artanh x))^(-1)
 = (1/(cosh^2 (artanh x)))^(-1)
 = 1/(1-tanh^2 (artanh x))
 = 1/(1-x^2).
@@ -481,13 +480,13 @@ $
 ここで$x = 0$では微分可能でないことに注意する。
 しかしながら、$opabs$は$x = 0$で右微分可能かつ左微分可能であり、
 $
-eval(dv(, x^+)(opabs(x)))_(x = 0)
-= eval(dv(, x^+)(abs(x)))_(x = 0)
+evaluated(dv(, x^+)(opabs(x)))_(x = 0)
+= evaluated(dv(, x^+)(abs(x)))_(x = 0)
 = +1,
 $
 $
-eval(dv(, x^-)(opabs(x)))_(x = 0)
-= eval(dv(, x^-)(abs(x)))_(x = 0)
+evaluated(dv(, x^-)(opabs(x)))_(x = 0)
+= evaluated(dv(, x^-)(abs(x)))_(x = 0)
 = -1
 $
 が成り立つ。

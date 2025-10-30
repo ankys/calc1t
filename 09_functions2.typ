@@ -2,8 +2,7 @@
 = 種々の関数２
 
 #import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
-
-#import "@preview/physica:0.9.3": dd, eval
+#import "deps/physics.typ": dd, evaluated
 
 == 複素指数関数
 
@@ -89,7 +88,7 @@ $t > 1$に対して部分積分より
 $
 integral_1^t sinc x dd(x)
 = integral_1^t ((-cos x)'/x) dd(x)
-= eval((-cos x)/x)_1^t-integral_1^t (cos x)/(x^2) dd(x)
+= evaluated((-cos x)/x)_1^t-integral_1^t (cos x)/(x^2) dd(x)
 $
 となる。
 ここで、
@@ -228,7 +227,7 @@ $
 Gamma(s+1)
 = integral_0^oo x^s e^(-x) dd(x)
 = integral_0^oo x^s (-e^(-x))' dd(x)
-= eval(-x^s e^(-x))_0^oo+integral_0^oo s x^(s-1) e^(-x) dd(x)
+= evaluated(-x^s e^(-x))_0^oo+integral_0^oo s x^(s-1) e^(-x) dd(x)
 = s Gamma(s)
 $
 である。

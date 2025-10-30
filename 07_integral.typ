@@ -2,8 +2,7 @@
 = 積分
 
 #import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
-
-#import "@preview/physica:0.9.3": dd, dv, eval
+#import "deps/physics.typ": dd, dv, evaluated
 #let arsinh = $op("arsinh")$
 #let arcosh = $op("arcosh")$
 #let artanh = $op("artanh")$
@@ -476,9 +475,9 @@ $f$を開区間$I$上の連続関数とする。
 この微分積分学の基本定理を用いれば定積分を計算することは原始関数を一つ見つけることに帰着される。
 また、$F(b)-F(a)$のことを
 $
-eval(F)_a^b,
-quad eval(F(x))_(x = a)^b,
-quad eval(F(x))_a^b
+evaluated(F)_a^b,
+quad evaluated(F(x))_(x = a)^b,
+quad evaluated(F(x))_a^b
 $
 などと略記する。
 
@@ -486,7 +485,7 @@ $
 一次関数$f(x) = k x+m$に対して、二次関数$f(x) = k/2 x^2+m x$は$f(x)$の原始関数であることがすぐわかるので、
 $
 integral_a^b (k x+m) dd(x)
-= eval(k/2 x^2+m x)_(x = a)^b
+= evaluated(k/2 x^2+m x)_(x = a)^b
 = (k/2 b^2+m b)-(k/2 a^2+m a)
 $
 と（区分求積法より）簡単に計算できる。
@@ -676,7 +675,7 @@ $
 #theorem([定積分の部分積分])[
 $f(x)$, $g(x)$を有界閉区間$[a, b]$を含む開区間で$C^1$級関数とするとき、
 $
-integral_a^b f(x)g'(x) dd(x) = eval(f(x)g(x))_a^b-integral_a^b f'(x)g(x) dd(x)
+integral_a^b f(x)g'(x) dd(x) = evaluated(f(x)g(x))_a^b-integral_a^b f'(x)g(x) dd(x)
 $
 が成り立つ。
 ]
@@ -1118,7 +1117,7 @@ $N = 0, 1, 2, 3, dots$として$f, g$を有界閉区間$[a, b]$を含む開区�
 このとき、
 $
 integral_a^b p(x) f^((N+1)) (x) dd(x)
-= eval(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b+(-1)^(N+1) integral_a^b p^((N+1)) (x) f(x) dd(x)
+= evaluated(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b+(-1)^(N+1) integral_a^b p^((N+1)) (x) f(x) dd(x)
 $
 ]
 
@@ -1126,10 +1125,10 @@ $
 部分積分を繰り返すことで、
 $
 integral_a^b p(x) f^((N+1)) (x) dd(x)
-&= eval([p(x) f^((N)) (x)])_a^b-integral_a^b p'(x) f^((N)) (x) dd(x) \
-&= eval([p(x) f^((N)) (x)-p'(x) f^((N-1)) (x)])_a^b+integral_a^b p''(x) f^((N-1)) (x) dd(x) \
+&= evaluated([p(x) f^((N)) (x)])_a^b-integral_a^b p'(x) f^((N)) (x) dd(x) \
+&= evaluated([p(x) f^((N)) (x)-p'(x) f^((N-1)) (x)])_a^b+integral_a^b p''(x) f^((N-1)) (x) dd(x) \
 &= dots \
-&= eval(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b+(-1)^(N+1) integral_a^b p^((N+1)) (x) f(x) dd(x)
+&= evaluated(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b+(-1)^(N+1) integral_a^b p^((N+1)) (x) f(x) dd(x)
 $
 が得られる。
 ]
@@ -1164,7 +1163,7 @@ $
 $
 integral_a^b p(x) f^((N+1)) (x) dd(x)
 // = integral_a^b frac(f^((N+1)) (x), N!) (b-x)^N dd(x)
-&= eval(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b \
+&= evaluated(sum_(n = 0)^N (-1)^n p^((n)) (x) f^((N-n)) (x))_(x = a)^b \
 &= f(b)-sum_(n = 0)^N (-1)^(N+n) 1/((N-n)!) (a-b)^(N-n) f^((N-n)) (a) \
 &= f(b)-sum_(n = 0)^N 1/(n!) (b-a)^n f^((n)) (a)
 $
@@ -1224,14 +1223,14 @@ $
 一つ目の主張は
 $
 integral_a^b (x-(a+b)/2) f'(x) dd(x)
-= eval([(x-(a+b)/2) f(x)])_a^b-integral_a^b f(x) dd(x)
+= evaluated([(x-(a+b)/2) f(x)])_a^b-integral_a^b f(x) dd(x)
 = (f(a)+f(b))/2 (b-a)-integral_a^b f(x) dd(x)
 $
 より示される。
 二つ目の主張は
 $
 integral_a^b (x-a)(x-b) f'' (x) dd(x)
-&= eval([(x-a)(x-b) f' (x)])_a^b-integral_a^b [(x-a)(x-b)]' f'(x) dd(x) \
+&= evaluated([(x-a)(x-b) f' (x)])_a^b-integral_a^b [(x-a)(x-b)]' f'(x) dd(x) \
 &= -integral_a^b [2 x-(a+b)] f'(x) dd(x)
 $
 より一つ目に帰着される。
@@ -1342,7 +1341,7 @@ $
 が成り立つ。
 積分を計算すると
 $
-integral_1^n 1/x dd(x) = eval([log x])_1^n = log n
+integral_1^n 1/x dd(x) = evaluated([log x])_1^n = log n
 $
 であるから、
 $
@@ -1376,7 +1375,7 @@ $
 が成り立つ。
 積分を計算すると
 $
-integral_1^n log x dd(x) = eval([x log x-x])_1^n = n log n-n+1
+integral_1^n log x dd(x) = evaluated([x log x-x])_1^n = n log n-n+1
 $
 であるから、
 $
@@ -1564,7 +1563,7 @@ $
 前半は$a eq.not -1$のとき$t -> oo$で、
 $
 integral_1^t x^a dd(x)
-= eval(1/(a+1) x^(a+1))_1^t
+= evaluated(1/(a+1) x^(a+1))_1^t
 = 1/(a+1) t^(a+1)-1/(a+1)
 -> cases(
   +oo & (a > -1)",",
@@ -1574,14 +1573,14 @@ $
 また、$a =-1$のときは
 $
 integral_1^t x^(-1) dd(x)
-= eval(log x)_1^t
+= evaluated(log x)_1^t
 = log t
 -> + oo.
 $
 後半は$a eq.not -1$のとき$t -> 0+$で、
 $
 integral_t^1 x^a dd(x)
-= eval(1/(a+1) x^(a+1))_t^1
+= evaluated(1/(a+1) x^(a+1))_t^1
 = 1/(a+1)-1/(a+1) t^(a+1)
 -> cases(
   1/(a+1) & (a > -1)",",
@@ -1591,7 +1590,7 @@ $
 また、$a = -1$のときは
 $
 integral_t^1 x^(-1) dd(x)
-= eval(log x)_t^1
+= evaluated(log x)_t^1
 = -log t
 -> +oo.
 $
