@@ -1,8 +1,7 @@
 
 = 数
 
-#import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
-#show: thmrules.with()
+#import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
 
 == 自然数
 

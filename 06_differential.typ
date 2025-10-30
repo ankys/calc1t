@@ -1,8 +1,7 @@
 
 = 微分
 
-#import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
-#show: thmrules.with()
+#import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
 
 #import "@preview/physica:0.9.3": dv, eval
 #let arsinh = $op("arsinh")$

@@ -17,6 +17,9 @@
 #set par(first-line-indent: 1em) // why
 #show math.equation.where(block: true): block.with(width: 100%)
 
+#import "@preview/ctheorems:1.1.3": thmrules
+#show: thmrules.with()
+
 #import "deps/autoeqnum.typ": autoeqnum
 #show heading.where(level: 2): it => {
 	counter(math.equation).update(0)

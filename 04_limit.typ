@@ -1,8 +1,7 @@
 
 = 極限
 
-#import "deps/theorem.typ": thmrules, theorem, lemma, proposition, corollary, definition, example, remark, proof
-#show: thmrules.with()
+#import "deps/theorem.typ": theorem, lemma, proposition, definition, corollary, example, xca, remark, proof
 
 == $epsilon$論法
 
