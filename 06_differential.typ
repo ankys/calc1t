@@ -1698,4 +1698,4 @@ $
 quad (0 < a < b)
 $ <e_ratio_mean_ineq2>
 が成り立つ。
-]
+] <t_ratio_mean_ineq>
