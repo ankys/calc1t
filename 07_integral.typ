@@ -369,7 +369,7 @@ $
 代わりに後に述べる部分積分を用いて積分を計算することになる。
 
 #proposition([積分の大小関係])[
-区間$[a, b]$上で積分可能な関数$f$, $g$が各$x in [a, b]$に対して$f(x) <= g(x)$を満たすとき、
+区間$[a, b]$ ($a < b$)上で積分可能な関数$f$, $g$が各$x in [a, b]$に対して$f(x) <= g(x)$を満たすとき、
 $
 integral_a^b f(x) dd(x) <= integral_a^b g(x) dd(x)
 $
@@ -388,20 +388,8 @@ $
 また、$-abs(f(x)) <= f(x) <= abs(f(x))$なので、もう一つの不等式もいえる。
 ]
 
-#proposition([積分の端点修正])[
-区間$[a, b]$上の関数$f$に対して、区間$[a, b]$上で積分可能な関数$tilde(f)$であって各$x in (a, b)$で$f(x) = tilde(f)(x)$が成り立つものが存在したとするとき、
-$f$も積分可能で
-$
-integral_a^b f(x) dd(x) = integral_a^b tilde(f)(x) dd(x)
-$
-が成り立つ。
-]
-
-#proof[
-]
-
-#proposition([積分の区間])[
-$a <= c <= b$として、関数$f$は区間$[a, c]$と区間$[c, b]$上で積分可能とする。
+#proposition([積分の区間分割])[
+$a < c < b$として、関数$f$は区間$[a, c]$と区間$[c, b]$上で積分可能とする。
 このとき、$f$は$[a, b]$上で積分可能で
 $
 integral_a^b f(x) dd(x) = integral_a^c f(x) dd(x)+integral_c^b f(x) dd(x)
@@ -422,6 +410,29 @@ overline(S)(f) <= integral_a^c f(x) dd(x)+integral_c^b f(x) dd(x),
 quad underline(S)(f) >= integral_a^c f(x) dd(x)+integral_c^b f(x) dd(x)
 $
 となるからほしかった等式が得られる。
+]
+
+#remark[
+この命題の等式は$c$が$a$と$b$の間の点でなくても一般に成り立つ。
+例えば$a < b < c$の時でも$f$が$[a, c]$上で積分可能であれば
+$
+integral_a^c f(x) dd(x)
+= integral_a^b f(x) dd(x)+integral_b^c f(x) dd(x)
+= integral_a^b f(x) dd(x)-integral_c^b f(x) dd(x)
+$
+なので、整理してほしい等式が得られる。
+]
+
+#proposition([積分の端点修正])[
+区間$[a, b]$上の関数$f$に対して、区間$[a, b]$上で積分可能な関数$tilde(f)$であって各$x in (a, b)$で$f(x) = tilde(f)(x)$が成り立つものが存在したとするとき、
+$f$も積分可能で
+$
+integral_a^b f(x) dd(x) = integral_a^b tilde(f)(x) dd(x)
+$
+が成り立つ。
+]
+
+#proof[
 ]
 
 #remark[
