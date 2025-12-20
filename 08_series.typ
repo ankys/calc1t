@@ -6,7 +6,7 @@
 
 == 級数の収束
 
-数列$(a_n)_(n = 0)^oo$の項$a_0, a_1, a_2, a_3, dots$の和について考える。
+数列$(a_n)$の項$a_0, a_1, a_2, a_3, dots$の和について考える。
 このような和のことを級数と呼び、形式的には
 $
 sum_(n = 0)^oo a_n = a_0+a_1+a_2+a_3+dots
@@ -14,7 +14,7 @@ $
 と表すが、無限個の項の和なのでしっかり定義する必要がある。
 
 #definition([級数])[
-数列$(a_n)_n$と整数$M <= N$に対して、項$a_M$から項$a_N$までの_部分和_
+数列$(a_n)$と整数$M <= N$に対して、項$a_M$から項$a_N$までの_部分和_
 $
 A_N = sum_(n = M)^N a_n = a_M+dots+a_N
 $
@@ -129,22 +129,30 @@ $
 ]
 
 #proof[
-$N in NN$に対して、
+$(a_n)$の初項から$a_N$までの部分和を$A_N$と、$(abs(a_n))$の初項から$abs(a_N)$までの部分和を$macron(A)_N$とおく。
+ここで各$M, N$に対して、$M <= N$ならば
 $
-A_N = sum_(n <= N) a_n,
-quad macron(A)_N = sum_(n <= N) abs(a_n)
-$
-とおくと、
-$
-abs(A_N-A_M)
-= abs(sum_(n = M+1)^N a_n)
+A_N-A_M
+= sum_(n = M+1)^N a_n
 <= sum_(n = M+1)^N abs(a_n)
-= abs(macron(A)_N-macron(A)_M).
+= macron(A)_N-macron(A)_M
 $
-よって$N$について上極限を$M$について下極限をそれぞれ取ると、$macron(A)_N$, $macron(A)_M$は仮定より収束することに注意して、
+で、$M >= N$ならば
+$
+A_N-A_M
+= -sum_(n = N+1)^M a_n
+<= sum_(n = N+1)^M abs(a_n)
+= macron(A)_M-macron(A)_N
+$
+なので、常に
+$
+A_N-A_M <= abs(macron(A)_N-macron(A)_M)
+$
+が成り立つ。
+よって$N$について上極限を$M$について下極限をそれぞれ取ると、$macron(A)_N$と$macron(A)_M$は仮定より収束することに注意して、
 $
 limsup_(N -> oo) A_N-liminf_(M -> oo) A_M
-<= lim_(N -> oo) macron(A)_N-lim_(M -> oo) macron(A)_M
+<= abs(lim_(N -> oo) macron(A)_N-lim_(M -> oo) macron(A)_M)
 = 0.
 $
 したがって上極限と下極限が一致したので$A_N$さらには級数$sum a_n$は収束する。
@@ -153,7 +161,7 @@ $
 ここまでくると級数の理論は広義積分の理論と似ていることに気が付く。
 つまり、級数の収束は部分和の極限で定義していることは広義積分の積分区間を有界閉区間で近似していたことに対応するし、
 級数でも広義積分でも絶対収束が登場する。
-実際次の命題は級数版の比較判定法である。
+実際、次の命題は級数版の比較判定法である。
 
 #proposition([級数の比較判定法])[
 $(a_n)$を数列とする。
