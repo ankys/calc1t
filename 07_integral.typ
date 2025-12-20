@@ -1728,7 +1728,7 @@ $f, g$を開区間$(a, b)$上の関数として$(a, b)$上の有界閉区間で�
 - 二つの条件
   $
   abs(f(x)) <= g(x) quad forall x in (a, b),
-  quad integral_a^b g(x) < oo
+  quad integral_a^b g(x) dd(x) < oo
   $
   を満たす関数$g$が存在するならば、
   $f$の$(a, b)$上での広義積分は絶対収束し、
@@ -1741,7 +1741,7 @@ $f, g$を開区間$(a, b)$上の関数として$(a, b)$上の有界閉区間で�
 - 二つの条件
   $
   abs(f(x)) >= g(x) quad forall x in (a, b),
-  quad integral_a^b g(x) = oo
+  quad integral_a^b g(x) dd(x) = oo
   $
   を満たす関数$g$が存在するならば、
   $f$の$(a, b)$上での広義積分は絶対収束せず、
@@ -1753,6 +1753,25 @@ $f, g$を開区間$(a, b)$上の関数として$(a, b)$上の有界閉区間で�
 
 #remark[
 この時の非負値関数$g$を$f$の_優関数_という。
+]
+
+#proof[
+$a < s < c < t < b$として、$s -> a$と$t -> b$を考える。
+$abs(f(x)) >= 0$より$integral_s^c abs(f(x)) dd(x)$は$s$について単調減少で$integral_c^t abs(f(x)) dd(x)$は$t$について単調増加であることに注意する。
+- $abs(f(x)) <= g(x)$の場合は
+  $
+  integral_s^c abs(f(x)) dd(x)+integral_c^t abs(f(x)) dd(x)
+  <= integral_s^t g(x) dd(x)
+  <= integral_a^b g(x) dd(x) < oo
+  $
+  であるから、単調収束定理より最左辺の二項の極限が存在し、絶対収束とほしい不等式が得られる。
+- $abs(f(x)) >= g(x)$の場合は、$integral_a^b g(x) dd(x) = oo$であり$integral_s^c g(x) dd(x) -> oo$または$integral_c^t g(x) dd(x) -> oo$なので、
+  $
+  integral_s^c abs(f(x)) dd(x)+integral_c^t abs(f(x)) dd(x)
+  >= integral_s^t g(x) dd(x)
+  -> oo
+  $
+  であり、絶対収束しないことがわかる。
 ]
 
 #example[
