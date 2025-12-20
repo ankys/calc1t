@@ -518,60 +518,62 @@ sum_(n = N+1)^oo abs(a_n) abs(x-a)^n, sum_(n = N+1)^oo abs(a_n) abs(y-a)^n
 <= sum_(n = N+1)^oo abs(a_n) r_0^n
 $
 で右辺は$N -> oo$で$0$に収束する。
-ここで$f_N (x)$は多項式関数より特に有界閉区間で一様連続なので、度合い関数を使って$abs(f_N (x)-f_N (y)) <= omega_N(abs(x-y))$である。
+ここで$f_N (x)$は多項式関数より特に有界閉区間で一様連続なので、度合い関数を使って$abs(f_N (x)-f_N (y)) <= omega_N (abs(x-y))$である。
 よって
 $
-abs(f(x)-f(y)) <= 2 sum_(n = N+1)^oo abs(a_n) r_0^n+omega_N(abs(x-y))
+abs(f(x)-f(y)) <= 2 sum_(n = N+1)^oo abs(a_n) r_0^n+omega_N (abs(x-y))
 $
 なので、
 $f(x)$は$abs(x-a) <= r_0$で一様連続であり、$abs(x-a) < r$で連続であることがわかる。
 ]
 
 #theorem([べき級数の項別積分])[
-収束半径が$r$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$に対して
+収束半径が$r > 0$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$に対して
 $
 integral_a^b f(x) dd(x)
-= sum_(n = 0)^oo (a_n)/(n+1) (b-a)^(n+1)
-= a_0 (b-a)+a_1/2 (b-a)^2+a_2/3 (b-a)^3+a_3/4 (b-a)^4+dots
+&= sum_(n = 0)^oo (a_n)/(n+1) (b-a)^(n+1) \
+&= a_0 (b-a)+a_1/2 (b-a)^2+a_2/3 (b-a)^3+a_3/4 (b-a)^4+dots
 $
-が任意の$abs(b-a) < r$を満たす実数$b$に対して成り立つ。
+が任意の$abs(b-a) < r$を満たす数$b$に対して成り立つ。
 ]
 
 #proof[
-べき級数$sum_(n = 0)^oo (a_n)/(n+1) (b-a)^(n+1)$の収束半径が$r$であることに注意する。
-$N = 0, 1, 2, 3, dots$に対して、
+前の定理よりべき級数$f(x)$は$[a, b]$上連続より積分可能であることに注意する。
+自然数$N$に対して、
 $
-abs(integral_a^b f(x) dd(x)-integral_a^b f_N (x) dd(x))
-&<= abs(integral_a^b abs(f(x)-f_N(x)) dd(x))
-<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(x-a)^n dd(x))
+abs(integral_a^b f_N (x) dd(x)-integral_a^b f(x) dd(x))
+&<= abs(integral_a^b abs(f_N (x)-f(x)) dd(x)) \
+&<= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(x-a)^n dd(x))
 <= abs(integral_a^b sum_(n = N+1)^oo abs(a_n) abs(b-a)^n dd(x)) \
 &<= sum_(n = N+1)^oo abs(a_n) abs(b-a)^(n+1).
 $
-よって$N -> oo$で、$integral_a^b f_N (x) dd(x) -> integral_a^b f(x) dd(x)$であり、
+よって$N -> oo$で最右辺は$0$に収束することから$integral_a^b f_N (x) dd(x) -> integral_a^b f(x) dd(x)$であり、
 $
-integral_a^b f_N (x) dd(x) = sum_(n = 0)^N (a_n)/(n+1) (b-a)^(n+1)
+integral_a^b f_N (x) dd(x)
+= integral_a^b sum_(n = 0)^N a_n (x-a)^n dd(x)
+= sum_(n = 0)^N (a_n)/(n+1) (b-a)^(n+1)
 $
 であることから定理の結論が得られる。
 ]
 
 #theorem([べき級数の項別微分])[
-収束半径が$r$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$は微分可能で
+収束半径が$r > 0$であるべき級数$f(x) = sum_(n = 0)^oo a_n (x-a)^n$は微分可能で
 $
 f'(x)
-= sum_(n = 1)^oo n a_n (x-a)^(n-1)
-= sum_(n = 0)^oo (n+1) a_(n+1) (x-a)^n
-= a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots
+&= sum_(n = 1)^oo n a_n (x-a)^(n-1)
+= sum_(n = 0)^oo (n+1) a_(n+1) (x-a)^n \
+&= a_1+2 a_2 (x-a)+3 a_3 (x-a)^2+dots
 $
 が任意の$abs(x-a) < r$を満たす実数$x$に対して成り立つ。
 ]
 
 #proof[
-べき級数$g(x) = sum_(n = 1)^oo n a_n (x-a)^(n-1)$の収束半径が$r$であることに注意する。
+まず、べき級数$g(x) = sum_(n = 0)^oo (n+1) a_(n+1) (x-a)^n$の収束半径が$r$であることに注意する。
 そこで前の定理より$g(x)$を項別積分すると
 $
-integral_a^x g(t) dd(t) = sum_(n = 1)^oo a_n (x-a)^n = f(x)-a_0.
+integral_a^b g(x) dd(x) = sum_(n = 0)^oo a_(n+1) (b-a)^(n+1) = f(b)-a_0.
 $
-よって、$f$は$g$の原始関数なので、$f$を微分すると$g$を得る。
+よって、$f(x)$は$g(x)$の不定積分と定数差なので、$f$を微分すると$g$を得る。
 ]
 
 #remark[
