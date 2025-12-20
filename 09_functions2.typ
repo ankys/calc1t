@@ -83,12 +83,12 @@ $
 シンク関数が登場した場面を思い出すと広義積分と級数の条件収束の例としてである。
 
 ここでは広義積分$integral_0^oo sinc x dd(x)$が収束するが、絶対収束しないことを示そう。
-まず、$integral_0^1 sinc x dd(x)$は普通の定積分であることに注意する。
+まず、$integral_0^1 sinc x dd(x)$は通常の定積分であることに注意する。
 $t > 1$に対して部分積分より
 $
 integral_1^t sinc x dd(x)
-= integral_1^t ((-cos x)'/x) dd(x)
-= evaluated((-cos x)/x)_1^t-integral_1^t (cos x)/(x^2) dd(x)
+= integral_1^t (-cos x)'/x dd(x)
+= evaluated([(-cos x)/x])_1^t-integral_1^t (cos x)/(x^2) dd(x)
 $
 となる。
 ここで、
@@ -141,7 +141,20 @@ $
 これを_ガウス積分_という。
 
 ガウス積分の標準的かつ簡便な計算方法は重積分の極座標変換を用いるものだが、本テキストの範囲外なので、ここでは煩雑ではあるが範囲内の知識で説明できる方法を紹介する。
-そのためにまず不等式
+
+#theorem([ガウス積分])[
+$
+integral_0^oo exp (-x^2) dd(x)
+= integral_0^oo e^(-x^2) dd(x)
+= sqrt(pi)/2,
+quad integral_(-oo)^(+oo) exp (-x^2) dd(x)
+= integral_(-oo)^(+oo) e^(-x^2) dd(x)
+= sqrt(pi)
+$
+]
+
+#proof[
+まず不等式
 $
 1-x^2 <= e^(-x^2) <= 1/(1+x^2)
 $
@@ -174,15 +187,19 @@ $
 したがって、$n -> oo$とするとウォリスの公式（@t_wallis_limit）より、
 ガウス積分の値が
 $
-integral_0^oo exp (-x^2) dd(x)
-= integral_0^oo e^(-x^2) dd(x)
+integral_0^oo e^(-x^2) dd(x)
 = 1/sqrt(2) dot sqrt(pi/2)
-= sqrt(pi)/2,
-quad integral_(-oo)^(+oo) exp (-x^2) dd(x)
-= integral_(-oo)^(+oo) e^(-x^2) dd(x)
-= sqrt(pi)
+= sqrt(pi)/2
 $
 であることがわかる。
+さらにガウス関数は偶関数であることに注意して、
+$
+integral_(-oo)^(+oo) e^(-x^2) dd(x)
+= 2 integral_0^oo e^(-x^2) dd(x)
+= sqrt(pi)
+$
+である。
+]
 
 == ガンマ関数
 
