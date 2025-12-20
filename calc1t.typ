@@ -2,7 +2,7 @@
 #let title = [微分積分学１]
 #let author = "中安淳"
 // #let date = datetime.today()
-#let date = [2024年12月22日]
+#let date = [2025年12月21日]
 
 #import "@preview/js:0.1.3": *
 #show: js.with(
