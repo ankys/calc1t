@@ -1673,80 +1673,80 @@ $
 以下では広義積分の値を追求するよりも収束するかどうかについて議論する。
 
 #definition([広義積分の絶対収束])[
-区間$I$上の連続関数あるいは単調関数$f$に対して広義積分
+開区間$(a, b)$ ($-oo <= a < b <= +oo$)上の関数$f$に対して広義積分
 $
-integral_I abs(f(x)) dd(x)
+integral_a^b abs(f(x)) dd(x)
 $
-が収束する時、$f$は$I$上で_絶対広義積分可能_または広義積分が_絶対収束_するという。
+が収束する時、$f$は$(a, b)$上で_絶対広義積分可能_または広義積分が_絶対収束_するという。
 ]
 
 #remark[
 広義積分が絶対収束する場合
 $
-integral_I abs(f(x)) dd(x) < oo
+integral_a^b abs(f(x)) dd(x) < oo
 $
 と表し、
 絶対収束しない場合
 $
-integral_I abs(f(x)) dd(x) = oo
+integral_a^b abs(f(x)) dd(x) = oo
 $
 と表す。
 ]
 
 #proposition[
-$f$を区間$I$上の連続関数あるいは単調関数とする。
-$f$の$I$上の広義積分が絶対収束するならばそれは収束している。
+$f$を開区間$(a, b)$上の関数として$(a, b)$上の有界閉区間で積分可能とする。
+ここで$f$の広義積分が絶対収束するならばそれは収束している。
 ]
 
 #proof[
-$I = \[a, b\)$の場合のみ示す。
-$t in I$に対して、
+$a < c < t < b$として、$t -> b$を考える。
+ここで
 $
-F(t) = integral_a^t f(x) dd(x),
-quad macron(F)(t) = integral_a^t abs(f(x)) dd(x)
+F(t) = integral_c^t f(x) dd(x),
+quad macron(F)(t) = integral_c^t abs(f(x)) dd(x)
 $
-とおくと、
+とおくと、$c < s < b$に対して
 $
-abs(F(t_+)-F(t_-))
-= abs(integral_(t_-)^(t_+) f(x) dd(x))
-<= integral_(t_-)^(t_+) abs(f(x)) dd(x)
-= macron(F)(t_+)-macron(F)(t_-).
+F(t)-F(s)
+= integral_s^t f(x) dd(x)
+<= abs(integral_s^t abs(f(x)) dd(x))
+= abs(macron(F)(t)-macron(F)(s)).
 $
-よって、$t_(+)$について上極限を$t_(-)$について下極限をそれぞれ取ると$macron(F)(t_(+))$,
-$macron(F)(t_(-))$は仮定より収束することに注意して、
+よって、$t$について上極限を$s$について下極限をそれぞれ取ると$macron(F)(s)$と$macron(F)(t)$は仮定より収束することに注意して、
 $
-limsup_(t -> b-) f(t)-liminf_(t -> b-) f(t)
+limsup_(t -> b-) F(t)-liminf_(t -> b-) F(t)
 <= lim_(t -> b-) macron(F)(t)-lim_(t -> b-) macron(F)(t)
 = 0.
 $
-したがって上極限と下極限が一致したので$F(t)$さらには広義積分は収束する。
+したがって上極限と下極限が一致するので$F(t)$さらには広義積分は収束する。
 ]
 
 #proposition([広義積分の比較判定法])[
-$f$を区間$I$上の連続関数あるいは単調関数とする。
+$f, g$を開区間$(a, b)$上の関数として$(a, b)$上の有界閉区間で積分可能とする。
+さらに$g$は$(a, b)$上で非負値とする。
 
 - 二つの条件
   $
-  abs(f(x)) <= g(x) quad forall x in I,
-  quad integral_I g(x) < oo
+  abs(f(x)) <= g(x) quad forall x in (a, b),
+  quad integral_a^b g(x) < oo
   $
-  を満たす$I$上の非負値の連続関数あるいは単調関数$g$が存在するならば、
-  $f$の$I$上での広義積分は絶対収束し、
+  を満たす関数$g$が存在するならば、
+  $f$の$(a, b)$上での広義積分は絶対収束し、
   $
-  abs(integral_I f(x) dd(x))
-  <= integral_I abs(f(x)) dd(x)
-  <= integral_I g(x) dd(x)
+  abs(integral_a^b f(x) dd(x))
+  <= integral_a^b abs(f(x)) dd(x)
+  <= integral_a^b g(x) dd(x)
   $
   が成り立つ。
 - 二つの条件
   $
-  abs(f(x)) >= g(x) quad forall x in I,
-  quad integral_I g(x) = oo
+  abs(f(x)) >= g(x) quad forall x in (a, b),
+  quad integral_a^b g(x) = oo
   $
-  を満たす$I$上の非負値の連続関数あるいは単調関数$g$が存在するならば、
-  $f$の$I$上での広義積分は絶対収束せず、
+  を満たす関数$g$が存在するならば、
+  $f$の$(a, b)$上での広義積分は絶対収束せず、
   $
-  integral_I abs(f(x)) dd(x) = oo
+  integral_a^b abs(f(x)) dd(x) = oo
   $
   である。
 ]
