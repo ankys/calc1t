@@ -9,10 +9,10 @@
 	paper: "a4",
 	book: true,
 	lang: "ja",
-	seriffont: "New Computer Modern",
-	seriffont-cjk: "Noto Serif CJK JP",
-	sansfont: "Source Sans 3",
-	sansfont-cjk: "Noto Sans CJK JP",
+	// seriffont: "New Computer Modern",
+	// seriffont-cjk: "Harano Aji Mincho",
+	// sansfont: "Source Sans 3",
+	// sansfont-cjk: "Harano Aji Gothic",
 )
 #set par(first-line-indent: 1em) // why
 #show math.equation.where(block: true): block.with(width: 100%)
