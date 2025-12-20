@@ -423,6 +423,31 @@ $
 なので、整理してほしい等式が得られる。
 ]
 
+#proposition([積分の区間についての連続性])[
+実数列$a_n -> a$と$b_n -> b$に対して、有界な関数$f$が区間$[a, b]$と各$n$に対して区間$[a_n, b_n]$上で積分可能であるとする。
+この時、
+$
+integral_(a_n)^(b_n) f(x) dd(x) -> integral_a^b f(x) dd(x)
+$
+が成り立つ。
+]
+
+#proof[
+積分区間について先ほどの命題とその注意より
+$
+integral_(a_n)^(b_n) f(x) dd(x)
+= integral_a^b f(x) dd(x)+integral_(a_n)^a f(x) dd(x)+integral_b^(b_n) f(x) dd(x)
+$
+と分割される。
+ここで$f$は有界なので、
+$
+abs(integral_(a_n)^(b_n) f(x) dd(x)-integral_a^b f(x) dd(x))
+<= abs(integral_(a_n)^a f(x) dd(x))+abs(integral_b^(b_n) f(x) dd(x))
+<= sup f abs(a_n-a)+sup f abs(b_n-b)
+$
+となり、極限を取ると最右辺は$0$に収束するので、ほしかった式が得られる。
+]
+
 #proposition([積分の端点修正])[
 区間$[a, b]$上の関数$f$に対して、区間$[a, b]$上で積分可能な関数$tilde(f)$であって各$x in (a, b)$で$f(x) = tilde(f)(x)$が成り立つものが存在したとするとき、
 $f$も積分可能で
