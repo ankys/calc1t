@@ -14,18 +14,17 @@ $
 と表すが、無限個の項の和なのでしっかり定義する必要がある。
 
 #definition([級数])[
-数列$(a_n)_n$と$N = 0, 1, 2, 3, dots$に対して、初項から項$a_N$までの_部分和_
+数列$(a_n)_n$と整数$M <= N$に対して、項$a_M$から項$a_N$までの_部分和_
 $
-A_N = sum_(n = 0)^N a_n = a_0+a_1+a_2+a_3+dots+a_N
+A_N = sum_(n = M)^N a_n = a_M+dots+a_N
 $
 を定義する。
-ここで部分和を並べて得られる数列$(A_N)_N$がある数$S$に収束する時、
-_級数_$sum_n a_n$は収束するといい、この時の極限$S$を数列$(a_n)_n$の級数の値または_和_と呼び$sum_n a_n$で表す。
-また、部分和の数列$(A_N)_N$が発散するとき、級数$sum_n a_n$は発散するという。
+ここで$M$が固定されていて部分和を並べて得られる数列$(A_N)_(N = M)^oo$がある数$S$に収束する時、
+_級数_$sum_(n = M)^oo a_n$は収束するといい、この時の極限$S$を数列$(a_n)_(n = M)^oo$の級数の値または_和_と呼び$sum_(n = M)^oo a_n$で表す。
+また、部分和の数列$(A_N)_(N = M)^oo$が発散するとき、級数$sum_(n = M)^oo a_n$は発散するという。
 級数の表記は
 $
-sum_(n = 0)^oo a_n,
-quad sum_(n = 1)^oo a_n,
+sum_(n = M)^oo a_n,
 quad sum_(n in NN) a_n,
 quad sum_n a_n,
 quad sum a_n
@@ -93,7 +92,7 @@ $
 級数（数列）の中でも特別なのが次の正項級数である。
 
 #definition([正項級数])[
-数列$(a_n)$が各自然数$n$に対して$a_n >= 0$を満たすとき、級数$sum a_n$を_正項級数_という。
+数列$(a_n)$が各$n$に対して$a_n >= 0$を満たすとき、級数$sum a_n$を_正項級数_という。
 ]
 
 #proposition[
@@ -232,39 +231,30 @@ $
 このような級数に対しては次の定理で広義積分の判定に帰着させるとよい。
 
 #theorem([級数と広義積分の比較])[
-$f$を$\[0, +oo\)$上定義された単調減少する非負値の関数とする。
+$M$を整数として、$f$を$\[M, oo\)$上定義された単調減少する非負値の関数とする。
 このとき級数
 $
-sum_(n = 0)^oo f(n)
+sum_(n = M)^oo f(n)
 $
 が（絶対）収束することと広義積分
 $
-integral_0^oo f(x) dd(x)
+integral_M^oo f(x) dd(x)
 $
 が（絶対）収束することは同値である。
 ]
 
 #proof[
-$\[0, +oo\)$上の関数$overline(g)(x)$と$underline(g)(x)$を
+整数$N >= M$に対して、単調減少での和と積分の関係より
 $
-overline(f)(x) = f(floor(x)),
-quad underline(f)(x) = f(ceil(x))
+integral_M^N f(x) dd(x)+f(N) <= sum_(n = M)^N f(n) <= integral_M^N f(x) dd(x)+f(M)
 $
-で定義すると、$f$は単調減少することから$overline(f)(x)$と$underline(f)(x)$は
+であり、$f$は非負値であることから
 $
-underline(f)(x) <= f(x) <= overline(f)(x)
+integral_M^N f(x) dd(x) <= sum_(n = M)^N f(n) <= integral_M^N f(x) dd(x)+f(M)
 $
-を満たす単調減少関数である。
-またここで、
-$
-sum_(n = 0)^oo f(n) = integral_0^oo overline(f)(x) dd(x),
-quad sum_(n = 1)^oo f(n) = integral_0^oo underline(f)(x) dd(x)
-$
-もわかるので、
-$
-sum_(n = 1)^oo f(n) <= integral_0^oo f(x) dd(x) <= sum_(n = 0)^oo f(n)
-$
-が従い、級数と広義積分の比較判定ができる。
+が成り立つ。
+よって、$integral_M^oo f(x) dd(x) < oo$なら$sum_(n = M)^oo f(n) < oo$であり、
+$integral_M^oo f(x) dd(x) = oo$なら$sum_(n = M)^oo f(n) = oo$がわかる。
 ]
 
 例えば次のことがわかる。
