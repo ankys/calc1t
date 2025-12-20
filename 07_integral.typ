@@ -1793,19 +1793,5 @@ $
 integral_0^oo (sin x)/x dd(x)
 $
 は収束するが、絶対収束しない。
-実際、$(sin x)/x$は$x -> 0$で$1$に収束することから$[0, oo)$上の連続関数とみなせるため$t -> oo$のみ考えればよく、部分積分より
-$
-integral_1^t (sin x)/x dd(x)
-= evaluated([-(cos x)/x])_1^t-integral_1^t (cos x)/x^2 dd(x)
-= cos 1-(cos t)/t-integral_1^t (cos x)/x^2 dd(x).
-$
-ここで$(cos t)/t -> 0$であり、$integral_1^oo abs((cos x)/x^2) dd(x) <= integral_1^oo 1/x^2 dd(x) < oo$であることから$integral_1^t (cos x)/x^2 dd(x)$は絶対収束特に収束するため、$integral_0^oo (sin x)/x dd(x)$も収束する。
-なお、この方法では絶対収束まではわからないし、収束値もわからない。
-
-今回の広義積分の値は
-$
-integral_0^oo (sin x)/x dd(x) = pi/2
-$
-であることが知られておりディリクレ積分と呼ばれる。
-しかしながらその値の証明は重積分などの発展的な知識が必要になるので本テキストでは扱わない。
+このことについてはシンク関数の節を参照すること。
 ]
