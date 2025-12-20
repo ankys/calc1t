@@ -111,7 +111,7 @@ $
 
 == 上積分下積分と定積分
 
-$f(x)$を有界閉区間$[a, b]$上の有界な関数とする。
+$f(x)$を有界閉区間$[a, b]$ ($a <= b$)上の有界な関数とする。
 区間$[a, b]$の分割$P$を$a = p_0 <= p_1 <= p_2 <= p_3 <= dots <= p_N = b$とする。
 この時、リーマン和の代わりに次の_上リーマン和_と_下リーマン和_を考える。
 $
@@ -121,11 +121,19 @@ $
 $f$を有界な関数としているので、$overline(S)(f, P)$, $underline(S)(f, P)$は無限大にならず実数値になることに注意する。
 
 #proposition[
-任意の分割$P$に対して$inf_(x in [a, b]) f(x)(b-a) <= underline(S)(f, P) <= overline(S)(f, P) <= sup_(x in [a, b]) f(x)(b-a)$が成り立つ。
+任意の分割$P$に対して
+$
+inf_(x in [a, b]) f(x)(b-a) <= underline(S)(f, P) <= overline(S)(f, P) <= sup_(x in [a, b]) f(x)(b-a)
+$
+が成り立つ。
 ]
 
 #proof[
-これは$inf_(x in [a, b]) f(x) <= inf_(x in [p_(n-1), p_n]) f(x) <= sup_(x in [p_(n-1), p_n]) f(x) <= sup_(x in [a, b]) f(x)$から自然に示される。
+これは
+$
+inf_(x in [a, b]) f(x) <= inf_(x in [p_(n-1), p_n]) f(x) <= sup_(x in [p_(n-1), p_n]) f(x) <= sup_(x in [a, b]) f(x)
+$
+から自然に示される。
 ]
 
 ここから分割$P$を細かくすることを考える。
@@ -136,17 +144,30 @@ $
 となっている時、分割$P'$は分割$P$の_細分_という。
 
 #proposition[
-任意の分割$P$とその細分$P'$に対して、$overline(S)(f, P') <= overline(S)(f, P)$と$underline(S)(f, P) <= underline(S)(f, P')$が成り立つ。
+任意の分割$P$とその細分$P'$に対して、
+$
+overline(S)(f, P') <= overline(S)(f, P),
+quad underline(S)(f, P) <= underline(S)(f, P')
+$
+が成り立つ。
 ]
 
 #proof[
-まず$P = { [a, b] }$の時、$overline(S)(f, P') <= sup_(x in [a, b]) f(x)(b-a)$,
-$inf_(x in [a, b]) f(x)(b-a) <= underline(S)(f, P')$から、$P$が区間を複数に分けないような分割の時に成り立っていることに注意する。
+まず$P = { [a, b] }$の時、
+$
+overline(S)(f, P') <= sup_(x in [a, b]) f(x)(b-a),
+quad inf_(x in [a, b]) f(x)(b-a) <= underline(S)(f, P')
+$
+から、$P$が区間を複数に分けないような分割の時に成り立っていることに注意する。
 一般の場合では細分は小区間ごとに分割したものをまとめていることからそれらを足し合わせると主張が成り立つことがわかる。
 ]
 
 #proposition[
-任意の分割$overline(P)$と$underline(P)$に対して、$underline(S)(f, underline(P)) <= overline(S)(f, overline(P))$が成り立つ。
+任意の分割$overline(P)$と$underline(P)$に対して、
+$
+underline(S)(f, underline(P)) <= overline(S)(f, overline(P))
+$
+が成り立つ。
 ]
 
 #proof[
@@ -174,7 +195,8 @@ $
 を得る。
 
 #definition([定積分])[
-$a <= b$として関数$f$が有界閉区間$[a, b]$上で_積分可能_あるいは_可積分_であるとは上記の式において等号が成り立つ場合をいう。
+$f(x)$を有界閉区間$[a, b]$ ($a <= b$)上の有界な関数とする。
+$f$が$[a, b]$で_積分可能_あるいは_可積分_であるとは上記の式において等号が成り立つ場合をいう。
 その時の等しい値$underline(S)(f) = overline(S)(f)$を関数$f$の区間$[a, b]$上の_定積分_といい、
 $
 integral_([a, b]) f(x) dd(x),
@@ -204,7 +226,7 @@ $
 
 #example[
 有界な関数$f(x)$を$x in [0, 1]$に対して$x$が有理数のとき$f(x) = 1$で$x$が無理数のとき$f(x) = 0$と定義する。
-この時任意の小区間$[p, q]$ ($p < q$)に対して間に有理数と無理数が存在するので、$overline(S)(f, P) = 1$と$overline(S)(f, P) = 0$が成り立ち、この関数$f$は積分可能でない。
+この時任意の小区間$[p, q]$ ($p < q$)に対して間に有理数と無理数が存在するので、$overline(S)(f, P) = 1$と$underline(S)(f, P) = 0$が成り立ち、この関数$f$は積分可能でない。
 ]
 
 以下では積分可能であることの十分条件として主に単調関数と連続関数を紹介する。
