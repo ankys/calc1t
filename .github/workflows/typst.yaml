@@ -16,9 +16,9 @@ jobs:
       - name: Setup fonts
         run: sudo bash .setup/fonts.sh
       - name: Setup Typst
-        uses: typst-community/setup-typst@v3
+        uses: typst-community/setup-typst@v4
       - name: Compile Typst file
-        run: typst compile main.typ ${{github.event.repository.name}}-${{github.ref_name}}.pdf
+        run: typst compile main.typ ${{github.event.repository.name}}-${{github.ref_name}}.pdf --no-pdf-tags
       # Create Release
       - name: Create Release
         uses: softprops/action-gh-release@v2
