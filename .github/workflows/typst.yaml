@@ -9,6 +9,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v4
@@ -21,4 +23,6 @@ jobs:
         run: typst compile main.typ ${{github.event.repository.name}}-${{github.ref_name}}.pdf --no-pdf-tags
       # Create Release
       - name: Create Release
-        run: gh release create ${{github.ref_name}} ${{github.event.repository.name}}-${{github.ref_name}}.pdf --generate-notes
+        run: gh release create ${{github.ref_name}} ${{github.event.repository.name}}-${{github.ref_name}}.pdf --generate-notes --draft
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
