@@ -46,6 +46,7 @@
 #include "01_set.typ"
 #include "02_number.typ"
 #include "03_supinf.typ"
+#include "04_sequence.typ"
 #include "04_limit.typ"
 #include "05_functions1.typ"
 #include "06_differential.typ"
