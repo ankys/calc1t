@@ -323,22 +323,20 @@ quad (+oo)+(+oo) = +oo,
 $
 $
 (-oo)+a = a+(-oo) = -oo,
-quad (-oo)+(-oo) = -oo.
+quad (-oo)+(-oo) = -oo
 $
+とする。
 拡張実数の反数は$-(+oo) = -oo$, $-(-oo) = +oo$とすればよい。
-$a$を正の実数として、
+$a$を正の実数または正の無限大として、
 $
 (+oo) dot a = a dot (+oo) = +oo,
 quad (+oo) dot (- a) = (- a) dot (+oo) = -oo,
-quad (+oo) dot (+oo) = +oo,
-quad (+oo) dot (-oo) = -oo,
 $
 $
 (-oo) dot a = a dot (-oo) = -oo,
-quad (-oo) dot (- a) = (- a) dot (-oo) = +oo,
-quad (-oo) dot (+oo) = -oo,
-quad (-oo) dot (-oo) = +oo.
+quad (-oo) dot (- a) = (- a) dot (-oo) = +oo
 $
+とする。
 拡張実数の逆数は$(+oo)^(-1) = (-oo)^(-1) = 0$とするが$0$の逆数は定義されないことに注意する。
 
 以上の四則演算は定義される範囲においては直感的であるが、
