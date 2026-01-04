@@ -43,16 +43,9 @@
 
 #outline()
 
-#include "01_set.typ"
-#include "02_number.typ"
-#include "03_supinf.typ"
-#include "04_sequence.typ"
-#include "04_limit.typ"
-#include "05_functions1.typ"
-#include "06_differential.typ"
-#include "07_integral.typ"
-#include "08_series.typ"
-#include "09_functions2.typ"
-#include "10_equidist.typ"
+#include "01_differential.typ"
+#include "02_integral.typ"
+#include "03_series.typ"
+#include "04_functions.typ"
 
 #bibliography("99_ref.yml")
