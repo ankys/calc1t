@@ -1,5 +1,5 @@
 
-#let title = [微分積分学１]
+#let title = [微分積分学２]
 #let author = "中安淳"
 // #let date = datetime.today()
 #let date = [2025年12月23日]
