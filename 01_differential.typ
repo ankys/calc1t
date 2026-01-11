@@ -985,7 +985,7 @@ $x, y in I$を取ると、平均値の定理より$abs(f(x)-f(y)) = abs(f'(c)) a
 ]
 
 #example[
-このではこのことをもとに$n = 1, 2, 3, dots$と$x, y in RR$に対して不等式
+ここでは$n = 1, 2, 3, dots$と$x, y in RR$に対して不等式
 $
 abs(sin^n x-sin^n y) <= abs(x^n-y^n)
 $
@@ -993,7 +993,7 @@ $
 
 まず$n = 1$の時は正弦関数$sin$の$1$-リプシッツ連続性に他ならず、
 $
-abs(dv(, x)(sin x)) = abs(cos x) <= 1
+abs((sin x)') = abs(cos x) <= 1
 $
 より成立する。
 
