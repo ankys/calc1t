@@ -1020,6 +1020,7 @@ $y = f(x)$の二階微分導関数を
 $
 f'',
 quad dv(f, x, 2),
+quad (f(x))'',
 quad dv(, x, 2) (f(x)),
 quad y'',
 quad dv(y, x, 2)
@@ -1271,6 +1272,7 @@ $y = f(x)$の$n$階微分導関数を
 $
 f^((n)),
 quad dv(f, x, n),
+quad (f(x))^((n)),
 quad dv(, x, n) (f(x)),
 quad y^((n)),
 quad dv(y, x, n)
@@ -1728,7 +1730,7 @@ $
 #example[
 $N = 1, 2, 3, dots$と非負の実数$a, b$に対して不等式
 $
-(a^N+a^(N-1) b+dots+b^N)/(N+1) <= (a^N+b^N)/2
+(a^N+a^(N-1) b+dots+a b^(N-1)+b^N)/(N+1) <= (a^N+b^N)/2
 $ <e_ratio_mean_ineq>
 が成り立つ。
 このことを微分法を使って示そう。
