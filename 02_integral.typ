@@ -828,6 +828,20 @@ $
 により計算できる（一般項は難しいが与えれた$n$に対する$I_n$は計算できる）。
 
 #example[
+部分分数分解
+$
+x^2/(x^2-1)
+= 1+1/(x^2-1)
+= 1+1/(x-1)(x+1)
+= 1+(1/2)/(x-1)-(1/2)/(x+1)
+$
+により
+$
+integral x^2/(x^2-1) dd(x)
+&= integral dd(x)+1/2 integral 1/(x-1) dd(x)-1/2 integral 1/(x+1) dd(x) \
+&= x+1/2 log abs(x-1)-1/2 log abs(x+1)+C
+$
+と計算される($x eq.not plus.minus 1$)。
 ]
 
 根号を含む関数$R(x, root(n, (a x+b)/(c x+d)))$（$R$は実数係数の有理式、$a, b, c, d in RR$, $a d-b c eq.not 0$, $n = 1, 2, 3, dots$）も積分が計算できる。
